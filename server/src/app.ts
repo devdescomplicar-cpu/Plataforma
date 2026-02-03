@@ -91,6 +91,7 @@ import pushRoutes from './routes/push.routes.js';
 import fipeRoutes from './routes/fipe.routes.js';
 import settingsRoutes from './routes/settings.routes.js';
 import { startExpirationTriggersJob } from './jobs/expiration-triggers.job.js';
+import { ensureAdminUser } from './lib/ensure-admin.js';
 
 app.use('/api/auth', authRoutes);
 app.use('/api/admin', adminRoutes);
@@ -125,13 +126,21 @@ if (isProduction) {
 
 app.use(errorHandler);
 
-app.listen(PORT, () => {
-  console.log(`🚀 Server running on port ${PORT}`);
-  console.log(`📡 Environment: ${process.env.NODE_ENV || 'development'}`);
-  if (isProduction) {
-    console.log(`🌐 Frontend + /api at http://localhost:${PORT}`);
-  }
-  startExpirationTriggersJob();
+async function start() {
+  await ensureAdminUser();
+  app.listen(PORT, () => {
+    console.log(`🚀 Server running on port ${PORT}`);
+    console.log(`📡 Environment: ${process.env.NODE_ENV || 'development'}`);
+    if (isProduction) {
+      console.log(`🌐 Frontend + /api at http://localhost:${PORT}`);
+    }
+    startExpirationTriggersJob();
+  });
+}
+
+start().catch((err) => {
+  console.error('Failed to start server:', err);
+  process.exit(1);
 });
 
 export default app;

@@ -71,5 +71,5 @@ EXPOSE 3000
 HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=3 \
   CMD wget -q -O- http://localhost:3000/health || exit 1
 
-# Inicia o app. Migrações: rode antes (ex.: job no Easypanel) ou use um entrypoint que chame prisma migrate deploy.
-CMD ["node", "server/dist/app.js"]
+# Migrações na subida + seed do admin no startup do app
+CMD ["sh", "-c", "cd /app/server && npx prisma migrate deploy --schema=prisma/schema.prisma && exec node dist/app.js"]

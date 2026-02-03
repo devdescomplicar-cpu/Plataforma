@@ -1,23 +1,15 @@
+import * as dns from 'dns/promises';
 import * as Minio from 'minio';
 import sharp from 'sharp';
 import { Readable } from 'stream';
 
 class MinioService {
   private static instance: MinioService;
-  private client: Minio.Client;
+  private clientPromise: Promise<Minio.Client> | null = null;
   private bucketName: string;
 
   private constructor() {
     this.bucketName = process.env.MINIO_BUCKET || 'vehicle-images';
-    
-    this.client = new Minio.Client({
-      endPoint: process.env.MINIO_ENDPOINT || 'localhost',
-      port: parseInt(process.env.MINIO_PORT || '9000'),
-      useSSL: process.env.MINIO_USE_SSL === 'true',
-      accessKey: process.env.MINIO_ACCESS_KEY || 'minioadmin',
-      secretKey: process.env.MINIO_SECRET_KEY || 'minioadmin',
-    });
-
     this.ensureBucket().catch((err: unknown) => {
       const msg = err instanceof Error ? err.message : String(err);
       console.warn('[S3] Unavailable – uploads will fail until storage is running:', msg);
@@ -32,13 +24,37 @@ class MinioService {
   }
 
   /**
+   * Cliente MinIO. Se MINIO_ENDPOINT tiver underscore (ex.: sgc_descomplicar-minio),
+   * resolve para IP para evitar "invalid hostname" em clientes/servidores que rejeitam _.
+   */
+  private async getClient(): Promise<Minio.Client> {
+    if (this.clientPromise) return this.clientPromise;
+    const raw = process.env.MINIO_ENDPOINT || 'localhost';
+    const endPoint = raw.includes('_') ? (await dns.lookup(raw)).address : raw;
+    if (raw.includes('_')) {
+      console.log('[MinIO] Hostname com underscore resolvido para IP:', endPoint);
+    }
+    this.clientPromise = Promise.resolve(
+      new Minio.Client({
+        endPoint,
+        port: parseInt(process.env.MINIO_PORT || '9000'),
+        useSSL: process.env.MINIO_USE_SSL === 'true',
+        accessKey: process.env.MINIO_ACCESS_KEY || 'minioadmin',
+        secretKey: process.env.MINIO_SECRET_KEY || 'minioadmin',
+      })
+    );
+    return this.clientPromise;
+  }
+
+  /**
    * Garante que o bucket existe no MinIO; cria com política de leitura pública se não existir.
    * Chamado no init (fire-and-forget) e antes de cada upload (await) para cobrir MinIO que sobe depois do app.
    */
   private async ensureBucket(): Promise<void> {
-    const exists = await this.client.bucketExists(this.bucketName);
+    const client = await this.getClient();
+    const exists = await client.bucketExists(this.bucketName);
     if (exists) return;
-    await this.client.makeBucket(this.bucketName, 'us-east-1');
+    await client.makeBucket(this.bucketName, 'us-east-1');
     const policy = {
       Version: '2012-10-17',
       Statement: [
@@ -50,7 +66,7 @@ class MinioService {
         },
       ],
     };
-    await this.client.setBucketPolicy(this.bucketName, JSON.stringify(policy));
+    await client.setBucketPolicy(this.bucketName, JSON.stringify(policy));
     console.log('[MinIO] Bucket criado:', this.bucketName);
   }
 
@@ -105,7 +121,8 @@ class MinioService {
         }
       } while (processedImage.length > MinioService.MAX_IMAGE_BYTES);
 
-      await this.client.putObject(
+      const client = await this.getClient();
+      await client.putObject(
         this.bucketName,
         key,
         Readable.from(processedImage),
@@ -148,7 +165,8 @@ class MinioService {
           .jpeg({ quality: 70, mozjpeg: true })
           .toBuffer();
       }
-      await this.client.putObject(
+      const client = await this.getClient();
+      await client.putObject(
         this.bucketName,
         key,
         Readable.from(processedImage),
@@ -186,7 +204,8 @@ class MinioService {
           .jpeg({ quality: 70, mozjpeg: true })
           .toBuffer();
       }
-      await this.client.putObject(
+      const client = await this.getClient();
+      await client.putObject(
         this.bucketName,
         key,
         Readable.from(processedImage),
@@ -202,7 +221,8 @@ class MinioService {
 
   public async deleteImage(key: string): Promise<void> {
     try {
-      await this.client.removeObject(this.bucketName, key);
+      const client = await this.getClient();
+      await client.removeObject(this.bucketName, key);
     } catch (error) {
       console.error('Error deleting image:', error);
       throw new Error('Failed to delete image');
@@ -221,54 +241,53 @@ class MinioService {
    * Returns bucket stats: total size, object count, largest object size.
    * Used by admin storage dashboard.
    */
-  public getBucketStats(): Promise<{
+  public async getBucketStats(): Promise<{
     totalSizeBytes: number;
     objectCount: number;
     largestObjectBytes: number;
     available: boolean;
   }> {
-    return new Promise((resolve) => {
-      this.client
-        .bucketExists(this.bucketName)
-        .then((exists) => {
-          if (!exists) {
-            resolve({ totalSizeBytes: 0, objectCount: 0, largestObjectBytes: 0, available: false });
-            return;
-          }
-          let totalSize = 0;
-          let objectCount = 0;
-          let largestBytes = 0;
-          const stream = this.client.listObjects(this.bucketName, '', true);
-          stream.on('data', (obj: { size?: number }) => {
-            const sz = obj.size ?? 0;
-            objectCount += 1;
-            totalSize += sz;
-            if (sz > largestBytes) largestBytes = sz;
-          });
-          stream.on('end', () => {
-            resolve({ totalSizeBytes: totalSize, objectCount, largestObjectBytes: largestBytes, available: true });
-          });
-          stream.on('error', (e) => {
-            console.error('[S3] getBucketStats stream error', e);
-            resolve({ totalSizeBytes: totalSize, objectCount, largestObjectBytes: largestBytes, available: true });
-          });
-        })
-        .catch((e) => {
-          console.error('[S3] getBucketStats error', e);
-          resolve({ totalSizeBytes: 0, objectCount: 0, largestObjectBytes: 0, available: false });
+    try {
+      const client = await this.getClient();
+      const exists = await client.bucketExists(this.bucketName);
+      if (!exists) {
+        return { totalSizeBytes: 0, objectCount: 0, largestObjectBytes: 0, available: false };
+      }
+      let totalSize = 0;
+      let objectCount = 0;
+      let largestBytes = 0;
+      return new Promise((resolve) => {
+        const stream = client.listObjects(this.bucketName, '', true);
+        stream.on('data', (obj: { size?: number }) => {
+          const sz = obj.size ?? 0;
+          objectCount += 1;
+          totalSize += sz;
+          if (sz > largestBytes) largestBytes = sz;
         });
-    });
+        stream.on('end', () => {
+          resolve({ totalSizeBytes: totalSize, objectCount, largestObjectBytes: largestBytes, available: true });
+        });
+        stream.on('error', (e) => {
+          console.error('[S3] getBucketStats stream error', e);
+          resolve({ totalSizeBytes: totalSize, objectCount, largestObjectBytes: largestBytes, available: true });
+        });
+      });
+    } catch (e) {
+      console.error('[S3] getBucketStats error', e);
+      return { totalSizeBytes: 0, objectCount: 0, largestObjectBytes: 0, available: false };
+    }
   }
 
   /**
    * List all object keys and sizes in the bucket (for top consumers / quality).
    */
   public async listObjectSizes(): Promise<{ key: string; size: number }[]> {
-    const exists = await this.client.bucketExists(this.bucketName);
+    const client = await this.getClient();
+    const exists = await client.bucketExists(this.bucketName);
     if (!exists) return [];
     const list: { key: string; size: number }[] = [];
     return new Promise((resolve, reject) => {
-      const stream = this.client.listObjects(this.bucketName, '', true);
+      const stream = client.listObjects(this.bucketName, '', true);
       stream.on('data', (obj: { name?: string; size?: number }) => {
         const key = obj.name ?? '';
         if (key) list.push({ key, size: obj.size ?? 0 });
@@ -283,7 +302,8 @@ class MinioService {
    */
   public async getBucketLifecycle(): Promise<{ Rule?: unknown[] } | null> {
     try {
-      const lifecycle = await this.client.getBucketLifecycle(this.bucketName);
+      const client = await this.getClient();
+      const lifecycle = await client.getBucketLifecycle(this.bucketName);
       if (lifecycle && typeof lifecycle === 'object' && lifecycle !== null) {
         return lifecycle as { Rule?: unknown[] };
       }
@@ -297,7 +317,8 @@ class MinioService {
    * Set bucket lifecycle (retention) – e.g. abort incomplete multipart after 7 days.
    */
   public async setBucketLifecycle(config: { Rule: unknown[] }): Promise<void> {
-    await this.client.setBucketLifecycle(this.bucketName, config as Minio.Lifecycle);
+    const client = await this.getClient();
+    await client.setBucketLifecycle(this.bucketName, config as Minio.Lifecycle);
   }
 
   /**
@@ -305,9 +326,10 @@ class MinioService {
    * Uso: GET /api/vehicle-images/:key → mesmo domínio, sem mixed content.
    */
   public async getObjectStream(key: string): Promise<{ stream: NodeJS.ReadableStream; contentType: string }> {
+    const client = await this.getClient();
     const ext = key.split('.').pop()?.toLowerCase() ?? 'jpg';
     const contentType = ext === 'png' ? 'image/png' : ext === 'webp' ? 'image/webp' : 'image/jpeg';
-    const stream = await this.client.getObject(this.bucketName, key);
+    const stream = await client.getObject(this.bucketName, key);
     return { stream, contentType };
   }
 }

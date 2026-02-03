@@ -1,0 +1,466 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* DescompliCAR Design System
+   Modern, clean, intuitive vehicle management platform
+   Primary: Deep Blue | Accent: Emerald Green | Light Mode
+*/
+
+@layer base {
+  :root {
+    /* Core Colors */
+    --background: 150 10% 97%;
+    --foreground: 160 25% 10%;
+
+    /* Cards & Surfaces */
+    --card: 0 0% 100%;
+    --card-foreground: 160 25% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 160 25% 10%;
+
+    /* Primary - Emerald Green (Money) */
+    --primary: 152 60% 42%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary - Light Green */
+    --secondary: 150 25% 94%;
+    --secondary-foreground: 160 25% 18%;
+
+    /* Muted */
+    --muted: 150 12% 92%;
+    --muted-foreground: 160 12% 45%;
+
+    /* Accent - Teal */
+    --accent: 168 70% 42%;
+    --accent-foreground: 0 0% 100%;
+
+    /* Success - Bright Green (for profits) */
+    --success: 142 70% 40%;
+    --success-foreground: 0 0% 100%;
+    --success-soft: 142 55% 94%;
+
+    /* Warning - Amber */
+    --warning: 38 92% 50%;
+    --warning-foreground: 38 92% 15%;
+    --warning-soft: 38 80% 95%;
+
+    /* Destructive - Red */
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+    --destructive-soft: 0 60% 95%;
+
+    /* Info - Blue */
+    --info: 210 80% 55%;
+    --info-foreground: 0 0% 100%;
+    --info-soft: 210 70% 95%;
+
+    /* UI Elements */
+    --border: 150 12% 88%;
+    --input: 150 12% 88%;
+    --ring: 152 60% 42%;
+
+    --radius: 0.75rem;
+
+    /* Sidebar */
+    --sidebar-background: 160 30% 12%;
+    --sidebar-foreground: 150 15% 85%;
+    --sidebar-primary: 0 0% 100%;
+    --sidebar-primary-foreground: 160 25% 10%;
+    --sidebar-accent: 160 25% 18%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 160 20% 18%;
+    --sidebar-ring: 152 60% 42%;
+    --sidebar-muted: 150 15% 55%;
+
+    /* Admin Accent */
+    --admin-accent: 280 70% 55%;
+    --admin-accent-foreground: 0 0% 100%;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(152, 60%, 42%), hsl(168, 70%, 42%));
+    --gradient-success: linear-gradient(135deg, hsl(142, 70%, 40%), hsl(160, 65%, 45%));
+    --gradient-card: linear-gradient(180deg, hsl(0, 0%, 100%), hsl(150, 15%, 98%));
+
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 hsl(160, 20%, 12%, 0.05);
+    --shadow-md: 0 4px 6px -1px hsl(160, 20%, 12%, 0.07), 0 2px 4px -2px hsl(160, 20%, 12%, 0.05);
+    --shadow-lg: 0 10px 15px -3px hsl(160, 20%, 12%, 0.08), 0 4px 6px -4px hsl(160, 20%, 12%, 0.05);
+    --shadow-xl: 0 20px 25px -5px hsl(160, 20%, 12%, 0.1), 0 8px 10px -6px hsl(160, 20%, 12%, 0.05);
+    --shadow-glow: 0 0 20px hsl(152, 60%, 42%, 0.25);
+  }
+
+  .dark {
+    --background: 220 25% 8%;
+    --foreground: 220 15% 95%;
+
+    --card: 220 25% 12%;
+    --card-foreground: 220 15% 95%;
+
+    --popover: 220 25% 12%;
+    --popover-foreground: 220 15% 95%;
+
+    /* Primary - Verde (igual ao tema claro) */
+    --primary: 152 60% 42%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 220 20% 18%;
+    --secondary-foreground: 220 15% 90%;
+
+    --muted: 220 20% 18%;
+    --muted-foreground: 220 15% 60%;
+
+    /* Accent - Verde (igual ao tema claro) */
+    --accent: 168 70% 42%;
+    --accent-foreground: 0 0% 100%;
+
+    --success: 142 70% 40%;
+    --success-foreground: 0 0% 100%;
+    --success-soft: 142 55% 15%;
+
+    --warning: 38 92% 55%;
+    --warning-foreground: 38 92% 10%;
+    --warning-soft: 38 60% 15%;
+
+    --destructive: 0 72% 55%;
+    --destructive-foreground: 0 0% 100%;
+    --destructive-soft: 0 50% 15%;
+
+    /* Info - Azul (mantém azul no dark mode) */
+    --info: 210 80% 60%;
+    --info-foreground: 0 0% 100%;
+    --info-soft: 210 60% 15%;
+
+    --border: 220 20% 20%;
+    --input: 220 20% 20%;
+    /* Ring - Verde (igual ao tema claro) */
+    --ring: 152 60% 42%;
+
+    --sidebar-background: 220 25% 6%;
+    --sidebar-foreground: 220 15% 85%;
+    --sidebar-primary: 0 0% 100%;
+    --sidebar-primary-foreground: 220 25% 12%;
+    --sidebar-accent: 220 30% 15%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 220 20% 15%;
+    /* Sidebar Ring - Verde (igual ao tema claro) */
+    --sidebar-ring: 152 60% 42%;
+    --sidebar-muted: 220 15% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    height: 100%;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    /* Garante que position fixed funcione corretamente no PWA */
+    position: relative;
+  }
+
+  html,
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    max-width: 100vw;
+    min-height: 100vh;
+    min-height: 100dvh;
+    min-height: 100svh; /* Small viewport height - mais estável no PWA */
+    height: 100%;
+    /* PWA/iOS: safe area apenas nas laterais (header e bottom nav cuidam do topo e bottom) */
+    padding-right: env(safe-area-inset-right, 0px);
+    padding-left: env(safe-area-inset-left, 0px);
+  }
+
+  /* Remove padding-bottom do body no mobile - BottomNav já cuida do safe-area */
+  @media (max-width: 1023px) {
+    html,
+    body {
+      padding-bottom: 0;
+    }
+  }
+
+  #root {
+    height: 100%;
+    min-height: 100vh;
+    width: 100%;
+    overflow-x: clip;
+    /* Garante que não interfira com position fixed no PWA iOS */
+    position: relative;
+    transform: none;
+  }
+
+  /* Mobile: altura fixa do layout + body sem scroll — só o main role; conteúdo respeita limite no topo */
+  @media (max-width: 1024px) {
+    html {
+      height: 100%;
+      min-height: 100vh;
+    }
+    body {
+      overflow: hidden;
+      -webkit-overflow-scrolling: touch;
+      /* Garante que position fixed funcione corretamente no PWA iOS */
+      position: relative;
+      /* Remove qualquer padding que possa empurrar elementos fixos */
+      padding-bottom: 0 !important;
+      height: 100%;
+      min-height: 100vh;
+    }
+    .app-layout-viewport {
+      /* Altura simples - BottomNav fixo em bottom: 0 não precisa de cálculo especial */
+      height: 100vh;
+      min-height: 100vh;
+      /* Garante que não interfira com position fixed dos filhos */
+      position: relative;
+      transform: none;
+      /* Remove qualquer padding que possa empurrar o BottomNav */
+      padding-bottom: 0 !important;
+    }
+  }
+}
+
+@layer components {
+  /* Card Variants */
+  .card-elevated {
+    @apply bg-card rounded-xl border border-border/50;
+    box-shadow: var(--shadow-md);
+  }
+
+  .card-interactive {
+    @apply bg-card rounded-xl border border-border/50 transition-all duration-200;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .card-interactive:hover {
+    box-shadow: var(--shadow-lg);
+    @apply border-primary/20;
+  }
+
+  /* Metric Cards */
+  .metric-card {
+    @apply bg-card rounded-xl border border-border/50 p-5;
+    box-shadow: var(--shadow-sm);
+  }
+
+  /* Dashboard cards — verde em degradê (tom igual botão ativo da sidebar) */
+  .card-dashboard-gradient {
+    @apply rounded-xl border-0 p-6 text-white;
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(152 52% 36%));
+    box-shadow: var(--shadow-md);
+  }
+
+  .dark .card-dashboard-gradient {
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(152 48% 30%));
+  }
+
+  /* Status Badges */
+  .badge-success {
+    @apply bg-success-soft text-success px-2.5 py-1 rounded-full text-xs font-medium;
+  }
+
+  .badge-warning {
+    @apply bg-warning-soft text-warning px-2.5 py-1 rounded-full text-xs font-medium;
+  }
+
+  .badge-info {
+    @apply bg-info-soft text-info px-2.5 py-1 rounded-full text-xs font-medium;
+  }
+
+  .badge-destructive {
+    @apply bg-destructive-soft text-destructive px-2.5 py-1 rounded-full text-xs font-medium;
+  }
+
+  /* Value Hidden State */
+  .value-hidden {
+    @apply font-mono tracking-widest;
+  }
+
+  /* Número principal dos cards — menor no mobile (2 por linha), maior no desktop */
+  .card-value-number {
+    @apply font-bold text-xl sm:text-3xl;
+  }
+
+  /* Sidebar Navigation */
+  .nav-item {
+    @apply flex items-center gap-2 lg:gap-3 px-2 lg:px-3 py-2 lg:py-2.5 rounded-lg text-sidebar-foreground/80 transition-all duration-200 text-sm lg:text-base;
+  }
+
+  .nav-item:hover {
+    @apply bg-sidebar-accent text-sidebar-foreground;
+  }
+
+  .nav-item.active {
+    @apply bg-primary text-primary-foreground font-medium;
+  }
+
+  /* Glow Effects */
+  .glow-primary {
+    box-shadow: var(--shadow-glow);
+  }
+}
+
+@layer utilities {
+  /* Animations */
+  .animate-fade-in {
+    animation: fadeIn 0.3s ease-out forwards;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.3s ease-out forwards;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.2s ease-out forwards;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes scaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  /* Scrollbar Styling */
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--border)) transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background: hsl(var(--border));
+    border-radius: 2px;
+    transition: background 0.2s ease;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--muted-foreground) / 0.5);
+  }
+
+  /* iOS sidebar height: 100dvh for correct viewport on notch devices, 100vh fallback */
+  .h-dvh-fallback {
+    height: 100vh;
+    height: 100dvh;
+  }
+  .max-h-dvh-fallback {
+    max-height: 100vh;
+    max-height: 100dvh;
+  }
+
+  /* Sidebar scroll - obrigatório para iOS, evita overflow sem scroll */
+  .sidebar-scroll {
+    flex: 1 1 0;
+    min-height: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-y;
+  }
+
+  /* Header spacer: compensa altura do header fixo + safe-area-inset-top */
+  .header-spacer {
+    height: calc(4rem + env(safe-area-inset-top, 0px));
+  }
+
+  /* Garantir que header fixo funcione corretamente no PWA iOS */
+  @supports (padding: max(0px)) {
+    .header-spacer {
+      height: calc(4rem + max(0px, env(safe-area-inset-top)));
+    }
+  }
+
+  /* BottomNav spacer: altura do menu inferior no mobile
+     Estrutura: pt-3 (0.75rem) + conteúdo (py-1.5 top + ícone 20px + gap 2px + texto ~14px + py-1.5 bottom) + pb (0.75rem mínimo ou safe-area)
+     Total: 12px (pt) + 12px (py) + 20px (ícone) + 2px (gap) + 14px (texto) + 12px (pb mínimo) = 72px
+     Usando 5rem (80px) para margem de segurança + safe-area */
+  .bottom-nav-spacer {
+    height: calc(5rem + max(0.75rem, env(safe-area-inset-bottom, 0px)));
+  }
+
+  /* Padding para compensar BottomNav fixo no mobile
+     Aplica apenas abaixo de lg (1024px) para não afetar desktop */
+  @media (max-width: 1023px) {
+    .mobile-bottom-nav-padding {
+      padding-bottom: calc(5rem + max(0.75rem, env(safe-area-inset-bottom, 0px)));
+    }
+  }
+
+  /* BottomNav fixo no PWA iOS - EXATAMENTE no bottom: 0, sem nenhum offset */
+  @media (max-width: 1023px) {
+    nav[aria-label="Navegação principal"],
+    nav[aria-label="Navegação admin"] {
+      position: fixed !important;
+      bottom: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
+      top: auto !important;
+      z-index: 50 !important;
+      /* Remove TODOS os offsets - ZERO margens e paddings externos */
+      margin: 0 !important;
+      margin-bottom: 0 !important;
+      margin-top: 0 !important;
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+      padding-top: 0 !important;
+      /* Força aceleração de hardware */
+      transform: translateZ(0) !important;
+      -webkit-transform: translateZ(0) !important;
+      will-change: transform;
+      isolation: isolate;
+      pointer-events: auto;
+    }
+
+    /* Garante que containers pais não empurrem o BottomNav */
+    body > #root,
+    body > #root > * {
+      padding-bottom: 0 !important;
+      margin-bottom: 0 !important;
+    }
+    
+    /* Remove qualquer padding do body que possa interferir */
+    body {
+      padding-bottom: 0 !important;
+    }
+  }
+}

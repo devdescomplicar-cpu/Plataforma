@@ -1,0 +1,29 @@
+{
+  "lastUpdated": "2026-01-31T02:18:24.717Z",
+  "data": [
+    {
+      "codigo": "2020-1",
+      "nome": "2020 Gasolina"
+    },
+    {
+      "codigo": "2019-1",
+      "nome": "2019 Gasolina"
+    },
+    {
+      "codigo": "2018-1",
+      "nome": "2018 Gasolina"
+    },
+    {
+      "codigo": "2017-1",
+      "nome": "2017 Gasolina"
+    },
+    {
+      "codigo": "2016-1",
+      "nome": "2016 Gasolina"
+    },
+    {
+      "codigo": "2015-1",
+      "nome": "2015 Gasolina"
+    }
+  ]
+}

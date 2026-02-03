@@ -1,0 +1,1013 @@
+{
+  "lastUpdated": "2026-01-30T07:29:46.950Z",
+  "data": [
+    {
+      "codigo": 1286,
+      "nome": "Accent GLS 1.5 12V/16V Aut."
+    },
+    {
+      "codigo": 1287,
+      "nome": "Accent GLS 1.5 12V/16V Mec."
+    },
+    {
+      "codigo": 1288,
+      "nome": "Accent GS 3p Mec."
+    },
+    {
+      "codigo": 1289,
+      "nome": "Accent L/ LR 1.5 2/4p"
+    },
+    {
+      "codigo": 1290,
+      "nome": "Accent LS 4p"
+    },
+    {
+      "codigo": 1291,
+      "nome": "Atos Prime GL 1.0 Mec."
+    },
+    {
+      "codigo": 1292,
+      "nome": "Atos Prime GLS 1.0 Aut."
+    },
+    {
+      "codigo": 1293,
+      "nome": "Atos Prime GLS 1.0 Mec."
+    },
+    {
+      "codigo": 1294,
+      "nome": "Atos Prime GLS 1.0 Semi-Aut."
+    },
+    {
+      "codigo": 5726,
+      "nome": "AZERA 3.0 V6 24V 4p Aut."
+    },
+    {
+      "codigo": 4403,
+      "nome": "AZERA GLS 3.3 V6 24V 4p Aut."
+    },
+    {
+      "codigo": 1295,
+      "nome": "Coupe FX 2.0 Aut."
+    },
+    {
+      "codigo": 1296,
+      "nome": "Coupe FX 2.0 Mec."
+    },
+    {
+      "codigo": 1297,
+      "nome": "Coupe FX 2.7 V6 24V 180cv Aut."
+    },
+    {
+      "codigo": 1298,
+      "nome": "Coupe FX 2.7 V6 24V 180cv Mec."
+    },
+    {
+      "codigo": 8451,
+      "nome": "Creta 1 Million 1.6 16V Flex Aut."
+    },
+    {
+      "codigo": 9113,
+      "nome": "Creta Action 1.6 16V Flex Aut."
+    },
+    {
+      "codigo": 9589,
+      "nome": "Creta Attitude 1.6 16V Flex Aut."
+    },
+    {
+      "codigo": 7829,
+      "nome": "Creta Attitude 1.6 16V Flex Mec."
+    },
+    {
+      "codigo": 8895,
+      "nome": "Creta Attitude Plus 1.6 16V Flex Aut."
+    },
+    {
+      "codigo": 9601,
+      "nome": "Creta Comfort 1.0 TB 12V Flex Aut."
+    },
+    {
+      "codigo": 10857,
+      "nome": "Creta Comfort Plus 1.0 TB 12V Flex Aut."
+    },
+    {
+      "codigo": 11792,
+      "nome": "Creta Comfort Safety 1.0 TB 12V Aut."
+    },
+    {
+      "codigo": 8749,
+      "nome": "Creta Launch Edition 1.6 16V Flex Aut."
+    },
+    {
+      "codigo": 10858,
+      "nome": "Creta Limit. Safety 1.0 TB 12V Flex Aut."
+    },
+    {
+      "codigo": 9602,
+      "nome": "Creta Limited 1.0 TB 12V Flex Aut."
+    },
+    {
+      "codigo": 9114,
+      "nome": "Creta Limited Edition 1.6 16V Flex Aut."
+    },
+    {
+      "codigo": 9855,
+      "nome": "Creta N Line 1.0 TB 12V Flex Aut."
+    },
+    {
+      "codigo": 10559,
+      "nome": "Creta N Line Night Ed. 2.0 16V Flex Aut."
+    },
+    {
+      "codigo": 10812,
+      "nome": "Creta Plat. Safety 1.0 TB 12V Flex Aut."
+    },
+    {
+      "codigo": 9603,
+      "nome": "Creta Platinum 1.0 TB 12V Flex Aut."
+    },
+    {
+      "codigo": 7830,
+      "nome": "Creta Prestige 2.0 16V Flex Aut."
+    },
+    {
+      "codigo": 7831,
+      "nome": "Creta Pulse 1.6 16V Flex Aut."
+    },
+    {
+      "codigo": 7832,
+      "nome": "Creta Pulse 1.6 16V Flex Mec."
+    },
+    {
+      "codigo": 7833,
+      "nome": "Creta Pulse 2.0 16V Flex Aut."
+    },
+    {
+      "codigo": 8051,
+      "nome": "Creta Pulse Plus 1.6 16V Flex Aut."
+    },
+    {
+      "codigo": 8521,
+      "nome": "Creta Smart 1.6 16V Flex Aut."
+    },
+    {
+      "codigo": 9115,
+      "nome": "Creta Smart Plus 1.6 16V Flex Aut."
+    },
+    {
+      "codigo": 8125,
+      "nome": "Creta Sport 2.0 16V Flex Aut."
+    },
+    {
+      "codigo": 11219,
+      "nome": "Creta Ultimate 1.6 TB 16V Aut."
+    },
+    {
+      "codigo": 9604,
+      "nome": "Creta Ultimate 2.0 16V Flex Aut."
+    },
+    {
+      "codigo": 1299,
+      "nome": "Cupê 2.0"
+    },
+    {
+      "codigo": 7756,
+      "nome": "Elantra 2.0 16V Flex Aut."
+    },
+    {
+      "codigo": 1300,
+      "nome": "Elantra GL"
+    },
+    {
+      "codigo": 1301,
+      "nome": "Elantra GLS 1.6"
+    },
+    {
+      "codigo": 1302,
+      "nome": "Elantra GLS 1.8 16V"
+    },
+    {
+      "codigo": 5638,
+      "nome": "Elantra GLS 1.8 16V Aut."
+    },
+    {
+      "codigo": 5639,
+      "nome": "Elantra GLS 1.8 16V Mec."
+    },
+    {
+      "codigo": 1303,
+      "nome": "Elantra GLS 2.0 16V Aut."
+    },
+    {
+      "codigo": 6433,
+      "nome": "Elantra GLS 2.0 16V Flex Aut."
+    },
+    {
+      "codigo": 1304,
+      "nome": "Elantra GLS 2.0 16V Mec."
+    },
+    {
+      "codigo": 7757,
+      "nome": "Elantra Special Edit. 2.0 16V Flex Aut."
+    },
+    {
+      "codigo": 1305,
+      "nome": "Elantra Wagon 1.8 16V"
+    },
+    {
+      "codigo": 6176,
+      "nome": "EQUUS 4.6 V8 32V 366cv 4p Aut."
+    },
+    {
+      "codigo": 1306,
+      "nome": "Excel GLS"
+    },
+    {
+      "codigo": 1307,
+      "nome": "Excel GS"
+    },
+    {
+      "codigo": 1308,
+      "nome": "Excel L"
+    },
+    {
+      "codigo": 1309,
+      "nome": "Excel LS/ GL"
+    },
+    {
+      "codigo": 1310,
+      "nome": "Galloper 2.5 Luxo Turbo Diesel"
+    },
+    {
+      "codigo": 1311,
+      "nome": "Galloper 2.5 Super Luxo Turbo Diesel"
+    },
+    {
+      "codigo": 1312,
+      "nome": "Galloper 3.0 V6 Luxo"
+    },
+    {
+      "codigo": 1313,
+      "nome": "Galloper 3.0 V6 Super Luxo Aut"
+    },
+    {
+      "codigo": 1314,
+      "nome": "Galloper 3.0 V6 Super Luxo Mec"
+    },
+    {
+      "codigo": 5930,
+      "nome": "GENESIS 3.8 V6 24V 290cv 4p Aut."
+    },
+    {
+      "codigo": 6694,
+      "nome": "Grand Santa Fé  3.3 V6 4X4 Tiptronic"
+    },
+    {
+      "codigo": 1315,
+      "nome": "H1 Starex HSV 2.4 16V 137cv  Aut."
+    },
+    {
+      "codigo": 1316,
+      "nome": "H1 Starex HSV 2.5 Diesel"
+    },
+    {
+      "codigo": 4801,
+      "nome": "H1 Starex SVX 2.4 16V"
+    },
+    {
+      "codigo": 3957,
+      "nome": "H1 Starex SVX 2.5 TDI 100cv Diesel"
+    },
+    {
+      "codigo": 1317,
+      "nome": "H1 Starex SVX 2.6 85cv Diesel"
+    },
+    {
+      "codigo": 1318,
+      "nome": "H100 DLX Furgão Diesel"
+    },
+    {
+      "codigo": 1319,
+      "nome": "H100 DLX/ Panel Diesel"
+    },
+    {
+      "codigo": 1320,
+      "nome": "H100 GL Diesel"
+    },
+    {
+      "codigo": 1321,
+      "nome": "H100 GL Furgão Extra-Longo Diesel"
+    },
+    {
+      "codigo": 1322,
+      "nome": "H100 GLS Diesel"
+    },
+    {
+      "codigo": 1323,
+      "nome": "H100 GS (12 lugares)"
+    },
+    {
+      "codigo": 1324,
+      "nome": "H100 GS Diesel (12 lugares)"
+    },
+    {
+      "codigo": 1325,
+      "nome": "H100 Porter Truck Diesel"
+    },
+    {
+      "codigo": 1326,
+      "nome": "H100 SPR Diesel (15 lugares)"
+    },
+    {
+      "codigo": 1327,
+      "nome": "H100 Top Diesel"
+    },
+    {
+      "codigo": 8452,
+      "nome": "HB20 1 Million 1.6 Flex 16V Aut."
+    },
+    {
+      "codigo": 8011,
+      "nome": "HB20 5 Anos 1.0 Flex 12V Mec."
+    },
+    {
+      "codigo": 8012,
+      "nome": "HB20 5 Anos 1.6 Flex 16V Aut."
+    },
+    {
+      "codigo": 6207,
+      "nome": "HB20 C./C.Plus/C.Style 1.6 Flex 16V Mec."
+    },
+    {
+      "codigo": 6206,
+      "nome": "HB20 C.Style/C.Plus 1.6 Flex 16V Aut."
+    },
+    {
+      "codigo": 11130,
+      "nome": "HB20 Comf. Plus Tech 1.0 TB Flex 12V Aut"
+    },
+    {
+      "codigo": 6205,
+      "nome": "HB20 Comf./C.Plus/C.Style 1.0 Flex 12V"
+    },
+    {
+      "codigo": 9906,
+      "nome": "HB20 Comfort 1.0 Flex 12V Mec."
+    },
+    {
+      "codigo": 9907,
+      "nome": "HB20 Comfort 1.0 TB Flex 12V Aut"
+    },
+    {
+      "codigo": 9908,
+      "nome": "HB20 Comfort 1.0 TB Flex 12V Mec"
+    },
+    {
+      "codigo": 10861,
+      "nome": "HB20 Comfort Plus 1.0 Flex 12V Mec."
+    },
+    {
+      "codigo": 10778,
+      "nome": "HB20 Comfort Plus 1.0 TB Flex 12V Aut."
+    },
+    {
+      "codigo": 7546,
+      "nome": "HB20 Comfort Plus 1.0 TB Flex 12V Mec."
+    },
+    {
+      "codigo": 7547,
+      "nome": "HB20 Comfort Style 1.0 TB Flex 12V Mec."
+    },
+    {
+      "codigo": 6739,
+      "nome": "HB20 Copa do Mundo 1.0 Flex 12V Mec."
+    },
+    {
+      "codigo": 6741,
+      "nome": "HB20 Copa do Mundo 1.6 Flex 16V Aut."
+    },
+    {
+      "codigo": 6740,
+      "nome": "HB20 Copa do Mundo 1.6 Flex 16V Mec."
+    },
+    {
+      "codigo": 10167,
+      "nome": "HB20 Copa Mundo Qatar 1.0 Flex Mec"
+    },
+    {
+      "codigo": 10168,
+      "nome": "HB20 Copa Mundo Qatar 1.0 TB Flex Aut."
+    },
+    {
+      "codigo": 8849,
+      "nome": "HB20 Diamond 1.0 TB Flex 12V Aut."
+    },
+    {
+      "codigo": 8850,
+      "nome": "HB20 Diamond Plus 1.0 TB Flex 12V Aut."
+    },
+    {
+      "codigo": 10212,
+      "nome": "HB20 Edição Especial 1.0 Flex Mec."
+    },
+    {
+      "codigo": 10213,
+      "nome": "HB20 Edição Especial 1.0 TB Flex Aut."
+    },
+    {
+      "codigo": 9472,
+      "nome": "HB20 Evol. Bluelink 1.0 TB Flex 12V Aut."
+    },
+    {
+      "codigo": 8851,
+      "nome": "HB20 Evolution 1.0 Flex 12V Mec."
+    },
+    {
+      "codigo": 8852,
+      "nome": "HB20 Evolution 1.0 TB Flex 12V Aut."
+    },
+    {
+      "codigo": 9473,
+      "nome": "HB20 Evolution Bluelink 1.0 Flex 12V Mec"
+    },
+    {
+      "codigo": 6959,
+      "nome": "HB20 For You 1.0 Flex 12V 5p"
+    },
+    {
+      "codigo": 8853,
+      "nome": "HB20 Launch Edition 1.6 Flex 16V Aut."
+    },
+    {
+      "codigo": 9909,
+      "nome": "HB20 Limited 1.0 Flex 12V Mec."
+    },
+    {
+      "codigo": 11458,
+      "nome": "HB20 Limited 1.0 TB Flex 12V Aut."
+    },
+    {
+      "codigo": 11019,
+      "nome": "HB20 Limited Plus 1.0 Flex 12V Mec."
+    },
+    {
+      "codigo": 7697,
+      "nome": "HB20 Ocean 1.0 Flex 12V 5p Mec."
+    },
+    {
+      "codigo": 7698,
+      "nome": "HB20 Ocean 1.6 Flex 16V 5p Aut."
+    },
+    {
+      "codigo": 7699,
+      "nome": "HB20 Ocean 1.6 Flex 16V 5p Mec."
+    },
+    {
+      "codigo": 10780,
+      "nome": "HB20 Plat. Safety 1.0 TB Flex 12V Aut."
+    },
+    {
+      "codigo": 9617,
+      "nome": "HB20 Platinum 1.0 TB Flex 12V Aut."
+    },
+    {
+      "codigo": 9618,
+      "nome": "HB20 Platinum 1.0 TB Flex 12V Mec."
+    },
+    {
+      "codigo": 9619,
+      "nome": "HB20 Platinum Plus 1.0 TB Flex 12V Aut."
+    },
+    {
+      "codigo": 6208,
+      "nome": "HB20 Premium 1.6 Flex 16V Aut."
+    },
+    {
+      "codigo": 6209,
+      "nome": "HB20 Premium 1.6 Flex 16V Mec."
+    },
+    {
+      "codigo": 7480,
+      "nome": "HB20 R spec 1.6 Flex 16V Aut."
+    },
+    {
+      "codigo": 7481,
+      "nome": "HB20 R spec 1.6 Flex 16V Mec."
+    },
+    {
+      "codigo": 8178,
+      "nome": "HB20 R spec Limited 1.6 flex 16V Aut."
+    },
+    {
+      "codigo": 8854,
+      "nome": "HB20 Sense 1.0 Flex 12V Mec."
+    },
+    {
+      "codigo": 10819,
+      "nome": "HB20 Sense 1.0 Turbo Flex 12V Aut."
+    },
+    {
+      "codigo": 11020,
+      "nome": "HB20 Sense Plus 1.0 Flex 12V Mec."
+    },
+    {
+      "codigo": 7154,
+      "nome": "HB20 Spicy 1.0 Flex 12V Mec."
+    },
+    {
+      "codigo": 7155,
+      "nome": "HB20 Spicy 1.6 Flex 16V Aut."
+    },
+    {
+      "codigo": 7156,
+      "nome": "HB20 Spicy 1.6 Flex 16V Mec."
+    },
+    {
+      "codigo": 9008,
+      "nome": "HB20 Sport 1.0 TB Flex 12V Aut."
+    },
+    {
+      "codigo": 8317,
+      "nome": "HB20 Unique 1.0 Flex 12V Mec."
+    },
+    {
+      "codigo": 8855,
+      "nome": "HB20 Vision 1.0 Flex 12V Mec."
+    },
+    {
+      "codigo": 9794,
+      "nome": "HB20 Vision 1.0 TB Flex 12V Aut."
+    },
+    {
+      "codigo": 8856,
+      "nome": "HB20 Vision 1.6 Flex 16V Aut"
+    },
+    {
+      "codigo": 8857,
+      "nome": "HB20 Vision 1.6 Flex 16V Mec."
+    },
+    {
+      "codigo": 9474,
+      "nome": "HB20 Vision Bluelink 1.6 Flex 16V Aut."
+    },
+    {
+      "codigo": 9475,
+      "nome": "HB20 Vision Bluelink 1.6 Flex 16V Mec."
+    },
+    {
+      "codigo": 7260,
+      "nome": "HB20S  Impress 1.6 Flex 16V Aut."
+    },
+    {
+      "codigo": 7261,
+      "nome": "HB20S  Impress 1.6 Flex 16v Mec."
+    },
+    {
+      "codigo": 8453,
+      "nome": "HB20S 1 Million 1.6 Flex 16V Aut. 4p"
+    },
+    {
+      "codigo": 8013,
+      "nome": "HB20S 5 Anos 1.0 Flex 12V Mec."
+    },
+    {
+      "codigo": 8014,
+      "nome": "HB20S 5 Anos 1.6 Flex 16V Aut."
+    },
+    {
+      "codigo": 6436,
+      "nome": "HB20S C.Plus/C.Style 1.6 Flex 16V Mec.4p"
+    },
+    {
+      "codigo": 6434,
+      "nome": "HB20S C.Plus/C.Style1.0 Flex 12V Mec. 4P"
+    },
+    {
+      "codigo": 6435,
+      "nome": "HB20S C.Style/C.Plus1.6 Flex 16V Aut. 4p"
+    },
+    {
+      "codigo": 11131,
+      "nome": "HB20S Com. Plus Tech 1.0 TB Flex 12V Aut"
+    },
+    {
+      "codigo": 10012,
+      "nome": "HB20S Comfort 1.0  Flex 12V Mec."
+    },
+    {
+      "codigo": 10013,
+      "nome": "HB20S Comfort 1.0 TB Flex 12V Aut."
+    },
+    {
+      "codigo": 10820,
+      "nome": "HB20S Comfort Plus 1.0 Flex 12V Mec."
+    },
+    {
+      "codigo": 10821,
+      "nome": "HB20S Comfort Plus 1.0 TB Flex 12V Aut"
+    },
+    {
+      "codigo": 7548,
+      "nome": "HB20S Comfort Plus 1.0 TB Flex 12V Mec."
+    },
+    {
+      "codigo": 7549,
+      "nome": "HB20S Comfort Style 1.0 TB Flex 12V Mec."
+    },
+    {
+      "codigo": 6742,
+      "nome": "HB20S Copa do Mundo 1.0 Flex 12V Mec."
+    },
+    {
+      "codigo": 6744,
+      "nome": "HB20S Copa do Mundo 1.6 Flex 16V Aut."
+    },
+    {
+      "codigo": 6743,
+      "nome": "HB20S Copa do Mundo 1.6 Flex 16V Mec."
+    },
+    {
+      "codigo": 10169,
+      "nome": "HB20S Copa Mundo Qatar 1.0 Flex Mec."
+    },
+    {
+      "codigo": 10170,
+      "nome": "HB20S Copa Mundo Qatar 1.0 TB Flex Aut."
+    },
+    {
+      "codigo": 8896,
+      "nome": "HB20S Diamond 1.0 TB Flex 12V Aut."
+    },
+    {
+      "codigo": 8897,
+      "nome": "HB20S Diamond Plus 1.0 TB Flex 12V Aut."
+    },
+    {
+      "codigo": 10214,
+      "nome": "HB20S Edição Especial 1.0 Flex Mec."
+    },
+    {
+      "codigo": 10215,
+      "nome": "HB20S Edição Especial 1.0 TB Flex Aut."
+    },
+    {
+      "codigo": 9476,
+      "nome": "HB20S Evol. Bluelink 1.0 Flex 12 Mec."
+    },
+    {
+      "codigo": 9477,
+      "nome": "HB20S Evol. Bluelink 1.0 TB Flex 12V Aut"
+    },
+    {
+      "codigo": 8898,
+      "nome": "HB20S Evolution 1.0 Flex 12V Mec."
+    },
+    {
+      "codigo": 8899,
+      "nome": "HB20S Evolution 1.0 TB Flex 12V Aut."
+    },
+    {
+      "codigo": 9620,
+      "nome": "HB20S For You 1.0 Flex 12V 4p"
+    },
+    {
+      "codigo": 10014,
+      "nome": "HB20S Limited 1.0  Flex 12V Mec."
+    },
+    {
+      "codigo": 11459,
+      "nome": "HB20S Limited 1.0  TB Flex 12V Aut."
+    },
+    {
+      "codigo": 10822,
+      "nome": "HB20S Limited Plus 1.0  Flex 12V Mec."
+    },
+    {
+      "codigo": 7700,
+      "nome": "HB20S Ocean 1.6 Flex 16v 4p Aut."
+    },
+    {
+      "codigo": 7701,
+      "nome": "HB20S Ocean 1.6 Flex 16V 4p Mec."
+    },
+    {
+      "codigo": 10823,
+      "nome": "HB20S Plat. Safety 1.0 TB Flex 12V Aut."
+    },
+    {
+      "codigo": 9621,
+      "nome": "HB20S Platinum 1.0 TB Flex 12V Aut."
+    },
+    {
+      "codigo": 9622,
+      "nome": "HB20S Platinum 1.0 TB Flex 12V Mec."
+    },
+    {
+      "codigo": 9623,
+      "nome": "HB20S Platinum Plus 1.0 TB Flex 12V Aut."
+    },
+    {
+      "codigo": 6437,
+      "nome": "HB20S Premium 1.6 Flex 16V Aut. 4p"
+    },
+    {
+      "codigo": 6438,
+      "nome": "HB20S Premium 1.6 Flex 16V Mec. 4p"
+    },
+    {
+      "codigo": 8240,
+      "nome": "HB20S Style 1.6 Flex 16V Aut."
+    },
+    {
+      "codigo": 8475,
+      "nome": "HB20S Unique 1.0 Flex 12V Mec."
+    },
+    {
+      "codigo": 8858,
+      "nome": "HB20S Vision 1.0 Flex 12V Mec."
+    },
+    {
+      "codigo": 9795,
+      "nome": "HB20S Vision 1.0 TB Flex 12V Aut."
+    },
+    {
+      "codigo": 8859,
+      "nome": "HB20S Vision 1.6 Flex 16V Aut."
+    },
+    {
+      "codigo": 8900,
+      "nome": "HB20S Vision 1.6 Flex 16V Mec."
+    },
+    {
+      "codigo": 9478,
+      "nome": "HB20S Vision Bluelink 1.6 Flex 16V Aut."
+    },
+    {
+      "codigo": 9479,
+      "nome": "HB20S Vision Bluelink 1.6 Flex 16V Mec."
+    },
+    {
+      "codigo": 8951,
+      "nome": "HB20X Diamond 1.6 Flex 16V Aut."
+    },
+    {
+      "codigo": 8952,
+      "nome": "HB20X Diamond Plus 1.6 Flex 16V Aut."
+    },
+    {
+      "codigo": 9480,
+      "nome": "HB20X Evol. Bluelink 1.6 Flex 16V Aut."
+    },
+    {
+      "codigo": 8953,
+      "nome": "HB20X Evolution 1.6 Flex 16V Aut."
+    },
+    {
+      "codigo": 6352,
+      "nome": "HB20X Premium 1.6 Flex 16V Aut."
+    },
+    {
+      "codigo": 6353,
+      "nome": "HB20X Premium 1.6 Flex 16V Mec."
+    },
+    {
+      "codigo": 6354,
+      "nome": "HB20X Style 1.6 Flex 16V Aut."
+    },
+    {
+      "codigo": 6355,
+      "nome": "HB20X Style 1.6 Flex 16v Mec."
+    },
+    {
+      "codigo": 8954,
+      "nome": "HB20X Vision 1.6 Flex 16V Aut."
+    },
+    {
+      "codigo": 8955,
+      "nome": "HB20X Vision 1.6 Flex 16V Mec."
+    },
+    {
+      "codigo": 10635,
+      "nome": "HR 2.5 4WD Diesel "
+    },
+    {
+      "codigo": 1328,
+      "nome": "HR 2.5 TCI Diesel (RS/RD)"
+    },
+    {
+      "codigo": 6356,
+      "nome": "i30 1.6 16V Flex 5p Aut."
+    },
+    {
+      "codigo": 6695,
+      "nome": "i30 1.8 16V Aut. 5p"
+    },
+    {
+      "codigo": 4925,
+      "nome": "i30 2.0 16V 145cv 5p Aut."
+    },
+    {
+      "codigo": 5071,
+      "nome": "i30 2.0 16V 145cv 5p Mec."
+    },
+    {
+      "codigo": 7346,
+      "nome": "i30 Serie Limitada 1.8 16V Aut. 5p"
+    },
+    {
+      "codigo": 5303,
+      "nome": "i30cw 2.0 16V 145cv Aut. 5p"
+    },
+    {
+      "codigo": 5304,
+      "nome": "i30cw 2.0 16V 145cv Mec. 5p"
+    },
+    {
+      "codigo": 10670,
+      "nome": "IONIQ 1.6 16V Aut. (Híbrido)"
+    },
+    {
+      "codigo": 11227,
+      "nome": "IONIQ 5 SIGNATURE (Elétrico)"
+    },
+    {
+      "codigo": 5280,
+      "nome": "ix35 2.0 16V 170cv 2WD/4WD Aut."
+    },
+    {
+      "codigo": 5279,
+      "nome": "ix35 2.0 16V 170cv 2WD/4WD Mec."
+    },
+    {
+      "codigo": 7858,
+      "nome": "ix35 2.0 16V 2WD Flex Aut."
+    },
+    {
+      "codigo": 5932,
+      "nome": "ix35 2.0 16V 2WD Flex Mec."
+    },
+    {
+      "codigo": 7347,
+      "nome": "ix35 2.0 Launching Edition 16V Flex Aut."
+    },
+    {
+      "codigo": 7859,
+      "nome": "ix35 GL 2.0 16V 2WD Flex Aut."
+    },
+    {
+      "codigo": 5931,
+      "nome": "ix35 GLS 2.0 16V 2WD Flex Aut."
+    },
+    {
+      "codigo": 10756,
+      "nome": "KONA 1.6 16V Aut. (Hibrido)"
+    },
+    {
+      "codigo": 10757,
+      "nome": "KONA EV (Elétrico)"
+    },
+    {
+      "codigo": 11503,
+      "nome": "KONA Signature GDI 1.6 16V Aut (Hibrido)"
+    },
+    {
+      "codigo": 11504,
+      "nome": "KONA Ultimate GDI 1.6 16V Aut. (Hibrido)"
+    },
+    {
+      "codigo": 1329,
+      "nome": "Matrix GLS 1.8 16V 123cv Aut."
+    },
+    {
+      "codigo": 1330,
+      "nome": "Matrix GLS 1.8 16V 123cv Mec."
+    },
+    {
+      "codigo": 11194,
+      "nome": "PALISADE Signature 3.8 GDI AWD Aut."
+    },
+    {
+      "codigo": 1331,
+      "nome": "Porter GL 4x2 Curto/Longo Diesel"
+    },
+    {
+      "codigo": 1332,
+      "nome": "Porter GLS CD 4x2 2.6 8V Diesel"
+    },
+    {
+      "codigo": 8860,
+      "nome": "Santa Fe 3.5 V6 4X4 Aut."
+    },
+    {
+      "codigo": 5727,
+      "nome": "Santa Fe GLS 2.4 Tiptronic"
+    },
+    {
+      "codigo": 1333,
+      "nome": "Santa Fe GLS 2.7 V6 4x4TipTronic"
+    },
+    {
+      "codigo": 5212,
+      "nome": "Santa Fe GLS 3.5 V6 4x4 Tiptronic"
+    },
+    {
+      "codigo": 6439,
+      "nome": "Santa Fe/GLS 3.3 V6 4X4 Tiptronic"
+    },
+    {
+      "codigo": 1334,
+      "nome": "Scoupe"
+    },
+    {
+      "codigo": 5398,
+      "nome": "Sonata 2.4 16V 182cv 4p Aut."
+    },
+    {
+      "codigo": 1335,
+      "nome": "Sonata GL 2.0 4p"
+    },
+    {
+      "codigo": 1336,
+      "nome": "Sonata GLS 2.0 4p"
+    },
+    {
+      "codigo": 1337,
+      "nome": "Sonata GLS 2.5 Aut."
+    },
+    {
+      "codigo": 1338,
+      "nome": "Sonata GLS 2.7 V6 24V 179cv 4p Aut."
+    },
+    {
+      "codigo": 1339,
+      "nome": "Sonata GLS 3.0 4p Aut."
+    },
+    {
+      "codigo": 3890,
+      "nome": "Sonata GLS 3.3 V6 24V 235cv 4p Aut."
+    },
+    {
+      "codigo": 1340,
+      "nome": "Terracan 2.5 8V 100cv TB Diesel Aut."
+    },
+    {
+      "codigo": 1341,
+      "nome": "Terracan 2.5 8V 100cv TB Diesel Mec."
+    },
+    {
+      "codigo": 1342,
+      "nome": "Terracan 2.9 CRDI 8V 163cv Diesel Aut."
+    },
+    {
+      "codigo": 1343,
+      "nome": "Trajet GLS 2.7 V6 24v 179cv Aut."
+    },
+    {
+      "codigo": 1344,
+      "nome": "Tucson 2.0 16V Aut."
+    },
+    {
+      "codigo": 6327,
+      "nome": "Tucson 2.0 16V Flex Aut."
+    },
+    {
+      "codigo": 6696,
+      "nome": "Tucson 2.0 16V Flex Mec."
+    },
+    {
+      "codigo": 1345,
+      "nome": "Tucson 2.0 16V Mec."
+    },
+    {
+      "codigo": 1346,
+      "nome": "Tucson 2.0 CRDi 16V 112cv Diesel Aut."
+    },
+    {
+      "codigo": 1347,
+      "nome": "Tucson 2.7 MPFI 24V 175cv Aut."
+    },
+    {
+      "codigo": 7834,
+      "nome": "Tucson Ed. Especial 1.6 Turbo 16V Aut."
+    },
+    {
+      "codigo": 7835,
+      "nome": "Tucson GL 1.6 Turbo 16V Aut."
+    },
+    {
+      "codigo": 7836,
+      "nome": "Tucson GLS 1.6 Turbo 16V Aut."
+    },
+    {
+      "codigo": 8052,
+      "nome": "Tucson Limited 1.6 Turbo 16V Aut."
+    },
+    {
+      "codigo": 5640,
+      "nome": "Veloster 1.6 16V  140cv Aut."
+    },
+    {
+      "codigo": 4384,
+      "nome": "VERACRUZ GLS 3.8 4WD Aut."
+    }
+  ]
+}

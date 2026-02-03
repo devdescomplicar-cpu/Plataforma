@@ -1,0 +1,517 @@
+{
+  "lastUpdated": "2026-01-30T06:39:07.408Z",
+  "data": [
+    {
+      "codigo": 10895,
+      "nome": "C 400 X"
+    },
+    {
+      "codigo": 10896,
+      "nome": "C 400 X Sport"
+    },
+    {
+      "codigo": 6760,
+      "nome": "C 600 Sport"
+    },
+    {
+      "codigo": 7219,
+      "nome": "C 650 GT"
+    },
+    {
+      "codigo": 2624,
+      "nome": "F 650"
+    },
+    {
+      "codigo": 2625,
+      "nome": "F 650 CS"
+    },
+    {
+      "codigo": 2626,
+      "nome": "F 650 GS/Dakar"
+    },
+    {
+      "codigo": 7819,
+      "nome": "F 700 GS"
+    },
+    {
+      "codigo": 8533,
+      "nome": "F 750 GS Premium"
+    },
+    {
+      "codigo": 9570,
+      "nome": "F 750 GS Premium 40 Anos"
+    },
+    {
+      "codigo": 8534,
+      "nome": "F 750 GS Sport"
+    },
+    {
+      "codigo": 4805,
+      "nome": "F 800 GS 798cc"
+    },
+    {
+      "codigo": 11145,
+      "nome": "F 800 GS 895cc"
+    },
+    {
+      "codigo": 6653,
+      "nome": "F 800 GS Adventure"
+    },
+    {
+      "codigo": 11146,
+      "nome": "F 800 GS Plus 895cc"
+    },
+    {
+      "codigo": 6362,
+      "nome": "F 800 GS Triple Black/trophy"
+    },
+    {
+      "codigo": 5048,
+      "nome": "F 800 R"
+    },
+    {
+      "codigo": 4252,
+      "nome": "F 800 S 798cc"
+    },
+    {
+      "codigo": 8646,
+      "nome": "F 850 GS Adventure Premium"
+    },
+    {
+      "codigo": 9571,
+      "nome": "F 850 GS Adventure Premium 40 anos"
+    },
+    {
+      "codigo": 8647,
+      "nome": "F 850 GS Adventure Sport"
+    },
+    {
+      "codigo": 8535,
+      "nome": "F 850 GS Premium"
+    },
+    {
+      "codigo": 10124,
+      "nome": "F 850 GS Premium 40 anos"
+    },
+    {
+      "codigo": 8536,
+      "nome": "F 850 GS Sport"
+    },
+    {
+      "codigo": 11147,
+      "nome": "F 900 GS"
+    },
+    {
+      "codigo": 11148,
+      "nome": "F 900 GS Adventure Plus"
+    },
+    {
+      "codigo": 11149,
+      "nome": "F 900 GS Plus"
+    },
+    {
+      "codigo": 11150,
+      "nome": "F 900 GS Trophy"
+    },
+    {
+      "codigo": 11151,
+      "nome": "F 900 GS Trophy Pro"
+    },
+    {
+      "codigo": 10383,
+      "nome": "F 900 R Sport "
+    },
+    {
+      "codigo": 10384,
+      "nome": "F 900 R Sport Plus"
+    },
+    {
+      "codigo": 8221,
+      "nome": "G 310 GS"
+    },
+    {
+      "codigo": 8029,
+      "nome": "G 310 R"
+    },
+    {
+      "codigo": 4817,
+      "nome": "G 450 X"
+    },
+    {
+      "codigo": 5196,
+      "nome": "G 650 GS"
+    },
+    {
+      "codigo": 5985,
+      "nome": "G 650 GS Sertão"
+    },
+    {
+      "codigo": 4443,
+      "nome": "G 650 X Challenge"
+    },
+    {
+      "codigo": 4650,
+      "nome": "G 650 X Country"
+    },
+    {
+      "codigo": 4444,
+      "nome": "G 650 X Moto"
+    },
+    {
+      "codigo": 2627,
+      "nome": "K 1100 LT"
+    },
+    {
+      "codigo": 2628,
+      "nome": "K 1100 RS"
+    },
+    {
+      "codigo": 2629,
+      "nome": "K 1200 GT"
+    },
+    {
+      "codigo": 2630,
+      "nome": "K 1200 LT"
+    },
+    {
+      "codigo": 3836,
+      "nome": "K 1200 R"
+    },
+    {
+      "codigo": 2631,
+      "nome": "K 1200 RS"
+    },
+    {
+      "codigo": 2632,
+      "nome": "K 1200 S"
+    },
+    {
+      "codigo": 4870,
+      "nome": "K 1300 GT"
+    },
+    {
+      "codigo": 4871,
+      "nome": "K 1300 R"
+    },
+    {
+      "codigo": 4872,
+      "nome": "K 1300 S"
+    },
+    {
+      "codigo": 8187,
+      "nome": "K 1600 BAGGER"
+    },
+    {
+      "codigo": 5631,
+      "nome": "K 1600 GT"
+    },
+    {
+      "codigo": 5630,
+      "nome": "K 1600 GTL"
+    },
+    {
+      "codigo": 6847,
+      "nome": "K 1600 GTL Exclusive"
+    },
+    {
+      "codigo": 2633,
+      "nome": "R 1100 GS"
+    },
+    {
+      "codigo": 2634,
+      "nome": "R 1100 GS-75"
+    },
+    {
+      "codigo": 2635,
+      "nome": "R 1100 R"
+    },
+    {
+      "codigo": 2636,
+      "nome": "R 1100 RS"
+    },
+    {
+      "codigo": 2637,
+      "nome": "R 1100 RT"
+    },
+    {
+      "codigo": 2638,
+      "nome": "R 1100 S"
+    },
+    {
+      "codigo": 2639,
+      "nome": "R 1150 GS"
+    },
+    {
+      "codigo": 2640,
+      "nome": "R 1150 GS Adventure"
+    },
+    {
+      "codigo": 2641,
+      "nome": "R 1150 R/ R 1150 R Rockster"
+    },
+    {
+      "codigo": 2642,
+      "nome": "R 1150 RS"
+    },
+    {
+      "codigo": 2643,
+      "nome": "R 1150 RT"
+    },
+    {
+      "codigo": 11204,
+      "nome": "R 12"
+    },
+    {
+      "codigo": 11205,
+      "nome": "R 12 719"
+    },
+    {
+      "codigo": 11206,
+      "nome": "R 12 Cruiser"
+    },
+    {
+      "codigo": 2644,
+      "nome": "R 1200 C AVANTGARD"
+    },
+    {
+      "codigo": 2645,
+      "nome": "R 1200 C Classic"
+    },
+    {
+      "codigo": 2646,
+      "nome": "R 1200 C Independent"
+    },
+    {
+      "codigo": 2647,
+      "nome": "R 1200 CL"
+    },
+    {
+      "codigo": 2648,
+      "nome": "R 1200 GS"
+    },
+    {
+      "codigo": 4150,
+      "nome": "R 1200 GS Adventure"
+    },
+    {
+      "codigo": 8328,
+      "nome": "R 1200 GS Adventure Exclusive"
+    },
+    {
+      "codigo": 8257,
+      "nome": "R 1200 GS Adventure RALLYE"
+    },
+    {
+      "codigo": 6333,
+      "nome": "R 1200 GS Adventure Triple Black"
+    },
+    {
+      "codigo": 8428,
+      "nome": "R 1200 GS Exclusive"
+    },
+    {
+      "codigo": 4069,
+      "nome": "R 1200 GS HP2"
+    },
+    {
+      "codigo": 6334,
+      "nome": "R 1200 GS Rallye"
+    },
+    {
+      "codigo": 6363,
+      "nome": "R 1200 GS Triple Black"
+    },
+    {
+      "codigo": 6848,
+      "nome": "R 1200 Nine T"
+    },
+    {
+      "codigo": 5712,
+      "nome": "R 1200 R/ R Classic"
+    },
+    {
+      "codigo": 2649,
+      "nome": "R 1200 RT"
+    },
+    {
+      "codigo": 9750,
+      "nome": "R 1250 GS Adv.Premium Triple Black 719"
+    },
+    {
+      "codigo": 8718,
+      "nome": "R 1250 GS Adventure Premium"
+    },
+    {
+      "codigo": 9511,
+      "nome": "R 1250 GS Adventure Premium 40 Anos"
+    },
+    {
+      "codigo": 8719,
+      "nome": "R 1250 GS Adventure Premium Exclusive"
+    },
+    {
+      "codigo": 8720,
+      "nome": "R 1250 GS Adventure Premium HP"
+    },
+    {
+      "codigo": 9512,
+      "nome": "R 1250 GS Adventure Premium Rallye"
+    },
+    {
+      "codigo": 9513,
+      "nome": "R 1250 GS Adventure Premium Triple Black"
+    },
+    {
+      "codigo": 10385,
+      "nome": "R 1250 GS Adventure Premium Trophy"
+    },
+    {
+      "codigo": 9781,
+      "nome": "R 1250 GS Ed. Especial"
+    },
+    {
+      "codigo": 9514,
+      "nome": "R 1250 GS Premium 40 Anos"
+    },
+    {
+      "codigo": 8721,
+      "nome": "R 1250 GS Premium Exclusive"
+    },
+    {
+      "codigo": 8722,
+      "nome": "R 1250 GS Premium HP"
+    },
+    {
+      "codigo": 9515,
+      "nome": "R 1250 GS Premium Rallye"
+    },
+    {
+      "codigo": 9516,
+      "nome": "R 1250 GS Premium Triple Black"
+    },
+    {
+      "codigo": 10087,
+      "nome": "R 1250 GS Premium Triple Black 719"
+    },
+    {
+      "codigo": 10425,
+      "nome": "R 1250 GS Premium Trophy"
+    },
+    {
+      "codigo": 8723,
+      "nome": "R 1250 GS Sport"
+    },
+    {
+      "codigo": 9217,
+      "nome": "R 1250 RT Premium"
+    },
+    {
+      "codigo": 9218,
+      "nome": "R 1250 RT Premium Spezial"
+    },
+    {
+      "codigo": 11026,
+      "nome": "R 1300 GS "
+    },
+    {
+      "codigo": 11027,
+      "nome": "R 1300 GS 719"
+    },
+    {
+      "codigo": 11741,
+      "nome": "R 1300 GS 719 ASA"
+    },
+    {
+      "codigo": 11442,
+      "nome": "R 1300 GS Adventure 719"
+    },
+    {
+      "codigo": 11443,
+      "nome": "R 1300 GS Adventure 719 ASA"
+    },
+    {
+      "codigo": 11444,
+      "nome": "R 1300 GS Adventure Plus"
+    },
+    {
+      "codigo": 11445,
+      "nome": "R 1300 GS Adventure Triple Black"
+    },
+    {
+      "codigo": 11446,
+      "nome": "R 1300 GS Adventure Triple Black ASA"
+    },
+    {
+      "codigo": 11447,
+      "nome": "R 1300 GS Adventure Trophy"
+    },
+    {
+      "codigo": 11028,
+      "nome": "R 1300 GS Plus"
+    },
+    {
+      "codigo": 11029,
+      "nome": "R 1300 GS Triple Black"
+    },
+    {
+      "codigo": 11030,
+      "nome": "R 1300 GS Trophy"
+    },
+    {
+      "codigo": 11742,
+      "nome": "R 1300 RT 719"
+    },
+    {
+      "codigo": 11743,
+      "nome": "R 1300 RT 719 ASA"
+    },
+    {
+      "codigo": 11744,
+      "nome": "R 1300 RT Triple Black"
+    },
+    {
+      "codigo": 11745,
+      "nome": "R 1300 RT Triple Black ASA"
+    },
+    {
+      "codigo": 10185,
+      "nome": "R 18"
+    },
+    {
+      "codigo": 10843,
+      "nome": "R 18 100 Anos"
+    },
+    {
+      "codigo": 6874,
+      "nome": "S 1000 R"
+    },
+    {
+      "codigo": 5286,
+      "nome": "S 1000 RR"
+    },
+    {
+      "codigo": 9202,
+      "nome": "S 1000 RR-M"
+    },
+    {
+      "codigo": 9519,
+      "nome": "S 1000 RR-M Carbon"
+    },
+    {
+      "codigo": 11525,
+      "nome": "S 1000 RR-M Package"
+    },
+    {
+      "codigo": 7411,
+      "nome": "S 1000 XR"
+    },
+    {
+      "codigo": 6335,
+      "nome": "S1000 RR HP4 Competition"
+    },
+    {
+      "codigo": 6654,
+      "nome": "S1000 RR HP4 Street"
+    }
+  ]
+}

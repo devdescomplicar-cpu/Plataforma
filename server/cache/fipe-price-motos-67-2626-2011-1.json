@@ -1,0 +1,14 @@
+{
+  "lastUpdated": "2026-01-30T06:40:58.218Z",
+  "data": {
+    "TipoVeiculo": 2,
+    "Valor": "R$ 30.765,00",
+    "Marca": "BMW",
+    "Modelo": "F 650 GS/Dakar",
+    "AnoModelo": 2011,
+    "Combustivel": "Gasolina",
+    "CodigoFipe": "803015-4",
+    "MesReferencia": "janeiro de 2026",
+    "SiglaCombustivel": "G"
+  }
+}

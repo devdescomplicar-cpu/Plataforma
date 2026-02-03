@@ -1,0 +1,587 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String
+  name      String
+  phone     String?
+  cpfCnpj   String?   // CPF 11 dígitos ou CNPJ 14 dígitos (armazenado só números)
+  role      String   @default("user") // user, admin
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  deletedAt DateTime?
+
+  accounts          Account[]
+  webhooks          Webhook[]
+  uniqueAccessLinks UniqueAccessLink[]
+  emailTemplates    EmailTemplate[]
+
+  @@index([email])
+  @@index([deletedAt])
+  @@map("users")
+}
+
+model Account {
+  id         String   @id @default(cuid())
+  name       String   // Nome fantasia (exibido em relatórios)
+  userId     String
+  status     String   @default("active") // active, inactive, trial, cancelled, vencido
+  trialEndsAt DateTime?
+  // Identidade empresarial – dados fiscais
+  storeLegalName       String?  // Razão social
+  storeTradeName       String?  // Nome fantasia (pode ser = name)
+  storeCpfCnpj         String?  // CPF ou CNPJ (apenas números)
+  storeStateRegistration String? // Inscrição estadual (opcional)
+  // Endereço completo
+  storeStreet          String?
+  storeNumber          String?
+  storeComplement      String?
+  storeNeighborhood    String?
+  storeZipCode        String?
+  storeCity            String?
+  storeState           String?
+  // Contato oficial
+  storeEmail           String?
+  storePhone           String?  // Telefone fixo
+  storeWhatsApp        String?
+  // Presença digital
+  storeWebsite         String?
+  storeInstagram       String?
+  storeFacebook        String?
+  // Identidade visual
+  storeLogo            String?  // URL da logo (claro)
+  storeLogoDark        String?  // URL da logo (modo escuro)
+  storePrimaryColor    String?  // Cor principal (hex)
+  storeSecondaryColor  String?  // Cor secundária (hex)
+  // Configuração de relatórios
+  reportResponsible    String?  // Responsável pelo relatório (ex: "José Silva – Gestor")
+  reportCurrency       String?  @default("BRL")
+  reportDateFormat     String?  @default("DD/MM") // DD/MM ou MM/DD
+  reportThousandSeparator String? @default(",")
+  reportShowCents      Boolean? @default(true)
+  reportIncludeLegalNotice Boolean? @default(true)
+  reportLegalNoticeText String?  // Aviso legal customizado; null = texto padrão
+  // Configurações em JSON (checklist, despesas, alertas)
+  settings       Json?
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  deletedAt  DateTime?
+
+  user      User       @relation(fields: [userId], references: [id])
+  vehicles  Vehicle[]
+  sales     Sale[]
+  expenses  Expense[]
+  clients   Client[]
+  checklists Checklist[]
+  subscriptions Subscription[]
+  pushSubscriptions PushSubscription[]
+
+  @@index([userId])
+  @@index([status])
+  @@index([deletedAt])
+  @@map("accounts")
+}
+
+model Vehicle {
+  id           String   @id @default(cuid())
+  accountId    String
+  vehicleType  String   @default("car") // car, motorcycle
+  brand        String
+  model        String
+  version      String?  // Versão do veículo (EX, EXL, LX, GLI, etc.)
+  year         Int
+  km           Int?     // Quilometragem
+  plate        String?
+  fuel         String   // Flex, Gasolina, Etanol, Diesel, Elétrico, Híbrido
+  color        String
+  transmission String?  // Manual, Automático, CVT
+  steering     String?  // Normal, hidráulica, elétrica
+  origin       String   @default("own") // own, consignment, repass
+  features     String[] // Array de opcionais e acessórios
+  purchasePrice Float?  // Opcional para consignado/repasse
+  salePrice    Float?   // Opcional para consignado/repasse
+  fipePrice    Float?   // Preço FIPE do veículo
+  status       String   @default("available") // available, reserved, sold
+  description  String?  // Observações
+  // Dados de consignado
+  consignmentOwnerName    String?
+  consignmentOwnerPhone   String?
+  consignmentCommissionType  String?  // percentual, fixed
+  consignmentCommissionValue Float?
+  consignmentMinRepassValue  Float?
+  consignmentStartDate       DateTime?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  deletedAt    DateTime?
+
+  account      Account        @relation(fields: [accountId], references: [id])
+  images       VehicleImage[]
+  sales        Sale[]
+  expenses     Expense[]
+  checklists   Checklist[]
+
+  @@index([accountId])
+  @@index([brand])
+  @@index([model])
+  @@index([plate])
+  @@index([status])
+  @@index([origin])
+  @@index([deletedAt])
+  @@map("vehicles")
+}
+
+model VehicleImage {
+  id        String    @id @default(cuid())
+  vehicleId String
+  url       String
+  key       String    // MinIO key
+  order     Int       @default(0)
+  sizeBytes Int?      // Tamanho em bytes (preenchido no upload; usado para métricas/qualidade)
+  createdAt DateTime  @default(now())
+  deletedAt DateTime? // Soft delete: imagem removida do storage (limpeza zumbis)
+
+  vehicle Vehicle @relation(fields: [vehicleId], references: [id], onDelete: Cascade)
+
+  @@index([vehicleId])
+  @@index([order])
+  @@index([deletedAt])
+  @@map("vehicle_images")
+}
+
+// Snapshot diário de uso de armazenamento (para gráfico de crescimento)
+model StorageSnapshot {
+  id            String   @id @default(cuid())
+  snapshotDate  DateTime @unique // Data do dia (truncada)
+  totalBytes    BigInt   @default(0)
+  fileCount     Int      @default(0)
+  createdAt     DateTime @default(now())
+
+  @@index([snapshotDate])
+  @@map("storage_snapshots")
+}
+
+// Histórico de limpezas (obsoletos / zumbis) – auditável
+model StorageCleanupLog {
+  id             String   @id @default(cuid())
+  cleanedAt      DateTime @default(now())
+  filesRemoved   Int      @default(0)
+  bytesFreed     BigInt   @default(0)
+  triggerUserId  String?
+  triggerType    String   // obsolete | zombie_30 | zombie_90 | zombie_180
+  details        Json?    // ids, keys, etc.
+  createdAt      DateTime @default(now())
+
+  @@index([cleanedAt])
+  @@map("storage_cleanup_logs")
+}
+
+model Sale {
+  id           String   @id @default(cuid())
+  accountId    String
+  vehicleId    String
+  clientId     String?
+  salePrice    Float
+  profit       Float    // Calculado: salePrice - purchasePrice
+  profitPercent Float   // Calculado: (profit / purchasePrice) * 100
+  paymentMethod String  // À vista, Financiamento, Consórcio
+  saleDate     DateTime @default(now())
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  deletedAt    DateTime?
+
+  account Account  @relation(fields: [accountId], references: [id])
+  vehicle Vehicle  @relation(fields: [vehicleId], references: [id])
+  client  Client?  @relation(fields: [clientId], references: [id])
+
+  @@index([accountId])
+  @@index([vehicleId])
+  @@index([clientId])
+  @@index([saleDate])
+  @@index([deletedAt])
+  @@map("sales")
+}
+
+model Expense {
+  id          String   @id @default(cuid())
+  accountId   String
+  vehicleId  String?
+  type        String   // IPVA, Manutenção, Documentação, Polimento, Pneus, etc.
+  value       Float
+  description String?
+  date        DateTime @default(now())
+  status      String   @default("pending") // pending, paid
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  deletedAt   DateTime?
+
+  account Account  @relation(fields: [accountId], references: [id])
+  vehicle Vehicle? @relation(fields: [vehicleId], references: [id])
+
+  @@index([accountId])
+  @@index([vehicleId])
+  @@index([date])
+  @@index([status])
+  @@index([deletedAt])
+  @@map("expenses")
+}
+
+model Client {
+  id                 String   @id @default(cuid())
+  accountId          String
+  name               String
+  email              String?
+  phone              String?
+  cpfCnpj            String?  // CPF 11 dígitos ou CNPJ 14 dígitos (armazenado só números)
+  zipCode            String?  // CEP (8 dígitos, armazenado só números)
+  street             String?  // Rua/Logradouro
+  number             String?  // Número
+  complement         String?  // Complemento
+  neighborhood       String?  // Bairro
+  city               String?
+  state              String?  // UF (AC, AL, AP, etc.)
+  observations       String?  @db.Text
+  referredByClientId String?  // Amigo que indicou (para cobrança/commission)
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+  deletedAt          DateTime?
+
+  account        Account @relation(fields: [accountId], references: [id])
+  sales          Sale[]
+  referredBy      Client?   @relation("ClientReferral", fields: [referredByClientId], references: [id])
+  referredClients Client[]  @relation("ClientReferral")
+
+  @@index([accountId])
+  @@index([name])
+  @@index([email])
+  @@index([cpfCnpj])
+  @@index([state])
+  @@index([zipCode])
+  @@index([referredByClientId])
+  @@index([deletedAt])
+  @@map("clients")
+}
+
+model Checklist {
+  id        String   @id @default(cuid())
+  accountId String
+  vehicleId String
+  status    String   @default("pending") // pending, in_progress, completed
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  deletedAt DateTime?
+
+  account Account         @relation(fields: [accountId], references: [id])
+  vehicle Vehicle         @relation(fields: [vehicleId], references: [id])
+  items   ChecklistItem[]
+
+  @@index([accountId])
+  @@index([vehicleId])
+  @@index([status])
+  @@index([deletedAt])
+  @@map("checklists")
+}
+
+model ChecklistItem {
+  id         String   @id @default(cuid())
+  checklistId String
+  name       String
+  done       Boolean  @default(false)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  checklist Checklist @relation(fields: [checklistId], references: [id], onDelete: Cascade)
+
+  @@index([checklistId])
+  @@index([done])
+  @@map("checklist_items")
+}
+
+model Plan {
+  id              String   @id @default(cuid())
+  name            String
+  description     String?
+  price           Float
+  features        String[] // Array de features (legado)
+  maxVehicles     Int?     // Limite de veículos (null = ilimitado)
+  maxClients      Int?     // Limite de clientes (null = ilimitado)
+  maxStorageMb    Int?     // Limite de armazenamento em MB (null = ilimitado)
+  durationType    String   @default("monthly") // monthly | quarterly | semiannual | annual
+  durationMonths  Int      @default(1) // 1, 3, 6, 12
+  checkoutUrl     String?  // URL para redirecionar ao clicar em "Assinar Agora"
+  customBenefits  Json?    // [{ text: string, positive: boolean }]
+  active          Boolean  @default(true)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  deletedAt       DateTime?
+
+  subscriptions Subscription[]
+
+  @@index([active])
+  @@index([deletedAt])
+  @@index([durationType])
+  @@map("plans")
+}
+
+model AuditLog {
+  id        String   @id @default(cuid())
+  userId    String?
+  action    String   // create, update, delete, login, etc.
+  entity    String   // User, Account, Vehicle, etc.
+  entityId  String?
+  payload   Json?    // Dados relevantes da ação
+  ip        String?
+  userAgent String?
+  createdAt DateTime @default(now())
+
+  @@index([userId])
+  @@index([entity])
+  @@index([action])
+  @@index([createdAt])
+  @@map("audit_logs")
+}
+
+model SmtpConfig {
+  id           String   @id @default(cuid())
+  host         String
+  port         Int      @default(587)
+  secure       Boolean  @default(false)
+  user         String?
+  passEncrypted String? // Senha criptografada
+  fromEmail    String
+  fromName     String?
+  active       Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  deletedAt    DateTime?
+
+  @@index([active])
+  @@index([deletedAt])
+  @@map("smtp_configs")
+}
+
+// Histórico de e-mails enviados (SMTP): teste, template, recuperação de senha
+model EmailLog {
+  id           String   @id @default(cuid())
+  to           String
+  subject      String
+  status       String   // success | error
+  errorMessage String?  @db.Text
+  origin       String?  // smtp_test | template_test | password_recovery | trigger
+  templateId   String?
+  sentAt       DateTime @default(now())
+
+  @@index([sentAt])
+  @@index([origin])
+  @@map("email_logs")
+}
+
+// Webhook base (idêntico à outra plataforma): receive por id, serverUrl, testMode, logs, mapeamentos em tabela
+model Webhook {
+  id              String   @id @default(cuid())
+  name            String
+  url             String?  // URL externa opcional
+  serverUrl       String   // URL do servidor para receber: /api/webhooks/receive/:id
+  isActive        Boolean  @default(false)
+  testMode        Boolean  @default(true)
+  lastTestPayload Json?
+  actions         Json     @default("[]") // WebhookAction[]
+  secret          String?
+  userId          String
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  deletedAt       DateTime?
+
+  user              User                @relation(fields: [userId], references: [id], onDelete: Cascade)
+  fieldMappings     WebhookFieldMapping[]
+  logs              WebhookLog[]
+  uniqueAccessLinks UniqueAccessLink[]
+  emailTemplates    EmailTemplate[]
+
+  @@index([userId])
+  @@index([isActive])
+  @@index([deletedAt])
+  @@map("webhooks")
+}
+
+model WebhookFieldMapping {
+  id           String  @id @default(cuid())
+  webhookId    String
+  webhookField String  // Campo no JSON recebido (ex: "client.email")
+  systemField  String  // Campo do sistema (ex: "email")
+  label        String
+  prefix       String?
+  suffix       String?
+
+  webhook Webhook @relation(fields: [webhookId], references: [id], onDelete: Cascade)
+
+  @@unique([webhookId, webhookField])
+  @@index([webhookId])
+  @@map("webhook_field_mappings")
+}
+
+model WebhookLog {
+  id                   String   @id @default(cuid())
+  webhookId            String
+  method               String
+  url                  String
+  headers              Json     @default("{}")
+  body                 Json     @default("{}")
+  statusCode           Int?
+  response             Json?
+  error                String?
+  processedInTestMode  Boolean  @default(true) // true = recebido em modo teste; false = processado em produção
+  receivedAt           DateTime @default(now())
+
+  webhook Webhook @relation(fields: [webhookId], references: [id], onDelete: Cascade)
+
+  @@index([webhookId])
+  @@index([receivedAt])
+  @@map("webhook_logs")
+}
+
+model UniqueAccessLink {
+  id               String    @id @default(cuid())
+  webhookId        String
+  memberId         String?   // Opcional: esta plataforma não tem Member; para compatibilidade com base
+  token            String    @unique
+  telegramGroupId  String?
+  inviteLink       String?
+  expiresAt        DateTime?
+  clickedAt        DateTime?
+  telegramUserId   String?
+  userId           String
+  createdAt        DateTime  @default(now())
+
+  webhook Webhook @relation(fields: [webhookId], references: [id], onDelete: Cascade)
+  user    User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([webhookId])
+  @@index([token])
+  @@index([userId])
+  @@map("unique_access_links")
+}
+
+model EmailTemplate {
+  id        String   @id @default(cuid())
+  webhookId String?
+  name      String
+  subject   String
+  body      String   // HTML
+  variables Json     @default("[]") // string[]
+  userId    String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  webhook Webhook? @relation(fields: [webhookId], references: [id], onDelete: SetNull)
+  user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([webhookId])
+  @@index([userId])
+  @@map("email_templates")
+}
+
+model Subscription {
+  id          String   @id @default(cuid())
+  accountId   String
+  planId      String
+  status      String   @default("active") // active, cancelled, expired
+  startDate   DateTime @default(now())
+  endDate     DateTime?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  deletedAt   DateTime?
+
+  account Account @relation(fields: [accountId], references: [id])
+  plan    Plan   @relation(fields: [planId], references: [id])
+
+  @@index([accountId])
+  @@index([planId])
+  @@index([status])
+  @@index([deletedAt])
+  @@map("subscriptions")
+}
+
+// Web Push: subscriptions from PWA clients (one per device per account)
+model PushSubscription {
+  id        String   @id @default(cuid())
+  accountId String
+  endpoint  String   // Unique per device/browser
+  p256dh    String   // Public key from client
+  auth      String   // Auth secret from client
+  userAgent String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  account Account @relation(fields: [accountId], references: [id], onDelete: Cascade)
+
+  @@unique([accountId, endpoint])
+  @@index([accountId])
+  @@map("push_subscriptions")
+}
+
+// Log of push notifications sent by admin (PWA / navegador only)
+model PushNotificationLog {
+  id           String   @id @default(cuid())
+  title        String
+  body         String
+  targetFilter String   // all, active, vencido
+  sentCount    Int      @default(0)
+  failedCount  Int      @default(0)
+  createdAt    DateTime @default(now())
+
+  @@index([createdAt])
+  @@map("push_notification_logs")
+}
+
+model NotificationTemplate {
+  id         String   @id @default(cuid())
+  name       String?
+  trigger    String   // welcome | subscription_expiring | subscription_expired
+  channel    String   // pwa | email
+  daysOffset Int?
+  subject    String?
+  title      String?
+  body       String
+  active     Boolean  @default(true)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  deletedAt  DateTime?
+
+  usages     NotificationTemplateUsageLog[]
+
+  @@unique([trigger, channel, daysOffset])
+  @@index([trigger])
+  @@index([channel])
+  @@index([deletedAt])
+  @@map("notification_templates")
+}
+
+// Histórico de uso de gatilhos (template disparado: teste, recuperação de senha, etc.)
+model NotificationTemplateUsageLog {
+  id             String   @id @default(cuid())
+  templateId     String
+  trigger        String
+  channel        String
+  recipientInfo  String?   @db.Text // e-mail ou descrição do destinatário
+  success        Boolean
+  errorMessage   String?  @db.Text
+  createdAt      DateTime @default(now())
+
+  template NotificationTemplate @relation(fields: [templateId], references: [id], onDelete: Cascade)
+
+  @@index([templateId])
+  @@index([trigger])
+  @@index([createdAt])
+  @@map("notification_template_usage_logs")
+}

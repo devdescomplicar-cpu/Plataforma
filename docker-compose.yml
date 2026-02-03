@@ -1,0 +1,20 @@
+# MinIO: object storage para upload de imagens (veículos).
+# Uso: docker compose up -d minio   (sobe e deixa rodando em background)
+#      docker compose stop minio    (para o serviço)
+services:
+  minio:
+    image: minio/minio:latest
+    container_name: descomplicar-minio
+    restart: unless-stopped
+    ports:
+      - "9000:9000"   # API (usado pelo backend)
+      - "9001:9001"   # Console web (opcional)
+    environment:
+      MINIO_ROOT_USER: minioadmin
+      MINIO_ROOT_PASSWORD: minioadmin
+    command: server /data --console-address ":9001"
+    volumes:
+      - minio-data:/data
+
+volumes:
+  minio-data:

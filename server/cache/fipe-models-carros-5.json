@@ -1,0 +1,81 @@
+{
+  "lastUpdated": "2026-01-31T02:11:34.427Z",
+  "data": [
+    {
+      "codigo": 24,
+      "nome": "AM-825 Luxo 4.0 Diesel"
+    },
+    {
+      "codigo": 25,
+      "nome": "AM-825 Super Luxo 4.0 Diesel"
+    },
+    {
+      "codigo": 26,
+      "nome": "Hi-Topic SLX/SDX/DLX Full Diesel"
+    },
+    {
+      "codigo": 27,
+      "nome": "Hi-Topic STD Diesel"
+    },
+    {
+      "codigo": 28,
+      "nome": "Hi-Topic Van 2.7 Diesel (furgão)"
+    },
+    {
+      "codigo": 29,
+      "nome": "Jipe Rocsta GT 4x4 2.2 Diesel"
+    },
+    {
+      "codigo": 30,
+      "nome": "Topic Carga 2.7 Diesel (furgão)"
+    },
+    {
+      "codigo": 31,
+      "nome": "Topic Luxo Diesel"
+    },
+    {
+      "codigo": 32,
+      "nome": "Topic Super Luxo Diesel"
+    },
+    {
+      "codigo": 33,
+      "nome": "Towner Coach Full"
+    },
+    {
+      "codigo": 34,
+      "nome": "Towner Furgão"
+    },
+    {
+      "codigo": 35,
+      "nome": "Towner Glass Van"
+    },
+    {
+      "codigo": 36,
+      "nome": "Towner Luxo"
+    },
+    {
+      "codigo": 37,
+      "nome": "Towner Multiuso 5p"
+    },
+    {
+      "codigo": 38,
+      "nome": "Towner Panel Van"
+    },
+    {
+      "codigo": 39,
+      "nome": "Towner Pick-Up"
+    },
+    {
+      "codigo": 40,
+      "nome": "Towner SDX / DLX/ STD"
+    },
+    {
+      "codigo": 41,
+      "nome": "Towner Super Luxo"
+    },
+    {
+      "codigo": 42,
+      "nome": "Towner Truck"
+    }
+  ]
+}

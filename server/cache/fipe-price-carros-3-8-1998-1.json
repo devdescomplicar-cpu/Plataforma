@@ -1,0 +1,14 @@
+{
+  "lastUpdated": "2026-01-30T06:49:49.138Z",
+  "data": {
+    "TipoVeiculo": 1,
+    "Valor": "R$ 22.383,00",
+    "Marca": "Alfa Romeo",
+    "Modelo": "145 QV",
+    "AnoModelo": 1998,
+    "Combustivel": "Gasolina",
+    "CodigoFipe": "006008-9",
+    "MesReferencia": "janeiro de 2026",
+    "SiglaCombustivel": "G"
+  }
+}

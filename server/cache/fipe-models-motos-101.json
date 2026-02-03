@@ -1,0 +1,569 @@
+{
+  "lastUpdated": "2026-01-30T06:41:07.512Z",
+  "data": [
+    {
+      "codigo": 3060,
+      "nome": "750 VIRAGO"
+    },
+    {
+      "codigo": 3061,
+      "nome": "AXIS 90"
+    },
+    {
+      "codigo": 9950,
+      "nome": "BW S 50"
+    },
+    {
+      "codigo": 3063,
+      "nome": "CRYPTON 100"
+    },
+    {
+      "codigo": 3064,
+      "nome": "DT 180-Z TRAIL"
+    },
+    {
+      "codigo": 3065,
+      "nome": "DT 200"
+    },
+    {
+      "codigo": 3066,
+      "nome": "DT 200 R"
+    },
+    {
+      "codigo": 3067,
+      "nome": "FAZER 600/ FZ6 S"
+    },
+    {
+      "codigo": 9777,
+      "nome": "FLUO 125 ABS"
+    },
+    {
+      "codigo": 11358,
+      "nome": "FLUO 125 CONNECTED (Híbrido)"
+    },
+    {
+      "codigo": 11330,
+      "nome": "FZ15 150 FAZER CONNECTED FLEX"
+    },
+    {
+      "codigo": 10084,
+      "nome": "FZ15 150 FAZER FLEX"
+    },
+    {
+      "codigo": 9240,
+      "nome": "FZ25 250 FAZER CAPITÃ MARVEL FLEX"
+    },
+    {
+      "codigo": 11245,
+      "nome": "FZ25 250 FAZER CONNECTED"
+    },
+    {
+      "codigo": 8143,
+      "nome": "FZ25 250 FAZER FLEX"
+    },
+    {
+      "codigo": 9241,
+      "nome": "FZ25 250 FAZER PANTERA NEGRA FLEX"
+    },
+    {
+      "codigo": 9951,
+      "nome": "FZ25 FAZER THOR FLEX"
+    },
+    {
+      "codigo": 4571,
+      "nome": "FZ6 N"
+    },
+    {
+      "codigo": 3068,
+      "nome": "FZR 1000"
+    },
+    {
+      "codigo": 3069,
+      "nome": "FZR 600"
+    },
+    {
+      "codigo": 3070,
+      "nome": "JOG 50"
+    },
+    {
+      "codigo": 3071,
+      "nome": "JOG TEEN 50"
+    },
+    {
+      "codigo": 3072,
+      "nome": "MAJESTY YP 250"
+    },
+    {
+      "codigo": 4211,
+      "nome": "MT-01 1.670cc"
+    },
+    {
+      "codigo": 9638,
+      "nome": "MT-03 321 ABS Homem de Ferro"
+    },
+    {
+      "codigo": 7527,
+      "nome": "MT-03 321/ABS"
+    },
+    {
+      "codigo": 4593,
+      "nome": "MT-03 660cc"
+    },
+    {
+      "codigo": 11440,
+      "nome": "MT-03 CONNECTED 321cc ABS"
+    },
+    {
+      "codigo": 11441,
+      "nome": "MT-07 CONNECTED 689cc ABS"
+    },
+    {
+      "codigo": 7145,
+      "nome": "MT-07/MT-07 ABS 689cc"
+    },
+    {
+      "codigo": 7064,
+      "nome": "MT-09 850cc/ABS"
+    },
+    {
+      "codigo": 7470,
+      "nome": "MT-09 TRACER"
+    },
+    {
+      "codigo": 8804,
+      "nome": "MT-09 TRACER 900 GT"
+    },
+    {
+      "codigo": 3073,
+      "nome": "NEO AT 115cc"
+    },
+    {
+      "codigo": 4378,
+      "nome": "NEO AUTOMATIC 115cc"
+    },
+    {
+      "codigo": 7786,
+      "nome": "NEO AUTOMATIC 125cc"
+    },
+    {
+      "codigo": 11359,
+      "nome": "NEOS CONNECTED (Elétrica)"
+    },
+    {
+      "codigo": 7528,
+      "nome": "NMAX 160"
+    },
+    {
+      "codigo": 10231,
+      "nome": "NMAX Connected 160 ABS"
+    },
+    {
+      "codigo": 10619,
+      "nome": "NMAX Connected MANDALORIAN 160 ABS"
+    },
+    {
+      "codigo": 10232,
+      "nome": "NMAX Connected SE 160 ABS"
+    },
+    {
+      "codigo": 9670,
+      "nome": "NMAX HOMEM ARANHA 160 ABS"
+    },
+    {
+      "codigo": 9203,
+      "nome": "NMAX STAR WARS 160 ABS"
+    },
+    {
+      "codigo": 3074,
+      "nome": "RD 135"
+    },
+    {
+      "codigo": 3075,
+      "nome": "RD 350 LC/ R"
+    },
+    {
+      "codigo": 3076,
+      "nome": "RDZ 125"
+    },
+    {
+      "codigo": 3077,
+      "nome": "RDZ 135"
+    },
+    {
+      "codigo": 3078,
+      "nome": "ROYAL STAR 1300"
+    },
+    {
+      "codigo": 5163,
+      "nome": "T115 CRYPTON ED"
+    },
+    {
+      "codigo": 6477,
+      "nome": "T115 CRYPTON ED PENELOPE"
+    },
+    {
+      "codigo": 5164,
+      "nome": "T115 CRYPTON K"
+    },
+    {
+      "codigo": 3079,
+      "nome": "TDM 225"
+    },
+    {
+      "codigo": 3080,
+      "nome": "TDM 850"
+    },
+    {
+      "codigo": 3081,
+      "nome": "TDM 900"
+    },
+    {
+      "codigo": 3082,
+      "nome": "TDR 180"
+    },
+    {
+      "codigo": 6677,
+      "nome": "TMAX 530"
+    },
+    {
+      "codigo": 3083,
+      "nome": "TRX 850"
+    },
+    {
+      "codigo": 4483,
+      "nome": "TT-R 125 E"
+    },
+    {
+      "codigo": 4484,
+      "nome": "TT-R 125 LE"
+    },
+    {
+      "codigo": 7177,
+      "nome": "TT-R 125 LWE"
+    },
+    {
+      "codigo": 4485,
+      "nome": "TT-R 230"
+    },
+    {
+      "codigo": 3084,
+      "nome": "V-MAX 1200"
+    },
+    {
+      "codigo": 6678,
+      "nome": "V-MAX 1700"
+    },
+    {
+      "codigo": 3085,
+      "nome": "WR 200"
+    },
+    {
+      "codigo": 11392,
+      "nome": "WR 250 F"
+    },
+    {
+      "codigo": 3086,
+      "nome": "WR 426 F"
+    },
+    {
+      "codigo": 9782,
+      "nome": "WR 450 F"
+    },
+    {
+      "codigo": 3087,
+      "nome": "XJ 600"
+    },
+    {
+      "codigo": 5165,
+      "nome": "XJ6 F"
+    },
+    {
+      "codigo": 6764,
+      "nome": "XJ6 N SP"
+    },
+    {
+      "codigo": 5166,
+      "nome": "XJ6 N/ABS"
+    },
+    {
+      "codigo": 3088,
+      "nome": "XJR 1200"
+    },
+    {
+      "codigo": 9034,
+      "nome": "XMAX 250 ABS"
+    },
+    {
+      "codigo": 9851,
+      "nome": "XMAX 250 ABS Darth Vader"
+    },
+    {
+      "codigo": 11288,
+      "nome": "XMAX 250 CONNECTED "
+    },
+    {
+      "codigo": 11587,
+      "nome": "XMAX 300 CONNECTED "
+    },
+    {
+      "codigo": 5523,
+      "nome": "XT 1200 Z  SUPER TÉNÉRÉ/ DX"
+    },
+    {
+      "codigo": 7471,
+      "nome": "XT 1200 Z S.TÉNÉRÉ 60th ANINIVERSARY"
+    },
+    {
+      "codigo": 3091,
+      "nome": "XT 225"
+    },
+    {
+      "codigo": 3092,
+      "nome": "XT 600 E"
+    },
+    {
+      "codigo": 3093,
+      "nome": "XT 600 Z TENERE"
+    },
+    {
+      "codigo": 3094,
+      "nome": "XT 660 R"
+    },
+    {
+      "codigo": 5738,
+      "nome": "XT 660Z TÉNÉRÉ"
+    },
+    {
+      "codigo": 3095,
+      "nome": "XTZ 125 E"
+    },
+    {
+      "codigo": 3096,
+      "nome": "XTZ 125 K"
+    },
+    {
+      "codigo": 4486,
+      "nome": "XTZ 125 XE"
+    },
+    {
+      "codigo": 4487,
+      "nome": "XTZ 125 XK"
+    },
+    {
+      "codigo": 6765,
+      "nome": "XTZ 150  CROSSER E/FLEX"
+    },
+    {
+      "codigo": 6766,
+      "nome": "XTZ 150  CROSSER ED /FLEX"
+    },
+    {
+      "codigo": 8190,
+      "nome": "XTZ 150 CROSSER S FLEX"
+    },
+    {
+      "codigo": 8191,
+      "nome": "XTZ 150 CROSSER Z FLEX"
+    },
+    {
+      "codigo": 4195,
+      "nome": "XTZ 250 LANDER 249cc/LANDER BLUEFLEX/ABS"
+    },
+    {
+      "codigo": 9242,
+      "nome": "XTZ 250 LANDER CAPITÃO AMÉRICA FLEX ABS"
+    },
+    {
+      "codigo": 11289,
+      "nome": "XTZ 250 LANDER CONNECTED"
+    },
+    {
+      "codigo": 5442,
+      "nome": "XTZ 250 TENERE/TENERE BLUEFLEX"
+    },
+    {
+      "codigo": 4658,
+      "nome": "XTZ 250X"
+    },
+    {
+      "codigo": 11700,
+      "nome": "XTZ 700 TÉNÉRÉ"
+    },
+    {
+      "codigo": 3097,
+      "nome": "XTZ 750 S TENERE"
+    },
+    {
+      "codigo": 3098,
+      "nome": "XV 1100 VIRAGO"
+    },
+    {
+      "codigo": 3099,
+      "nome": "XV 250 VIRAGO"
+    },
+    {
+      "codigo": 3100,
+      "nome": "XV 535 S VIRAGO"
+    },
+    {
+      "codigo": 3089,
+      "nome": "XVS 1100 DRAG STAR"
+    },
+    {
+      "codigo": 3090,
+      "nome": "XVS 650 DRAG STAR"
+    },
+    {
+      "codigo": 4956,
+      "nome": "XVS 950 MIDNIGHT STAR"
+    },
+    {
+      "codigo": 3101,
+      "nome": "YBR 125 E"
+    },
+    {
+      "codigo": 3102,
+      "nome": "YBR 125 ED"
+    },
+    {
+      "codigo": 4742,
+      "nome": "YBR 125 FACTOR E"
+    },
+    {
+      "codigo": 4743,
+      "nome": "YBR 125 FACTOR ED/FACTOR EDITION"
+    },
+    {
+      "codigo": 4744,
+      "nome": "YBR 125 FACTOR K/ FACTOR K1"
+    },
+    {
+      "codigo": 6568,
+      "nome": "YBR 125 FACTOR PRO E"
+    },
+    {
+      "codigo": 6569,
+      "nome": "YBR 125 FACTOR PRO K"
+    },
+    {
+      "codigo": 3103,
+      "nome": "YBR 125 K"
+    },
+    {
+      "codigo": 7648,
+      "nome": "YBR 125i FACTOR ED/FLEX"
+    },
+    {
+      "codigo": 11334,
+      "nome": "YBR 150 FACTOR DX FLEX"
+    },
+    {
+      "codigo": 7387,
+      "nome": "YBR 150 FACTOR E/FLEX"
+    },
+    {
+      "codigo": 7388,
+      "nome": "YBR 150 FACTOR ED/FLEX"
+    },
+    {
+      "codigo": 11335,
+      "nome": "YBR 150 FACTOR FLEX"
+    },
+    {
+      "codigo": 4080,
+      "nome": "YFM 250 BRUIN 230cc"
+    },
+    {
+      "codigo": 4196,
+      "nome": "YFM 350 GRIZZLY 350cc"
+    },
+    {
+      "codigo": 4081,
+      "nome": "YFM 660R 660cc"
+    },
+    {
+      "codigo": 4582,
+      "nome": "YFM 700R 686cc"
+    },
+    {
+      "codigo": 4082,
+      "nome": "YFM 80 79cc"
+    },
+    {
+      "codigo": 4083,
+      "nome": "YFS 200 BLASTER 195cc"
+    },
+    {
+      "codigo": 4583,
+      "nome": "YFZ 450/ YZ 450 F 449cc"
+    },
+    {
+      "codigo": 6605,
+      "nome": "YS 150 FAZER ED/FLEX"
+    },
+    {
+      "codigo": 6606,
+      "nome": "YS 150 FAZER SED/ FLEX"
+    },
+    {
+      "codigo": 3871,
+      "nome": "YS 250 FAZER/ FAZER L. EDITION /BLUEFLEX"
+    },
+    {
+      "codigo": 3104,
+      "nome": "YZ 125"
+    },
+    {
+      "codigo": 3105,
+      "nome": "YZ 250"
+    },
+    {
+      "codigo": 8805,
+      "nome": "YZ 250 F 250cc"
+    },
+    {
+      "codigo": 8806,
+      "nome": "YZ 85 LW 85cc"
+    },
+    {
+      "codigo": 3106,
+      "nome": "YZF 1000 THUNDERACE"
+    },
+    {
+      "codigo": 3107,
+      "nome": "YZF 600 THUNDERCAT"
+    },
+    {
+      "codigo": 3108,
+      "nome": "YZF 750"
+    },
+    {
+      "codigo": 3109,
+      "nome": "YZF R-1 1000"
+    },
+    {
+      "codigo": 10943,
+      "nome": "YZF R-15 155 ABS"
+    },
+    {
+      "codigo": 7681,
+      "nome": "YZF R-1M 1000"
+    },
+    {
+      "codigo": 7338,
+      "nome": "YZF R-3 321/ABS"
+    },
+    {
+      "codigo": 11362,
+      "nome": "YZF R-3 CONNECTED 321/ABS"
+    },
+    {
+      "codigo": 10235,
+      "nome": "YZF R-3 World GP 60th ANINIVERSARY ED."
+    },
+    {
+      "codigo": 3943,
+      "nome": "YZF R-6 600"
+    }
+  ]
+}

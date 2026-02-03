@@ -1,0 +1,1281 @@
+{
+  "lastUpdated": "2026-01-30T06:58:47.800Z",
+  "data": [
+    {
+      "codigo": 43,
+      "nome": "100 2.8 V6"
+    },
+    {
+      "codigo": 44,
+      "nome": "100 2.8 V6 Avant"
+    },
+    {
+      "codigo": 45,
+      "nome": "100 S-4 2.2 Avant Turbo"
+    },
+    {
+      "codigo": 46,
+      "nome": "80 2.0"
+    },
+    {
+      "codigo": 47,
+      "nome": "80 2.0 Avant"
+    },
+    {
+      "codigo": 48,
+      "nome": "80 2.6/ 2.8"
+    },
+    {
+      "codigo": 49,
+      "nome": "80 2.6/2.8 Avant"
+    },
+    {
+      "codigo": 50,
+      "nome": "80 2.8 Cabriolet"
+    },
+    {
+      "codigo": 51,
+      "nome": "80 S2 Avant"
+    },
+    {
+      "codigo": 5496,
+      "nome": "A1 1.4 TFSI 122cv S-tronic 3p"
+    },
+    {
+      "codigo": 6293,
+      "nome": "A1 2.0 TFSI Quattro 256cv 3p"
+    },
+    {
+      "codigo": 6143,
+      "nome": "A1 Sport 1.4 TFSI 185cv 3p S-tronic"
+    },
+    {
+      "codigo": 7727,
+      "nome": "A1 Sport. S Edition 1.4 TFSI 5p S-tronic"
+    },
+    {
+      "codigo": 6201,
+      "nome": "A1 Sportback 1.4 TFSI 185cv 5p S-tronic"
+    },
+    {
+      "codigo": 6200,
+      "nome": "A1 Sportback 1.4 TFSI 5p S-tronic"
+    },
+    {
+      "codigo": 7418,
+      "nome": "A1 Sportback 1.8 TFSI 192cv 5p S-tronic"
+    },
+    {
+      "codigo": 52,
+      "nome": "A3 1.6 3p"
+    },
+    {
+      "codigo": 53,
+      "nome": "A3 1.6 3p Aut."
+    },
+    {
+      "codigo": 54,
+      "nome": "A3 1.6 5p"
+    },
+    {
+      "codigo": 55,
+      "nome": "A3 1.6 5p Aut."
+    },
+    {
+      "codigo": 4154,
+      "nome": "A3 1.6 8V 102cv 3p"
+    },
+    {
+      "codigo": 56,
+      "nome": "A3 1.8 3p"
+    },
+    {
+      "codigo": 57,
+      "nome": "A3 1.8 3p Aut."
+    },
+    {
+      "codigo": 58,
+      "nome": "A3 1.8 5p Aut."
+    },
+    {
+      "codigo": 59,
+      "nome": "A3 1.8 5p Mec."
+    },
+    {
+      "codigo": 60,
+      "nome": "A3 1.8 Turbo 180cv 3p Aut./ Tip."
+    },
+    {
+      "codigo": 61,
+      "nome": "A3 1.8 Turbo 180cv 3p Mec."
+    },
+    {
+      "codigo": 62,
+      "nome": "A3 1.8 Turbo 180cv 5p Aut./ Tip."
+    },
+    {
+      "codigo": 63,
+      "nome": "A3 1.8 Turbo 180cv 5p Mec."
+    },
+    {
+      "codigo": 64,
+      "nome": "A3 1.8 Turbo 3p Aut."
+    },
+    {
+      "codigo": 65,
+      "nome": "A3 1.8 Turbo 3p Mec."
+    },
+    {
+      "codigo": 66,
+      "nome": "A3 1.8 Turbo 5p Aut."
+    },
+    {
+      "codigo": 67,
+      "nome": "A3 1.8 Turbo 5p Mec."
+    },
+    {
+      "codigo": 6950,
+      "nome": "A3 Cabriolet 1.8 16V TFSI 180cv S-tronic"
+    },
+    {
+      "codigo": 8227,
+      "nome": "A3 Cabriolet Ambition 2.0 TFSI S-tronic"
+    },
+    {
+      "codigo": 8559,
+      "nome": "A3 Cabriolet Perfor. 2.0 TFSI S-tronic"
+    },
+    {
+      "codigo": 7419,
+      "nome": "A3 Sed. Ambition 2.0 TSFI 220cv S-tronic"
+    },
+    {
+      "codigo": 8945,
+      "nome": "A3 Sed. P. Plus Tech 1.4 Flex TFSI Tip."
+    },
+    {
+      "codigo": 8768,
+      "nome": "A3 Sed. P.Plus 1.4 25Anos Flex TFSI Tip."
+    },
+    {
+      "codigo": 6689,
+      "nome": "A3 Sed.1.8/1.8 Ambit.16V TB FSI S-tronic"
+    },
+    {
+      "codigo": 10195,
+      "nome": "A3 Sed.Perf. Black 2.0 TFSI S-tr. (Hib.)"
+    },
+    {
+      "codigo": 11366,
+      "nome": "A3 Sed.Perf. Black 2.0 TFSI S-tronic"
+    },
+    {
+      "codigo": 7391,
+      "nome": "A3 Sedan 1.4 TFSI Flex Tiptronic 4p"
+    },
+    {
+      "codigo": 6768,
+      "nome": "A3 Sedan 1.4/ Attra. 16V TB FSI S-tronic"
+    },
+    {
+      "codigo": 11367,
+      "nome": "A3 Sedan Advance 2.0 TFSI S-tronic"
+    },
+    {
+      "codigo": 8560,
+      "nome": "A3 Sedan Performance 2.0 TFSI S-tronic"
+    },
+    {
+      "codigo": 8561,
+      "nome": "A3 Sedan Prestige 1.4 TFSI Flex Tip."
+    },
+    {
+      "codigo": 8562,
+      "nome": "A3 Sedan Prestige Plus 1.4 TFSI Flex Tip"
+    },
+    {
+      "codigo": 9963,
+      "nome": "A3 Sedan S-Line 2.0 TFSI  S-Tron.(Híb.)"
+    },
+    {
+      "codigo": 9655,
+      "nome": "A3 Sedan S-Line Limited 1.4 TFSI Tiptro."
+    },
+    {
+      "codigo": 6461,
+      "nome": "A3 Sport 1.8 16V TFSI S-tronic 3p"
+    },
+    {
+      "codigo": 5125,
+      "nome": "A3 Sport 2.0 16V TFSI S- tronic"
+    },
+    {
+      "codigo": 9964,
+      "nome": "A3 Sportb. Perf. Black 2.0 S-tron.(Híb.)"
+    },
+    {
+      "codigo": 11483,
+      "nome": "A3 Sportb. Performance 2.0 TFSI S-tronic"
+    },
+    {
+      "codigo": 11531,
+      "nome": "A3 Sportb. Performance Black 2.0 S-tron."
+    },
+    {
+      "codigo": 8563,
+      "nome": "A3 Sportb. Prestige Plus 1.4 TFSI S-tron"
+    },
+    {
+      "codigo": 9965,
+      "nome": "A3 Sportb. S-Line 2.0 TFSI S-Tron.(Híb.)"
+    },
+    {
+      "codigo": 9657,
+      "nome": "A3 Sportb. S-Line Limited 1.4 TFSI Tip."
+    },
+    {
+      "codigo": 6510,
+      "nome": "A3 Sportback 1.4 TFSI S-tronic"
+    },
+    {
+      "codigo": 4155,
+      "nome": "A3 Sportback 1.6 8V 102cv 5p"
+    },
+    {
+      "codigo": 6511,
+      "nome": "A3 Sportback 1.8 16V TFSI S-tronic 5p"
+    },
+    {
+      "codigo": 4156,
+      "nome": "A3 Sportback 2.0 16V TFSI Mec."
+    },
+    {
+      "codigo": 4157,
+      "nome": "A3 Sportback 2.0 16V TFSI S-tronic"
+    },
+    {
+      "codigo": 68,
+      "nome": "A4 1.8  Aut."
+    },
+    {
+      "codigo": 69,
+      "nome": "A4 1.8  Mec."
+    },
+    {
+      "codigo": 70,
+      "nome": "A4 1.8 Avant Aut."
+    },
+    {
+      "codigo": 71,
+      "nome": "A4 1.8 Avant Mec."
+    },
+    {
+      "codigo": 72,
+      "nome": "A4 1.8 Avant Turbo Mec."
+    },
+    {
+      "codigo": 73,
+      "nome": "A4 1.8 Avant Turbo Tip./ Multitronic"
+    },
+    {
+      "codigo": 74,
+      "nome": "A4 1.8 Tip./ Multitronic Turbo"
+    },
+    {
+      "codigo": 75,
+      "nome": "A4 1.8 Turbo"
+    },
+    {
+      "codigo": 4843,
+      "nome": "A4 2.0 16V TFSI 183/180cv Multitronic"
+    },
+    {
+      "codigo": 4182,
+      "nome": "A4 2.0 16V TFSI 200/ 214cv Multitronic"
+    },
+    {
+      "codigo": 6144,
+      "nome": "A4 2.0 16V TFSI Quattro Stronic"
+    },
+    {
+      "codigo": 76,
+      "nome": "A4 2.0 20V 130cv Multitronic 4p"
+    },
+    {
+      "codigo": 6145,
+      "nome": "A4 2.0 Avant 16V TFSI Quattro Stronic"
+    },
+    {
+      "codigo": 7750,
+      "nome": "A4 2.0 Avant Ambie. 2.0 16V TFSi S tron."
+    },
+    {
+      "codigo": 4844,
+      "nome": "A4 2.0 Avant TFSI 183/180cv Multitroni"
+    },
+    {
+      "codigo": 4183,
+      "nome": "A4 2.0 Avant TFSI 200/214cv Multitron."
+    },
+    {
+      "codigo": 77,
+      "nome": "A4 2.4 30V Avant Mec."
+    },
+    {
+      "codigo": 78,
+      "nome": "A4 2.4 30V Avant Tip./Multitronic"
+    },
+    {
+      "codigo": 79,
+      "nome": "A4 2.4 30V Mec."
+    },
+    {
+      "codigo": 80,
+      "nome": "A4 2.4 30V Tip./Multitronic"
+    },
+    {
+      "codigo": 81,
+      "nome": "A4 2.4 Avant V6 30V Quattro Mec."
+    },
+    {
+      "codigo": 82,
+      "nome": "A4 2.4 Avant V6 30V Quattro Tiptronic"
+    },
+    {
+      "codigo": 83,
+      "nome": "A4 2.4 V6 30V Quattro Mec."
+    },
+    {
+      "codigo": 84,
+      "nome": "A4 2.4 V6 30V Quattro Tiptronic"
+    },
+    {
+      "codigo": 85,
+      "nome": "A4 2.8"
+    },
+    {
+      "codigo": 86,
+      "nome": "A4 2.8 30V  Tiptronic/ Aut."
+    },
+    {
+      "codigo": 87,
+      "nome": "A4 2.8 30V Mec."
+    },
+    {
+      "codigo": 88,
+      "nome": "A4 2.8 Avant V6 12V"
+    },
+    {
+      "codigo": 89,
+      "nome": "A4 2.8 Avant V6 30V Mec."
+    },
+    {
+      "codigo": 90,
+      "nome": "A4 2.8 Avant V6 30V Quattro Mec."
+    },
+    {
+      "codigo": 91,
+      "nome": "A4 2.8 Avant V6 30V Quattro Tiptronic"
+    },
+    {
+      "codigo": 92,
+      "nome": "A4 2.8 Avant V6 30V Tiptronic"
+    },
+    {
+      "codigo": 93,
+      "nome": "A4 2.8 V6 30V  Quattro Tiptronic"
+    },
+    {
+      "codigo": 94,
+      "nome": "A4 2.8 V6 30V Quattro Mec."
+    },
+    {
+      "codigo": 95,
+      "nome": "A4 3.0 30V 218cv Multitronic 4p"
+    },
+    {
+      "codigo": 96,
+      "nome": "A4 3.0 30V 218cv Quattro Tiptron./Aut 4p"
+    },
+    {
+      "codigo": 97,
+      "nome": "A4 3.0 Avant 30V 218cv Multitronic 5p"
+    },
+    {
+      "codigo": 98,
+      "nome": "A4 3.0 Avant 30V 218cv Quattro Tiptronic"
+    },
+    {
+      "codigo": 99,
+      "nome": "A4 3.0 Cabriolet 30V 218cv Multitronic"
+    },
+    {
+      "codigo": 4286,
+      "nome": "A4 3.2 FSI 24V 255cv Multitronic"
+    },
+    {
+      "codigo": 4731,
+      "nome": "A4 3.2 FSI 24V 269cv Quattro Tiptronic"
+    },
+    {
+      "codigo": 4287,
+      "nome": "A4 3.2 FSI Avant 24V 255cv Multitronic"
+    },
+    {
+      "codigo": 4935,
+      "nome": "A4 3.2 FSI Avant 24V Quattro S Tronic"
+    },
+    {
+      "codigo": 4288,
+      "nome": "A4 3.2 FSI Cabriolet 24V 255cv Multitron"
+    },
+    {
+      "codigo": 7717,
+      "nome": "A4 Ambiente 2.0 TFSI 190cv S tronic"
+    },
+    {
+      "codigo": 7894,
+      "nome": "A4 Ambition 2.0 TFSI Quattro S tronic"
+    },
+    {
+      "codigo": 7656,
+      "nome": "A4 Attraction 2.0 TFSI 190cv S tronic"
+    },
+    {
+      "codigo": 8228,
+      "nome": "A4 Avant Lim. Ed. 2.0 TFSI S tronic"
+    },
+    {
+      "codigo": 8769,
+      "nome": "A4 Avant Prest. Plus 2.0 TFSI S-tronic"
+    },
+    {
+      "codigo": 7537,
+      "nome": "A4 Launch Edition 2.0 TFSI 190cv S troni"
+    },
+    {
+      "codigo": 8229,
+      "nome": "A4 Limited Edition 2.0 TFSI S tronic"
+    },
+    {
+      "codigo": 9223,
+      "nome": "A4 Perfor. Black 2.0 TFSI Quat. S tronic"
+    },
+    {
+      "codigo": 11036,
+      "nome": "A4 Prestige 2.0 16V TFSI Quattro (Híb.)"
+    },
+    {
+      "codigo": 9894,
+      "nome": "A4 Prestige 2.0 TFSI S-tronic"
+    },
+    {
+      "codigo": 8771,
+      "nome": "A4 Prestige Plus 2.0 TFSI 190cv S tronic"
+    },
+    {
+      "codigo": 9824,
+      "nome": "A4 S Line 2.0  TFSI 204cv S Tonic"
+    },
+    {
+      "codigo": 11037,
+      "nome": "A4 S Line 2.0 16V TFSI Quattro (Híb.)"
+    },
+    {
+      "codigo": 4798,
+      "nome": "A5 3.2 FSI 24V 269cv Multitronic"
+    },
+    {
+      "codigo": 5126,
+      "nome": "A5 3.2 FSI V6 24V 269cv Quattro Tiptroni"
+    },
+    {
+      "codigo": 7999,
+      "nome": "A5 Ambiente Sportb. 2.0 TFSI S tonic"
+    },
+    {
+      "codigo": 8000,
+      "nome": "A5 Ambit. Plus Sport. 2.0 TFSI S tronic"
+    },
+    {
+      "codigo": 8001,
+      "nome": "A5 Ambit. Sport. 2.0 TFSI S tronic"
+    },
+    {
+      "codigo": 8002,
+      "nome": "A5 Attraction Sportb. 2.0 TFSI S tronic"
+    },
+    {
+      "codigo": 6082,
+      "nome": "A5 Cabriolet 2.0 TFSI Quattro Stronic"
+    },
+    {
+      "codigo": 6083,
+      "nome": "A5 Coupê 2.0 TFSI Quattro Stronic"
+    },
+    {
+      "codigo": 11600,
+      "nome": "A5 Sedan Performance S Edition 2.0 TFSI Quattro"
+    },
+    {
+      "codigo": 6084,
+      "nome": "A5 Sportb. 2.0 16V TFSI Quat. S-tronic"
+    },
+    {
+      "codigo": 11038,
+      "nome": "A5 Sportb. Advanc. 2.0 TFSI Quatt. (Híb)"
+    },
+    {
+      "codigo": 10652,
+      "nome": "A5 Sportb. Carbon Ed. 2.0 TFSI S-tronic"
+    },
+    {
+      "codigo": 8564,
+      "nome": "A5 Sportb. Perf. 2.0 TFSI Quat. S-tronic"
+    },
+    {
+      "codigo": 8565,
+      "nome": "A5 Sportb. Prestige 2.0 16V TFSI S-troni"
+    },
+    {
+      "codigo": 11039,
+      "nome": "A5 Sportb. S Line 2.0 TFSI Quatt. (Híb.)"
+    },
+    {
+      "codigo": 8566,
+      "nome": "A5 Sportb.Perf.B. 2.0 TFSI Quat. S-troni"
+    },
+    {
+      "codigo": 8567,
+      "nome": "A5 Sportb.Prestige Plus 2.0 TFSI S-tronc"
+    },
+    {
+      "codigo": 7022,
+      "nome": "A5 Sportback 1.8 TFSI 170cv Multi."
+    },
+    {
+      "codigo": 6043,
+      "nome": "A5 Sportback 2.0 16V TFSI 180cv Multi."
+    },
+    {
+      "codigo": 5234,
+      "nome": "A5 Sportback 2.0 16V TFSI 211cv Multi."
+    },
+    {
+      "codigo": 8772,
+      "nome": "A5 Sportback S-Line 2.0 TFSI S-tronic"
+    },
+    {
+      "codigo": 7254,
+      "nome": "A6 2.0 TFSI 252cv S tronic 4p"
+    },
+    {
+      "codigo": 100,
+      "nome": "A6 2.4 30V Mec"
+    },
+    {
+      "codigo": 101,
+      "nome": "A6 2.4 30V Tip./Multitronic"
+    },
+    {
+      "codigo": 102,
+      "nome": "A6 2.4 Avant 30V Mec."
+    },
+    {
+      "codigo": 103,
+      "nome": "A6 2.4 Avant 30V Tip./ Multitronic"
+    },
+    {
+      "codigo": 104,
+      "nome": "A6 2.4 Avant V6 30V Quattro Mec."
+    },
+    {
+      "codigo": 105,
+      "nome": "A6 2.4 Avant V6 30V Quattro Tiptronic"
+    },
+    {
+      "codigo": 106,
+      "nome": "A6 2.4 V6 30V Quattro Mec"
+    },
+    {
+      "codigo": 107,
+      "nome": "A6 2.4 V6 30V Quattro Tiptronic"
+    },
+    {
+      "codigo": 108,
+      "nome": "A6 2.7 30V Avant Tiptronic"
+    },
+    {
+      "codigo": 109,
+      "nome": "A6 2.7 30V Mec."
+    },
+    {
+      "codigo": 110,
+      "nome": "A6 2.7 Avant Quattro Tiptronic"
+    },
+    {
+      "codigo": 111,
+      "nome": "A6 2.7 Quattro Tiptronic"
+    },
+    {
+      "codigo": 112,
+      "nome": "A6 2.8"
+    },
+    {
+      "codigo": 113,
+      "nome": "A6 2.8 30V Mec."
+    },
+    {
+      "codigo": 114,
+      "nome": "A6 2.8 30V Tiptronic"
+    },
+    {
+      "codigo": 115,
+      "nome": "A6 2.8 Avant"
+    },
+    {
+      "codigo": 116,
+      "nome": "A6 2.8 Avant 30V Mec."
+    },
+    {
+      "codigo": 117,
+      "nome": "A6 2.8 Avant 30V Tiptronic"
+    },
+    {
+      "codigo": 118,
+      "nome": "A6 2.8 Avant V6 30V Quattro Mec."
+    },
+    {
+      "codigo": 119,
+      "nome": "A6 2.8 Avant V6 30V Quattro Tiptronic"
+    },
+    {
+      "codigo": 120,
+      "nome": "A6 2.8 V6 30V Quattro Mec."
+    },
+    {
+      "codigo": 121,
+      "nome": "A6 2.8 V6 30V Quattro Tiptronic"
+    },
+    {
+      "codigo": 122,
+      "nome": "A6 3.0 Avant V6 30V 218cv Multitronic 5p"
+    },
+    {
+      "codigo": 5374,
+      "nome": "A6 3.0 Avant. TB FSI V6 Quattro Tip. 5p"
+    },
+    {
+      "codigo": 6413,
+      "nome": "A6 3.0 Avant.TFSI V6 Quattro S tronic 5p"
+    },
+    {
+      "codigo": 4958,
+      "nome": "A6 3.0 TB FSI V6 Quattro Tiptronic"
+    },
+    {
+      "codigo": 6414,
+      "nome": "A6 3.0 TFSI V6 Quattro S tronic 4p"
+    },
+    {
+      "codigo": 123,
+      "nome": "A6 3.0 V6 30V 218cv Multitronic 4p"
+    },
+    {
+      "codigo": 4526,
+      "nome": "A6 3.2 FSI 24V 255cv Multitronic"
+    },
+    {
+      "codigo": 124,
+      "nome": "A6 4.2 Avant Quattro Tiptronic"
+    },
+    {
+      "codigo": 125,
+      "nome": "A6 4.2 Quattro Tiptronic"
+    },
+    {
+      "codigo": 6462,
+      "nome": "A6 Allroad 3.0 TFSI V6 Quattro S tronic"
+    },
+    {
+      "codigo": 9298,
+      "nome": "A6 Perf. Black 3.0 TFSI Quattro S-tronic"
+    },
+    {
+      "codigo": 8814,
+      "nome": "A6 Performance 3.0 TFSI Quattro S.tronic"
+    },
+    {
+      "codigo": 9451,
+      "nome": "A6 Prestige Plus 2.0 TFSI Quattro S-tro."
+    },
+    {
+      "codigo": 11532,
+      "nome": "A6 Sport. e-tron Perf. Black (Elétrico)"
+    },
+    {
+      "codigo": 9319,
+      "nome": "A7 SP.b. Perf. Bla. 3.0 TFSI Quat. S-tro"
+    },
+    {
+      "codigo": 7447,
+      "nome": "A7 Sportback 2.0 TFSI S Tronic"
+    },
+    {
+      "codigo": 5549,
+      "nome": "A7 Sportback 3.0 TFSI Quattro S Tronic"
+    },
+    {
+      "codigo": 8815,
+      "nome": "A7 Sportback Perf. 3.0 TFSI S-tron Quat."
+    },
+    {
+      "codigo": 7127,
+      "nome": "A8 3.0 TFSI 310cv Quattro Tiptronic 4p"
+    },
+    {
+      "codigo": 6631,
+      "nome": "A8 4.0 TFSI Quattro Tiptronic"
+    },
+    {
+      "codigo": 126,
+      "nome": "A8 4.2 Quattro Tiptronic"
+    },
+    {
+      "codigo": 127,
+      "nome": "A8 4.2 V8 32V Tiptronic"
+    },
+    {
+      "codigo": 3928,
+      "nome": "A8 6.0 W12 48V 450cv Quattro Tiptronic"
+    },
+    {
+      "codigo": 5717,
+      "nome": "A8 6.3 W12 48V Quattro Tiptronic"
+    },
+    {
+      "codigo": 128,
+      "nome": "Allroad 2.7 30V Quattro Turbo Tiptronic"
+    },
+    {
+      "codigo": 129,
+      "nome": "Avant RS2"
+    },
+    {
+      "codigo": 10814,
+      "nome": "E-TRON GT Aut. (Elétrico)"
+    },
+    {
+      "codigo": 9077,
+      "nome": "E-TRON Performa. Black Aut. (Elétrico)"
+    },
+    {
+      "codigo": 9078,
+      "nome": "E-TRON Performace Aut. (Elétrico)"
+    },
+    {
+      "codigo": 9605,
+      "nome": "E-TRON S Sportback Quat. Aut. (Elétrico)"
+    },
+    {
+      "codigo": 9186,
+      "nome": "E-TRON Sportb. Perf.Black Aut.(Elétrico)"
+    },
+    {
+      "codigo": 9187,
+      "nome": "E-TRON Sportback Perf. Aut. (Elétrico)"
+    },
+    {
+      "codigo": 7255,
+      "nome": "Q3 1.4 TFSI/TFSI Flex S-tronic 5p"
+    },
+    {
+      "codigo": 10888,
+      "nome": "Q3 2.0 TFSI Anniversary Edition Quattro"
+    },
+    {
+      "codigo": 6044,
+      "nome": "Q3 2.0 TFSI Quat. 170/180cv S-tronic 5p"
+    },
+    {
+      "codigo": 6045,
+      "nome": "Q3 2.0 TFSI Quat. 211/220cv S-tronic 5p"
+    },
+    {
+      "codigo": 8230,
+      "nome": "Q3 Black Ed. 1.4 TFSI Flex/Black S-tron."
+    },
+    {
+      "codigo": 9304,
+      "nome": "Q3 Black S Line 1.4 TFSI S-tronic"
+    },
+    {
+      "codigo": 8569,
+      "nome": "Q3 P. Plus 1.4 TFSI Flex/P.Plus S-tronic"
+    },
+    {
+      "codigo": 9796,
+      "nome": "Q3 Perf. Black 2.0 TFSI Tiptr. Quattro"
+    },
+    {
+      "codigo": 11135,
+      "nome": "Q3 Perf. Black.Plus 2.0 TFSI Tip. Quat."
+    },
+    {
+      "codigo": 9871,
+      "nome": "Q3 Performance 2.0 TFSI Tiptr. Quattro"
+    },
+    {
+      "codigo": 8568,
+      "nome": "Q3 Prest. 1.4 TFSI Flex/Prest. S-tronic"
+    },
+    {
+      "codigo": 10111,
+      "nome": "Q3 Prestige 2.0 TFSI Tiptr.Quatro "
+    },
+    {
+      "codigo": 9835,
+      "nome": "Q3 SPB Perf. Black 2.0 TFSI Tipt. Quat."
+    },
+    {
+      "codigo": 11136,
+      "nome": "Q3 SPB Perf.Black Plus 2.0 TFSI Tip.Quat"
+    },
+    {
+      "codigo": 9836,
+      "nome": "Q3 SPB Performance 2.0 TFSI Tipt. Quatt."
+    },
+    {
+      "codigo": 10889,
+      "nome": "Q3 Sportb. 2.0 TFSI Anniv. Edit. Quattro"
+    },
+    {
+      "codigo": 6573,
+      "nome": "Q5 2.0 16V TFSI 225cv Quattro Tiptronic"
+    },
+    {
+      "codigo": 4936,
+      "nome": "Q5 2.0 16V TFSI Quattro S Tronic"
+    },
+    {
+      "codigo": 8231,
+      "nome": "Q5 2.0 TFSI Quattro S tronic (Blindado)"
+    },
+    {
+      "codigo": 6486,
+      "nome": "Q5 3.0 V6 TFSI 272cv Quattro Tiptronic"
+    },
+    {
+      "codigo": 4959,
+      "nome": "Q5 3.2 FSI V6 Quattro S Tronic"
+    },
+    {
+      "codigo": 11727,
+      "nome": "Q5 Advanced 2.0 TFSI Quattro S-tronic"
+    },
+    {
+      "codigo": 8036,
+      "nome": "Q5 Ambiente 2.0 TFSI Quattro S tronic"
+    },
+    {
+      "codigo": 8037,
+      "nome": "Q5 Ambition 2.0 TFSI Quattro S tronic"
+    },
+    {
+      "codigo": 8038,
+      "nome": "Q5 Attraction 2.0 TFSI Quattro S tronic"
+    },
+    {
+      "codigo": 8583,
+      "nome": "Q5 Black 2.0 TFSI Quattro S tronic"
+    },
+    {
+      "codigo": 10045,
+      "nome": "Q5 Perf. Black 2.0 TFSIe S.Tr. Qt (Hib.)"
+    },
+    {
+      "codigo": 10046,
+      "nome": "Q5 Performance 2.0 TFSIe S.Tr. Qt (Hib.)"
+    },
+    {
+      "codigo": 8584,
+      "nome": "Q5 Prestige 2.0 TFSI Quattro S tronic"
+    },
+    {
+      "codigo": 8585,
+      "nome": "Q5 Prestige Plus 2.0 TFSI Quat. S tronic"
+    },
+    {
+      "codigo": 10047,
+      "nome": "Q5 SB P Black. 2.0 TFSIe S.Tr. Qt (Hib.)"
+    },
+    {
+      "codigo": 10048,
+      "nome": "Q5 SB Perf. 2.0 TFSIe S.Tr. Qt (Hib.)"
+    },
+    {
+      "codigo": 11728,
+      "nome": "Q5 S-Line 2.0 TFSI Quattro S-tronic 252cv"
+    },
+    {
+      "codigo": 11729,
+      "nome": "Q5 S-Line 2.0 TFSI Quattro S-tronic 272cv"
+    },
+    {
+      "codigo": 9486,
+      "nome": "Q5 S-Line Black 2.0 TFSI Quat. S-Tronic"
+    },
+    {
+      "codigo": 9526,
+      "nome": "Q5 SPB. S-Line Black 2.0 TFSI Qua.S-Tron"
+    },
+    {
+      "codigo": 11730,
+      "nome": "Q5 Sportback Advanced 2.0 TFSI Quattro S-tronic"
+    },
+    {
+      "codigo": 9527,
+      "nome": "Q5 Sportback S-Line 2.0 TFSI Quat.S-Tron"
+    },
+    {
+      "codigo": 11325,
+      "nome": "Q6 E-TRON Quattro Perf. Black (Elétrico)"
+    },
+    {
+      "codigo": 11326,
+      "nome": "Q6 E-TRON Quattro Performance (Elétrico)"
+    },
+    {
+      "codigo": 11800,
+      "nome": "Q6 E-Tron Quattro Sportback Performance Black"
+    },
+    {
+      "codigo": 7917,
+      "nome": "Q7 3.0 V6 TDI Quat.Tip. 5p Die./Perfor."
+    },
+    {
+      "codigo": 10049,
+      "nome": "Q7 3.0 V6 TFSI  Quat.Tip.5p/ Perf.(Híb.)"
+    },
+    {
+      "codigo": 4694,
+      "nome": "Q7 3.6 V6 284cv Quattro Tiptronic"
+    },
+    {
+      "codigo": 4184,
+      "nome": "Q7 4.2 V8 40V 350cv Quattro Tiptronic"
+    },
+    {
+      "codigo": 10050,
+      "nome": "Q7 Perf. Black 3.0 TFSI Quat.Tip.(Híb.)"
+    },
+    {
+      "codigo": 8658,
+      "nome": "Q7 Perf.Black 3.0 TDI Quat.Tip.5p Dies."
+    },
+    {
+      "codigo": 11297,
+      "nome": "Q7 S-Line 3.0 V6 TFSI Qua. Tip. (Híb.)  "
+    },
+    {
+      "codigo": 9205,
+      "nome": "Q7 S-Line 3.0 V6 TFSI Quattro Tiptronic"
+    },
+    {
+      "codigo": 10869,
+      "nome": "Q8 E-TRON Launch Edition (Elétrico)"
+    },
+    {
+      "codigo": 10870,
+      "nome": "Q8 E-TRON Performance Black (Elétrico)"
+    },
+    {
+      "codigo": 10786,
+      "nome": "Q8 E-TRON Sportb. Perf. Black (Elétrico)"
+    },
+    {
+      "codigo": 10827,
+      "nome": "Q8 E-TRON Sportb.Launch Edt. (Elétrico)"
+    },
+    {
+      "codigo": 10996,
+      "nome": "Q8 Perf.Black 3.0 TFSI Quat. S-tr/(Híb.)"
+    },
+    {
+      "codigo": 10997,
+      "nome": "Q8 Perfo. 3.0 TFSI Quattro S-tron/(Híb.)"
+    },
+    {
+      "codigo": 5235,
+      "nome": "R8 4.2 V8 426cv Quattro R-tronic"
+    },
+    {
+      "codigo": 5236,
+      "nome": "R8 5.2 V10 Quattro R-tronic/S-tronic"
+    },
+    {
+      "codigo": 5974,
+      "nome": "R8 GT 5.2 V10 560cv Quattro R-tronic"
+    },
+    {
+      "codigo": 5550,
+      "nome": "R8 Spyder 5.2 Quattro R-tronic/S-tronic"
+    },
+    {
+      "codigo": 9606,
+      "nome": "RS E-TRON GT Quattro Aut. (Elétrico)"
+    },
+    {
+      "codigo": 6865,
+      "nome": "RS Q3 2.5 TFSI Quattro S-tronic 5p"
+    },
+    {
+      "codigo": 9292,
+      "nome": "RS Q3 Sportback 2.5 TFSI Quattro S-tron."
+    },
+    {
+      "codigo": 9224,
+      "nome": "RS Q8 4.0 Bi-TB V8 FSI Quattro Tiptronic"
+    },
+    {
+      "codigo": 11733,
+      "nome": "RS Q8 Perfornace 4.0 Bi-TB V8 TFSI Quattro Tiptro."
+    },
+    {
+      "codigo": 8175,
+      "nome": "RS3 Sedan 2.5 TFSI Quattro S-tronic"
+    },
+    {
+      "codigo": 11734,
+      "nome": "RS3 Sedan Track 2.5 TFSI Quattro S-tronic"
+    },
+    {
+      "codigo": 5922,
+      "nome": "RS3 Sportback 2.5 TFSI Quattro S-tronic"
+    },
+    {
+      "codigo": 130,
+      "nome": "RS4 2.7 Avant V6 30V BI-TB Quattro 380cv"
+    },
+    {
+      "codigo": 8628,
+      "nome": "RS4 2.9 Avant V6 TFSI Quattro Tiptronic"
+    },
+    {
+      "codigo": 6487,
+      "nome": "RS4 4.2 Avant 32V FSI Quattro S-tronic"
+    },
+    {
+      "codigo": 5410,
+      "nome": "RS5 4.2 FSI V8 450cv Quattro S-Tron. 2p"
+    },
+    {
+      "codigo": 8629,
+      "nome": "RS5 Coupê 2.9 V6 TFSI Quattro Tiptronic"
+    },
+    {
+      "codigo": 10681,
+      "nome": "RS5 SPB. C.Plus Track 2.9 Quat. S-tronic"
+    },
+    {
+      "codigo": 10682,
+      "nome": "RS5 SPB. Compet. Plus 2.9 Quat. S-tronic"
+    },
+    {
+      "codigo": 9247,
+      "nome": "RS5 Sportback 2.9 V6 TFSI Quattro Tip."
+    },
+    {
+      "codigo": 10227,
+      "nome": "RS6 4.0 Avant TFSI BI-TB Quat.Tip.(Hib.)"
+    },
+    {
+      "codigo": 11236,
+      "nome": "RS6 4.0 Avant.Perf TFSI Quat.Tip.(Hib)"
+    },
+    {
+      "codigo": 131,
+      "nome": "RS6 4.2 450cv BI-TB Quattro Tiptronic 4p"
+    },
+    {
+      "codigo": 132,
+      "nome": "RS6 4.2 Avant  BI-TB Quattro Tiptron. 5p"
+    },
+    {
+      "codigo": 5335,
+      "nome": "RS6 5.0 Avant.FSI V10 Bi-TB Quattro Tip."
+    },
+    {
+      "codigo": 5336,
+      "nome": "RS6 5.0 FSI V10 Bi-TB Quattro Tip."
+    },
+    {
+      "codigo": 6883,
+      "nome": "RS7 Sportback 4.0 TFSI Quattro Tiptronic"
+    },
+    {
+      "codigo": 133,
+      "nome": "S3 1.8 225cv Turbo Quattro"
+    },
+    {
+      "codigo": 6951,
+      "nome": "S3 Sedan 2.0 TFSI Quattro 286cv S-tronic"
+    },
+    {
+      "codigo": 5127,
+      "nome": "S3 Sportback 2.0 TFSI Quattro S Tronic"
+    },
+    {
+      "codigo": 134,
+      "nome": "S4 2.7 Avant Turbo Quattro"
+    },
+    {
+      "codigo": 135,
+      "nome": "S4 2.7 Turbo Quattro Mec."
+    },
+    {
+      "codigo": 6085,
+      "nome": "S4 3.0 Avant TFSI V6 24V Quattro Stronic"
+    },
+    {
+      "codigo": 6086,
+      "nome": "S4 3.0 TFSI V6 24V Quattro Stronic"
+    },
+    {
+      "codigo": 136,
+      "nome": "S4 4.2 Avant V8 40V 344cv Quattro Tipt."
+    },
+    {
+      "codigo": 137,
+      "nome": "S4 4.2 V8 40V 344cv Quattro Tiptronic"
+    },
+    {
+      "codigo": 6087,
+      "nome": "S5 Cabriolet 3.0 TFSI Quattro Stronic"
+    },
+    {
+      "codigo": 6088,
+      "nome": "S5 Coupê 3.0 TFSI Quattro Stronic"
+    },
+    {
+      "codigo": 6089,
+      "nome": "S5 Sportback 3.0 TFSI Quattro Stronic"
+    },
+    {
+      "codigo": 138,
+      "nome": "S6 2.2 20V TB"
+    },
+    {
+      "codigo": 139,
+      "nome": "S6 2.2 Avant 20V TB"
+    },
+    {
+      "codigo": 7302,
+      "nome": "S6 4.0 TFSI Quattro S-Tronic 4p"
+    },
+    {
+      "codigo": 140,
+      "nome": "S6 4.2 Avant V8 40V Quattro Tiptronic"
+    },
+    {
+      "codigo": 141,
+      "nome": "S6 4.2 V8 40V Quattro Mec"
+    },
+    {
+      "codigo": 142,
+      "nome": "S6 4.2 V8 40V Quattro Tiptronic"
+    },
+    {
+      "codigo": 5186,
+      "nome": "S6 5.2 Avant FSI V10 435cv Quattro Tiptr"
+    },
+    {
+      "codigo": 5187,
+      "nome": "S6 5.2 FSI V10 435cv Quattro Tiptronic"
+    },
+    {
+      "codigo": 143,
+      "nome": "S6 Plus 4.2 Avant V8 32V"
+    },
+    {
+      "codigo": 144,
+      "nome": "S6 Plus 4.2 V8 32V"
+    },
+    {
+      "codigo": 6632,
+      "nome": "S7 4.0 TFSI 420/450cv Quattro S-tronic"
+    },
+    {
+      "codigo": 7128,
+      "nome": "S8 4.0 TFSI Quattro Tiptronic 4p"
+    },
+    {
+      "codigo": 145,
+      "nome": "S8 4.2 Mec"
+    },
+    {
+      "codigo": 146,
+      "nome": "S8 4.2 Quattro Mec."
+    },
+    {
+      "codigo": 147,
+      "nome": "S8 4.2 Quattro Tiptronic"
+    },
+    {
+      "codigo": 148,
+      "nome": "S8 4.2 Tiptronic"
+    },
+    {
+      "codigo": 11779,
+      "nome": "SQ5 3.0 TFSI Quattro S-tronic"
+    },
+    {
+      "codigo": 11804,
+      "nome": "SQ5 3.0 V6 TFSI 354cv Quattro Tiptronic"
+    },
+    {
+      "codigo": 11780,
+      "nome": "SQ5 Sportback 3.0 TFSI Quattro S-tronic"
+    },
+    {
+      "codigo": 11197,
+      "nome": "SQ8 Sportback E-Tron Quattro (Elétrico)"
+    },
+    {
+      "codigo": 149,
+      "nome": "TT 1.8 TB 180cv"
+    },
+    {
+      "codigo": 150,
+      "nome": "TT 1.8 TB Quattro 225cv"
+    },
+    {
+      "codigo": 4330,
+      "nome": "TT 2.0 16v TFSI S-Tronic"
+    },
+    {
+      "codigo": 151,
+      "nome": "TT Roadster 1.8 TB Quattro 225cv (Conv.)"
+    },
+    {
+      "codigo": 4431,
+      "nome": "TT Roadster 2.0 16v TFSI S-Tronic"
+    },
+    {
+      "codigo": 6258,
+      "nome": "TTRS 2.5 TFSI QUATTRO S Tronic"
+    },
+    {
+      "codigo": 6259,
+      "nome": "TTRS Roadster 2.5 TB FSI Quat. S Tronic"
+    },
+    {
+      "codigo": 5128,
+      "nome": "TTS 2.0 TFSI QUATTRO S Tronic"
+    },
+    {
+      "codigo": 5129,
+      "nome": "TTS Roadster 2.0 TB FSI Quattro S Tronic"
+    }
+  ]
+}

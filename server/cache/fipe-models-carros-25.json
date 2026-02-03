@@ -1,0 +1,473 @@
+{
+  "lastUpdated": "2026-02-03T10:40:06.948Z",
+  "data": [
+    {
+      "codigo": 1241,
+      "nome": "Accord Coupe EX"
+    },
+    {
+      "codigo": 9600,
+      "nome": "Accord Sedan 2.0 TB 16V Aut. (Híbrido)"
+    },
+    {
+      "codigo": 5211,
+      "nome": "Accord Sedan EX 2.0 16V 156cv Aut."
+    },
+    {
+      "codigo": 1242,
+      "nome": "Accord Sedan EX 2.4/2.3/ 2.2 16V"
+    },
+    {
+      "codigo": 1243,
+      "nome": "Accord Sedan EX 2.7/3.0 24V"
+    },
+    {
+      "codigo": 4641,
+      "nome": "Accord Sedan EX 3.5 V6 24V"
+    },
+    {
+      "codigo": 1244,
+      "nome": "Accord Sedan EXR"
+    },
+    {
+      "codigo": 1245,
+      "nome": "Accord Sedan LX  2.2/2.4 16V"
+    },
+    {
+      "codigo": 3889,
+      "nome": "Accord Sedan LX 2.0 16V 150/156cv Aut."
+    },
+    {
+      "codigo": 8520,
+      "nome": "Accord Sedan Touring 2.0 TB 16V Aut."
+    },
+    {
+      "codigo": 1246,
+      "nome": "Accord SW EX"
+    },
+    {
+      "codigo": 1247,
+      "nome": "Accord SW LX"
+    },
+    {
+      "codigo": 10964,
+      "nome": "CITY Hatchback EX 1.5 Flex 16V Aut."
+    },
+    {
+      "codigo": 9732,
+      "nome": "CITY Hatchback EXL 1.5 Flex 16V Aut."
+    },
+    {
+      "codigo": 10965,
+      "nome": "CITY Hatchback LX 1.5 Flex 16V Aut."
+    },
+    {
+      "codigo": 9733,
+      "nome": "CITY Hatchback Touring 1.5 Flex 16V Aut"
+    },
+    {
+      "codigo": 11634,
+      "nome": "CITY Hatchback Touring Sport 1.5 16V Aut"
+    },
+    {
+      "codigo": 5372,
+      "nome": "CITY Sedan DX 1.5 Flex 16V Aut."
+    },
+    {
+      "codigo": 5373,
+      "nome": "CITY Sedan DX 1.5 Flex 16V Mec."
+    },
+    {
+      "codigo": 4971,
+      "nome": "CITY Sedan EX 1.5 Flex 16V 4p Aut."
+    },
+    {
+      "codigo": 4972,
+      "nome": "CITY Sedan EX 1.5 Flex 16V 4p Mec."
+    },
+    {
+      "codigo": 4973,
+      "nome": "CITY Sedan EXL 1.5 Flex  16V 4p Aut."
+    },
+    {
+      "codigo": 4974,
+      "nome": "CITY Sedan EXL 1.5 Flex 16V 4p Mec."
+    },
+    {
+      "codigo": 4975,
+      "nome": "CITY Sedan LX 1.5 Flex 16V 4p Aut."
+    },
+    {
+      "codigo": 4976,
+      "nome": "CITY Sedan LX 1.5 Flex 16V 4p Mec."
+    },
+    {
+      "codigo": 8212,
+      "nome": "CITY Sedan Personal 1.5 Flex 16V Aut."
+    },
+    {
+      "codigo": 6534,
+      "nome": "CITY Sedan SPORT 1.5 FLEX 16V 4p Mec."
+    },
+    {
+      "codigo": 9678,
+      "nome": "CITY Sedan Touring 1.5 Flex 16V 4p Aut."
+    },
+    {
+      "codigo": 1248,
+      "nome": "Civic Coupe EX/ EXS 1.6 16V 2p"
+    },
+    {
+      "codigo": 8281,
+      "nome": "Civic Coupe Si 1.5 TB 16V 208cv Mec. 2p"
+    },
+    {
+      "codigo": 7036,
+      "nome": "Civic Coupe Si 2.4 16V 206cv Mec. 2p"
+    },
+    {
+      "codigo": 1249,
+      "nome": "Civic CRX/ Targa VTi"
+    },
+    {
+      "codigo": 1252,
+      "nome": "Civic Hatch DX"
+    },
+    {
+      "codigo": 1253,
+      "nome": "Civic Hatch LSi"
+    },
+    {
+      "codigo": 1254,
+      "nome": "Civic Hatch LX Aut."
+    },
+    {
+      "codigo": 1255,
+      "nome": "Civic Hatch Si"
+    },
+    {
+      "codigo": 1256,
+      "nome": "Civic Hatch VTi"
+    },
+    {
+      "codigo": 4090,
+      "nome": "Civic Sed LX 1.8 Aut 4p"
+    },
+    {
+      "codigo": 5149,
+      "nome": "Civic Sed. LXL/ LXL SE 1.8 Flex 16V Aut."
+    },
+    {
+      "codigo": 5148,
+      "nome": "Civic Sed. LXL/LXL SE 1.8 Flex 16V Mec."
+    },
+    {
+      "codigo": 10366,
+      "nome": "Civic Sed.Touring 2.0 16V Aut. (Híbrido)"
+    },
+    {
+      "codigo": 1258,
+      "nome": "Civic Sedan EX 1.6 16V Aut. 4p (nacion.)"
+    },
+    {
+      "codigo": 1259,
+      "nome": "Civic Sedan EX 1.6 16V Mec. 4p (nacion.)"
+    },
+    {
+      "codigo": 1260,
+      "nome": "Civic Sedan EX 1.7 16V 130cv Aut. 4p"
+    },
+    {
+      "codigo": 1261,
+      "nome": "Civic Sedan EX 1.7 16v 130cv Mec. 4p"
+    },
+    {
+      "codigo": 7692,
+      "nome": "Civic Sedan EX 2.0 Flex 16V Aut.4p"
+    },
+    {
+      "codigo": 1250,
+      "nome": "Civic Sedan EX/ EXS 1.6 Mec. 4p"
+    },
+    {
+      "codigo": 1251,
+      "nome": "Civic Sedan EX/ EXS Aut. 4p/ Del-Sol 2p"
+    },
+    {
+      "codigo": 7693,
+      "nome": "Civic Sedan EXL 2.0 Flex 16V Aut.4p"
+    },
+    {
+      "codigo": 6325,
+      "nome": "Civic Sedan EXR 2.0 Flexone 16V Aut. 4p"
+    },
+    {
+      "codigo": 4009,
+      "nome": "Civic Sedan EXS 1.8/1.8 Flex 16V Aut. 4p"
+    },
+    {
+      "codigo": 1257,
+      "nome": "Civic Sedan LX 1.5/1.6"
+    },
+    {
+      "codigo": 1262,
+      "nome": "Civic Sedan LX 1.6 16V Aut. 4p"
+    },
+    {
+      "codigo": 1263,
+      "nome": "Civic Sedan LX 1.6 16V Mec. 4p"
+    },
+    {
+      "codigo": 1264,
+      "nome": "Civic Sedan LX 1.7 16V 115cv Mec. 4p"
+    },
+    {
+      "codigo": 8779,
+      "nome": "Civic Sedan LX 2.0 Flex 16V Aut. 4p"
+    },
+    {
+      "codigo": 1265,
+      "nome": "Civic Sedan LX/LXL 1.7 16V 115cv Aut. 4p"
+    },
+    {
+      "codigo": 1266,
+      "nome": "Civic Sedan LXB 1.6 16V 4p"
+    },
+    {
+      "codigo": 1267,
+      "nome": "Civic Sedan LXB 1.7 16V 115cv"
+    },
+    {
+      "codigo": 1268,
+      "nome": "Civic Sedan LXL 1.7 16V 130cv Aut 4p"
+    },
+    {
+      "codigo": 1269,
+      "nome": "Civic Sedan LXL 1.7 16V 130cv Mec 4p"
+    },
+    {
+      "codigo": 6326,
+      "nome": "Civic Sedan LXR 2.0 Flexone 16V Aut. 4p"
+    },
+    {
+      "codigo": 4010,
+      "nome": "Civic Sedan LXS 1.8/1.8 Flex 16V Aut. 4p"
+    },
+    {
+      "codigo": 4011,
+      "nome": "Civic Sedan LXS 1.8/1.8 Flex 16V Mec. 4p"
+    },
+    {
+      "codigo": 4292,
+      "nome": "Civic Sedan Si 2.0 16V  192cv 4p"
+    },
+    {
+      "codigo": 7694,
+      "nome": "Civic Sedan SPORT 2.0 Flex 16V Aut.4p"
+    },
+    {
+      "codigo": 7695,
+      "nome": "Civic Sedan SPORT 2.0 Flex 16V Mec.4p"
+    },
+    {
+      "codigo": 7696,
+      "nome": "Civic Sedan TOURING 1.5 Turbo 16V Aut.4p"
+    },
+    {
+      "codigo": 10727,
+      "nome": "Civic Type-R 2.0 Turbo 16V"
+    },
+    {
+      "codigo": 1270,
+      "nome": "CR-V 2.0 16V Aut."
+    },
+    {
+      "codigo": 1271,
+      "nome": "CR-V 2.0 16V Mec."
+    },
+    {
+      "codigo": 1272,
+      "nome": "CR-V 2.4 16V 156cv Aut. 4p"
+    },
+    {
+      "codigo": 4629,
+      "nome": "CR-V EXL 2.0 16V 4WD/2.0 Flexone Aut."
+    },
+    {
+      "codigo": 6535,
+      "nome": "CR-V EXL 2.0 Flexone 16V 2WD Aut."
+    },
+    {
+      "codigo": 5929,
+      "nome": "CR-V LX 2.0 16V 2WD Mec."
+    },
+    {
+      "codigo": 4630,
+      "nome": "CR-V LX 2.0 16V 2WD/2.0 Flexone Aut."
+    },
+    {
+      "codigo": 8282,
+      "nome": "CR-V Touring 1.5 16V 4WD 5p Aut."
+    },
+    {
+      "codigo": 10985,
+      "nome": "CR-V Touring 2.0 16V AWD Aut.(Híbrido)"
+    },
+    {
+      "codigo": 6613,
+      "nome": "Fit CX 1.4 Flex 16V 5p Aut."
+    },
+    {
+      "codigo": 6614,
+      "nome": "Fit CX 1.4 Flex 16V 5p Mec."
+    },
+    {
+      "codigo": 5468,
+      "nome": "Fit DX 1.4 Flex 16V 5p Aut."
+    },
+    {
+      "codigo": 5469,
+      "nome": "Fit DX 1.4 Flex 16V 5p Mec."
+    },
+    {
+      "codigo": 6779,
+      "nome": "Fit DX 1.5 Flexone 16V 5p Aut."
+    },
+    {
+      "codigo": 6780,
+      "nome": "Fit DX 1.5 Flexone 16V 5p Mec."
+    },
+    {
+      "codigo": 1274,
+      "nome": "Fit EX/ S 1.5/ EX 1.5 Flex 16V 5p Mec."
+    },
+    {
+      "codigo": 10815,
+      "nome": "Fit EX/S 1.5 Flex/Flexone 16V 5p Aut."
+    },
+    {
+      "codigo": 4800,
+      "nome": "Fit EXL 1.5 Flex 16V 5p Mec"
+    },
+    {
+      "codigo": 4799,
+      "nome": "Fit EXL 1.5 Flex/Flexone 16V 5p Aut"
+    },
+    {
+      "codigo": 1275,
+      "nome": "Fit LX 1.4/ 1.4 Flex 8V/16V 5p Aut."
+    },
+    {
+      "codigo": 1276,
+      "nome": "Fit LX 1.4/ 1.4 Flex 8V/16V 5p Mec."
+    },
+    {
+      "codigo": 6781,
+      "nome": "Fit LX 1.5 Flexone 16V 5p Aut."
+    },
+    {
+      "codigo": 6782,
+      "nome": "Fit LX 1.5 Flexone 16V 5p Mec."
+    },
+    {
+      "codigo": 1277,
+      "nome": "Fit LXL 1.4/ 1.4 Flex 8V/16V 5p Aut."
+    },
+    {
+      "codigo": 1278,
+      "nome": "Fit LXL 1.4/ 1.4 Flex 8V/16V 5p Mec."
+    },
+    {
+      "codigo": 8050,
+      "nome": "Fit Personal 1.5 Flexone 16V 5p Aut."
+    },
+    {
+      "codigo": 6270,
+      "nome": "Fit Twist 1.5 Flex 16V 5p Aut."
+    },
+    {
+      "codigo": 6271,
+      "nome": "Fit Twist 1.5 Flex 16V 5p Mec."
+    },
+    {
+      "codigo": 10216,
+      "nome": "HR-V Advance 1.5  Flex TB 16V 5p Aut."
+    },
+    {
+      "codigo": 10217,
+      "nome": "HR-V EX 1.5 Flex Sensing 16V 5p Aut."
+    },
+    {
+      "codigo": 7150,
+      "nome": "HR-V EX 1.8 Flexone 16V 5p Aut."
+    },
+    {
+      "codigo": 11726,
+      "nome": "HR-V EXL 1.5 Flex Sensing 16V 5p Aut."
+    },
+    {
+      "codigo": 7151,
+      "nome": "HR-V EXL 1.8 Flexone 16V 5p Aut."
+    },
+    {
+      "codigo": 7152,
+      "nome": "HR-V LX 1.8 Flexone 16V 5p Aut."
+    },
+    {
+      "codigo": 7153,
+      "nome": "HR-V LX 1.8 Flexone 16V 5p Mec."
+    },
+    {
+      "codigo": 10218,
+      "nome": "HR-V Touring 1.5 Flex TB 16V 5p Aut."
+    },
+    {
+      "codigo": 7898,
+      "nome": "HR-V Touring 1.8 Flexone 16V 5p Aut."
+    },
+    {
+      "codigo": 1279,
+      "nome": "Odyssey EX Van Aut (6 lug.)"
+    },
+    {
+      "codigo": 1280,
+      "nome": "Odyssey Van LX Aut (6 lug.)"
+    },
+    {
+      "codigo": 1281,
+      "nome": "Passport EX"
+    },
+    {
+      "codigo": 1282,
+      "nome": "Passport LX"
+    },
+    {
+      "codigo": 1283,
+      "nome": "Passport PIck-Up 4x2"
+    },
+    {
+      "codigo": 1284,
+      "nome": "Prelude Coupê S 2.2"
+    },
+    {
+      "codigo": 1285,
+      "nome": "Prelude Si"
+    },
+    {
+      "codigo": 7899,
+      "nome": "WR-V EX 1.5 Flexone 16V 5p Aut."
+    },
+    {
+      "codigo": 7900,
+      "nome": "WR-V EXL 1.5 Flexone 16V 5p Aut."
+    },
+    {
+      "codigo": 9195,
+      "nome": "WR-V LX 1.5 Flexone 16V 5p Aut."
+    },
+    {
+      "codigo": 10894,
+      "nome": "ZR-V Touring 2.0 16V 5p Aut."
+    }
+  ]
+}

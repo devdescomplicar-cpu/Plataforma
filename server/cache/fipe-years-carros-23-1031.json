@@ -1,0 +1,33 @@
+{
+  "lastUpdated": "2026-01-30T07:33:10.626Z",
+  "data": [
+    {
+      "codigo": "2009-1",
+      "nome": "2009 Gasolina"
+    },
+    {
+      "codigo": "2008-1",
+      "nome": "2008 Gasolina"
+    },
+    {
+      "codigo": "2007-1",
+      "nome": "2007 Gasolina"
+    },
+    {
+      "codigo": "2006-1",
+      "nome": "2006 Gasolina"
+    },
+    {
+      "codigo": "2006-2",
+      "nome": "2006 Álcool"
+    },
+    {
+      "codigo": "2005-1",
+      "nome": "2005 Gasolina"
+    },
+    {
+      "codigo": "2005-2",
+      "nome": "2005 Álcool"
+    }
+  ]
+}

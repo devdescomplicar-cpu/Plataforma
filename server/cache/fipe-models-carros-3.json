@@ -1,0 +1,69 @@
+{
+  "lastUpdated": "2026-01-30T06:49:44.644Z",
+  "data": [
+    {
+      "codigo": 5,
+      "nome": "145 Elegant 1.7/1.8 16V"
+    },
+    {
+      "codigo": 6,
+      "nome": "145 Elegant 2.0 16V"
+    },
+    {
+      "codigo": 7,
+      "nome": "145 Quadrifoglio 2.0"
+    },
+    {
+      "codigo": 8,
+      "nome": "145 QV"
+    },
+    {
+      "codigo": 9,
+      "nome": "147 2.0 16V 148cv 4p Semi-Aut."
+    },
+    {
+      "codigo": 10,
+      "nome": "155"
+    },
+    {
+      "codigo": 11,
+      "nome": "155 Super"
+    },
+    {
+      "codigo": 12,
+      "nome": "156 2.5 V6 24V 190cv 4p Aut."
+    },
+    {
+      "codigo": 13,
+      "nome": "156 Sport Wagon 2.0 16V"
+    },
+    {
+      "codigo": 14,
+      "nome": "156 Sport Wagon 2.5 V6 24V 4p Aut."
+    },
+    {
+      "codigo": 15,
+      "nome": "156 TS/Sport/Elegant 2.0 16V"
+    },
+    {
+      "codigo": 16,
+      "nome": "164 3.0 V6"
+    },
+    {
+      "codigo": 17,
+      "nome": "164 Super V6 24V"
+    },
+    {
+      "codigo": 18,
+      "nome": "166 3.0 V6 24V"
+    },
+    {
+      "codigo": 19,
+      "nome": "2300 TI/TI-4"
+    },
+    {
+      "codigo": 20,
+      "nome": "Spider 2.0/3.0"
+    }
+  ]
+}

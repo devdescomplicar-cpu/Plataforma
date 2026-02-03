@@ -1,0 +1,28 @@
+* Automação
+* Relatório
+ - Filtros por veiculo
+ - Financeiro total
+
+* Armazenamento 
+ - Compactar imagens mantendo qualidade
+	- Método Lanczos3
+	- Resolução Ideal 1071 x 1428
+	- Compress MozJPEG
+	- Qualidade 60%
+
+
+* Opcional 
+Clientes final poderá ver o estoque do vendedor.
+
+
+* Ideia
+Lojista poderá colocar uma margem mínima para ficar mais claro
+
+
+
+** Site Atual
+
+https://gestaodescompliacar.com
+ddduartetrabalho@gmail.com
+123456
+

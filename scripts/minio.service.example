@@ -1,0 +1,35 @@
+# MinIO como serviço systemd (inicia no boot e fica rodando).
+#
+# Instalação (Linux com systemd):
+# 1. Instale o binário MinIO: https://min.io/docs/minio/linux/reference/minio-mc.html
+#    Ou: wget https://dl.min.io/server/minio/release/linux-amd64/minio -O /usr/local/bin/minio && chmod +x /usr/local/bin/minio
+# 2. Copie este arquivo:
+#    sudo cp scripts/minio.service.example /etc/systemd/system/minio.service
+# 3. Ajuste o caminho em ExecStart se o projeto não estiver em /app
+# 4. Habilite e inicie:
+#    sudo systemctl daemon-reload
+#    sudo systemctl enable minio
+#    sudo systemctl start minio
+#    sudo systemctl status minio
+#
+# Parar: sudo systemctl stop minio
+# Logs:  sudo journalctl -u minio -f
+
+[Unit]
+Description=MinIO Object Storage (DescompliCAR)
+Documentation=https://min.io/docs
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=root
+Group=root
+Environment="MINIO_ROOT_USER=minioadmin"
+Environment="MINIO_ROOT_PASSWORD=minioadmin"
+ExecStart=/usr/local/bin/minio server /app/minio-data --address ":9000" --console-address ":9001"
+Restart=always
+RestartSec=5s
+
+[Install]
+WantedBy=multi-user.target

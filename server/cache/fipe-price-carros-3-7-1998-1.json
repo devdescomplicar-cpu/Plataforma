@@ -1,0 +1,14 @@
+{
+  "lastUpdated": "2026-01-30T07:31:46.409Z",
+  "data": {
+    "TipoVeiculo": 1,
+    "Valor": "R$ 29.407,00",
+    "Marca": "Alfa Romeo",
+    "Modelo": "145 Quadrifoglio 2.0",
+    "AnoModelo": 1998,
+    "Combustivel": "Gasolina",
+    "CodigoFipe": "006002-0",
+    "MesReferencia": "janeiro de 2026",
+    "SiglaCombustivel": "G"
+  }
+}

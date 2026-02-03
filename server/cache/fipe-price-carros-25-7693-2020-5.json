@@ -1,0 +1,14 @@
+{
+  "lastUpdated": "2026-02-03T10:48:08.635Z",
+  "data": {
+    "TipoVeiculo": 1,
+    "Valor": "R$ 120.023,00",
+    "Marca": "Honda",
+    "Modelo": "Civic Sedan EXL 2.0 Flex 16V Aut.4p",
+    "AnoModelo": 2020,
+    "Combustivel": "Flex",
+    "CodigoFipe": "014090-2",
+    "MesReferencia": "fevereiro de 2026",
+    "SiglaCombustivel": "F"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "lastUpdated": "2026-02-03T10:15:46.426Z",
+  "data": {
+    "TipoVeiculo": 1,
+    "Valor": "R$ 36.980,00",
+    "Marca": "Ford",
+    "Modelo": "Fiesta SE 1.6 16V Flex 5p",
+    "AnoModelo": 2014,
+    "Combustivel": "Flex",
+    "CodigoFipe": "003351-0",
+    "MesReferencia": "fevereiro de 2026",
+    "SiglaCombustivel": "F"
+  }
+}

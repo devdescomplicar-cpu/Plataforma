@@ -1,0 +1,25 @@
+{
+  "lastUpdated": "2026-01-30T06:38:35.467Z",
+  "data": [
+    {
+      "codigo": 4392,
+      "nome": "Cargo 1.0 8V 53cv (Pick-Up)"
+    },
+    {
+      "codigo": 4393,
+      "nome": "Cargo CD 1.0 8V 53cv (Pick-Up)"
+    },
+    {
+      "codigo": 4394,
+      "nome": "Cargo CE 1.0 8V 53cv (Pick-Up)"
+    },
+    {
+      "codigo": 4395,
+      "nome": "Family 1.0 8V 53cv (Perua)"
+    },
+    {
+      "codigo": 4396,
+      "nome": "Utility 1.0 8V 53cv  (Furgão)"
+    }
+  ]
+}

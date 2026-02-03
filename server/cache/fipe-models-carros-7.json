@@ -1,0 +1,1289 @@
+{
+  "lastUpdated": "2026-01-30T06:34:47.702Z",
+  "data": [
+    {
+      "codigo": 6146,
+      "nome": "116iA 1.6 TB 16V 136cv 5p"
+    },
+    {
+      "codigo": 9955,
+      "nome": "118i M Sport 1.5 TB 12V Aut. 5p"
+    },
+    {
+      "codigo": 8946,
+      "nome": "118i Sport 1.5 TB 12V Aut. 5p"
+    },
+    {
+      "codigo": 5576,
+      "nome": "118iA 2.0 16V 136cv 3p"
+    },
+    {
+      "codigo": 4960,
+      "nome": "118iA 2.0 16V 136cv 5p"
+    },
+    {
+      "codigo": 6147,
+      "nome": "118iA Full 1.6 TB 16V 170cv 5p"
+    },
+    {
+      "codigo": 5923,
+      "nome": "118iA/ Urban/Sport 1.6 TB 16V 170cv 5p"
+    },
+    {
+      "codigo": 152,
+      "nome": "120i 2.0 16V 150cv/ 156cv 5p"
+    },
+    {
+      "codigo": 153,
+      "nome": "120iA 2.0 16V 150cv/ 156cv 5p"
+    },
+    {
+      "codigo": 4700,
+      "nome": "120iA 2.0 16V 156cv 3p"
+    },
+    {
+      "codigo": 4683,
+      "nome": "120iA Cabrio 2.0 16V 156cv 2p"
+    },
+    {
+      "codigo": 7178,
+      "nome": "120iA Sport 2.0/ActiveFlex 16V Aut."
+    },
+    {
+      "codigo": 6377,
+      "nome": "125i M Sport/Active Flex 2.0 TB Aut. 5p"
+    },
+    {
+      "codigo": 3879,
+      "nome": "130i 3.0 24V 265cv 5p"
+    },
+    {
+      "codigo": 4473,
+      "nome": "130iA 3.0 24V 265cv 3p"
+    },
+    {
+      "codigo": 4199,
+      "nome": "130iA 3.0 24V 265cv 5p"
+    },
+    {
+      "codigo": 4961,
+      "nome": "135iA Coupé 3.0 24V 306cv"
+    },
+    {
+      "codigo": 11119,
+      "nome": "218i Gran Coupe M Sport 1.5 Bi-Turbo"
+    },
+    {
+      "codigo": 9036,
+      "nome": "218i Gran Coupe Sport GP 1.5 Bi-Turbo"
+    },
+    {
+      "codigo": 11529,
+      "nome": "220i Gran Coupe M Sport 2.0 TB Aut."
+    },
+    {
+      "codigo": 7448,
+      "nome": "220i Tourer Active Flex 2.0 TB Aut."
+    },
+    {
+      "codigo": 7129,
+      "nome": "225i Active Tourer Sport 2.0 TB Aut."
+    },
+    {
+      "codigo": 154,
+      "nome": "316 (todas)"
+    },
+    {
+      "codigo": 6660,
+      "nome": "316i 1.6 TB 16V 136cv 4p"
+    },
+    {
+      "codigo": 155,
+      "nome": "318i Cabrio 1.8 16V"
+    },
+    {
+      "codigo": 156,
+      "nome": "318i/iA 1.8 16V"
+    },
+    {
+      "codigo": 157,
+      "nome": "318i/iA Compact 1.8 16V"
+    },
+    {
+      "codigo": 5607,
+      "nome": "318iA 2.0 16V 136cv 5p"
+    },
+    {
+      "codigo": 158,
+      "nome": "318iS/ISA 1.9 16V"
+    },
+    {
+      "codigo": 159,
+      "nome": "318Ti Compact Mec"
+    },
+    {
+      "codigo": 160,
+      "nome": "318Ti/TiA Compact 1.9 16V"
+    },
+    {
+      "codigo": 161,
+      "nome": "320i"
+    },
+    {
+      "codigo": 162,
+      "nome": "320iA"
+    },
+    {
+      "codigo": 7256,
+      "nome": "320iA 2.0 TB M Sport A.Flex/M.Sport 4p"
+    },
+    {
+      "codigo": 6090,
+      "nome": "320iA 2.0 Turbo/ActiveFlex 16V/GP  4p"
+    },
+    {
+      "codigo": 6609,
+      "nome": "320iA GT Sport 2.0 Turbo 16V 184cv 5p"
+    },
+    {
+      "codigo": 6091,
+      "nome": "320iA Modern/Sport TB 2.0/A.Flex/GP 4p"
+    },
+    {
+      "codigo": 163,
+      "nome": "323Ci Coupê"
+    },
+    {
+      "codigo": 164,
+      "nome": "323CiA Coupê"
+    },
+    {
+      "codigo": 165,
+      "nome": "323i 2.5 24V"
+    },
+    {
+      "codigo": 166,
+      "nome": "323i Confort"
+    },
+    {
+      "codigo": 167,
+      "nome": "323i Sport"
+    },
+    {
+      "codigo": 168,
+      "nome": "323i Touring"
+    },
+    {
+      "codigo": 172,
+      "nome": "323i/iA Exclusive"
+    },
+    {
+      "codigo": 169,
+      "nome": "323iA 2.5 24V"
+    },
+    {
+      "codigo": 170,
+      "nome": "323iA Confort"
+    },
+    {
+      "codigo": 171,
+      "nome": "323iA Entry Sedan"
+    },
+    {
+      "codigo": 173,
+      "nome": "323iA Sport"
+    },
+    {
+      "codigo": 174,
+      "nome": "323iA Top Sedan"
+    },
+    {
+      "codigo": 175,
+      "nome": "323iA Touring"
+    },
+    {
+      "codigo": 176,
+      "nome": "323Ti Compact"
+    },
+    {
+      "codigo": 177,
+      "nome": "323Ti Compact Sport"
+    },
+    {
+      "codigo": 178,
+      "nome": "323TiA Compact Top"
+    },
+    {
+      "codigo": 179,
+      "nome": "325i"
+    },
+    {
+      "codigo": 180,
+      "nome": "325i/iA Cabrio"
+    },
+    {
+      "codigo": 181,
+      "nome": "325iA"
+    },
+    {
+      "codigo": 182,
+      "nome": "325iA 2.5 24V Protection"
+    },
+    {
+      "codigo": 183,
+      "nome": "325iA Coupé 2.5 24V 2p"
+    },
+    {
+      "codigo": 3955,
+      "nome": "325iA Touring"
+    },
+    {
+      "codigo": 184,
+      "nome": "328i Exclusive 2.8 24V"
+    },
+    {
+      "codigo": 185,
+      "nome": "328i Touring/Sport"
+    },
+    {
+      "codigo": 186,
+      "nome": "328i/iA (modelo antigo)"
+    },
+    {
+      "codigo": 187,
+      "nome": "328i/iA (novo modelo)"
+    },
+    {
+      "codigo": 188,
+      "nome": "328i/iA Cabrio"
+    },
+    {
+      "codigo": 6046,
+      "nome": "328iA 2.0 TB/2.0 TB Flex 16V 4p"
+    },
+    {
+      "codigo": 189,
+      "nome": "328iA Exclusive 2.8 24V"
+    },
+    {
+      "codigo": 6633,
+      "nome": "328iA GT M Sport 2.0 Turbo 16V 245cv 5p"
+    },
+    {
+      "codigo": 6047,
+      "nome": "328iA Luxury/Modern 2.0 TB 16V 4p"
+    },
+    {
+      "codigo": 7303,
+      "nome": "328iA M Sport 2.0 16V Flex 4p"
+    },
+    {
+      "codigo": 6048,
+      "nome": "328iA Plus 2.0 TB 16V 245cv 4p"
+    },
+    {
+      "codigo": 6049,
+      "nome": "328iA Sport 2.0 16V/2.0 16V Flex 4p"
+    },
+    {
+      "codigo": 190,
+      "nome": "328iA Touring/Sport"
+    },
+    {
+      "codigo": 191,
+      "nome": "330Ci Cabriolet"
+    },
+    {
+      "codigo": 192,
+      "nome": "330CiA Cabriolet"
+    },
+    {
+      "codigo": 9956,
+      "nome": "330e M Sport 2.0 Turbo Aut. (Híbrido)"
+    },
+    {
+      "codigo": 8630,
+      "nome": "330i M Sport 2.0 TB 16V 4p"
+    },
+    {
+      "codigo": 193,
+      "nome": "330i MotorSport 3.0 24V 4p"
+    },
+    {
+      "codigo": 8688,
+      "nome": "330i Sport 2.0 TB 16V 4p"
+    },
+    {
+      "codigo": 3956,
+      "nome": "330iA Exclusive 3.0 24V 4p"
+    },
+    {
+      "codigo": 194,
+      "nome": "330iA MotorSport 4p"
+    },
+    {
+      "codigo": 195,
+      "nome": "330iA Top 4p"
+    },
+    {
+      "codigo": 9957,
+      "nome": "335i 3.0 Active 3 (Híbrido)"
+    },
+    {
+      "codigo": 4272,
+      "nome": "335iA 3.0 24V 306cv"
+    },
+    {
+      "codigo": 4416,
+      "nome": "335iA Cabriolet 3.0 24V 306cv"
+    },
+    {
+      "codigo": 6513,
+      "nome": "335iA M Sport 3.0 24V 306cv 4p"
+    },
+    {
+      "codigo": 6148,
+      "nome": "335iA Sport 3.0 24V 306cv 4p"
+    },
+    {
+      "codigo": 9785,
+      "nome": "420i Cabriolet M Sport 2.0 TB 16V 2p."
+    },
+    {
+      "codigo": 7083,
+      "nome": "420i Cabriolet Sport 2.0 TB 184cv 2p"
+    },
+    {
+      "codigo": 6952,
+      "nome": "428i Cabriolet Sport 2.0 TB 245cv 2p"
+    },
+    {
+      "codigo": 7084,
+      "nome": "428i Gran Coupe M Sport 2.0 TB 245cv"
+    },
+    {
+      "codigo": 7085,
+      "nome": "428i Gran Coupe Sport 2.0 TB 245cv"
+    },
+    {
+      "codigo": 7728,
+      "nome": "430i Cab. Sport Limited Ed.2.0 TB 2p"
+    },
+    {
+      "codigo": 9442,
+      "nome": "430i Cabriolet M Sport 2.0 TB 258cv 2p"
+    },
+    {
+      "codigo": 7875,
+      "nome": "430i Cabriolet Sport 2.0 TB 252cv 2p"
+    },
+    {
+      "codigo": 7729,
+      "nome": "430i Gran Coupé M Sport TB 5p"
+    },
+    {
+      "codigo": 6691,
+      "nome": "435iA M Sport Coupe 3.0 24V 306cv 2p"
+    },
+    {
+      "codigo": 196,
+      "nome": "520i 2.0 16V"
+    },
+    {
+      "codigo": 197,
+      "nome": "525i/iA"
+    },
+    {
+      "codigo": 198,
+      "nome": "525i/iA Touring"
+    },
+    {
+      "codigo": 199,
+      "nome": "528i/iA"
+    },
+    {
+      "codigo": 6149,
+      "nome": "528iA 2.0 Turbo 16V 245cv 4p"
+    },
+    {
+      "codigo": 200,
+      "nome": "528iA High"
+    },
+    {
+      "codigo": 6514,
+      "nome": "528iA M Sport 2.0 Turbo 16V 245cv 4p"
+    },
+    {
+      "codigo": 201,
+      "nome": "528iA Touring"
+    },
+    {
+      "codigo": 9959,
+      "nome": "530e Luxury 2.0 Turbo (Híbrido)"
+    },
+    {
+      "codigo": 9960,
+      "nome": "530e M Sport 2.0 Turbo Aut. (Híbrido)"
+    },
+    {
+      "codigo": 7918,
+      "nome": "530i M Sport 2.0 Turbo 252cv Aut."
+    },
+    {
+      "codigo": 8816,
+      "nome": "530i Security"
+    },
+    {
+      "codigo": 202,
+      "nome": "530i/iA"
+    },
+    {
+      "codigo": 203,
+      "nome": "530i/iA Touring"
+    },
+    {
+      "codigo": 204,
+      "nome": "535i/iA 3.5 24V"
+    },
+    {
+      "codigo": 5267,
+      "nome": "535iA 3.0 24V 306cv Bi-Turbo"
+    },
+    {
+      "codigo": 5292,
+      "nome": "535iA GT 3.0 306cv Bi-Turbo"
+    },
+    {
+      "codigo": 6415,
+      "nome": "535iA M Sport 3.0 24V 306cv Bi-Turbo"
+    },
+    {
+      "codigo": 205,
+      "nome": "540i"
+    },
+    {
+      "codigo": 7919,
+      "nome": "540i M Sport 3.0 Turbo 340cv Aut."
+    },
+    {
+      "codigo": 206,
+      "nome": "540i/iA Touring"
+    },
+    {
+      "codigo": 207,
+      "nome": "540iA"
+    },
+    {
+      "codigo": 208,
+      "nome": "540iA MotorSport"
+    },
+    {
+      "codigo": 209,
+      "nome": "540iA Protection"
+    },
+    {
+      "codigo": 210,
+      "nome": "540iTA"
+    },
+    {
+      "codigo": 211,
+      "nome": "545iA 4.4 32V V8 333cv"
+    },
+    {
+      "codigo": 5268,
+      "nome": "550iA 4.4 32V 407cv Bi-Turbo"
+    },
+    {
+      "codigo": 3880,
+      "nome": "550iA 4.8 32V"
+    },
+    {
+      "codigo": 4995,
+      "nome": "550iA Limited Sport Edition 4.8 32V"
+    },
+    {
+      "codigo": 4432,
+      "nome": "550iA Security 4.8 32V"
+    },
+    {
+      "codigo": 6378,
+      "nome": "640i Gran Coupe 3.0 320cv 4p"
+    },
+    {
+      "codigo": 3929,
+      "nome": "645Ci Cabriolet 4.4 V8 32V 333cv"
+    },
+    {
+      "codigo": 212,
+      "nome": "645iA 4.4 V8 32V 333cv"
+    },
+    {
+      "codigo": 5718,
+      "nome": "650Ci Cabriolet 4.4 407cv Bi-Turbo"
+    },
+    {
+      "codigo": 4126,
+      "nome": "650Ci Cabriolet 4.8 V8 32V 360cv"
+    },
+    {
+      "codigo": 6634,
+      "nome": "650i Gran Coupe 4.4 V8 450cv 4p"
+    },
+    {
+      "codigo": 6150,
+      "nome": "650iA 4.4 407cv Bi-Turbo"
+    },
+    {
+      "codigo": 4125,
+      "nome": "650iA 4.8 V8 32V 360cv"
+    },
+    {
+      "codigo": 5057,
+      "nome": "650iA Limited Sport  Edition 4.8 32V"
+    },
+    {
+      "codigo": 213,
+      "nome": "730i 3.0 32V"
+    },
+    {
+      "codigo": 214,
+      "nome": "730iA 3.0 32V"
+    },
+    {
+      "codigo": 215,
+      "nome": "735i/iA 3.5 32V"
+    },
+    {
+      "codigo": 216,
+      "nome": "740i"
+    },
+    {
+      "codigo": 217,
+      "nome": "740iA"
+    },
+    {
+      "codigo": 218,
+      "nome": "740iL/iLA Highline 4.4 32V"
+    },
+    {
+      "codigo": 219,
+      "nome": "740iLA Protection"
+    },
+    {
+      "codigo": 220,
+      "nome": "745iA 4.4 V8 32V 333cv"
+    },
+    {
+      "codigo": 9961,
+      "nome": "745Le M Sport Sedan 3.0 V6 Aut. (Híb.)"
+    },
+    {
+      "codigo": 221,
+      "nome": "750i"
+    },
+    {
+      "codigo": 7147,
+      "nome": "750i M Sport Sedan 4.4 V8 450cv Aut."
+    },
+    {
+      "codigo": 222,
+      "nome": "750iA"
+    },
+    {
+      "codigo": 223,
+      "nome": "750iL Highline 5.4 24V"
+    },
+    {
+      "codigo": 7657,
+      "nome": "750iL M Sport Sedan 4.4 V8 450cv Aut."
+    },
+    {
+      "codigo": 8660,
+      "nome": "750iL Pure Excellence Sedan 4.4 V8 Aut."
+    },
+    {
+      "codigo": 9962,
+      "nome": "750iLA 4.4 Active 7 (Híbrido)"
+    },
+    {
+      "codigo": 224,
+      "nome": "760iL 6.0 V12 445cv/544cv"
+    },
+    {
+      "codigo": 225,
+      "nome": "840Ci"
+    },
+    {
+      "codigo": 226,
+      "nome": "840CiA"
+    },
+    {
+      "codigo": 227,
+      "nome": "850Ci/CiA 5.0 24V"
+    },
+    {
+      "codigo": 228,
+      "nome": "850Ci/CiA 5.4 24V"
+    },
+    {
+      "codigo": 229,
+      "nome": "850CSi 5.6 24V"
+    },
+    {
+      "codigo": 230,
+      "nome": "850i 5.0 24V"
+    },
+    {
+      "codigo": 8817,
+      "nome": "i3 Bev 170cv Aut. (Elétrico)"
+    },
+    {
+      "codigo": 8818,
+      "nome": "i3 Bev Connected 170cv Aut. (Elétrico)"
+    },
+    {
+      "codigo": 8819,
+      "nome": "i3 Bev Full 170cv Aut. (Elétrico)"
+    },
+    {
+      "codigo": 9861,
+      "nome": "i3 Bev Un. Forever 170cv Aut. (Életrico)"
+    },
+    {
+      "codigo": 7023,
+      "nome": "i3 Rex E Drive 170cv Aut.(Elétrico)"
+    },
+    {
+      "codigo": 8734,
+      "nome": "i3 Rex E Drive Connected Aut. (Elétrico)"
+    },
+    {
+      "codigo": 7024,
+      "nome": "i3 Rex E Drive Full 170cv Aut.(Elétrico)"
+    },
+    {
+      "codigo": 10668,
+      "nome": "i4 e-Drive 35 M Sport (Elétrico)"
+    },
+    {
+      "codigo": 10669,
+      "nome": "i4 e-Drive 40 M Sport (Elétrico)"
+    },
+    {
+      "codigo": 10371,
+      "nome": "i4 M50 (Elétrico)"
+    },
+    {
+      "codigo": 10989,
+      "nome": "i5 M60 (Elétrico)"
+    },
+    {
+      "codigo": 10824,
+      "nome": "i7 XDrive 60 M Sport Aut. (Elétrico)"
+    },
+    {
+      "codigo": 10019,
+      "nome": "i8 e-Drive 1.5 TB 12V  Aut. (Híbrido)"
+    },
+    {
+      "codigo": 10020,
+      "nome": "i8 Road. e-Drive 1.5 TB 12V Aut. (Híb.)"
+    },
+    {
+      "codigo": 11103,
+      "nome": "iX 1 eDrive20 X-Line Aut. (Elétrico)"
+    },
+    {
+      "codigo": 10755,
+      "nome": "iX 1 xDrive 30 M Sport (Elétrico)"
+    },
+    {
+      "codigo": 11104,
+      "nome": "iX 2 xDrive 30 M Sport (Elétrico)"
+    },
+    {
+      "codigo": 9910,
+      "nome": "iX 3 M Sport Aut.(Elétrico)"
+    },
+    {
+      "codigo": 10782,
+      "nome": "iX M60 (Elétrico)"
+    },
+    {
+      "codigo": 9863,
+      "nome": "iX XDrive 40 Aut. (Elétrico)"
+    },
+    {
+      "codigo": 9864,
+      "nome": "iX XDrive 50 Sport Aut. (Elétrico)"
+    },
+    {
+      "codigo": 10784,
+      "nome": "M 135i 3.0 TB 24V 320cv"
+    },
+    {
+      "codigo": 10785,
+      "nome": "M 135i XDRIVE 2.0 TB 306cv Aut."
+    },
+    {
+      "codigo": 6910,
+      "nome": "M 235i Coupe 3.0 24V 326cv"
+    },
+    {
+      "codigo": 231,
+      "nome": "M Roadster"
+    },
+    {
+      "codigo": 5719,
+      "nome": "M1 Coupe 3.0 24V 340cv"
+    },
+    {
+      "codigo": 7823,
+      "nome": "M140i 3.0  24V 340cv 5p"
+    },
+    {
+      "codigo": 8439,
+      "nome": "M2 Competition 3.0 Bi-Turbo 410cv Aut."
+    },
+    {
+      "codigo": 9103,
+      "nome": "M2 Competition Ed. Espe. 3.0 Bi-TB Mec."
+    },
+    {
+      "codigo": 10825,
+      "nome": "M2 Coupe 3.0 Bi-Turbo 24V 3p"
+    },
+    {
+      "codigo": 10826,
+      "nome": "M2 Coupe Track 3.0 Bi-Turbo 24V 460cv 3p"
+    },
+    {
+      "codigo": 9339,
+      "nome": "M2 CS Coupe 3.0 Bi-Turbo 450cv"
+    },
+    {
+      "codigo": 9104,
+      "nome": "M235i XDRIVE Gran Coupé 2.0 Aut."
+    },
+    {
+      "codigo": 7857,
+      "nome": "M240i Coupe 3.0 24V 340cv 2p"
+    },
+    {
+      "codigo": 232,
+      "nome": "M3 3.2 24V"
+    },
+    {
+      "codigo": 233,
+      "nome": "M3 Cabrio 3.0 24V"
+    },
+    {
+      "codigo": 4919,
+      "nome": "M3 Cabrio 4.0 32V"
+    },
+    {
+      "codigo": 9482,
+      "nome": "M3 Competition M 3.0 Bi-TB 510cv"
+    },
+    {
+      "codigo": 9483,
+      "nome": "M3 Competition M Track 3.0 Bi-TB"
+    },
+    {
+      "codigo": 234,
+      "nome": "M3 Coupê 3.0 24V 255cv"
+    },
+    {
+      "codigo": 235,
+      "nome": "M3 Coupê 3.0 V6 24V 282cv"
+    },
+    {
+      "codigo": 4527,
+      "nome": "M3 Coupê 4.0 32V"
+    },
+    {
+      "codigo": 8661,
+      "nome": "M3 CS Sedan 3.0 Bi-Turbo 460cv 4p"
+    },
+    {
+      "codigo": 7130,
+      "nome": "M3 Sedan 3.0 Bi-Turbo 24V 4p"
+    },
+    {
+      "codigo": 4823,
+      "nome": "M3 Sedan 4.0 32V"
+    },
+    {
+      "codigo": 9105,
+      "nome": "M340i XDRIVE 3.0 Turbo Aut."
+    },
+    {
+      "codigo": 9094,
+      "nome": "M340i XDRIVE First Ed. 3.0 Turbo Aut."
+    },
+    {
+      "codigo": 7148,
+      "nome": "M4 Cabriolet 3.0 Bi-Turbo 24V 431cv 2p"
+    },
+    {
+      "codigo": 7116,
+      "nome": "M4 Coupe 3.0 Bi-Turbo 24V 431cv 2p"
+    },
+    {
+      "codigo": 11268,
+      "nome": "M4 CS Coupe 3.0 Bi-Turbo 2p"
+    },
+    {
+      "codigo": 9524,
+      "nome": "M440i Coupe 3.0 TB Aut."
+    },
+    {
+      "codigo": 236,
+      "nome": "M5 3.8/Touring 3.8 24V"
+    },
+    {
+      "codigo": 6260,
+      "nome": "M5 4.4 560cv Bi-Turbo Aut."
+    },
+    {
+      "codigo": 237,
+      "nome": "M5 5.0 32V/ 40V"
+    },
+    {
+      "codigo": 9484,
+      "nome": "M5 Competition M XDRIVE 4.4 Bi-TB V8"
+    },
+    {
+      "codigo": 8388,
+      "nome": "M5 M XDRIVE 4.4 Bi-TB V8"
+    },
+    {
+      "codigo": 8389,
+      "nome": "M5 Perform. Pack M XDRIVE 4.4 Bi-TB V8"
+    },
+    {
+      "codigo": 238,
+      "nome": "M6 5.0 V10 40V 507cv"
+    },
+    {
+      "codigo": 6460,
+      "nome": "M6 Coupe 4.4 Bi-Turbo V8 32V"
+    },
+    {
+      "codigo": 6635,
+      "nome": "M6 Gran Coupe 4.4 Bi-Turbo V8 32V 560cv"
+    },
+    {
+      "codigo": 8735,
+      "nome": "M760Li xDrive 6.6 V12 585cv Aut."
+    },
+    {
+      "codigo": 9188,
+      "nome": "M8 Gran Coupé Comp.First ED. 4.4 V8 32V"
+    },
+    {
+      "codigo": 9525,
+      "nome": "M8 Gran Coupé Competition 4.4 V8 32V"
+    },
+    {
+      "codigo": 8736,
+      "nome": "M850i XDrive Coupé 4.4 V8 530cv Aut."
+    },
+    {
+      "codigo": 5269,
+      "nome": "X1 SDRIVE 18i 2.0 16V 4x2 Aut."
+    },
+    {
+      "codigo": 10414,
+      "nome": "X1 SDRIVE 18i GP 1.5 TB Aut."
+    },
+    {
+      "codigo": 6230,
+      "nome": "X1 SDRIVE 20i 2.0/2.0 TB Acti.Flex Aut."
+    },
+    {
+      "codigo": 11301,
+      "nome": "X1 SDRIVE 20i GP 2.0 TB Aut."
+    },
+    {
+      "codigo": 9226,
+      "nome": "X1 SDRIVE 20i M S. 2.0 25 Anos TB Flex"
+    },
+    {
+      "codigo": 10415,
+      "nome": "X1 SDRIVE 20i M Sport 2.0 TB Aut."
+    },
+    {
+      "codigo": 9682,
+      "nome": "X1 SDRIVE 20i M Sport 2.0 TB Flex Aut."
+    },
+    {
+      "codigo": 10115,
+      "nome": "X1 SDRIVE 20i Outdoor 2.0.Flex Aut."
+    },
+    {
+      "codigo": 8570,
+      "nome": "X1 SDRIVE 20i X-Line 2.0 TB Active Flex"
+    },
+    {
+      "codigo": 10416,
+      "nome": "X1 SDRIVE 20i X-Line 2.0 TB Aut."
+    },
+    {
+      "codigo": 7449,
+      "nome": "X1 XDRIVE 25i Sport 2.0/2.0 Flex Aut."
+    },
+    {
+      "codigo": 6151,
+      "nome": "X1 XDRIVE 28i 2.0 Turbo 16V 4x4 Aut."
+    },
+    {
+      "codigo": 5158,
+      "nome": "X1 XDRIVE 28i 3.0 24V 4x4 Aut."
+    },
+    {
+      "codigo": 7086,
+      "nome": "X1 XDRIVE 28i Sport 2.0 ActiveFlex Aut."
+    },
+    {
+      "codigo": 8820,
+      "nome": "X2 M35i 2.0 Turbo 306cv Aut."
+    },
+    {
+      "codigo": 11282,
+      "nome": "X2 M35i xDrive 2.0 Turbo 317cv Aut."
+    },
+    {
+      "codigo": 8277,
+      "nome": "X2 SDRIVE  20i M Sp/M Sp 2.0 TB Flex Aut"
+    },
+    {
+      "codigo": 8510,
+      "nome": "X2 SDRIVE 18i 1.5 ActiveFlex 136cv Aut."
+    },
+    {
+      "codigo": 8338,
+      "nome": "X2 SDRIVE 20i 2.0/2.0 TB A. Flex 16V Aut"
+    },
+    {
+      "codigo": 11112,
+      "nome": "X2 XDrive20i M Sport"
+    },
+    {
+      "codigo": 239,
+      "nome": "X3 Family 2.5 24V 192cv/ 218cv"
+    },
+    {
+      "codigo": 240,
+      "nome": "X3 Family 3.0 24V 231cv"
+    },
+    {
+      "codigo": 8842,
+      "nome": "X3 M Competition 3.0 Bi-TB 510cv Aut."
+    },
+    {
+      "codigo": 9881,
+      "nome": "X3 M40i 3.0 M Sport Edit. V6 Turbo Aut."
+    },
+    {
+      "codigo": 9797,
+      "nome": "X3 M40i 3.0 Turbo V6  Aut."
+    },
+    {
+      "codigo": 11382,
+      "nome": "X3 M50 XDRIVE 3.0 V6 Aut. (Híbrido)"
+    },
+    {
+      "codigo": 4241,
+      "nome": "X3 Sport 2.5 24V 192cv/ 218cv"
+    },
+    {
+      "codigo": 241,
+      "nome": "X3 Sport 3.0 24V 231cv"
+    },
+    {
+      "codigo": 6417,
+      "nome": "X3 XDRIVE 20i 2.0/X-Line Bi-TB Flex Aut."
+    },
+    {
+      "codigo": 6294,
+      "nome": "X3 XDRIVE 28i 2.0 Turbo 245cv Aut."
+    },
+    {
+      "codigo": 5608,
+      "nome": "X3 XDRIVE 28i 3.0 258cv"
+    },
+    {
+      "codigo": 11736,
+      "nome": "X3 XDRIVE 30 M Sport 2.0 TB Aut."
+    },
+    {
+      "codigo": 10075,
+      "nome": "X3 XDRIVE 30e M SP Launch Ed. TB (Híb.)"
+    },
+    {
+      "codigo": 10076,
+      "nome": "X3 XDRIVE 30e M Sport Turbo Aut. (Híb.)"
+    },
+    {
+      "codigo": 10077,
+      "nome": "X3 XDRIVE 30e Turbo Aut. (Híbrido)"
+    },
+    {
+      "codigo": 10078,
+      "nome": "X3 XDRIVE 30e X-Line Turbo Aut. (Híb.)"
+    },
+    {
+      "codigo": 8233,
+      "nome": "X3 XDRIVE 30i X-Line 2.0 Turbo 252cv Aut"
+    },
+    {
+      "codigo": 5497,
+      "nome": "X3 XDRIVE 35i/M-Sport 3.0 306cv Bi-Turbo"
+    },
+    {
+      "codigo": 8985,
+      "nome": "X4 M Competition 3.0 Bi-TB 510cv Aut."
+    },
+    {
+      "codigo": 10871,
+      "nome": "X4 M40i 3.0 M Sport EditionTurbo Aut."
+    },
+    {
+      "codigo": 9927,
+      "nome": "X4 M40i 3.0 Turbo 388cv Aut."
+    },
+    {
+      "codigo": 11302,
+      "nome": "X4 XDRIVE 20i M-Sport 2.0 TB 184cv Aut"
+    },
+    {
+      "codigo": 7065,
+      "nome": "X4 XDRIVE 28i X-Line 2.0 Turbo 245cv Aut"
+    },
+    {
+      "codigo": 10872,
+      "nome": "X4 XDRIVE 30i M-Sport 2.0 TB 252cv Aut"
+    },
+    {
+      "codigo": 7066,
+      "nome": "X4 XDRIVE 35i M-Sport 3.0 TB 306cv Aut."
+    },
+    {
+      "codigo": 242,
+      "nome": "X5 3.0 4x4"
+    },
+    {
+      "codigo": 243,
+      "nome": "X5 4.4 4x4"
+    },
+    {
+      "codigo": 244,
+      "nome": "X5 4.8 4x4 V8 32V 360cv"
+    },
+    {
+      "codigo": 4585,
+      "nome": "X5 Endurance 4.8is 4x4 V8 32V 355cv Aut."
+    },
+    {
+      "codigo": 5188,
+      "nome": "X5 M 4.4 4x4 V8 32V Bi-Turbo Aut."
+    },
+    {
+      "codigo": 9535,
+      "nome": "X5 M Competition 4.4 V8 Bi-TB Aut."
+    },
+    {
+      "codigo": 4242,
+      "nome": "X5 Security 4.4 4x4 V8 32V"
+    },
+    {
+      "codigo": 5020,
+      "nome": "X5 Security 4.8is 4x4 V8 32V 355cv Aut."
+    },
+    {
+      "codigo": 245,
+      "nome": "X5 Sport 4.4 4x4 V8 32V"
+    },
+    {
+      "codigo": 4331,
+      "nome": "X5 Sport 4.8 4x4 V8 32V 355cv"
+    },
+    {
+      "codigo": 7283,
+      "nome": "X5 XDRIVE 30d 3.0 Diesel"
+    },
+    {
+      "codigo": 7087,
+      "nome": "X5 XDRIVE 30d Full 3.0 258cv Diesel"
+    },
+    {
+      "codigo": 8662,
+      "nome": "X5 XDRIVE 30d M Sport 3.0 265cv Dies Aut"
+    },
+    {
+      "codigo": 5356,
+      "nome": "X5 XDRIVE 35i 3.0 306cv Bi-Turbo"
+    },
+    {
+      "codigo": 6911,
+      "nome": "X5 XDRIVE 35i Full 3.0 306cv Bi-Turbo"
+    },
+    {
+      "codigo": 10079,
+      "nome": "X5 XDRIVE 45e 3.0 M.Sport  Aut. (Híb.)"
+    },
+    {
+      "codigo": 10765,
+      "nome": "X5 XDRIVE 50e 3.0 M Sport Aut. (Hibrido)"
+    },
+    {
+      "codigo": 10766,
+      "nome": "X5 XDRIVE 50e 3.0 X-Line Aut. (Hibrido)"
+    },
+    {
+      "codigo": 5357,
+      "nome": "X5 XDRIVE 50i 4.4  Bi-Turbo"
+    },
+    {
+      "codigo": 6710,
+      "nome": "X5 XDRIVE 50i M Sport 4.4 Bi-Turbo"
+    },
+    {
+      "codigo": 5590,
+      "nome": "X5 XDRIVE 50i Security 4.4 Bi-Turbo"
+    },
+    {
+      "codigo": 7117,
+      "nome": "X5 XDRIVE M50d 3.0 Diesel"
+    },
+    {
+      "codigo": 9206,
+      "nome": "X5 XDRIVE M50i 4.4 Bi-Turbo Aut."
+    },
+    {
+      "codigo": 5189,
+      "nome": "X6 M 4.4 4x4 V8 32V Bi-Turbo Aut."
+    },
+    {
+      "codigo": 10788,
+      "nome": "X6 M Competition 4.4 V8 BI-TB (Hib) Aut."
+    },
+    {
+      "codigo": 9565,
+      "nome": "X6 M Competition 4.4 V8 BI-TB 625CV Aut."
+    },
+    {
+      "codigo": 4745,
+      "nome": "X6 XDRIVE 35i 3.0 306cv Bi-Turbo"
+    },
+    {
+      "codigo": 9883,
+      "nome": "X6 XDRIVE 40i Bl.Vermillion 3.0 Bi-Turbo"
+    },
+    {
+      "codigo": 10767,
+      "nome": "X6 XDRIVE 40i M Sport 3.0 Bi-TB (Hib.)"
+    },
+    {
+      "codigo": 9037,
+      "nome": "X6 XDRIVE 40i M Sport 3.0 Bi-Turbo"
+    },
+    {
+      "codigo": 4746,
+      "nome": "X6 XDRIVE 50i 4.4 407cv Bi-Turbo"
+    },
+    {
+      "codigo": 7088,
+      "nome": "X6 XDRIVE 50i M Sport 4.4 Bi-Turbo"
+    },
+    {
+      "codigo": 9038,
+      "nome": "X7 M50i 4.4 V8 Bi-TB Aut."
+    },
+    {
+      "codigo": 9362,
+      "nome": "X7 M50i Dark Shadow 4.4 V8 Bi-TB Aut."
+    },
+    {
+      "codigo": 10893,
+      "nome": "X7 M60i 4.4 V8 Bi-TB Aut.(Híbrido)"
+    },
+    {
+      "codigo": 11737,
+      "nome": "X7 XDRIVE 40i M Sport 3.0 V6 Turbo Aut."
+    },
+    {
+      "codigo": 8776,
+      "nome": "X7 XDRIVE 50i M Sport 4.4 V8 Bi-TB Aut."
+    },
+    {
+      "codigo": 246,
+      "nome": "Z3 2.8 Aut."
+    },
+    {
+      "codigo": 247,
+      "nome": "Z3 2.8 Mec."
+    },
+    {
+      "codigo": 248,
+      "nome": "Z3 3.0 24V Roadster 2p"
+    },
+    {
+      "codigo": 249,
+      "nome": "Z3 Roadster 1.9 Mec."
+    },
+    {
+      "codigo": 4887,
+      "nome": "Z3 Roadster 2.8"
+    },
+    {
+      "codigo": 250,
+      "nome": "Z3 Roadster M 3.2"
+    },
+    {
+      "codigo": 4243,
+      "nome": "Z4 Coupé M 3.2 V6 24V 343cv"
+    },
+    {
+      "codigo": 8777,
+      "nome": "Z4 M40i 3.0 340cv Aut."
+    },
+    {
+      "codigo": 4185,
+      "nome": "Z4 Roadster 2.0 150cv 2p"
+    },
+    {
+      "codigo": 251,
+      "nome": "Z4 Roadster 3.0 V6 24V Aut."
+    },
+    {
+      "codigo": 4244,
+      "nome": "Z4 Roadster M 3.2 V6 24V 343cv"
+    },
+    {
+      "codigo": 6261,
+      "nome": "Z4 Roadster sDRIVE 20i 2.0 16V 2p Aut."
+    },
+    {
+      "codigo": 4996,
+      "nome": "Z4 Roadster sDRIVE 23i 2.5 24V 204cv 2p"
+    },
+    {
+      "codigo": 8689,
+      "nome": "Z4 Roadster sDRIVE 30i MSport 2.0 TB Aut"
+    },
+    {
+      "codigo": 4997,
+      "nome": "Z4 Roadster sDRIVE 35i 3.0 24V 306cv 2p"
+    },
+    {
+      "codigo": 252,
+      "nome": "Z4 Roadster Sport 3.0 24V 231cv Aut."
+    },
+    {
+      "codigo": 253,
+      "nome": "Z8 5.0 V8"
+    }
+  ]
+}

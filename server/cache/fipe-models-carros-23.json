@@ -1,0 +1,2205 @@
+{
+  "lastUpdated": "2026-01-30T07:32:03.544Z",
+  "data": [
+    {
+      "codigo": 926,
+      "nome": "A-10 2.5/4.1"
+    },
+    {
+      "codigo": 927,
+      "nome": "A-10 De Luxe 2.5/4.1"
+    },
+    {
+      "codigo": 928,
+      "nome": "A-20 Custom Std. CD/ De Luxe CD"
+    },
+    {
+      "codigo": 929,
+      "nome": "A-20 Custom/ C-20 Luxe 4.1"
+    },
+    {
+      "codigo": 930,
+      "nome": "A-20 Custom/ C-20 S 4.1"
+    },
+    {
+      "codigo": 5069,
+      "nome": "AGILE LT 1.4 MPFI 8V FlexPower 5p"
+    },
+    {
+      "codigo": 5070,
+      "nome": "AGILE LTZ 1.4 MPFI 8V FlexPower 5p"
+    },
+    {
+      "codigo": 6265,
+      "nome": "AGILE LTZ EASYTRONIC 1.4 8V FlexPower 5p"
+    },
+    {
+      "codigo": 6638,
+      "nome": "AGILE LTZ EFFECT 1.4 8V FlexPower 5p Mec"
+    },
+    {
+      "codigo": 6639,
+      "nome": "AGILE LTZ EFFECT EASYTR.1.4 8V FlexP. 5p"
+    },
+    {
+      "codigo": 5722,
+      "nome": "AGILE LTZ WI-FI 1.4 8V FlexPower 5p"
+    },
+    {
+      "codigo": 931,
+      "nome": "Astra 2.0 8V/ CD 2.0 8V Hatchback 5p Aut"
+    },
+    {
+      "codigo": 932,
+      "nome": "Astra 2.0 8V/ CD 2.0 8V Hatchback 5p Mec"
+    },
+    {
+      "codigo": 933,
+      "nome": "Astra 2.0/ CD 2.0 8V 3p Aut."
+    },
+    {
+      "codigo": 934,
+      "nome": "Astra 2.0/ CD/ GLS 2.0 MPFI 16V 3p"
+    },
+    {
+      "codigo": 935,
+      "nome": "Astra 2.0/ CD/ Sunny/ GLS 2.0 8V 3p"
+    },
+    {
+      "codigo": 936,
+      "nome": "Astra 500 Sedan 2.0 MPFI 16V 4p"
+    },
+    {
+      "codigo": 4137,
+      "nome": "Astra Advant. 2.0 MPFI 8V FlexP. 5p Aut."
+    },
+    {
+      "codigo": 3968,
+      "nome": "Astra Advantage 2.0 MPFI 8V FlexPower 5p"
+    },
+    {
+      "codigo": 937,
+      "nome": "Astra Advantage 2.0 MPFI FlexPower 8V 3p"
+    },
+    {
+      "codigo": 938,
+      "nome": "Astra Comfort 2.0 MPFI FlexPower 8V 3p"
+    },
+    {
+      "codigo": 939,
+      "nome": "Astra Comfort 2.0 MPFI FlexPower 8V 5p"
+    },
+    {
+      "codigo": 940,
+      "nome": "Astra Eleg. 2.0 MPFI FlexPower 8V 5p Aut"
+    },
+    {
+      "codigo": 941,
+      "nome": "Astra Elegance 2.0 MPFI FlexPower 8V 3p"
+    },
+    {
+      "codigo": 942,
+      "nome": "Astra Elegance 2.0 MPFI FlexPower 8V 5p"
+    },
+    {
+      "codigo": 943,
+      "nome": "Astra Elite 2.0 MPFI Flex Pow. 8V 5p Aut"
+    },
+    {
+      "codigo": 944,
+      "nome": "Astra Elite 2.0 MPFI FlexPower 8V 5p Mec"
+    },
+    {
+      "codigo": 945,
+      "nome": "Astra GL 1.8 MPFI 3p"
+    },
+    {
+      "codigo": 946,
+      "nome": "Astra GL Milenium 1.8 MPFI 4p"
+    },
+    {
+      "codigo": 947,
+      "nome": "Astra GLS 2.0 MPFI"
+    },
+    {
+      "codigo": 948,
+      "nome": "Astra GLS 2.0 MPFI SW"
+    },
+    {
+      "codigo": 949,
+      "nome": "Astra GSi 2.0 16V 136cv Hatchback 5p"
+    },
+    {
+      "codigo": 963,
+      "nome": "Astra S.Sport 2.0 F.Pow. 5p/Sport 2.0 3p"
+    },
+    {
+      "codigo": 3969,
+      "nome": "Astra Sed. Advant. 2.0 8V MPFI FlexP. 4p"
+    },
+    {
+      "codigo": 4138,
+      "nome": "Astra Sed.Advan. 2.0 8V MPFI FlexP. Aut."
+    },
+    {
+      "codigo": 950,
+      "nome": "Astra Sed.Comf. 2.0 MPFI FlexPower 8V 4p"
+    },
+    {
+      "codigo": 951,
+      "nome": "Astra Sed.Comf.2.0 MPFI MultiPower 8V 4p"
+    },
+    {
+      "codigo": 952,
+      "nome": "Astra Sed.Eleg. 2.0 MPFI FlexP.8V Aut."
+    },
+    {
+      "codigo": 953,
+      "nome": "Astra Sed.Eleg.2.0 MPFI FlexPower 8V 4p"
+    },
+    {
+      "codigo": 954,
+      "nome": "Astra Sed.Eleg.2.0 MPFI MultiPower 8V 4p"
+    },
+    {
+      "codigo": 955,
+      "nome": "Astra Sed.Elite 2.0 MPFI FlexP.8V Aut."
+    },
+    {
+      "codigo": 956,
+      "nome": "Astra Sed.Elite 2.0 MPFI FlexPower 8V 4p"
+    },
+    {
+      "codigo": 9753,
+      "nome": "Astra Sedan 1.8 MPFI 8V 4p"
+    },
+    {
+      "codigo": 958,
+      "nome": "Astra Sedan 2.0/ CD 2.0 MPFI 8V 4p Aut."
+    },
+    {
+      "codigo": 959,
+      "nome": "Astra Sedan 2.0/CD/ Expres.GLS 2.0 8V 4p"
+    },
+    {
+      "codigo": 960,
+      "nome": "Astra Sedan 2.0/CD/ GLS/ Adv. 2.0 16V 4p"
+    },
+    {
+      "codigo": 961,
+      "nome": "Astra Sedan Comfort 1.8 MPFI 8V 4p"
+    },
+    {
+      "codigo": 9629,
+      "nome": "Astra Sedan GL 1.8 MPFI 4p"
+    },
+    {
+      "codigo": 11218,
+      "nome": "BLAZER EV RS 347cv (Elétrico)"
+    },
+    {
+      "codigo": 964,
+      "nome": "Blazer Jimmy 4.3 V6"
+    },
+    {
+      "codigo": 965,
+      "nome": "Blazer S-10 4.3 V6"
+    },
+    {
+      "codigo": 966,
+      "nome": "Blazer SS-10 4.3 V6"
+    },
+    {
+      "codigo": 10726,
+      "nome": "BOLT EUV Premier 203cv (Elétrico)"
+    },
+    {
+      "codigo": 9042,
+      "nome": "BOLT EV Premier 203cv (Elétrico)"
+    },
+    {
+      "codigo": 967,
+      "nome": "Bonanza S / Luxe 4.0 Diesel Turbo"
+    },
+    {
+      "codigo": 968,
+      "nome": "Bonanza S / Luxe 4.1"
+    },
+    {
+      "codigo": 969,
+      "nome": "Brasinca Blazer CD 4.0 Diesel"
+    },
+    {
+      "codigo": 970,
+      "nome": "Brasinca Blazer CD 4.1"
+    },
+    {
+      "codigo": 971,
+      "nome": "C-10 2.5/4.1"
+    },
+    {
+      "codigo": 972,
+      "nome": "C-10 CD 2.5/ 4.1"
+    },
+    {
+      "codigo": 973,
+      "nome": "C-10 De Luxe 2.5/4.1"
+    },
+    {
+      "codigo": 974,
+      "nome": "C-10 De Luxe CD 2.5/ 4.1"
+    },
+    {
+      "codigo": 975,
+      "nome": "C-20 Custom De Luxe 4.1"
+    },
+    {
+      "codigo": 976,
+      "nome": "C-20 Custom De Luxe CD 4.1"
+    },
+    {
+      "codigo": 977,
+      "nome": "C-20 Custom Std. 4.1"
+    },
+    {
+      "codigo": 978,
+      "nome": "C-20 Custom Std. CD 4.1"
+    },
+    {
+      "codigo": 979,
+      "nome": "Calibra 16V"
+    },
+    {
+      "codigo": 7790,
+      "nome": "CAMARO FIFTY 6.2 V8 16V 461cv"
+    },
+    {
+      "codigo": 980,
+      "nome": "Camaro RS 5.0 V8"
+    },
+    {
+      "codigo": 981,
+      "nome": "Camaro Sport 5.0 Conv."
+    },
+    {
+      "codigo": 5415,
+      "nome": "Camaro SS 6.2 V8 16V"
+    },
+    {
+      "codigo": 10946,
+      "nome": "Camaro SS Collection 6.2 V8 16V"
+    },
+    {
+      "codigo": 6887,
+      "nome": "Camaro SS Conversível 6.2 V8 16V"
+    },
+    {
+      "codigo": 982,
+      "nome": "Camaro Z-28 Targa/Conv. 5.7"
+    },
+    {
+      "codigo": 983,
+      "nome": "Caprice 4.3 V8"
+    },
+    {
+      "codigo": 984,
+      "nome": "Caprice SW 4.3 V8"
+    },
+    {
+      "codigo": 985,
+      "nome": "Caprice Victoria"
+    },
+    {
+      "codigo": 11791,
+      "nome": "CAPTIVA EV Premier"
+    },
+    {
+      "codigo": 5466,
+      "nome": "CAPTIVA SPORT AWD 3.0 V6 24V 268cv"
+    },
+    {
+      "codigo": 4734,
+      "nome": "CAPTIVA SPORT AWD 3.6 V6 24V 261cv 4x4"
+    },
+    {
+      "codigo": 4841,
+      "nome": "CAPTIVA SPORT FWD 2.4 16V 171/185cv"
+    },
+    {
+      "codigo": 5467,
+      "nome": "CAPTIVA SPORT FWD 3.0 V6 24V 268cv 4x2"
+    },
+    {
+      "codigo": 4735,
+      "nome": "CAPTIVA SPORT FWD 3.6 V6 24V 261cv 4x2"
+    },
+    {
+      "codigo": 986,
+      "nome": "Caravan Comodoro 4.1/2.5"
+    },
+    {
+      "codigo": 987,
+      "nome": "Caravan Diplomata 4.1/2.5"
+    },
+    {
+      "codigo": 988,
+      "nome": "Caravan L/SL/S/SS 2.5/4.1/4.2"
+    },
+    {
+      "codigo": 989,
+      "nome": "Cavalier 3.1 Conv."
+    },
+    {
+      "codigo": 990,
+      "nome": "Cavalier L 2.0"
+    },
+    {
+      "codigo": 991,
+      "nome": "Celta 1.0/ Super 1.0 MPFI VHC 8v 5p"
+    },
+    {
+      "codigo": 992,
+      "nome": "Celta 1.0/Super/N.Piq.1.0 MPFi VHC 8V 3p"
+    },
+    {
+      "codigo": 993,
+      "nome": "Celta 1.4/ Super/ Energy 1.4 8V 85cv 3p"
+    },
+    {
+      "codigo": 994,
+      "nome": "Celta 1.4/ Super/ Energy 1.4 8V 85cv 5p"
+    },
+    {
+      "codigo": 6611,
+      "nome": "Celta ADVANTAGE 1.0 8v FlexPower 5p"
+    },
+    {
+      "codigo": 997,
+      "nome": "Celta Life 1.0 MPFI VHC 8V 3p"
+    },
+    {
+      "codigo": 998,
+      "nome": "Celta Life 1.0 MPFI VHC 8V 5p"
+    },
+    {
+      "codigo": 999,
+      "nome": "Celta Life 1.4 MPFI 8V 85cv 3p"
+    },
+    {
+      "codigo": 1000,
+      "nome": "Celta Life 1.4 MPFI 8V 85cv 5p"
+    },
+    {
+      "codigo": 995,
+      "nome": "Celta Life/ LS 1.0 MPFI 8V FlexPower 3p"
+    },
+    {
+      "codigo": 996,
+      "nome": "Celta Life/ LS 1.0 MPFI 8V FlexPower 5p"
+    },
+    {
+      "codigo": 1001,
+      "nome": "Celta Spirit 1.0 MPFI 8V FlexPower 3p"
+    },
+    {
+      "codigo": 1003,
+      "nome": "Celta Spirit 1.0 MPFI VHC 8V 3p"
+    },
+    {
+      "codigo": 1004,
+      "nome": "Celta Spirit 1.0 MPFI VHC 8V 5p"
+    },
+    {
+      "codigo": 1005,
+      "nome": "Celta Spirit 1.4 MPFI 8V 85cv 3p"
+    },
+    {
+      "codigo": 1006,
+      "nome": "Celta Spirit 1.4 MPFI 8V 85cv 5p"
+    },
+    {
+      "codigo": 1002,
+      "nome": "Celta Spirit/ LT 1.0 MPFI 8V FlexP. 5p"
+    },
+    {
+      "codigo": 1007,
+      "nome": "Celta Super 1.0 MPFI 8V FlexPower 3p"
+    },
+    {
+      "codigo": 1008,
+      "nome": "Celta Super 1.0 MPFI 8V FlexPower 5p"
+    },
+    {
+      "codigo": 1009,
+      "nome": "Chevette Junior 1.0"
+    },
+    {
+      "codigo": 1010,
+      "nome": "Chevette L / SL / SL/e / DL / SE 1.6"
+    },
+    {
+      "codigo": 1011,
+      "nome": "Chevy 500 DL / SL / SE/ Furgão 1.6"
+    },
+    {
+      "codigo": 1012,
+      "nome": "Cheynne 4.3 V6"
+    },
+    {
+      "codigo": 6747,
+      "nome": "Classic ADVANTAGE 1.0 VHC FlexPower 4p"
+    },
+    {
+      "codigo": 4924,
+      "nome": "Classic Life/LS 1.0 VHC FlexP. 4p"
+    },
+    {
+      "codigo": 9588,
+      "nome": "COBALT 1.8 8V Econo.Flex 4p Aut."
+    },
+    {
+      "codigo": 6584,
+      "nome": "COBALT ADVANTAGE 1.4 MPFI 8V F.Power 4p"
+    },
+    {
+      "codigo": 6585,
+      "nome": "COBALT ADVANTAGE 1.8 8V Eco.Flex 4p Aut."
+    },
+    {
+      "codigo": 7456,
+      "nome": "COBALT ELITE 1.8 8V Econo.Flex 4p Aut."
+    },
+    {
+      "codigo": 7257,
+      "nome": "COBALT Graphite 1.8 8V Econo.Flex 4p Aut"
+    },
+    {
+      "codigo": 7258,
+      "nome": "COBALT Graphite 1.8 8V Econo.Flex 4p Mec"
+    },
+    {
+      "codigo": 5723,
+      "nome": "COBALT LS 1.4 8V FlexPower 4p"
+    },
+    {
+      "codigo": 5724,
+      "nome": "COBALT LT 1.4 8V FlexPower/EconoFlex 4p"
+    },
+    {
+      "codigo": 6172,
+      "nome": "COBALT LT 1.8 8V Econo.Flex 4p Aut."
+    },
+    {
+      "codigo": 6173,
+      "nome": "COBALT LT 1.8 8V Econo.Flex 4p Mec."
+    },
+    {
+      "codigo": 5725,
+      "nome": "COBALT LTZ 1.4 8V FlexPower/EconoFlex 4p"
+    },
+    {
+      "codigo": 6174,
+      "nome": "COBALT LTZ 1.8 8V Econo.Flex 4p Aut."
+    },
+    {
+      "codigo": 6175,
+      "nome": "COBALT LTZ 1.8 8V Econo.Flex 4p Mec."
+    },
+    {
+      "codigo": 1013,
+      "nome": "Corsa Furgão 1.6 MPFi Powertech 92cv"
+    },
+    {
+      "codigo": 1014,
+      "nome": "Corsa GL 1.6 MPFI / 1.4 EFI 2p e 4p"
+    },
+    {
+      "codigo": 1015,
+      "nome": "Corsa GLS 1.6 MPFI 5p"
+    },
+    {
+      "codigo": 1016,
+      "nome": "Corsa GSi 16V"
+    },
+    {
+      "codigo": 1017,
+      "nome": "Corsa Hat. Joy 1.0/ 1.0 FlexPower 8V 5p"
+    },
+    {
+      "codigo": 1018,
+      "nome": "Corsa Hat. Joy 1.8 MPFI 8V FlexPower 5p"
+    },
+    {
+      "codigo": 1019,
+      "nome": "Corsa Hat. Maxx 1.0/ 1.0 FlexPower 8V 5p"
+    },
+    {
+      "codigo": 4379,
+      "nome": "Corsa Hat. Maxx 1.4 8V ECONOFLEX 5p"
+    },
+    {
+      "codigo": 1020,
+      "nome": "Corsa Hat. Maxx 1.8 MPFI 8V FlexPower 5p"
+    },
+    {
+      "codigo": 1021,
+      "nome": "Corsa Hat. Prem. 1.0/1.0 FlexPower 8V 5p"
+    },
+    {
+      "codigo": 4380,
+      "nome": "Corsa Hat. Premium 1.4 8V ECONOFLEX 5p"
+    },
+    {
+      "codigo": 3818,
+      "nome": "Corsa Hat. SS 1.8 MPFI 8V FlexPower 5p"
+    },
+    {
+      "codigo": 1022,
+      "nome": "Corsa Hat.Premium 1.8 MPFI 8V F.Power 5p"
+    },
+    {
+      "codigo": 1023,
+      "nome": "Corsa Hatchback 1.0 MPFI 8V 71cv 5p"
+    },
+    {
+      "codigo": 1024,
+      "nome": "Corsa Hatchback 1.8 MPFI 8V 102cv 5p"
+    },
+    {
+      "codigo": 1025,
+      "nome": "Corsa Hatchback 1.8 MPFI FlexPower 8V 5p"
+    },
+    {
+      "codigo": 1026,
+      "nome": "Corsa Pick-Up GL/ Champ 1.6 MPFI / EFI"
+    },
+    {
+      "codigo": 1027,
+      "nome": "Corsa Pick-Up Sport 1.6 MPFI"
+    },
+    {
+      "codigo": 1028,
+      "nome": "Corsa Pick-Up STD/ Rodeio 1.6 MPFI"
+    },
+    {
+      "codigo": 1029,
+      "nome": "Corsa Sed Clas.Spirit 1.6MPFI VHC 8V Aut"
+    },
+    {
+      "codigo": 1030,
+      "nome": "Corsa Sed Clas.Super 1.6MPFI VHC 8V Aut"
+    },
+    {
+      "codigo": 1031,
+      "nome": "Corsa Sed Class.Life 1.0/1.0 FlexPower"
+    },
+    {
+      "codigo": 1033,
+      "nome": "Corsa Sed Class.Spirit 1.0/1.0 FlexPower"
+    },
+    {
+      "codigo": 1035,
+      "nome": "Corsa Sed Class.Super 1.0/1.0 FlexPower"
+    },
+    {
+      "codigo": 1032,
+      "nome": "Corsa Sed Classic Life 1.6 MPFI VHC 8V"
+    },
+    {
+      "codigo": 1034,
+      "nome": "Corsa Sed Classic Spirit 1.6 MPFI VHC 8V"
+    },
+    {
+      "codigo": 1036,
+      "nome": "Corsa Sed Classic Super 1.6 MPFI VHC 8V"
+    },
+    {
+      "codigo": 1037,
+      "nome": "Corsa Sed. Joy 1.0/ 1.0 FlexPower 8V 4p"
+    },
+    {
+      "codigo": 1038,
+      "nome": "Corsa Sed. Joy 1.8 MPFI 8V FlexPower"
+    },
+    {
+      "codigo": 1039,
+      "nome": "Corsa Sed. Maxx 1.0/ 1.0 FlexPower 8V 4p"
+    },
+    {
+      "codigo": 4381,
+      "nome": "Corsa Sed. Maxx 1.4 8V ECONOFLEX 4p"
+    },
+    {
+      "codigo": 1040,
+      "nome": "Corsa Sed. Maxx 1.8 MPFI 8V FlexPower"
+    },
+    {
+      "codigo": 4382,
+      "nome": "Corsa Sed. Premium 1.4 8V ECONOFLEX 4p"
+    },
+    {
+      "codigo": 1042,
+      "nome": "Corsa Sed. Premium 1.8 MPFI 8V FlexPower"
+    },
+    {
+      "codigo": 1041,
+      "nome": "Corsa Sed.Prem. 1.0/ 1.0 FlexPower 8V 4p"
+    },
+    {
+      "codigo": 1043,
+      "nome": "Corsa Sed.Wind 1.0/Millenium/Classic VHC"
+    },
+    {
+      "codigo": 1044,
+      "nome": "Corsa Sedan 1.0 MPFI 8V 71cv 4p"
+    },
+    {
+      "codigo": 1045,
+      "nome": "Corsa Sedan 1.8 MPFI 8V  102cv 4p"
+    },
+    {
+      "codigo": 1046,
+      "nome": "Corsa Sedan 1.8 MPFI FlexPower 8V 4p"
+    },
+    {
+      "codigo": 1047,
+      "nome": "Corsa Sedan GL 1.6  MPFI 4p"
+    },
+    {
+      "codigo": 1048,
+      "nome": "Corsa Sedan GLS 1.6 16V MPFI 4p"
+    },
+    {
+      "codigo": 1049,
+      "nome": "Corsa Sedan GLS 1.6 MPFI 4p"
+    },
+    {
+      "codigo": 1053,
+      "nome": "Corsa Sedan Sup./Classic 1.6 8v Aut/Mec"
+    },
+    {
+      "codigo": 1050,
+      "nome": "Corsa Sedan Super 1.0 MPFI 16V 4p"
+    },
+    {
+      "codigo": 1051,
+      "nome": "Corsa Sedan Super 1.0 MPFI 4p"
+    },
+    {
+      "codigo": 1052,
+      "nome": "Corsa Sedan Super Milenium 1.0 MPFI 16V"
+    },
+    {
+      "codigo": 1054,
+      "nome": "Corsa Super 1.0 MPFI / 2p e 4p"
+    },
+    {
+      "codigo": 1055,
+      "nome": "Corsa Super 1.0 MPFI 16V 3p"
+    },
+    {
+      "codigo": 1056,
+      "nome": "Corsa Super 1.0 MPFI 16V 5p"
+    },
+    {
+      "codigo": 1057,
+      "nome": "Corsa Super 1.6 MPFI 8v 5p"
+    },
+    {
+      "codigo": 1058,
+      "nome": "Corsa Wagon GL 1.6 MPFI 4p"
+    },
+    {
+      "codigo": 1059,
+      "nome": "Corsa Wagon GLS 1.6 16V MPFI 4p"
+    },
+    {
+      "codigo": 1060,
+      "nome": "Corsa Wagon GLS 1.6 8V 4p"
+    },
+    {
+      "codigo": 1061,
+      "nome": "Corsa Wagon Super 1.0 MPFI 16V"
+    },
+    {
+      "codigo": 1062,
+      "nome": "Corsa Wagon Super 1.6 MPFI 8v"
+    },
+    {
+      "codigo": 1063,
+      "nome": "Corsa Wind 1.0 MPF/MilleniumI/ EFI 4p"
+    },
+    {
+      "codigo": 1064,
+      "nome": "Corsa Wind 1.0 MPFI / EFI  2p"
+    },
+    {
+      "codigo": 1065,
+      "nome": "Corsa Wind 1.6 MPFi 2p"
+    },
+    {
+      "codigo": 1066,
+      "nome": "Corsa Wind 1.6 MPFi 4p"
+    },
+    {
+      "codigo": 1067,
+      "nome": "Corsa Wind Piquet/ Champ 1.0 MPFI 2p"
+    },
+    {
+      "codigo": 1068,
+      "nome": "Corvette 5.7/ 6.0, 6.2 Conv./Stingray"
+    },
+    {
+      "codigo": 1069,
+      "nome": "Corvette 5.7/ 6.0, 6.2 Targa/Stingray"
+    },
+    {
+      "codigo": 8573,
+      "nome": "CRUZE Black Bow Tie 1.4 TB Flex 4p Aut"
+    },
+    {
+      "codigo": 8574,
+      "nome": "CRUZE HB Black Bow Tie 1.4 TB Flex Aut."
+    },
+    {
+      "codigo": 5975,
+      "nome": "CRUZE HB Sport LT 1.8 16V FlexP. 5p Aut"
+    },
+    {
+      "codigo": 5976,
+      "nome": "CRUZE HB Sport LT 1.8 16V FlexP. 5p Mec"
+    },
+    {
+      "codigo": 5977,
+      "nome": "CRUZE HB Sport LTZ 1.8 16V FlexP. 5p Aut"
+    },
+    {
+      "codigo": 5978,
+      "nome": "CRUZE HB Sport LTZ 1.8 16V FlexP. 5p Mec"
+    },
+    {
+      "codigo": 7618,
+      "nome": "CRUZE LT 1.4 16V Turbo Flex 4p Aut."
+    },
+    {
+      "codigo": 5635,
+      "nome": "CRUZE LT 1.8 16V FlexPower 4p Aut."
+    },
+    {
+      "codigo": 5636,
+      "nome": "CRUZE LT 1.8 16V FlexPower 4p Mec."
+    },
+    {
+      "codigo": 7619,
+      "nome": "CRUZE LTZ 1.4 16V Turbo Flex 4p Aut."
+    },
+    {
+      "codigo": 5637,
+      "nome": "CRUZE LTZ 1.8 16V FlexPower 4p Aut."
+    },
+    {
+      "codigo": 9735,
+      "nome": "CRUZE Midnight 1.4 16V TB Flex Aut."
+    },
+    {
+      "codigo": 8885,
+      "nome": "CRUZE Premier 1.4 16V TB Flex Aut."
+    },
+    {
+      "codigo": 7827,
+      "nome": "CRUZE Sport LT 1.4 16V TB Flex 5p Aut."
+    },
+    {
+      "codigo": 7828,
+      "nome": "CRUZE Sport LTZ 1.4 16V TB Flex 5p Aut."
+    },
+    {
+      "codigo": 8886,
+      "nome": "CRUZE Sport Premier 1.4 16V TB Flex Aut."
+    },
+    {
+      "codigo": 9736,
+      "nome": "CRUZE Sport RS 1.4 16V TB Flex 5p Aut."
+    },
+    {
+      "codigo": 1070,
+      "nome": "D-10 CD Diesel"
+    },
+    {
+      "codigo": 1071,
+      "nome": "D-10 Diesel"
+    },
+    {
+      "codigo": 1072,
+      "nome": "D-20 4.0 Champ/Conquest/El Caminho Dies."
+    },
+    {
+      "codigo": 1073,
+      "nome": "D-20 CD Lx S4T/Tro.Plus/Lx 3.9/4.0 TDies"
+    },
+    {
+      "codigo": 1076,
+      "nome": "D-20 S / El Caminho 3.9/4.0 CD T.Dies"
+    },
+    {
+      "codigo": 1074,
+      "nome": "D-20 S / Luxe 3.9/4.0 Diesel"
+    },
+    {
+      "codigo": 1075,
+      "nome": "D-20 S / Luxe 3.9/4.0 T.Diesel"
+    },
+    {
+      "codigo": 1077,
+      "nome": "D-20 S 3.9/4.0 Turbo Diesel"
+    },
+    {
+      "codigo": 11294,
+      "nome": "EQUINOX ACTIV 1.5 Turbo 177cv Aut."
+    },
+    {
+      "codigo": 11261,
+      "nome": "EQUINOX EV 292cv (Elétrico)"
+    },
+    {
+      "codigo": 9081,
+      "nome": "EQUINOX LT 1.5 Turbo 172cv Aut."
+    },
+    {
+      "codigo": 8150,
+      "nome": "EQUINOX LT 2.0 Turbo 262cv Aut."
+    },
+    {
+      "codigo": 9082,
+      "nome": "EQUINOX Midnight 1.5 Turbo 172cv Aut."
+    },
+    {
+      "codigo": 9135,
+      "nome": "EQUINOX Premier 1.5 Turbo 172cv Aut."
+    },
+    {
+      "codigo": 8080,
+      "nome": "EQUINOX Premier 2.0 Turbo AWD 262cv Aut."
+    },
+    {
+      "codigo": 11318,
+      "nome": "EQUINOX RS 1.5 Turbo  Aut."
+    },
+    {
+      "codigo": 1078,
+      "nome": "Ipanema GL 1.8 MPFI / EFI /SL 4p"
+    },
+    {
+      "codigo": 1079,
+      "nome": "Ipanema GL/ Flair 2.0 MPFI / EFI 4p"
+    },
+    {
+      "codigo": 1080,
+      "nome": "Ipanema GLS/SLE 2.0EFI /SL/e1.8/Sol/Wave"
+    },
+    {
+      "codigo": 8821,
+      "nome": "JOY Hatch 1.0 8V Black Edition Flex Mec."
+    },
+    {
+      "codigo": 8822,
+      "nome": "JOY Hatch 1.0 8V Flex 5p Mec."
+    },
+    {
+      "codigo": 8887,
+      "nome": "JOY Plus 1.0 8V 4p Flex Mec."
+    },
+    {
+      "codigo": 8888,
+      "nome": "JOY Plus Black Ed.1.0 8V 4p Flex Mec."
+    },
+    {
+      "codigo": 1081,
+      "nome": "Kadett GL 2.0 MPFI / EFI"
+    },
+    {
+      "codigo": 1082,
+      "nome": "Kadett GL/SL/Lite/Turim 1.8"
+    },
+    {
+      "codigo": 1083,
+      "nome": "Kadett GLS 1.8 EFI / SL/e 1.8"
+    },
+    {
+      "codigo": 1084,
+      "nome": "Kadett GLS 2.0 MPFI"
+    },
+    {
+      "codigo": 1085,
+      "nome": "Kadett GSi / GS 2.0"
+    },
+    {
+      "codigo": 1086,
+      "nome": "Kadett GSi 2.0 Conversível"
+    },
+    {
+      "codigo": 1087,
+      "nome": "Kadett Sport 2.0 MPFI / EFI"
+    },
+    {
+      "codigo": 1088,
+      "nome": "Lumina"
+    },
+    {
+      "codigo": 5276,
+      "nome": "MALIBU LTZ 2.4 16V 171cv 4p"
+    },
+    {
+      "codigo": 1089,
+      "nome": "Marajo SL/SLe/Se"
+    },
+    {
+      "codigo": 1090,
+      "nome": "Meriva 1.8/ CD 1.8 MPFI 16V 122cv 5p"
+    },
+    {
+      "codigo": 1091,
+      "nome": "Meriva 1.8/ CD 1.8 MPFI 8V 102cv 5p"
+    },
+    {
+      "codigo": 1092,
+      "nome": "Meriva 1.8/ CD 1.8 MPFI FlexPower 8V"
+    },
+    {
+      "codigo": 6058,
+      "nome": "Meriva COLLECTION 1.4 8V ECONOFLEX 5p"
+    },
+    {
+      "codigo": 4767,
+      "nome": "Meriva Expres.EASYTRONIC 1.8 FlexPower"
+    },
+    {
+      "codigo": 4768,
+      "nome": "Meriva Joy 1.4 MPFI 8V ECONOFLEX 5p"
+    },
+    {
+      "codigo": 1093,
+      "nome": "Meriva Joy 1.8 MPFI 8V FlexPower"
+    },
+    {
+      "codigo": 4769,
+      "nome": "Meriva Maxx 1.4 MPFI 8V ECONOFLEX 5p"
+    },
+    {
+      "codigo": 1094,
+      "nome": "Meriva Maxx 1.8 MPFI 8V FlexPower"
+    },
+    {
+      "codigo": 4475,
+      "nome": "Meriva Prem.EASYTRONIC 1.8 FlexPower 5p"
+    },
+    {
+      "codigo": 1095,
+      "nome": "Meriva Premium 1.8 MPFI 8V FlexPower"
+    },
+    {
+      "codigo": 3819,
+      "nome": "Meriva SS 1.8 MPFI 8V FlexPower 5p"
+    },
+    {
+      "codigo": 4770,
+      "nome": "Meriva SS EASYTRONIC 1.8 FlexPower 5p"
+    },
+    {
+      "codigo": 1096,
+      "nome": "MONTANA  Sport 1.8 MPFI FlexPower 8V"
+    },
+    {
+      "codigo": 10401,
+      "nome": "MONTANA 1.2 Turbo Flex 12V 4p Mec."
+    },
+    {
+      "codigo": 4383,
+      "nome": "MONTANA 1.4 8V Conquest ECONOFLEX  2p"
+    },
+    {
+      "codigo": 1097,
+      "nome": "MONTANA 1.8/ 1.8 Conquest FlexPower 8V"
+    },
+    {
+      "codigo": 5107,
+      "nome": "MONTANA ARENA 1.4 ECONOFLEX  8V 2p"
+    },
+    {
+      "codigo": 5030,
+      "nome": "MONTANA COMBO 1.4 8V ECONOFLEX"
+    },
+    {
+      "codigo": 5416,
+      "nome": "MONTANA LS 1.4 ECONOFLEX 8V 2p"
+    },
+    {
+      "codigo": 6204,
+      "nome": "MONTANA LS COMBO 1.4 8V ECONOFLEX 2p"
+    },
+    {
+      "codigo": 10402,
+      "nome": "MONTANA LT 1.2  Turbo Flex 12V 4p Mec."
+    },
+    {
+      "codigo": 10403,
+      "nome": "MONTANA LTZ 1.2 Turbo Flex 12V 4p Aut."
+    },
+    {
+      "codigo": 1098,
+      "nome": "MONTANA Off Road 1.8 MPFI FlexPower 8V"
+    },
+    {
+      "codigo": 10404,
+      "nome": "MONTANA PREMIER 1.2 Turbo Flex 12V Aut."
+    },
+    {
+      "codigo": 10759,
+      "nome": "MONTANA RS 1.2 Turbo Flex 12V Aut."
+    },
+    {
+      "codigo": 5108,
+      "nome": "MONTANA Sport 1.4 ECONOFLEX 8V 2p"
+    },
+    {
+      "codigo": 1099,
+      "nome": "Monza 1.6i/1.8i (restante)"
+    },
+    {
+      "codigo": 1100,
+      "nome": "Monza Class 1.8/ 2.0"
+    },
+    {
+      "codigo": 1101,
+      "nome": "Monza Classic SE 2.0 /MPFI e EFI 2p e 4p"
+    },
+    {
+      "codigo": 1102,
+      "nome": "Monza Classic/ SL/e/SR 1.8"
+    },
+    {
+      "codigo": 1103,
+      "nome": "Monza GL 1.8 EFI/ SL/ L/ 650/Barc. 2e4p"
+    },
+    {
+      "codigo": 1104,
+      "nome": "Monza GL 2.0 EFI/SL/L/650/Club/Barc.2e4p"
+    },
+    {
+      "codigo": 1105,
+      "nome": "Monza GLS/ Hi-Tech 2.0 EFI 2p e 4p"
+    },
+    {
+      "codigo": 1106,
+      "nome": "Monza SL/e SR 2.0"
+    },
+    {
+      "codigo": 1108,
+      "nome": "Omega CD 3.8 V6"
+    },
+    {
+      "codigo": 1109,
+      "nome": "Omega CD 4.1 / 3.0"
+    },
+    {
+      "codigo": 1107,
+      "nome": "Omega CD/ FITTIPALDI 3.6 V6 24V 4p"
+    },
+    {
+      "codigo": 1110,
+      "nome": "Omega Diamond"
+    },
+    {
+      "codigo": 1111,
+      "nome": "Omega GL 2.0/ 2.2"
+    },
+    {
+      "codigo": 1112,
+      "nome": "Omega GLS 2.2 / 2.0"
+    },
+    {
+      "codigo": 1113,
+      "nome": "Omega GLS 4.1"
+    },
+    {
+      "codigo": 6748,
+      "nome": "ONIX  Lollapalooza 1.0 F.Power 5p Mec."
+    },
+    {
+      "codigo": 8988,
+      "nome": "ONIX HATCH 1.0 12V Flex 5p Mec."
+    },
+    {
+      "codigo": 11615,
+      "nome": "ONIX HATCH 1.0 12V TB 5p Mec."
+    },
+    {
+      "codigo": 8889,
+      "nome": "ONIX HATCH 1.0 12V TB Flex 5p Aut."
+    },
+    {
+      "codigo": 11616,
+      "nome": "ONIX HATCH 100 Anos 1.0 12V 5p Mec."
+    },
+    {
+      "codigo": 7689,
+      "nome": "ONIX HATCH ACTIV 1.4 8V Flex 5P Aut."
+    },
+    {
+      "codigo": 7690,
+      "nome": "ONIX HATCH ACTIV 1.4 8V Flex 5p Mec."
+    },
+    {
+      "codigo": 8239,
+      "nome": "ONIX HATCH ADVANTAGE 1.4 8V Flex 5p Aut."
+    },
+    {
+      "codigo": 7120,
+      "nome": "ONIX HATCH EFFECT 1.4 8V F.Power 5p Mec."
+    },
+    {
+      "codigo": 7691,
+      "nome": "ONIX HATCH Joy 1.0 8V Flex 5p Mec."
+    },
+    {
+      "codigo": 6231,
+      "nome": "ONIX HATCH LS 1.0 8V FlexPower 5p Mec."
+    },
+    {
+      "codigo": 8949,
+      "nome": "ONIX HATCH LT 1.0 12V Flex 5p Mec."
+    },
+    {
+      "codigo": 8890,
+      "nome": "ONIX HATCH LT 1.0 12V TB Flex 5p Aut."
+    },
+    {
+      "codigo": 8891,
+      "nome": "ONIX HATCH LT 1.0 12V TB Flex 5p Mec."
+    },
+    {
+      "codigo": 6232,
+      "nome": "ONIX HATCH LT 1.0 8V FlexPower 5p Mec."
+    },
+    {
+      "codigo": 6530,
+      "nome": "ONIX HATCH LT 1.4 8V FlexPower 5p Aut."
+    },
+    {
+      "codigo": 6233,
+      "nome": "ONIX HATCH LT 1.4 8V FlexPower 5p Mec."
+    },
+    {
+      "codigo": 8892,
+      "nome": "ONIX HATCH LTZ 1.0 12V TB Flex 5p Aut."
+    },
+    {
+      "codigo": 8893,
+      "nome": "ONIX HATCH LTZ 1.0 12V TB Flex 5p Mec."
+    },
+    {
+      "codigo": 6531,
+      "nome": "ONIX HATCH LTZ 1.4 8V FlexPower 5p Aut."
+    },
+    {
+      "codigo": 6234,
+      "nome": "ONIX HATCH LTZ 1.4 8V FlexPower 5p Mec."
+    },
+    {
+      "codigo": 8894,
+      "nome": "ONIX HATCH PREM. 1.0 12V TB Flex 5p Aut."
+    },
+    {
+      "codigo": 9211,
+      "nome": "ONIX HATCH RS 1.0 TB 12V Flex 5p Aut."
+    },
+    {
+      "codigo": 7259,
+      "nome": "ONIX HATCH SELEÇÃO 1.0 8V Flex 5p Mec."
+    },
+    {
+      "codigo": 9212,
+      "nome": "ONIX SD. P. PR. MIDNIGHT 1.0 TB Flex Aut"
+    },
+    {
+      "codigo": 8823,
+      "nome": "ONIX SED. Plus PREM. 1.0 12V TB Flex Aut"
+    },
+    {
+      "codigo": 11617,
+      "nome": "ONIX SEDAN Plus 1.0 12V Mec."
+    },
+    {
+      "codigo": 8824,
+      "nome": "ONIX SEDAN Plus 1.0 12V TB Flex Aut."
+    },
+    {
+      "codigo": 11618,
+      "nome": "ONIX SEDAN Plus 1.0 12V TB Flex Mec."
+    },
+    {
+      "codigo": 8950,
+      "nome": "ONIX SEDAN Plus LT 1.0 12V Flex 4p Mec."
+    },
+    {
+      "codigo": 8825,
+      "nome": "ONIX SEDAN Plus LT 1.0 12V TB Flex Aut."
+    },
+    {
+      "codigo": 8826,
+      "nome": "ONIX SEDAN Plus LT 1.0 12V TB Flex Mec."
+    },
+    {
+      "codigo": 8827,
+      "nome": "ONIX SEDAN Plus LTZ 1.0 12V TB Flex Aut."
+    },
+    {
+      "codigo": 8828,
+      "nome": "ONIX SEDAN Plus LTZ 1.0 12V TB Flex Mec."
+    },
+    {
+      "codigo": 1114,
+      "nome": "Opala Comodoro/Comod. SLE  4.1/2.5"
+    },
+    {
+      "codigo": 11777,
+      "nome": "Opala Diplomata/Diplom. SLE/SE 4.1/2.5"
+    },
+    {
+      "codigo": 1116,
+      "nome": "Opala L/SL/SS/ 2.5/4.1"
+    },
+    {
+      "codigo": 4188,
+      "nome": "PRISMA  Sed. Maxx/ LT 1.4 8V ECONOF. 4p"
+    },
+    {
+      "codigo": 6866,
+      "nome": "PRISMA Sed. ADVANT. 1.0 8V FlexPower 4p"
+    },
+    {
+      "codigo": 7373,
+      "nome": "PRISMA Sed. ADVANT. 1.4 8V F.Power Aut."
+    },
+    {
+      "codigo": 4189,
+      "nome": "PRISMA Sed. Joy 1.4 8V ECONOFLEX 4p"
+    },
+    {
+      "codigo": 4849,
+      "nome": "PRISMA Sed. Joy/ LS 1.0 8V FlexPower 4p"
+    },
+    {
+      "codigo": 6349,
+      "nome": "PRISMA Sed. LT 1.0 8V FlexPower 4p"
+    },
+    {
+      "codigo": 6350,
+      "nome": "PRISMA Sed. LT 1.4 8V FlexPower 4p"
+    },
+    {
+      "codigo": 6532,
+      "nome": "PRISMA Sed. LT 1.4 8V FlexPower 4p Aut."
+    },
+    {
+      "codigo": 6351,
+      "nome": "PRISMA Sed. LTZ 1.4 8V FlexPower 4p"
+    },
+    {
+      "codigo": 6533,
+      "nome": "PRISMA Sed. LTZ 1.4 8V FlexPower 4p Aut."
+    },
+    {
+      "codigo": 4850,
+      "nome": "PRISMA Sed. Maxx 1.0 8V FlexPower 4p"
+    },
+    {
+      "codigo": 1117,
+      "nome": "S10 Blazer  DTi 2.8 4x2 Turbo Diesel"
+    },
+    {
+      "codigo": 1118,
+      "nome": "S10 Blazer 2.4 MPFI 8V 128cv 4p"
+    },
+    {
+      "codigo": 1119,
+      "nome": "S10 Blazer 4.3 V6"
+    },
+    {
+      "codigo": 1120,
+      "nome": "S10 Blazer Advant. 2.4/2.4 MPFI F.Power"
+    },
+    {
+      "codigo": 1121,
+      "nome": "S10 Blazer Colina 2.4/2.4 MPFI F.Power"
+    },
+    {
+      "codigo": 1122,
+      "nome": "S10 Blazer Colina 2.8 TDI 4x4 Diesel"
+    },
+    {
+      "codigo": 1123,
+      "nome": "S10 Blazer DLX 2.2 MPFI / EFI"
+    },
+    {
+      "codigo": 1124,
+      "nome": "S10 Blazer DLX 2.4 MPFI 128cv 4p"
+    },
+    {
+      "codigo": 1125,
+      "nome": "S10 Blazer DLX 2.5 Diesel Turbo"
+    },
+    {
+      "codigo": 1126,
+      "nome": "S10 Blazer DLX 2.8 4x4 TB Interc. Diesel"
+    },
+    {
+      "codigo": 1127,
+      "nome": "S10 Blazer DLX 4.3 V6"
+    },
+    {
+      "codigo": 1128,
+      "nome": "S10 Blazer Executive 2.8 4x4 TDI Diesel"
+    },
+    {
+      "codigo": 1129,
+      "nome": "S10 Blazer Executive 4.3 V6"
+    },
+    {
+      "codigo": 1130,
+      "nome": "S10 Blazer Std. 2.2 MPFI / EFI"
+    },
+    {
+      "codigo": 1131,
+      "nome": "S10 Blazer Std. 2.5 Diesel Turbo"
+    },
+    {
+      "codigo": 1132,
+      "nome": "S10 Blazer Tornado 2.4 MPFI 8V 128cv"
+    },
+    {
+      "codigo": 8081,
+      "nome": "S10 P.Up 100YEARS 2.8 4x4 CD Dies. Aut."
+    },
+    {
+      "codigo": 11620,
+      "nome": "S10 Pick-Up 100 Anos 2.8 TDI 4x4 CD Aut."
+    },
+    {
+      "codigo": 1133,
+      "nome": "S10 Pick-Up 2.4 MPFI 8v 128cv CD 4p"
+    },
+    {
+      "codigo": 1134,
+      "nome": "S10 Pick-Up 2.4 MPFI 8v 128cv/ Rodeio"
+    },
+    {
+      "codigo": 1135,
+      "nome": "S10 Pick-Up 2.5 4x2 CD TB Max HST Dies"
+    },
+    {
+      "codigo": 1136,
+      "nome": "S10 Pick-Up 2.5 4x4 CD TB Max HST Dies."
+    },
+    {
+      "codigo": 1137,
+      "nome": "S10 Pick-Up 2.8 4x2 Turbo Interc. Dies."
+    },
+    {
+      "codigo": 1138,
+      "nome": "S10 Pick-Up 4.3 V6"
+    },
+    {
+      "codigo": 7791,
+      "nome": "S10 Pick-Up Advantage 2.5 Flex 4x2 CD"
+    },
+    {
+      "codigo": 1139,
+      "nome": "S10 Pick-Up Barretos 2.2 MPFI 2p"
+    },
+    {
+      "codigo": 1140,
+      "nome": "S10 Pick-Up Champ 4.3 V6"
+    },
+    {
+      "codigo": 1144,
+      "nome": "S10 Pick-Up DLX 2.4 MPFI 128cv CD 4p"
+    },
+    {
+      "codigo": 1145,
+      "nome": "S10 Pick-Up Exec. 2.8 4x2 CD TB Int.Dies"
+    },
+    {
+      "codigo": 1146,
+      "nome": "S10 Pick-Up Exec. 2.8 4x4 CD TB Int.Dies"
+    },
+    {
+      "codigo": 1147,
+      "nome": "S10 Pick-Up Executive CD 4.3"
+    },
+    {
+      "codigo": 1148,
+      "nome": "S10 Pick-Up Executive CD 4.3 4x4"
+    },
+    {
+      "codigo": 5885,
+      "nome": "S10 Pick-Up LS 2.4 F.Power 4x2 CD"
+    },
+    {
+      "codigo": 5886,
+      "nome": "S10 Pick-Up LS 2.4 F.Power 4x2 CS"
+    },
+    {
+      "codigo": 6099,
+      "nome": "S10 Pick-Up LS 2.8 TDI 4x2 CD Dies. Mec."
+    },
+    {
+      "codigo": 6100,
+      "nome": "S10 Pick-Up LS 2.8 TDI 4x2 CS Dies. Mec."
+    },
+    {
+      "codigo": 6101,
+      "nome": "S10 Pick-Up LS 2.8 TDI 4x4 CD Dies. Mec."
+    },
+    {
+      "codigo": 5887,
+      "nome": "S10 Pick-Up LS 2.8 TDI 4x4 CS Diesel"
+    },
+    {
+      "codigo": 5888,
+      "nome": "S10 Pick-Up LT 2.4 F.Power 4x2 CD"
+    },
+    {
+      "codigo": 5889,
+      "nome": "S10 Pick-Up LT 2.4 F.Power 4x2 CS"
+    },
+    {
+      "codigo": 7032,
+      "nome": "S10 Pick-Up LT 2.5 Flex 4x2 CD"
+    },
+    {
+      "codigo": 7953,
+      "nome": "S10 Pick-Up LT 2.5 Flex 4x2 CD Aut."
+    },
+    {
+      "codigo": 7033,
+      "nome": "S10 Pick-Up LT 2.5 Flex 4x4 CD"
+    },
+    {
+      "codigo": 7954,
+      "nome": "S10 Pick-Up LT 2.5 Flex 4x4 CD Aut."
+    },
+    {
+      "codigo": 5890,
+      "nome": "S10 Pick-Up LT 2.8 TDI 4x2 CD Diesel"
+    },
+    {
+      "codigo": 5891,
+      "nome": "S10 Pick-Up LT 2.8 TDI 4x2 CD Diesel Aut"
+    },
+    {
+      "codigo": 5892,
+      "nome": "S10 Pick-Up LT 2.8 TDI 4x4 CD Diesel"
+    },
+    {
+      "codigo": 5893,
+      "nome": "S10 Pick-Up LT 2.8 TDI 4x4 CD Diesel Aut"
+    },
+    {
+      "codigo": 5894,
+      "nome": "S10 Pick-Up LTZ 2.4 F.Power 4x2 CD"
+    },
+    {
+      "codigo": 7034,
+      "nome": "S10 Pick-Up LTZ 2.5 Flex 4x2 CD"
+    },
+    {
+      "codigo": 7955,
+      "nome": "S10 Pick-Up LTZ 2.5 Flex 4x2 CD Aut."
+    },
+    {
+      "codigo": 7035,
+      "nome": "S10 Pick-Up LTZ 2.5 Flex 4x4 CD"
+    },
+    {
+      "codigo": 7956,
+      "nome": "S10 Pick-Up LTZ 2.5 Flex 4x4 CD Aut."
+    },
+    {
+      "codigo": 6102,
+      "nome": "S10 Pick-Up LTZ 2.8 TDI 4x2 CD Dies. Mec"
+    },
+    {
+      "codigo": 5895,
+      "nome": "S10 Pick-Up LTZ 2.8 TDI 4x2 CD Dies.Aut"
+    },
+    {
+      "codigo": 5896,
+      "nome": "S10 Pick-Up LTZ 2.8 TDI 4x4 CD Dies.Aut"
+    },
+    {
+      "codigo": 1149,
+      "nome": "S10 Pick-Up Luxe 2.2 EFI CD"
+    },
+    {
+      "codigo": 1150,
+      "nome": "S10 Pick-Up Luxe 2.2 MPFI / EFI"
+    },
+    {
+      "codigo": 1151,
+      "nome": "S10 Pick-Up Luxe 2.2 MPFI/EFI CE"
+    },
+    {
+      "codigo": 1152,
+      "nome": "S10 Pick-Up Luxe 2.5 CE TB Diesel"
+    },
+    {
+      "codigo": 1153,
+      "nome": "S10 Pick-Up Luxe 2.5 Diesel Turbo"
+    },
+    {
+      "codigo": 1154,
+      "nome": "S10 Pick-Up Luxe 2.8 4x2 CD TB Int.Dies."
+    },
+    {
+      "codigo": 1155,
+      "nome": "S10 Pick-Up Luxe 4.3 V6"
+    },
+    {
+      "codigo": 1156,
+      "nome": "S10 Pick-Up Luxe 4.3 V6 CD"
+    },
+    {
+      "codigo": 1157,
+      "nome": "S10 Pick-Up Luxe 4.3 V6 CE"
+    },
+    {
+      "codigo": 8280,
+      "nome": "S10 Pick-Up Midnight 2.8 4x4 CD Dies Aut"
+    },
+    {
+      "codigo": 5369,
+      "nome": "S10 Pick-Up RODEIO 2.4 MPFI F.Power CD"
+    },
+    {
+      "codigo": 5370,
+      "nome": "S10 Pick-Up RODEIO 2.8 TDI 4x2 CD Dies."
+    },
+    {
+      "codigo": 5371,
+      "nome": "S10 Pick-Up RODEIO 2.8 TDI 4x4 CD Dies."
+    },
+    {
+      "codigo": 1158,
+      "nome": "S10 Pick-Up Std 2.8 4x2 CD TB Int.Dies."
+    },
+    {
+      "codigo": 1159,
+      "nome": "S10 Pick-Up Std 2.8 4x4 CD TB Int.Dies."
+    },
+    {
+      "codigo": 1160,
+      "nome": "S10 Pick-Up Std. 2.2 MPFI / EFI"
+    },
+    {
+      "codigo": 1161,
+      "nome": "S10 Pick-Up Std. 2.2 MPFI CD"
+    },
+    {
+      "codigo": 1162,
+      "nome": "S10 Pick-Up Std. 2.5 Diesel Turbo"
+    },
+    {
+      "codigo": 1163,
+      "nome": "S10 Pick-Up Tornado 2.4 MPFI 128cv CD 4p"
+    },
+    {
+      "codigo": 11083,
+      "nome": "S10 Pick-Up WT 2.8 TDI 4x4 CD Diesel Aut"
+    },
+    {
+      "codigo": 11196,
+      "nome": "S10 Pick-Up WT 2.8 TDI 4x4 CD Diesel Mec"
+    },
+    {
+      "codigo": 11105,
+      "nome": "S10 Pick-Up WT 2.8 TDI 4x4 CS Diesel Mec"
+    },
+    {
+      "codigo": 9666,
+      "nome": "S10 Pick-Up Z71 2.8 TDI 4x4 CD Dies. Aut"
+    },
+    {
+      "codigo": 1164,
+      "nome": "S10 P-Up 2.8/Sert. 2.8 4x4 TB Int. Dies."
+    },
+    {
+      "codigo": 1165,
+      "nome": "S10 P-Up Advant. 2.4/2.4 MPFI F.Power CD"
+    },
+    {
+      "codigo": 4675,
+      "nome": "S10 P-Up Advantage 2.4 MPFI F.Power CS"
+    },
+    {
+      "codigo": 1142,
+      "nome": "S10 P-Up Colina 2.4 MPFI 128cv CD 4p"
+    },
+    {
+      "codigo": 1141,
+      "nome": "S10 P-Up Colina 2.4/2.4 MPFI F.Power CS"
+    },
+    {
+      "codigo": 1166,
+      "nome": "S10 P-Up Colina 2.8 TDI 4x2/4x4 CD Dies."
+    },
+    {
+      "codigo": 1143,
+      "nome": "S10 P-Up Colina 2.8 TDI 4x2/4x4 CS Dies."
+    },
+    {
+      "codigo": 4676,
+      "nome": "S10 P-Up Executive 2.4 MPFI F.Power CD"
+    },
+    {
+      "codigo": 7304,
+      "nome": "S10 P-Up Freeride 2.5 Flex 4x2 CD Mec."
+    },
+    {
+      "codigo": 7305,
+      "nome": "S10 P-Up H.Country 2.8 4x4 CD Dies.Aut."
+    },
+    {
+      "codigo": 1167,
+      "nome": "S10 P-Up Luxe 2.5 4x2 CD TB Max HST Dies"
+    },
+    {
+      "codigo": 1168,
+      "nome": "S10 P-Up Luxe 2.5 4x4 CD TB Max HST Dies"
+    },
+    {
+      "codigo": 1169,
+      "nome": "S10 P-Up Lx/Sert/Rod 2.8 4x4 CD TDI Dies"
+    },
+    {
+      "codigo": 1170,
+      "nome": "S10 P-Up Tornado 2.8 TDI 4x2/4x4 CD Dies"
+    },
+    {
+      "codigo": 1171,
+      "nome": "Saturn SL"
+    },
+    {
+      "codigo": 1172,
+      "nome": "Sierra CE 5.7 V8"
+    },
+    {
+      "codigo": 1173,
+      "nome": "Sierra Sport 5.0 V8"
+    },
+    {
+      "codigo": 1174,
+      "nome": "Silverado"
+    },
+    {
+      "codigo": 1175,
+      "nome": "Silverado 4.1"
+    },
+    {
+      "codigo": 1176,
+      "nome": "Silverado 4.1 Diesel"
+    },
+    {
+      "codigo": 1177,
+      "nome": "Silverado 4.2 Turbo Diesel"
+    },
+    {
+      "codigo": 1178,
+      "nome": "Silverado Conquest 4.1 Diesel"
+    },
+    {
+      "codigo": 1179,
+      "nome": "Silverado Conquest 4.2 Diesel Turbo"
+    },
+    {
+      "codigo": 1180,
+      "nome": "Silverado D20/ Rodeio 4.2 TB Diesel"
+    },
+    {
+      "codigo": 1181,
+      "nome": "Silverado DLX 4.1"
+    },
+    {
+      "codigo": 1182,
+      "nome": "Silverado DLX 4.2 Conquest HD Diesel"
+    },
+    {
+      "codigo": 1183,
+      "nome": "Silverado DLX 4.2 Diesel"
+    },
+    {
+      "codigo": 1184,
+      "nome": "Silverado G. Blazer DLX/ Std 4.2 Dies.TB"
+    },
+    {
+      "codigo": 1185,
+      "nome": "Silverado Grand Blazer DLX 4.1 mpfi"
+    },
+    {
+      "codigo": 10931,
+      "nome": "Silverado High Country 5.3 V8 AWD Aut."
+    },
+    {
+      "codigo": 1186,
+      "nome": "Silverado Sport/ Fleet Side 5.7 CS"
+    },
+    {
+      "codigo": 1187,
+      "nome": "Silverado Sport/Fleet Side 6.5 Dies. CS"
+    },
+    {
+      "codigo": 1188,
+      "nome": "Silverado Trop. SL/ Van T.Diesel (todas)"
+    },
+    {
+      "codigo": 1189,
+      "nome": "Silverado Tropical CD 4.1 Diesel"
+    },
+    {
+      "codigo": 1190,
+      "nome": "Silverado Tropical CD 4.1 MPFI"
+    },
+    {
+      "codigo": 1191,
+      "nome": "Silverado Tropical CD 4.2 Diesel"
+    },
+    {
+      "codigo": 6266,
+      "nome": "SONIC HB LT 1.6 16V FlexPower 5p Aut."
+    },
+    {
+      "codigo": 6059,
+      "nome": "SONIC HB LT 1.6 16V FlexPower 5p Mec."
+    },
+    {
+      "codigo": 6060,
+      "nome": "SONIC HB LTZ 1.6 16V FlexPower 5p Aut."
+    },
+    {
+      "codigo": 6061,
+      "nome": "SONIC HB LTZ 1.6 16V FlexPower 5p Mec."
+    },
+    {
+      "codigo": 6640,
+      "nome": "SONIC HB LTZ EFFECT 1.6 16V FlexP 5p Aut"
+    },
+    {
+      "codigo": 6267,
+      "nome": "SONIC Sed. LT 1.6 16V FlexPower 4p Aut."
+    },
+    {
+      "codigo": 6062,
+      "nome": "SONIC Sed. LT 1.6 16V FlexPower 4p Mec."
+    },
+    {
+      "codigo": 6063,
+      "nome": "SONIC Sed. LTZ 1.6 16V FlexPower 4p Aut."
+    },
+    {
+      "codigo": 6064,
+      "nome": "SONIC Sed. LTZ 1.6 16V FlexPower 4p Mec."
+    },
+    {
+      "codigo": 1192,
+      "nome": "Sonoma CE 4.3 V6"
+    },
+    {
+      "codigo": 1193,
+      "nome": "SpaceVan Furgão 2.1 Diesel"
+    },
+    {
+      "codigo": 1194,
+      "nome": "SpaceVan Furgão 2.2"
+    },
+    {
+      "codigo": 1195,
+      "nome": "SpaceVan Passageiro 2.1Diesel"
+    },
+    {
+      "codigo": 1196,
+      "nome": "SpaceVan Passageiro 2.2"
+    },
+    {
+      "codigo": 11621,
+      "nome": "SPARK EUV ACTIV"
+    },
+    {
+      "codigo": 11803,
+      "nome": "SPIN 1.8 8V Econo.Flex 5p Aut."
+    },
+    {
+      "codigo": 7098,
+      "nome": "SPIN ACTIV 1.8 8V Econo. Flex 5p Aut."
+    },
+    {
+      "codigo": 7099,
+      "nome": "SPIN ACTIV 1.8 8V Econo. Flex 5p Mec."
+    },
+    {
+      "codigo": 8450,
+      "nome": "SPIN ACTIV7 1.8 8V Econo.Flex 5p Aut."
+    },
+    {
+      "codigo": 6586,
+      "nome": "SPIN ADVANTAGE 1.8 8V Econo.Flex 5p Aut."
+    },
+    {
+      "codigo": 6587,
+      "nome": "SPIN ADVANTAGE 1.8 8V Econo.Flex 5p Mec."
+    },
+    {
+      "codigo": 9489,
+      "nome": "SPIN LS 1.8 8V Econo.Flex 5p Aut."
+    },
+    {
+      "codigo": 6490,
+      "nome": "SPIN LS 1.8 8V Econo.Flex 5p Mec."
+    },
+    {
+      "codigo": 6103,
+      "nome": "SPIN LT 1.8 8V Econo.Flex 5p Aut."
+    },
+    {
+      "codigo": 6104,
+      "nome": "SPIN LT 1.8 8V Econo.Flex 5p Mec."
+    },
+    {
+      "codigo": 6105,
+      "nome": "SPIN LTZ 1.8 8V Econo.Flex 5p Aut."
+    },
+    {
+      "codigo": 6106,
+      "nome": "SPIN LTZ 1.8 8V Econo.Flex 5p Mec."
+    },
+    {
+      "codigo": 8691,
+      "nome": "SPIN PREMIER 1.8 8V Econo.Flex 5p Aut."
+    },
+    {
+      "codigo": 8692,
+      "nome": "SPIN PREMIER 1.8 8V Econo.Flex 5p Mec."
+    },
+    {
+      "codigo": 1197,
+      "nome": "SS10 Pick-Up 4.3 V6"
+    },
+    {
+      "codigo": 1198,
+      "nome": "Suburban 5.7/6.5 V8/5.3 V8"
+    },
+    {
+      "codigo": 1199,
+      "nome": "Suprema CD 4.1 / 3.0"
+    },
+    {
+      "codigo": 1200,
+      "nome": "Suprema Diamond"
+    },
+    {
+      "codigo": 1201,
+      "nome": "Suprema GL 2.0"
+    },
+    {
+      "codigo": 1202,
+      "nome": "Suprema GLS 2.2 / 2.0"
+    },
+    {
+      "codigo": 1203,
+      "nome": "Suprema GLS 4.1"
+    },
+    {
+      "codigo": 1204,
+      "nome": "Syclone 5.7 V8"
+    },
+    {
+      "codigo": 1205,
+      "nome": "Tigra 1.6 16V"
+    },
+    {
+      "codigo": 1206,
+      "nome": "Tigra Power Tech Coupe 1.6 SFI"
+    },
+    {
+      "codigo": 9597,
+      "nome": "TRACKER 1.0 Turbo 12V Flex Aut. "
+    },
+    {
+      "codigo": 9044,
+      "nome": "TRACKER 1.0 Turbo 12V Flex Mec."
+    },
+    {
+      "codigo": 9045,
+      "nome": "TRACKER 1.2 Turbo 12V Flex Aut."
+    },
+    {
+      "codigo": 11622,
+      "nome": "TRACKER 100 Anos 1.2 Turbo 12V Aut. "
+    },
+    {
+      "codigo": 4240,
+      "nome": "TRACKER 2.0 16v 128cv MPFI 4x4 5p"
+    },
+    {
+      "codigo": 1207,
+      "nome": "TRACKER 2.0 TB Int. Diesel 4x4 4p"
+    },
+    {
+      "codigo": 6664,
+      "nome": "TRACKER Freeride 1.8 16V Flex 4x2 Mec."
+    },
+    {
+      "codigo": 9046,
+      "nome": "TRACKER LT 1.0 Turbo 12V Flex Aut."
+    },
+    {
+      "codigo": 7792,
+      "nome": "TRACKER LT 1.4 Turbo 16V Flex 4x2 Aut."
+    },
+    {
+      "codigo": 7428,
+      "nome": "TRACKER LT 1.8 16V Flex 4x2 Aut."
+    },
+    {
+      "codigo": 9213,
+      "nome": "TRACKER LTZ 1.0 Turbo 12V Flex Aut."
+    },
+    {
+      "codigo": 9047,
+      "nome": "TRACKER LTZ 1.2 Turbo 12V Flex Aut."
+    },
+    {
+      "codigo": 7793,
+      "nome": "TRACKER LTZ 1.4 Turbo 16V Flex 4x2 Aut."
+    },
+    {
+      "codigo": 6612,
+      "nome": "TRACKER LTZ 1.8 16V Flex 4x2 Aut."
+    },
+    {
+      "codigo": 10636,
+      "nome": "TRACKER Midnight 1.0 Turbo 12V Flex Aut."
+    },
+    {
+      "codigo": 8519,
+      "nome": "TRACKER Midnight 1.4 Turbo Flex Aut."
+    },
+    {
+      "codigo": 9230,
+      "nome": "TRACKER Premier 1.0 Turbo 12V Flex Aut."
+    },
+    {
+      "codigo": 9048,
+      "nome": "TRACKER Premier 1.2 Turbo 12V Flex Aut."
+    },
+    {
+      "codigo": 8124,
+      "nome": "TRACKER Premier 1.4 Turbo 16V Flex Aut"
+    },
+    {
+      "codigo": 10637,
+      "nome": "TRACKER RS 1.2 Turbo 12V Flex Aut."
+    },
+    {
+      "codigo": 1208,
+      "nome": "Trafic Chassi Longo Diesel"
+    },
+    {
+      "codigo": 1209,
+      "nome": "Trafic Furgão Carga 2.1 Diesel"
+    },
+    {
+      "codigo": 1210,
+      "nome": "Trafic Furgao Carga 2.2"
+    },
+    {
+      "codigo": 1211,
+      "nome": "Trafic Passageiros 2.1 Diesel"
+    },
+    {
+      "codigo": 1212,
+      "nome": "Trafic Passageiros 2.2"
+    },
+    {
+      "codigo": 11085,
+      "nome": "TRAILBLAZER High Country 2.8 TB Die Aut."
+    },
+    {
+      "codigo": 6268,
+      "nome": "TRAILBLAZER LTZ 2.8 CTDI Diesel Aut."
+    },
+    {
+      "codigo": 6269,
+      "nome": "TRAILBLAZER LTZ 3.6 V6  Aut."
+    },
+    {
+      "codigo": 8747,
+      "nome": "TRAILBLAZER PREMIER 2.8 TB Diesel Aut."
+    },
+    {
+      "codigo": 8748,
+      "nome": "TRAILBLAZER PREMIER 3.6 V6 Aut."
+    },
+    {
+      "codigo": 1213,
+      "nome": "Vectra CD 2.0 (modelo antigo)"
+    },
+    {
+      "codigo": 1214,
+      "nome": "Vectra CD 2.2 16V / 2.0 16V Mec./Aut."
+    },
+    {
+      "codigo": 5554,
+      "nome": "Vectra COLLECTION 2.0 FlexPower 8V Aut."
+    },
+    {
+      "codigo": 1215,
+      "nome": "Vectra Comfort 2.0 MPFI"
+    },
+    {
+      "codigo": 3820,
+      "nome": "Vectra Elegan. 2.0 MPFI 8V FlexPower Aut"
+    },
+    {
+      "codigo": 3821,
+      "nome": "Vectra Elegan. 2.0 MPFI 8V FlexPower Mec"
+    },
+    {
+      "codigo": 1216,
+      "nome": "Vectra Elegance 2.0 MPFI"
+    },
+    {
+      "codigo": 1217,
+      "nome": "Vectra Elegance 2.2 MPFI 16V Aut."
+    },
+    {
+      "codigo": 1218,
+      "nome": "Vectra Elite 2.0 MPFI"
+    },
+    {
+      "codigo": 4576,
+      "nome": "Vectra Elite 2.0 MPFI 8V FlexPower Aut."
+    },
+    {
+      "codigo": 1219,
+      "nome": "Vectra Elite 2.2 MPFI 16V Aut."
+    },
+    {
+      "codigo": 3822,
+      "nome": "Vectra Elite 2.4 MPFI 16V FlexPower Aut."
+    },
+    {
+      "codigo": 1220,
+      "nome": "Vectra Expres./ Collection  2.0 MPFI 8V"
+    },
+    {
+      "codigo": 4273,
+      "nome": "Vectra EXPRESSION 2.0 MPFI FlexPower Aut"
+    },
+    {
+      "codigo": 4274,
+      "nome": "Vectra EXPRESSION 2.0 MPFI FlexPower Mec"
+    },
+    {
+      "codigo": 1221,
+      "nome": "Vectra GL 2.2 / 2.0 MPFI"
+    },
+    {
+      "codigo": 1222,
+      "nome": "Vectra GL 2.2 MPFI Milenium"
+    },
+    {
+      "codigo": 1223,
+      "nome": "Vectra GLS/ Challenge 2.2 MPFI 16V"
+    },
+    {
+      "codigo": 1224,
+      "nome": "Vectra GLS/Expres.2.2/ 2.0 e 2.0 CD 8V"
+    },
+    {
+      "codigo": 1225,
+      "nome": "Vectra GSi 2.0 16V (modelo antigo)"
+    },
+    {
+      "codigo": 4433,
+      "nome": "Vectra GT 2.0 MPFI 8V FlexPower Aut."
+    },
+    {
+      "codigo": 4434,
+      "nome": "Vectra GT 2.0 MPFI 8V FlexPower Mec."
+    },
+    {
+      "codigo": 4435,
+      "nome": "Vectra GT-X 2.0 MPFI 8V FlexPower Aut."
+    },
+    {
+      "codigo": 4436,
+      "nome": "Vectra GT-X 2.0 MPFI 8V FlexPower Mec."
+    },
+    {
+      "codigo": 1226,
+      "nome": "Veraneio S / Luxe 4.1"
+    },
+    {
+      "codigo": 1227,
+      "nome": "Veraneio S/ Luxe 4.0 Dies./TB Dies."
+    },
+    {
+      "codigo": 1228,
+      "nome": "Zafira 2.0/ CD 2.0  8V  MPFI 5p Mec."
+    },
+    {
+      "codigo": 1229,
+      "nome": "Zafira 2.0/ CD 2.0 16V  MPFI 5p"
+    },
+    {
+      "codigo": 1230,
+      "nome": "Zafira 2.0/ CD 2.0 8V MPFI 5p Aut."
+    },
+    {
+      "codigo": 6065,
+      "nome": "Zafira COLLECTION 2.0 FlexPower 8V Aut."
+    },
+    {
+      "codigo": 1231,
+      "nome": "Zafira Comfort 2.0 MPFI FlexPower 8V 5p"
+    },
+    {
+      "codigo": 1232,
+      "nome": "Zafira Eleg.2.0 MPFI FlexPower 8V 5p Aut"
+    },
+    {
+      "codigo": 1233,
+      "nome": "Zafira Elegance 2.0 MPFI 16v 136cv 5p"
+    },
+    {
+      "codigo": 1234,
+      "nome": "Zafira Elegance 2.0 MPFI FlexPower 8V 5p"
+    },
+    {
+      "codigo": 1235,
+      "nome": "Zafira Elite 2.0 MPFI 16v 136cv 5p"
+    },
+    {
+      "codigo": 1236,
+      "nome": "Zafira Elite 2.0 MPFI FlexPower 8V  Aut"
+    },
+    {
+      "codigo": 1237,
+      "nome": "Zafira Elite 2.0 MPFI FlexPower 8V 5p"
+    },
+    {
+      "codigo": 4259,
+      "nome": "Zafira Expres. 2.0 MPFI FlexPower 5p Aut"
+    }
+  ]
+}

@@ -1,0 +1,2337 @@
+{
+  "lastUpdated": "2026-02-02T12:44:32.841Z",
+  "data": [
+    {
+      "codigo": 437,
+      "nome": "147 C/ CL"
+    },
+    {
+      "codigo": 438,
+      "nome": "147 Furgão (todos)"
+    },
+    {
+      "codigo": 439,
+      "nome": "147 Pick-Up (todas)"
+    },
+    {
+      "codigo": 7097,
+      "nome": "500 ABARTH MULTIAIR 1.4 TB 16V 3p"
+    },
+    {
+      "codigo": 6885,
+      "nome": "500 Cabrio Dualogic Flex 1.4 8V"
+    },
+    {
+      "codigo": 6886,
+      "nome": "500 Cabrio Flex 1.4 8V Mec."
+    },
+    {
+      "codigo": 6262,
+      "nome": "500 Cabrio/500 Coupe Gucci/Flex 1.4 Aut."
+    },
+    {
+      "codigo": 5613,
+      "nome": "500 Cult 1.4 Flex 8V EVO Dualogic"
+    },
+    {
+      "codigo": 5614,
+      "nome": "500 Cult 1.4 Flex 8V EVO Mec."
+    },
+    {
+      "codigo": 5059,
+      "nome": "500 LOUNGE 1.4 16V 100cv  Mec."
+    },
+    {
+      "codigo": 5060,
+      "nome": "500 LOUNGE 1.4 16V 100cv Dualogic"
+    },
+    {
+      "codigo": 5615,
+      "nome": "500 Lounge Air 1.4/ 1.4 Flex 16V Aut."
+    },
+    {
+      "codigo": 5061,
+      "nome": "500 SPORT 1.4 16V 100cv  Dualogic"
+    },
+    {
+      "codigo": 5062,
+      "nome": "500 SPORT 1.4 16V 100cv Mec."
+    },
+    {
+      "codigo": 5616,
+      "nome": "500 Sport Air 1.4 16V/1.4 Flex 16V Aut."
+    },
+    {
+      "codigo": 5617,
+      "nome": "500 Sport Air 1.4 16V/1.4 Flex Mec."
+    },
+    {
+      "codigo": 9584,
+      "nome": "500e ICON (Elétrico)"
+    },
+    {
+      "codigo": 11401,
+      "nome": "ARGO 1.0 6V Flex"
+    },
+    {
+      "codigo": 7965,
+      "nome": "ARGO DRIVE 1.0 6V Flex"
+    },
+    {
+      "codigo": 7966,
+      "nome": "ARGO DRIVE 1.3 8V Flex"
+    },
+    {
+      "codigo": 10392,
+      "nome": "ARGO DRIVE 1.3 8V Flex Aut."
+    },
+    {
+      "codigo": 7967,
+      "nome": "ARGO DRIVE GSR 1.3 8V Flex"
+    },
+    {
+      "codigo": 9543,
+      "nome": "ARGO DRIVE S-DESIGN 1.3 8V Flex"
+    },
+    {
+      "codigo": 11256,
+      "nome": "ARGO DRIVE TRIBUTO 125 1.0 6V Flex"
+    },
+    {
+      "codigo": 11213,
+      "nome": "ARGO ENDURANCE 1.3 8V Flex"
+    },
+    {
+      "codigo": 7968,
+      "nome": "ARGO HGT 1.8 16V Flex Aut."
+    },
+    {
+      "codigo": 7969,
+      "nome": "ARGO HGT 1.8 16V Flex Mec."
+    },
+    {
+      "codigo": 7971,
+      "nome": "ARGO PRECISION 1.8 16V Flex Aut."
+    },
+    {
+      "codigo": 7970,
+      "nome": "ARGO PRECISION 1.8 16V Flex Mec."
+    },
+    {
+      "codigo": 8690,
+      "nome": "ARGO TREKKING 1.3 8V Flex"
+    },
+    {
+      "codigo": 10393,
+      "nome": "ARGO TREKKING 1.3 8V Flex Aut."
+    },
+    {
+      "codigo": 8947,
+      "nome": "ARGO TREKKING 1.8 16V Flex Aut."
+    },
+    {
+      "codigo": 440,
+      "nome": "Brava ELX  1.6 16V 4p"
+    },
+    {
+      "codigo": 441,
+      "nome": "Brava HGT 1.8 mpi 16V  4p"
+    },
+    {
+      "codigo": 442,
+      "nome": "Brava SX 1.6 16V 4p"
+    },
+    {
+      "codigo": 5446,
+      "nome": "Bravo ABSOLUTE 1.8 Flex 16V 5p"
+    },
+    {
+      "codigo": 5447,
+      "nome": "Bravo ABSOLUTE Dualogic 1.8 Flex 16V 5p"
+    },
+    {
+      "codigo": 7132,
+      "nome": "Bravo BlackMotion 1.8 Dualogic Flex 5p"
+    },
+    {
+      "codigo": 7133,
+      "nome": "Bravo BlackMotion 1.8 Flex 16v 5p"
+    },
+    {
+      "codigo": 5448,
+      "nome": "Bravo ESSENCE 1.8 Flex 16V 5p"
+    },
+    {
+      "codigo": 5449,
+      "nome": "Bravo ESSENCE Dualogic 1.8 Flex 16V 5p"
+    },
+    {
+      "codigo": 6051,
+      "nome": "Bravo SPORTING 1.8 Dualogic Flex 16V 5p"
+    },
+    {
+      "codigo": 6052,
+      "nome": "Bravo SPORTING 1.8 Flex 16V 5p"
+    },
+    {
+      "codigo": 443,
+      "nome": "Bravo SX 1.6"
+    },
+    {
+      "codigo": 5591,
+      "nome": "Bravo T-JET 1.4 16V Turbo 5p"
+    },
+    {
+      "codigo": 6515,
+      "nome": "Bravo WOLVERINE 1.8 Dualogic Flex 16V 5p"
+    },
+    {
+      "codigo": 6516,
+      "nome": "Bravo WOLVERINE 1.8 Flex 16V 5p"
+    },
+    {
+      "codigo": 444,
+      "nome": "Cinquecento 0.7"
+    },
+    {
+      "codigo": 445,
+      "nome": "Coupe 16V"
+    },
+    {
+      "codigo": 9988,
+      "nome": "CRONOS 1.0 6V Flex"
+    },
+    {
+      "codigo": 8199,
+      "nome": "CRONOS 1.3 8V Flex"
+    },
+    {
+      "codigo": 9590,
+      "nome": "CRONOS 1.8 16V Flex Aut. "
+    },
+    {
+      "codigo": 9989,
+      "nome": "CRONOS DRIVE 1.0 6V Flex"
+    },
+    {
+      "codigo": 8200,
+      "nome": "CRONOS DRIVE 1.3 8V Flex"
+    },
+    {
+      "codigo": 9990,
+      "nome": "CRONOS DRIVE 1.3 8V Flex Aut."
+    },
+    {
+      "codigo": 8518,
+      "nome": "CRONOS DRIVE 1.8 16V Flex Aut."
+    },
+    {
+      "codigo": 8201,
+      "nome": "CRONOS DRIVE GSR 1.3 8V Flex"
+    },
+    {
+      "codigo": 8778,
+      "nome": "CRONOS HGT 1.8 16V Flex Aut."
+    },
+    {
+      "codigo": 10394,
+      "nome": "CRONOS PRECISION 1.3 8V Flex Aut."
+    },
+    {
+      "codigo": 8202,
+      "nome": "CRONOS PRECISION 1.8 16V Flex Aut."
+    },
+    {
+      "codigo": 8203,
+      "nome": "CRONOS PRECISION 1.8 16V Flex Mec."
+    },
+    {
+      "codigo": 5104,
+      "nome": "Doblo  1.4 mpi Fire Flex  8V 4p"
+    },
+    {
+      "codigo": 5105,
+      "nome": "Doblo  Cargo 1.4 mpi Fire Flex 8V 3p"
+    },
+    {
+      "codigo": 6053,
+      "nome": "Doblo Adv. XINGU 1.8 Flex 16V 5p"
+    },
+    {
+      "codigo": 6054,
+      "nome": "Doblo Adv. XINGU LOCKER 1.8 Flex 16V 5p"
+    },
+    {
+      "codigo": 7503,
+      "nome": "Doblo Adv.Ext./Adv.Ext.Loc. 1.8 16V Flex"
+    },
+    {
+      "codigo": 3933,
+      "nome": "Doblo Adv/Adv TRYON/LOCKER 1.8 Flex"
+    },
+    {
+      "codigo": 446,
+      "nome": "Doblo Adventure/ Adv.ER 1.8 mpi 8V 103cv"
+    },
+    {
+      "codigo": 5535,
+      "nome": "Doblo ATTRACTIVE 1.4 Fire Flex 8V 5p"
+    },
+    {
+      "codigo": 447,
+      "nome": "Doblo Cargo 1.3 Fire 16V 4/5p"
+    },
+    {
+      "codigo": 448,
+      "nome": "Doblo Cargo 1.6 16V 4/5p"
+    },
+    {
+      "codigo": 449,
+      "nome": "Doblo Cargo 1.8 mpi 8V 103cv"
+    },
+    {
+      "codigo": 3934,
+      "nome": "Doblo Cargo 1.8 mpi Fire Flex 8V/16V 4p"
+    },
+    {
+      "codigo": 5106,
+      "nome": "Doblo ELX 1.4 mpi Fire Flex 8V 4p"
+    },
+    {
+      "codigo": 450,
+      "nome": "Doblo ELX 1.6 16V 4/5p"
+    },
+    {
+      "codigo": 451,
+      "nome": "Doblo ELX 1.8 mpi 8V 103cv"
+    },
+    {
+      "codigo": 3935,
+      "nome": "Doblo ELX 1.8 mpi 8V Flex"
+    },
+    {
+      "codigo": 5536,
+      "nome": "Doblo ESSENCE 1.8 Flex 16V 5p"
+    },
+    {
+      "codigo": 452,
+      "nome": "Doblo EX 1.3 Fire 16V 80cv 4/5p"
+    },
+    {
+      "codigo": 4097,
+      "nome": "Doblo HLX 1.8 mpi Flex 5p"
+    },
+    {
+      "codigo": 10659,
+      "nome": "Ducato Cargo 2.2 Diesel (E6)"
+    },
+    {
+      "codigo": 453,
+      "nome": "Ducato Cargo 2.8 Curto/Longo TB Diesel"
+    },
+    {
+      "codigo": 8204,
+      "nome": "Ducato Cargo Curto 2.3 16V Diesel"
+    },
+    {
+      "codigo": 5022,
+      "nome": "Ducato Cargo Curto 2.3 ME Diesel"
+    },
+    {
+      "codigo": 5023,
+      "nome": "Ducato Cargo Longo 2.3 ME Diesel"
+    },
+    {
+      "codigo": 8205,
+      "nome": "Ducato Cargo Médio 2.3 16V Diesel"
+    },
+    {
+      "codigo": 8206,
+      "nome": "Ducato Chassi 2.3 16V Diesel"
+    },
+    {
+      "codigo": 5024,
+      "nome": "Ducato Combinato 2.3 ME Diesel"
+    },
+    {
+      "codigo": 454,
+      "nome": "Ducato Combinato 2.8 Diesel"
+    },
+    {
+      "codigo": 455,
+      "nome": "Ducato Combinato 2.8 Turbo Diesel"
+    },
+    {
+      "codigo": 8395,
+      "nome": "Ducato Executivo 2.3 16V Diesel"
+    },
+    {
+      "codigo": 456,
+      "nome": "Ducato Furgão Maxi 2.8 Diesel"
+    },
+    {
+      "codigo": 5025,
+      "nome": "Ducato Maxi. Curta 2.3 T.Alto ME Diesel"
+    },
+    {
+      "codigo": 5026,
+      "nome": "Ducato Maxi. Long. 2.3 T.Alto ME Diesel"
+    },
+    {
+      "codigo": 10660,
+      "nome": "Ducato MaxiCargo 2.2 Diesel (E6)"
+    },
+    {
+      "codigo": 8207,
+      "nome": "Ducato MaxiCargo 2.3 16V Diesel"
+    },
+    {
+      "codigo": 457,
+      "nome": "Ducato MaxiCargo/Furgão Maxi 2.8 TB Dies"
+    },
+    {
+      "codigo": 8208,
+      "nome": "Ducato MaxiMulti 2.3 16V Diesel"
+    },
+    {
+      "codigo": 10661,
+      "nome": "Ducato Minibus 2.2 Comf.19L Diesel (E6)"
+    },
+    {
+      "codigo": 11609,
+      "nome": "Ducato Minibus 2.2 Comfort18L (E6)"
+    },
+    {
+      "codigo": 10662,
+      "nome": "Ducato Minibus 2.2 Exec. 17L Diesel (E6)"
+    },
+    {
+      "codigo": 11610,
+      "nome": "Ducato Minibus 2.2 Luxo 16L (E6)"
+    },
+    {
+      "codigo": 8396,
+      "nome": "Ducato Minibus 2.3 16V Diesel"
+    },
+    {
+      "codigo": 5027,
+      "nome": "Ducato Minibus 2.3 ME Diesel"
+    },
+    {
+      "codigo": 5028,
+      "nome": "Ducato Minibus 2.3 T.Alto ME Diesel"
+    },
+    {
+      "codigo": 458,
+      "nome": "Ducato Minibus 2.8 Diesel"
+    },
+    {
+      "codigo": 459,
+      "nome": "Ducato Minibus 2.8 Turbo Diesel"
+    },
+    {
+      "codigo": 8397,
+      "nome": "Ducato Minibus Comfort 2.3 16v Diesel"
+    },
+    {
+      "codigo": 460,
+      "nome": "Ducato Mult/ Vetrato 2.8 T.Alto TB Dies."
+    },
+    {
+      "codigo": 461,
+      "nome": "Ducato Mult/ Vetrato 2.8 T.Baixo TB Dies"
+    },
+    {
+      "codigo": 10663,
+      "nome": "Ducato Multi 2.2 Diesel (E6)"
+    },
+    {
+      "codigo": 8209,
+      "nome": "Ducato Multi 2.3 16V Diesel"
+    },
+    {
+      "codigo": 5029,
+      "nome": "Ducato Multi Long. 2.3 T.Alto ME Diesel"
+    },
+    {
+      "codigo": 462,
+      "nome": "Ducato Van 2.5  Diesel"
+    },
+    {
+      "codigo": 8398,
+      "nome": "Ducato Vip Bus 2.3 16V Diesel"
+    },
+    {
+      "codigo": 463,
+      "nome": "Ducato-10 Furgão 2.5 Diesel"
+    },
+    {
+      "codigo": 464,
+      "nome": "Ducato-15 2.8 Furgão TB Diesel"
+    },
+    {
+      "codigo": 465,
+      "nome": "Ducato-15 Furgão 2.8 Diesel"
+    },
+    {
+      "codigo": 466,
+      "nome": "Ducato-8 Furgão 2.5 Diesel"
+    },
+    {
+      "codigo": 467,
+      "nome": "Duna 1.6ie"
+    },
+    {
+      "codigo": 468,
+      "nome": "Elba 1.6i.e/Top/CSL/ 1.6i.e/1.5 2p e 4p"
+    },
+    {
+      "codigo": 469,
+      "nome": "Elba CS 1.6 / 1.5 /1.3"
+    },
+    {
+      "codigo": 470,
+      "nome": "Elba S 1.6/ 1.5ie / 1.5 / 1.3"
+    },
+    {
+      "codigo": 471,
+      "nome": "Elba Weekend 1.5 i.e. 2p e 4p"
+    },
+    {
+      "codigo": 10369,
+      "nome": "E-Scudo (Elétrico)"
+    },
+    {
+      "codigo": 10754,
+      "nome": "Fastback 1.0 200 Turbo Flex Aut"
+    },
+    {
+      "codigo": 10881,
+      "nome": "Fastback ABARTH Turbo Flex 1.3 Aut."
+    },
+    {
+      "codigo": 10101,
+      "nome": "Fastback Audace 1.0 200 T. Flex Aut"
+    },
+    {
+      "codigo": 11262,
+      "nome": "Fastback Audace 200 TB Aut (Hibrído)"
+    },
+    {
+      "codigo": 10102,
+      "nome": "Fastback Impetus 1.0 200 T. Flex Aut"
+    },
+    {
+      "codigo": 11263,
+      "nome": "Fastback Impetus 200 T. Aut (Hibrído)"
+    },
+    {
+      "codigo": 10103,
+      "nome": "Fastback Limited Ed.1.3 270 T.Flex Aut."
+    },
+    {
+      "codigo": 11264,
+      "nome": "Fastback Tributo 125 1.0 Turb. Flex Aut "
+    },
+    {
+      "codigo": 11376,
+      "nome": "Fiorino Endurance 1.3 Flex 8V 2p"
+    },
+    {
+      "codigo": 9194,
+      "nome": "Fiorino Endurance EVO 1.4 Flex 8V 2p"
+    },
+    {
+      "codigo": 473,
+      "nome": "Fiorino Furg.1.5/1.3/1.3 Fire/1.3 F.Flex"
+    },
+    {
+      "codigo": 472,
+      "nome": "Fiorino Furgão 1.0"
+    },
+    {
+      "codigo": 474,
+      "nome": "Fiorino Furgão 1.5 mpi / i.e."
+    },
+    {
+      "codigo": 6662,
+      "nome": "Fiorino Furgão Celeb. EVO 1.4 Flex 8V 2p"
+    },
+    {
+      "codigo": 6663,
+      "nome": "Fiorino Furgão EVO 1.4 Flex 8V 2p"
+    },
+    {
+      "codigo": 7751,
+      "nome": "Fiorino Furgão Work. HARD 1.4 Flex 8V 2p"
+    },
+    {
+      "codigo": 475,
+      "nome": "Fiorino Pick-Up 1.0"
+    },
+    {
+      "codigo": 476,
+      "nome": "Fiorino Pick-Up 1.5 i.e./1.3/1.5/HD"
+    },
+    {
+      "codigo": 477,
+      "nome": "Fiorino Pick-Up LX (todas)"
+    },
+    {
+      "codigo": 478,
+      "nome": "Fiorino Pick-Up Trekking 1.5 mpi / i.e."
+    },
+    {
+      "codigo": 479,
+      "nome": "Fiorino Pick-Up Working 1.5 mpi / i.e."
+    },
+    {
+      "codigo": 9208,
+      "nome": "Fiorino Working 1.4 Flex 8V 2p"
+    },
+    {
+      "codigo": 5618,
+      "nome": "FREEMONT EMOT./PRECISION 2.4 16V 5p Aut."
+    },
+    {
+      "codigo": 9209,
+      "nome": "Grand Siena 1.0 EVO Flex 8V 4p"
+    },
+    {
+      "codigo": 9210,
+      "nome": "Grand Siena 1.4 EVO Flex 8V 4p"
+    },
+    {
+      "codigo": 5925,
+      "nome": "Grand Siena ATTRAC. 1.4 EVO F.Flex 8V"
+    },
+    {
+      "codigo": 7824,
+      "nome": "Grand Siena ATTRACTIVE 1.0 Flex 8V 4p"
+    },
+    {
+      "codigo": 6955,
+      "nome": "Grand Siena ESSEN. ITALIA Dual. 1.6 Flex"
+    },
+    {
+      "codigo": 6488,
+      "nome": "Grand Siena ESSEN.SUBLIME 1.6 Flex"
+    },
+    {
+      "codigo": 6489,
+      "nome": "Grand Siena ESSEN.SUBLIME Dual. 1.6 Flex"
+    },
+    {
+      "codigo": 5926,
+      "nome": "Grand Siena ESSENCE 1.6 Flex 16V"
+    },
+    {
+      "codigo": 5927,
+      "nome": "Grand Siena ESSENCE Dual. 1.6 Flex 16V"
+    },
+    {
+      "codigo": 6956,
+      "nome": "Grand Siena ESSENCE ITALIA 1.6 Flex 16V"
+    },
+    {
+      "codigo": 5928,
+      "nome": "Grand Siena TETRAFUEL 1.4 Evo F. Flex 8V"
+    },
+    {
+      "codigo": 7504,
+      "nome": "Idea A.Ext./A..Ext.Loc.Dual. 1.8 Flex 5p"
+    },
+    {
+      "codigo": 4966,
+      "nome": "Idea Adv./ Adv.LOCK.Dualogic 1.8 Flex 5p"
+    },
+    {
+      "codigo": 7505,
+      "nome": "Idea Adv.Ext./Adv.Ext. Loc. 1.8 Flex 5p"
+    },
+    {
+      "codigo": 4160,
+      "nome": "Idea Advent./ Adv.LOCKER 1.8 mpi Flex 5p"
+    },
+    {
+      "codigo": 5340,
+      "nome": "Idea ATTRACTIVE 1.4 Fire Flex 8V 5p"
+    },
+    {
+      "codigo": 480,
+      "nome": "Idea ELX 1.4 mpi Fire Flex 8V 5p"
+    },
+    {
+      "codigo": 4962,
+      "nome": "Idea ELX 1.8 mpi Flex 8V 5p"
+    },
+    {
+      "codigo": 5341,
+      "nome": "Idea ESSENCE 1.6 Flex 16V 5p"
+    },
+    {
+      "codigo": 5342,
+      "nome": "Idea ESSENCE Dualogic 1.6 Flex 16V 5p"
+    },
+    {
+      "codigo": 6711,
+      "nome": "Idea ESSENCE SUBLIME 1.6 Flex 16V 5p"
+    },
+    {
+      "codigo": 6712,
+      "nome": "Idea ESSENCE SUBLIME Dual.1.6 Flex16V 5p"
+    },
+    {
+      "codigo": 481,
+      "nome": "Idea HLX 1.8 mpi Flex 8V 5p"
+    },
+    {
+      "codigo": 5343,
+      "nome": "Idea SPORTING 1.8 Flex 16V 5p"
+    },
+    {
+      "codigo": 5344,
+      "nome": "Idea SPORTING Dualogic 1.8 Flex 16V 5p"
+    },
+    {
+      "codigo": 4748,
+      "nome": "LINEA 1.9/ HLX 1.9/ 1.8 Flex 16V 4p"
+    },
+    {
+      "codigo": 4750,
+      "nome": "LINEA 1.9/ HLX 1.9/1.8 Flex  Dualogic 4p"
+    },
+    {
+      "codigo": 4749,
+      "nome": "LINEA ABSOLUTE 1.9/1.8 Flex Dualogic 4p"
+    },
+    {
+      "codigo": 6581,
+      "nome": "LINEA ESSEN.SUBLIME 1.8 Flex 16V 4p"
+    },
+    {
+      "codigo": 6582,
+      "nome": "LINEA ESSEN.SUBLIME Dual.1.8 Flex 16V 4p"
+    },
+    {
+      "codigo": 5577,
+      "nome": "LINEA ESSENCE 1.8 Flex 16V 4p"
+    },
+    {
+      "codigo": 5578,
+      "nome": "LINEA ESSENCE Dualogic 1.8 Flex 16V 4p"
+    },
+    {
+      "codigo": 4921,
+      "nome": "LINEA LX 1.9/ 1.8 Flex 16V 4p"
+    },
+    {
+      "codigo": 4920,
+      "nome": "LINEA LX 1.9/ 1.8 Flex 16V Dualogic 4p"
+    },
+    {
+      "codigo": 4751,
+      "nome": "LINEA T-JET 1.4 16V Turbo 4p"
+    },
+    {
+      "codigo": 482,
+      "nome": "Marea City"
+    },
+    {
+      "codigo": 483,
+      "nome": "Marea ELX 1.8 mpi 16V 132cv 4p"
+    },
+    {
+      "codigo": 484,
+      "nome": "Marea ELX 2.0 20V 4p"
+    },
+    {
+      "codigo": 485,
+      "nome": "Marea ELX 2.4 mpi 20V 4p"
+    },
+    {
+      "codigo": 486,
+      "nome": "Marea HLX 2.0 20V 4p"
+    },
+    {
+      "codigo": 487,
+      "nome": "Marea HLX 2.4 mpi 20V 4p Aut."
+    },
+    {
+      "codigo": 488,
+      "nome": "Marea HLX 2.4 mpi 20V 4p Mec."
+    },
+    {
+      "codigo": 489,
+      "nome": "Marea SX 1.6 mpi 16V 106cv 4p"
+    },
+    {
+      "codigo": 490,
+      "nome": "Marea SX 1.8 16V 4p"
+    },
+    {
+      "codigo": 491,
+      "nome": "Marea SX 2.0 20V 4p"
+    },
+    {
+      "codigo": 492,
+      "nome": "Marea Turbo 2.0 20V 4p"
+    },
+    {
+      "codigo": 493,
+      "nome": "Marea Weekend City 4p"
+    },
+    {
+      "codigo": 494,
+      "nome": "Marea Weekend ELX 1.8 mpi 16V 132cv 4p"
+    },
+    {
+      "codigo": 495,
+      "nome": "Marea Weekend ELX 2.0 20V 4p"
+    },
+    {
+      "codigo": 496,
+      "nome": "Marea Weekend ELX 2.4 mpi 20V 4p"
+    },
+    {
+      "codigo": 497,
+      "nome": "Marea Weekend HLX 2.0 20V 4p"
+    },
+    {
+      "codigo": 498,
+      "nome": "Marea Weekend HLX 2.4 mpi 20V 4p Aut."
+    },
+    {
+      "codigo": 499,
+      "nome": "Marea Weekend HLX 2.4 mpi 20V 4p Mec."
+    },
+    {
+      "codigo": 500,
+      "nome": "Marea Weekend SX 1.6 mpi 16V 106cv 4p"
+    },
+    {
+      "codigo": 501,
+      "nome": "Marea Weekend SX 1.8 16V 4p"
+    },
+    {
+      "codigo": 502,
+      "nome": "Marea Weekend SX 2.0 20V 4p"
+    },
+    {
+      "codigo": 503,
+      "nome": "Marea Weekend Turbo 2.0 20V 4p"
+    },
+    {
+      "codigo": 7825,
+      "nome": "MOBI DRIVE 1.0 Flex 6V 5p"
+    },
+    {
+      "codigo": 7920,
+      "nome": "MOBI DRIVE GSR 1.0 Flex 6V 5p"
+    },
+    {
+      "codigo": 7538,
+      "nome": "MOBI EASY 1.0 Fire Flex 5p."
+    },
+    {
+      "codigo": 8344,
+      "nome": "MOBI EASY COMFORT 1.0 Flex 5p."
+    },
+    {
+      "codigo": 7539,
+      "nome": "MOBI EASY on 1.0 Fire Flex 5p."
+    },
+    {
+      "codigo": 7540,
+      "nome": "MOBI LIKE 1.0 Fire Flex 5p."
+    },
+    {
+      "codigo": 7541,
+      "nome": "MOBI LIKE ON 1.0 Fire Flex 5p."
+    },
+    {
+      "codigo": 9228,
+      "nome": "MOBI TREKKING 1.0 Flex 5p."
+    },
+    {
+      "codigo": 7612,
+      "nome": "MOBI WAY 1.0 Fire Flex 5p."
+    },
+    {
+      "codigo": 7613,
+      "nome": "MOBI WAY on 1.0 Fire Flex 5p."
+    },
+    {
+      "codigo": 504,
+      "nome": "Oggi"
+    },
+    {
+      "codigo": 4826,
+      "nome": "Palio 1.0 Cel. ECON./ITALIA F.Flex 8V 4p"
+    },
+    {
+      "codigo": 4825,
+      "nome": "Palio 1.0 Celebr. ECONOMY F.Flex 8V 2p"
+    },
+    {
+      "codigo": 4827,
+      "nome": "Palio 1.0 ECONOMY Fire Flex 8V 2p"
+    },
+    {
+      "codigo": 4828,
+      "nome": "Palio 1.0 ECONOMY Fire Flex 8V 4p"
+    },
+    {
+      "codigo": 505,
+      "nome": "Palio 1.0/ Trofeo 1.0 Fire/ Fire Flex 2p"
+    },
+    {
+      "codigo": 506,
+      "nome": "Palio 1.0/ Trofeo 1.0 Fire/ Fire Flex 4p"
+    },
+    {
+      "codigo": 507,
+      "nome": "Palio 1.5 mpi 8V 2p"
+    },
+    {
+      "codigo": 508,
+      "nome": "Palio 1.5 mpi 8V 4p"
+    },
+    {
+      "codigo": 509,
+      "nome": "Palio 1.6 mpi 16V 2p"
+    },
+    {
+      "codigo": 510,
+      "nome": "Palio 1.6 mpi 16V 4p"
+    },
+    {
+      "codigo": 4290,
+      "nome": "Palio 1.8R mpi Flex 8V 2p"
+    },
+    {
+      "codigo": 3883,
+      "nome": "Palio 1.8R mpi Flex 8V 4p"
+    },
+    {
+      "codigo": 7180,
+      "nome": "Palio ATTRA. Best Seller 1.0 EVO Flex 5p"
+    },
+    {
+      "codigo": 7181,
+      "nome": "Palio ATTRA. Best Seller 1.4 EVO Flex 5p"
+    },
+    {
+      "codigo": 5271,
+      "nome": "Palio ATTRA./ITÁLIA 1.4 EVO F.Flex 8V 5p"
+    },
+    {
+      "codigo": 5721,
+      "nome": "Palio ATTRACTIVE 1.0 EVO Fire Flex 8v 5p"
+    },
+    {
+      "codigo": 3965,
+      "nome": "Palio Celebration 1.0 Fire Flex 8V 2p"
+    },
+    {
+      "codigo": 3966,
+      "nome": "Palio Celebration 1.0 Fire Flex 8V 4p"
+    },
+    {
+      "codigo": 511,
+      "nome": "Palio City 1.0 4p"
+    },
+    {
+      "codigo": 512,
+      "nome": "Palio City 1.5/1.6 4p"
+    },
+    {
+      "codigo": 513,
+      "nome": "Palio CityMatic 1.0 mpi"
+    },
+    {
+      "codigo": 514,
+      "nome": "Palio ED 1.0 mpi 2p e 4p"
+    },
+    {
+      "codigo": 515,
+      "nome": "Palio EDX 1.0 mpi 2p"
+    },
+    {
+      "codigo": 516,
+      "nome": "Palio EDX 1.0 mpi 4p"
+    },
+    {
+      "codigo": 517,
+      "nome": "Palio EL 1.5 mpi 2p e 4p"
+    },
+    {
+      "codigo": 518,
+      "nome": "Palio EL 1.6 spi 2p e 4p"
+    },
+    {
+      "codigo": 521,
+      "nome": "Palio ELX 1.0 Fire/30 Anos F. Flex 8V 4p"
+    },
+    {
+      "codigo": 520,
+      "nome": "Palio ELX 1.0 mpi Fire 16v 4p (25 anos)"
+    },
+    {
+      "codigo": 519,
+      "nome": "Palio ELX 1.0/ 1.0 Fire Flex 8V 2p"
+    },
+    {
+      "codigo": 522,
+      "nome": "Palio ELX 1.3 mpi  Fire 16V 4p"
+    },
+    {
+      "codigo": 523,
+      "nome": "Palio ELX 1.3 mpi Flex 8V 4p"
+    },
+    {
+      "codigo": 524,
+      "nome": "Palio ELX 1.4 Fire/30 Anos F. Flex 8V 4p"
+    },
+    {
+      "codigo": 525,
+      "nome": "Palio ELX 1.5 4p"
+    },
+    {
+      "codigo": 526,
+      "nome": "Palio ELX 1.6 4p"
+    },
+    {
+      "codigo": 527,
+      "nome": "Palio ELX 1.6 mpi 16v 4p"
+    },
+    {
+      "codigo": 528,
+      "nome": "Palio ELX 1.8/ 1.8 mpi Flex 8V 4p"
+    },
+    {
+      "codigo": 4967,
+      "nome": "Palio ELX Dualogic 1.8 mpi Flex 8V 4p"
+    },
+    {
+      "codigo": 529,
+      "nome": "Palio ELX/ 500 1.0 4p"
+    },
+    {
+      "codigo": 5293,
+      "nome": "Palio ESSENCE 1.6 Flex 16V 5p"
+    },
+    {
+      "codigo": 5294,
+      "nome": "Palio ESSENCE Dualogic 1.6 Flex 16V 5p"
+    },
+    {
+      "codigo": 530,
+      "nome": "Palio EX 1.0 mpi 2p"
+    },
+    {
+      "codigo": 531,
+      "nome": "Palio EX 1.0 mpi 4p"
+    },
+    {
+      "codigo": 533,
+      "nome": "Palio EX 1.0 mpi Fire 8v 4p"
+    },
+    {
+      "codigo": 532,
+      "nome": "Palio EX 1.0 mpi Fire/ Fire Flex 8v 2p"
+    },
+    {
+      "codigo": 534,
+      "nome": "Palio EX 1.3 mpi Fire 8V 67cv 2p"
+    },
+    {
+      "codigo": 535,
+      "nome": "Palio EX 1.3 mpi Fire 8V 67cv 4p"
+    },
+    {
+      "codigo": 536,
+      "nome": "Palio EX 1.8 mpi 8V 103cv 4p"
+    },
+    {
+      "codigo": 537,
+      "nome": "Palio EX Century 1.0 mpi Fire 16v 2p"
+    },
+    {
+      "codigo": 538,
+      "nome": "Palio EX Century 1.0 mpi Fire 16v 4p"
+    },
+    {
+      "codigo": 539,
+      "nome": "Palio HLX 1.8 mpi 8V 103cv 4p"
+    },
+    {
+      "codigo": 540,
+      "nome": "Palio HLX 1.8 mpi Flex 8V 4p"
+    },
+    {
+      "codigo": 7026,
+      "nome": "Palio Rua 1.0 Fire Flex 8V 5p"
+    },
+    {
+      "codigo": 6318,
+      "nome": "Palio SPORT.INTERLAGOS 1.6 Flex 16V"
+    },
+    {
+      "codigo": 6319,
+      "nome": "Palio SPORT.INTERLAGOS Dual.1.6 Flex 16V"
+    },
+    {
+      "codigo": 5696,
+      "nome": "Palio SPORTING 1.6 Flex 16V 5p"
+    },
+    {
+      "codigo": 7614,
+      "nome": "Palio SPORTING B.Edit. 1.6 Flex 16V 5p"
+    },
+    {
+      "codigo": 7615,
+      "nome": "Palio SPORTING Dual. B.Edit. 1.6 Flex 5p"
+    },
+    {
+      "codigo": 5697,
+      "nome": "Palio SPORTING Dualogic 1.6 Flex 16V 5p"
+    },
+    {
+      "codigo": 541,
+      "nome": "Palio Stile 1.6 mpi 16v 4p"
+    },
+    {
+      "codigo": 5879,
+      "nome": "Palio W.Adv. LOC. ITAL.Dual.1.8 Flex 16V"
+    },
+    {
+      "codigo": 5881,
+      "nome": "Palio W.ADV. LOCK. ITALIA 1.8 Flex 16V"
+    },
+    {
+      "codigo": 6836,
+      "nome": "Palio Way 1.0 Fire Flex 8V 5p"
+    },
+    {
+      "codigo": 6837,
+      "nome": "Palio Way Celebration 1.0 F. Flex 8V 5p"
+    },
+    {
+      "codigo": 5619,
+      "nome": "Palio Week. Adv. Dualogic 1.8 Flex"
+    },
+    {
+      "codigo": 5880,
+      "nome": "Palio Week. Adv. ITALIA 1.8 Flex 16V"
+    },
+    {
+      "codigo": 547,
+      "nome": "Palio Week. Adv/Adv TRYON 1.8 mpi Flex"
+    },
+    {
+      "codigo": 5272,
+      "nome": "Palio Week. ATTRACTIVE 1.4 Fire Flex 8V"
+    },
+    {
+      "codigo": 5882,
+      "nome": "Palio Week.Adv. ITAL. Dual. 1.8 Flex 16V"
+    },
+    {
+      "codigo": 4968,
+      "nome": "Palio Week.Adv.LOCK.Dualogic 1.8 Flex"
+    },
+    {
+      "codigo": 542,
+      "nome": "Palio Weekend 1.0 6-marchas"
+    },
+    {
+      "codigo": 543,
+      "nome": "Palio Weekend 1.5 mpi 4p"
+    },
+    {
+      "codigo": 544,
+      "nome": "Palio Weekend 1.6 mpi 16V 4p"
+    },
+    {
+      "codigo": 7542,
+      "nome": "Palio Weekend Adv. Ext. 1.8 Dual. Flex"
+    },
+    {
+      "codigo": 7543,
+      "nome": "Palio Weekend Adv. Ext. 1.8 Flex"
+    },
+    {
+      "codigo": 7544,
+      "nome": "Palio Weekend Adv. Loc.Ext.1.8 Dual.Flex"
+    },
+    {
+      "codigo": 7545,
+      "nome": "Palio Weekend Adv. LOCKER Ext. 1.8 Flex"
+    },
+    {
+      "codigo": 545,
+      "nome": "Palio Weekend Adventure 1.6 8V/16V"
+    },
+    {
+      "codigo": 546,
+      "nome": "Palio Weekend Adventure 1.8 8V 103cv 4p"
+    },
+    {
+      "codigo": 4673,
+      "nome": "Palio Weekend Adventure LOCKER 1.8 Flex"
+    },
+    {
+      "codigo": 548,
+      "nome": "Palio Weekend City 1.5/ 1.6 4p"
+    },
+    {
+      "codigo": 549,
+      "nome": "Palio Weekend ELX 1.0 mpi Fire 16V"
+    },
+    {
+      "codigo": 550,
+      "nome": "Palio Weekend ELX 1.3 mpi  Fire 16V"
+    },
+    {
+      "codigo": 551,
+      "nome": "Palio Weekend ELX 1.3 mpi Flex 8V 4p"
+    },
+    {
+      "codigo": 552,
+      "nome": "Palio Weekend ELX 1.4 mpi Fire Flex 8V"
+    },
+    {
+      "codigo": 553,
+      "nome": "Palio Weekend ELX 1.5 mpi 4p"
+    },
+    {
+      "codigo": 554,
+      "nome": "Palio Weekend ELX 1.6 mpi"
+    },
+    {
+      "codigo": 555,
+      "nome": "Palio Weekend EX 1.3 mpi Fire 8V 67cv 4p"
+    },
+    {
+      "codigo": 556,
+      "nome": "Palio Weekend EX 1.5 mpi"
+    },
+    {
+      "codigo": 557,
+      "nome": "Palio Weekend EX 1.8 mpi 8V 103cv 4p"
+    },
+    {
+      "codigo": 558,
+      "nome": "Palio Weekend HLX 1.8 mpi Flex 4p"
+    },
+    {
+      "codigo": 559,
+      "nome": "Palio Weekend Sport 1.6 mpi 16V 4p"
+    },
+    {
+      "codigo": 560,
+      "nome": "Palio Weekend Stile 1.6 mpi 16V 4p"
+    },
+    {
+      "codigo": 561,
+      "nome": "Palio Weekend Stile 1.8 mpi 8V 103cv 4p"
+    },
+    {
+      "codigo": 4674,
+      "nome": "Palio Weekend Trekking 1.4 Fire Flex 8V"
+    },
+    {
+      "codigo": 5412,
+      "nome": "Palio Weekend Trekking 1.6 Flex 16V 5p"
+    },
+    {
+      "codigo": 5063,
+      "nome": "Palio Weekend Trekking 1.8 mpi Flex 8V"
+    },
+    {
+      "codigo": 562,
+      "nome": "Palio Young 1.0 mpi 8v 2p"
+    },
+    {
+      "codigo": 563,
+      "nome": "Palio Young 1.0 mpi 8v 4p"
+    },
+    {
+      "codigo": 564,
+      "nome": "Palio Young 1.0 mpi Fire 8V 2p"
+    },
+    {
+      "codigo": 565,
+      "nome": "Palio Young 1.0 mpi Fire 8V 4p"
+    },
+    {
+      "codigo": 566,
+      "nome": "Panorama C/CL"
+    },
+    {
+      "codigo": 567,
+      "nome": "Premio CS 1.5 i.e. 2p/ SL 1.6/1.5/1.3 4p"
+    },
+    {
+      "codigo": 568,
+      "nome": "Premio CS 1.6/ 1.5/ 1.3 2p"
+    },
+    {
+      "codigo": 569,
+      "nome": "Premio CSL 1.6 i.e./ 1.5 4p"
+    },
+    {
+      "codigo": 570,
+      "nome": "Premio CSL 1.6/ 1.5"
+    },
+    {
+      "codigo": 571,
+      "nome": "Premio S 1.5 i.e./ 1.5 / 1.3"
+    },
+    {
+      "codigo": 11509,
+      "nome": "PULSE 1.0 Turbo 200  Flex Aut."
+    },
+    {
+      "codigo": 10219,
+      "nome": "PULSE ABARTH 1.3 Turbo 16V Flex Aut."
+    },
+    {
+      "codigo": 9645,
+      "nome": "PULSE AUDACE 1.0 Turbo 200 Flex Aut."
+    },
+    {
+      "codigo": 11269,
+      "nome": "PULSE AUDACE Turbo 200  Aut. (Hibrído)"
+    },
+    {
+      "codigo": 9646,
+      "nome": "PULSE DRIVE 1.0 Turbo 200 Flex Aut."
+    },
+    {
+      "codigo": 9647,
+      "nome": "PULSE DRIVE 1.3 8V Flex Aut."
+    },
+    {
+      "codigo": 9648,
+      "nome": "PULSE DRIVE 1.3 8V Flex Mec. "
+    },
+    {
+      "codigo": 9649,
+      "nome": "PULSE IMPETUS 1.0 TURBO 200 Flex Aut."
+    },
+    {
+      "codigo": 11270,
+      "nome": "PULSE IMPETUS T. 200 Aut. (Hibrído)"
+    },
+    {
+      "codigo": 11271,
+      "nome": "PULSE TRIBUTO 125 1.0 TB. 200 Flex Aut."
+    },
+    {
+      "codigo": 4421,
+      "nome": "Punto  ELX 1.4 Fire Flex 8V 5p"
+    },
+    {
+      "codigo": 4422,
+      "nome": "Punto 1.4 Fire Flex 8V 5p"
+    },
+    {
+      "codigo": 5273,
+      "nome": "Punto ATTRACTIVE 1.4 Fire Flex 8V 5p"
+    },
+    {
+      "codigo": 5883,
+      "nome": "Punto ATTRACTIVE ITALIA 1.4 F.Flex 8V 5p"
+    },
+    {
+      "codigo": 6560,
+      "nome": "Punto BLACKMOTION 1.8 Flex 16V 5p."
+    },
+    {
+      "codigo": 6561,
+      "nome": "Punto BLACKMOTION Dual. 1.8 Flex 16v 5p"
+    },
+    {
+      "codigo": 572,
+      "nome": "Punto Cabrio"
+    },
+    {
+      "codigo": 573,
+      "nome": "Punto EL/ELX"
+    },
+    {
+      "codigo": 5295,
+      "nome": "Punto ESSENCE 1.6 Flex 16V 5p"
+    },
+    {
+      "codigo": 5296,
+      "nome": "Punto ESSENCE 1.8 Flex 16V 5p"
+    },
+    {
+      "codigo": 5463,
+      "nome": "Punto ESSENCE Dualogic 1.6 Flex 16V 5p"
+    },
+    {
+      "codigo": 5297,
+      "nome": "Punto ESSENCE Dualogic 1.8 Flex 16V 5p"
+    },
+    {
+      "codigo": 7182,
+      "nome": "Punto ESSENCE SP 1.6 Flex 16V 5p"
+    },
+    {
+      "codigo": 7226,
+      "nome": "Punto ESSENCE SP Dualogic 1.6 Flex 16V"
+    },
+    {
+      "codigo": 4423,
+      "nome": "Punto HLX 1.8 Flex 8V 5p"
+    },
+    {
+      "codigo": 574,
+      "nome": "Punto S"
+    },
+    {
+      "codigo": 4424,
+      "nome": "Punto Sporting 1.8 Flex 8V/16V 5p"
+    },
+    {
+      "codigo": 5298,
+      "nome": "Punto Sporting Dualogic 1.8 Flex 16V 5p"
+    },
+    {
+      "codigo": 575,
+      "nome": "Punto SX"
+    },
+    {
+      "codigo": 4859,
+      "nome": "Punto T-JET 1.4 16V Turbo 5p"
+    },
+    {
+      "codigo": 9919,
+      "nome": "Scudo Cargo 1.5 16V Turbo Diesel"
+    },
+    {
+      "codigo": 11511,
+      "nome": "Scudo Cargo 2.2 16V Turbo Diesel"
+    },
+    {
+      "codigo": 9920,
+      "nome": "Scudo Multi 1.5 16 V Turbo Diesel"
+    },
+    {
+      "codigo": 11512,
+      "nome": "Scudo Multi 2.2 16 V Turbo Diesel"
+    },
+    {
+      "codigo": 576,
+      "nome": "Siena 1.0 mpi/ 500 1.0 mpi"
+    },
+    {
+      "codigo": 577,
+      "nome": "Siena 1.0/ EX 1.0 mpi Fire/ Fire Flex 8v"
+    },
+    {
+      "codigo": 578,
+      "nome": "Siena 1.5 mpi 8V 4p"
+    },
+    {
+      "codigo": 5299,
+      "nome": "Siena ATTRACTIVE 1.0 Fire Flex 8V 4p"
+    },
+    {
+      "codigo": 5300,
+      "nome": "Siena ATTRACTIVE 1.4 Fire Flex 8V 4p"
+    },
+    {
+      "codigo": 3967,
+      "nome": "Siena Celebration 1.0 Fire Flex 8V 4p"
+    },
+    {
+      "codigo": 579,
+      "nome": "Siena City 4p"
+    },
+    {
+      "codigo": 4860,
+      "nome": "Siena EL 1.0 mpi Fire Flex 8V 4p"
+    },
+    {
+      "codigo": 5361,
+      "nome": "Siena EL 1.4 mpi Fire Flex 8V 4p"
+    },
+    {
+      "codigo": 580,
+      "nome": "Siena EL 1.6 mpi 16V"
+    },
+    {
+      "codigo": 581,
+      "nome": "Siena EL 1.6 spi"
+    },
+    {
+      "codigo": 4861,
+      "nome": "Siena EL Celeb. 1.0 mpi Fire Flex 8V 4p"
+    },
+    {
+      "codigo": 5362,
+      "nome": "Siena EL Celeb. 1.4 mpi Fire Flex 8V 4p"
+    },
+    {
+      "codigo": 582,
+      "nome": "Siena ELX 1.0 mpi Fire 16v 4p (25 anos)"
+    },
+    {
+      "codigo": 583,
+      "nome": "Siena ELX 1.0 mpi Fire/Fire Flex 8V 4p"
+    },
+    {
+      "codigo": 584,
+      "nome": "Siena ELX 1.3 mpi Fire 16V 4p"
+    },
+    {
+      "codigo": 585,
+      "nome": "Siena ELX 1.3 mpi Flex 8V 4p"
+    },
+    {
+      "codigo": 586,
+      "nome": "Siena ELX 1.4 mpi Fire Flex 8V 4p"
+    },
+    {
+      "codigo": 587,
+      "nome": "Siena ELX 1.5 mpi 4p"
+    },
+    {
+      "codigo": 588,
+      "nome": "Siena ELX 1.6 mpi 8V/16V 4p"
+    },
+    {
+      "codigo": 589,
+      "nome": "Siena ELX 1.8 mpi 8V 103cv 4p"
+    },
+    {
+      "codigo": 5301,
+      "nome": "Siena ESSENCE 1.6 Flex 16V 4p"
+    },
+    {
+      "codigo": 5302,
+      "nome": "Siena ESSENCE Dualogic 1.6 Flex 16V 4p"
+    },
+    {
+      "codigo": 590,
+      "nome": "Siena EX 1.0 mpi Fire 16v 4p"
+    },
+    {
+      "codigo": 591,
+      "nome": "Siena EX 1.3 mpi Fire 8V 67cv 4p"
+    },
+    {
+      "codigo": 592,
+      "nome": "Siena EX 1.8 mpi 8V 103cv 4p"
+    },
+    {
+      "codigo": 593,
+      "nome": "Siena HL 1.6 mpi 16V"
+    },
+    {
+      "codigo": 594,
+      "nome": "Siena HLX 1.8 mpi Flex 8V 4p"
+    },
+    {
+      "codigo": 4969,
+      "nome": "Siena HLX Dualogic 1.8 mpi Flex 8V 4p"
+    },
+    {
+      "codigo": 5363,
+      "nome": "Siena Sporting 1.6 Flex 16V 4p"
+    },
+    {
+      "codigo": 5364,
+      "nome": "Siena Sporting Dualogic 1.6 Flex 16V 4p"
+    },
+    {
+      "codigo": 595,
+      "nome": "Siena Stile/Sport MTV 1.6 mpi 16V"
+    },
+    {
+      "codigo": 4133,
+      "nome": "Siena TETRAFUEL 1.4 mpi Fire Flex 8v 4p"
+    },
+    {
+      "codigo": 5064,
+      "nome": "Stilo 1.8 ATTRACTIVE Flex 8V 5p"
+    },
+    {
+      "codigo": 597,
+      "nome": "Stilo 1.8 MS Lim.Edit./ MS Season 16V"
+    },
+    {
+      "codigo": 4187,
+      "nome": "Stilo 1.8 SP Flex 8V 5p"
+    },
+    {
+      "codigo": 4329,
+      "nome": "Stilo 1.8 Sporting Flex 8V 5P"
+    },
+    {
+      "codigo": 596,
+      "nome": "Stilo 1.8/ 1.8 Connect 8V 103cv 5p"
+    },
+    {
+      "codigo": 3813,
+      "nome": "Stilo 1.8/ 1.8 Connect Flex 8V 5p"
+    },
+    {
+      "codigo": 598,
+      "nome": "Stilo 1.8/ 1.8 SP/ Connect 16V 122cv 5p"
+    },
+    {
+      "codigo": 599,
+      "nome": "Stilo 2.4 Abarth 20V 167cv 5p"
+    },
+    {
+      "codigo": 10065,
+      "nome": "Stilo Dualogic 1.8 ATTRACTIVE Flex 8V 5p"
+    },
+    {
+      "codigo": 4862,
+      "nome": "Stilo Dualogic 1.8 BlackMotion Flex 8V"
+    },
+    {
+      "codigo": 4529,
+      "nome": "Stilo Dualogic 1.8 Flex 8V 5p"
+    },
+    {
+      "codigo": 4530,
+      "nome": "Stilo Dualogic 1.8 SP Flex 8V 5p"
+    },
+    {
+      "codigo": 4531,
+      "nome": "Stilo Dualogic 1.8 Sporting Flex 8V 5p"
+    },
+    {
+      "codigo": 600,
+      "nome": "Strada 1.3 mpi Fire 8V 67cv CE"
+    },
+    {
+      "codigo": 601,
+      "nome": "Strada 1.3 mpi Fire 8V 67cv CS"
+    },
+    {
+      "codigo": 602,
+      "nome": "Strada 1.4 mpi Fire Flex 8V CE"
+    },
+    {
+      "codigo": 603,
+      "nome": "Strada 1.4 mpi Fire Flex 8V CS"
+    },
+    {
+      "codigo": 7450,
+      "nome": "Strada Adv. Ext. 1.8 LOCKER Dual.Flex CE"
+    },
+    {
+      "codigo": 7451,
+      "nome": "Strada Adv. Ext./ Ext.1.8 LOCKER Flex CE"
+    },
+    {
+      "codigo": 7452,
+      "nome": "Strada Adv. Extreme 1.8 Dual. Flex CE"
+    },
+    {
+      "codigo": 6517,
+      "nome": "Strada Adv. M. March. 1.8 Flex 16V CD"
+    },
+    {
+      "codigo": 6518,
+      "nome": "Strada Adv. M. March.1.8 Dual. Flex CD"
+    },
+    {
+      "codigo": 6636,
+      "nome": "Strada Adv.1.8 16V  LOCKER Dual. Flex CE"
+    },
+    {
+      "codigo": 5620,
+      "nome": "Strada Adv.1.8 16V Dualogic Flex CD"
+    },
+    {
+      "codigo": 6637,
+      "nome": "Strada Adv.1.8 16V Dualogic Flex CE"
+    },
+    {
+      "codigo": 5621,
+      "nome": "Strada Adv.1.8 16V LOCKER Dualo. Flex CD"
+    },
+    {
+      "codigo": 7453,
+      "nome": "Strada Adv.Ext. 1.8 LOCKER Dual. Flex CD"
+    },
+    {
+      "codigo": 7454,
+      "nome": "Strada Adv.Ext./ Ext. 1.8 LOCKER Flex CD"
+    },
+    {
+      "codigo": 606,
+      "nome": "Strada Adv/Adv TRYON 1.8 mpi Flex 8V CE"
+    },
+    {
+      "codigo": 604,
+      "nome": "Strada Adventure 1.6 mpi 16V CE"
+    },
+    {
+      "codigo": 605,
+      "nome": "Strada Adventure 1.8 mpi 8V 103cv CE"
+    },
+    {
+      "codigo": 4733,
+      "nome": "Strada Adventure 1.8/ 1.8 LOCKER Flex CE"
+    },
+    {
+      "codigo": 7455,
+      "nome": "Strada Adventure Ext. 1.8  Dual. Flex CD"
+    },
+    {
+      "codigo": 4970,
+      "nome": "Strada Adventure1.8/ 1.8 LOCKER Flex CD"
+    },
+    {
+      "codigo": 5274,
+      "nome": "Strada Celeb. 1.4 mpi Fire Flex 8V CE"
+    },
+    {
+      "codigo": 5275,
+      "nome": "Strada Celeb. 1.4 mpi Fire Flex 8V CS"
+    },
+    {
+      "codigo": 11109,
+      "nome": "Strada Endurance 1.3 Flex 8V CS Plus"
+    },
+    {
+      "codigo": 9108,
+      "nome": "Strada Endurance 1.4 Flex 8V CD"
+    },
+    {
+      "codigo": 9109,
+      "nome": "Strada Endurance 1.4 Flex 8V CS Plus"
+    },
+    {
+      "codigo": 9110,
+      "nome": "Strada Freedom 1.3 Flex 8V  CS Plus"
+    },
+    {
+      "codigo": 9111,
+      "nome": "Strada Freedom 1.3 Flex 8V CD"
+    },
+    {
+      "codigo": 8399,
+      "nome": "Strada Freedom 1.4 Flex 8V CD"
+    },
+    {
+      "codigo": 8544,
+      "nome": "Strada Freedom 1.4 Flex 8V CS"
+    },
+    {
+      "codigo": 607,
+      "nome": "Strada LX 1.6 16V CE"
+    },
+    {
+      "codigo": 608,
+      "nome": "Strada LX 1.6 mpi 16V"
+    },
+    {
+      "codigo": 9229,
+      "nome": "Strada Opening Edition 1.3 Flex 8V CD"
+    },
+    {
+      "codigo": 10836,
+      "nome": "Strada Ranch 1.0 Flex Turbo CD Aut."
+    },
+    {
+      "codigo": 9723,
+      "nome": "Strada Ranch 1.3 Flex 8V CD Aut."
+    },
+    {
+      "codigo": 5464,
+      "nome": "Strada Sporting 1.8 Flex 16V CE"
+    },
+    {
+      "codigo": 6519,
+      "nome": "Strada Trek. M. March. 1.6 Flex 16V CE"
+    },
+    {
+      "codigo": 3884,
+      "nome": "Strada Trekking 1.4 mpi Fire Flex 8V CE"
+    },
+    {
+      "codigo": 3885,
+      "nome": "Strada Trekking 1.4 mpi Fire Flex 8V CS"
+    },
+    {
+      "codigo": 6055,
+      "nome": "Strada Trekking 1.6 16V Flex CD"
+    },
+    {
+      "codigo": 6056,
+      "nome": "Strada Trekking 1.6 16V Flex CE"
+    },
+    {
+      "codigo": 6057,
+      "nome": "Strada Trekking 1.6 16V Flex CS"
+    },
+    {
+      "codigo": 7227,
+      "nome": "Strada Trekking 1.6 16V LOCKER Flex  CD"
+    },
+    {
+      "codigo": 609,
+      "nome": "Strada Trekking 1.6 mpi"
+    },
+    {
+      "codigo": 610,
+      "nome": "Strada Trekking 1.8 mpi Flex 8V CE"
+    },
+    {
+      "codigo": 611,
+      "nome": "Strada Trekking 1.8 mpi Flex 8V CS"
+    },
+    {
+      "codigo": 10837,
+      "nome": "Strada Ultra 1.0 Flex Turbo CD Aut."
+    },
+    {
+      "codigo": 11279,
+      "nome": "Strada Volc.TRIBUTO 125 1.3 Flex CD Aut."
+    },
+    {
+      "codigo": 9112,
+      "nome": "Strada Volcano 1.3 Flex 8V CD"
+    },
+    {
+      "codigo": 9724,
+      "nome": "Strada Volcano 1.3 Flex 8V CD Aut."
+    },
+    {
+      "codigo": 5066,
+      "nome": "Strada Working 1.4 mpi Fire Flex 8V CD"
+    },
+    {
+      "codigo": 5067,
+      "nome": "Strada Working 1.4 mpi Fire Flex 8V CE"
+    },
+    {
+      "codigo": 5068,
+      "nome": "Strada Working 1.4 mpi Fire Flex 8V CS"
+    },
+    {
+      "codigo": 612,
+      "nome": "Strada Working 1.6 mpi 16V CE"
+    },
+    {
+      "codigo": 613,
+      "nome": "Strada Working 1.6 mpi 16V CS"
+    },
+    {
+      "codigo": 614,
+      "nome": "Strada Working 1.8 mpi 8v 103cv CE"
+    },
+    {
+      "codigo": 615,
+      "nome": "Strada Working 1.8 mpi 8V 103cv CS"
+    },
+    {
+      "codigo": 6096,
+      "nome": "Strada Working Celeb.1.4 Fire Flex 8V CD"
+    },
+    {
+      "codigo": 6097,
+      "nome": "Strada Working Celeb.1.4 Fire Flex 8V CE"
+    },
+    {
+      "codigo": 6098,
+      "nome": "Strada Working Celeb.1.4 Fire Flex 8V CS"
+    },
+    {
+      "codigo": 7134,
+      "nome": "Strada Working HARD 1.4 Fire Flex 8V CD"
+    },
+    {
+      "codigo": 7135,
+      "nome": "Strada Working HARD 1.4 Fire Flex 8V CE"
+    },
+    {
+      "codigo": 7136,
+      "nome": "Strada Working HARD 1.4 Fire Flex 8V CS"
+    },
+    {
+      "codigo": 7752,
+      "nome": "Strada Working Plus 1.4 8V Flex CS"
+    },
+    {
+      "codigo": 616,
+      "nome": "Strada/ Strada Working 1.5 mpi 8V CE"
+    },
+    {
+      "codigo": 617,
+      "nome": "Strada/ Strada Working 1.5 mpi 8V CS"
+    },
+    {
+      "codigo": 618,
+      "nome": "Tempra 2.0 i.e 16V 2p e 4p"
+    },
+    {
+      "codigo": 619,
+      "nome": "Tempra 2.0 i.e. 8V 2p e 4p"
+    },
+    {
+      "codigo": 620,
+      "nome": "Tempra 2.0 mpi 16V"
+    },
+    {
+      "codigo": 621,
+      "nome": "Tempra 8V/ City 8V"
+    },
+    {
+      "codigo": 622,
+      "nome": "Tempra HLX 2.0 16V 4p"
+    },
+    {
+      "codigo": 623,
+      "nome": "Tempra Ouro 16V 2p e 4p"
+    },
+    {
+      "codigo": 624,
+      "nome": "Tempra Ouro/Prata 2.0 2p e 4p"
+    },
+    {
+      "codigo": 625,
+      "nome": "Tempra Stile 2.0 i.e. Turbo 4p"
+    },
+    {
+      "codigo": 626,
+      "nome": "Tempra SW SLX 2.0 i.e."
+    },
+    {
+      "codigo": 627,
+      "nome": "Tempra SX 2.0 16V 4p"
+    },
+    {
+      "codigo": 628,
+      "nome": "Tempra SX 2.0 i.e. 8V 4p"
+    },
+    {
+      "codigo": 629,
+      "nome": "Tempra Turbo 2.0 i.e. 2p"
+    },
+    {
+      "codigo": 630,
+      "nome": "Tipo 1.6 i.e. 2p e 4p"
+    },
+    {
+      "codigo": 631,
+      "nome": "Tipo 1.6 mpi 4p"
+    },
+    {
+      "codigo": 632,
+      "nome": "Tipo 2.0 16V 2p/4p"
+    },
+    {
+      "codigo": 633,
+      "nome": "Tipo 2.0 SLX 4p"
+    },
+    {
+      "codigo": 10999,
+      "nome": "Titano Endurance 2.2 16V 4x4 TB Die. Mec"
+    },
+    {
+      "codigo": 11000,
+      "nome": "Titano Ranch 2.2 16V 4x4 TB Diesel Aut."
+    },
+    {
+      "codigo": 11001,
+      "nome": "Titano Volcano 2.2 16V 4x4 TB Die. Aut."
+    },
+    {
+      "codigo": 8046,
+      "nome": "Toro Blackjack 2.4 16V flex Aut"
+    },
+    {
+      "codigo": 9493,
+      "nome": "Toro Endurance 1.3 T270 4x2 Flex Aut."
+    },
+    {
+      "codigo": 8236,
+      "nome": "Toro Endurance 1.8 16V Flex Aut."
+    },
+    {
+      "codigo": 8741,
+      "nome": "Toro Endurance 1.8 16V Flex Mec."
+    },
+    {
+      "codigo": 8742,
+      "nome": "Toro Endurance 2.0 16V 4x4 Diesel Aut."
+    },
+    {
+      "codigo": 9494,
+      "nome": "Toro Freedom 1.3 T270 4x2 Flex Aut."
+    },
+    {
+      "codigo": 7475,
+      "nome": "Toro Freedom 1.8 16V Flex Aut."
+    },
+    {
+      "codigo": 7476,
+      "nome": "Toro Freedom 2.0 16V 4x2 TB Diesel Mec."
+    },
+    {
+      "codigo": 10069,
+      "nome": "Toro Freedom 2.0 16V 4x4 TB Diesel Aut."
+    },
+    {
+      "codigo": 7477,
+      "nome": "Toro Freedom 2.0 16V 4x4 TB Diesel Mec."
+    },
+    {
+      "codigo": 7789,
+      "nome": "Toro Freedom 2.4 16V Flex Aut."
+    },
+    {
+      "codigo": 7950,
+      "nome": "Toro Freedom Road 1.8 16V Flex Aut."
+    },
+    {
+      "codigo": 7951,
+      "nome": "Toro Freedom Road 2.4 16V Flex Aut."
+    },
+    {
+      "codigo": 7921,
+      "nome": "Toro Opening Ed. Plus 1.8 16V Flex Aut."
+    },
+    {
+      "codigo": 7478,
+      "nome": "Toro Opening Edition 1.8 16V Flex Aut."
+    },
+    {
+      "codigo": 10070,
+      "nome": "Toro Ranch 2.0 16V 4x4 TB Diesel Aut."
+    },
+    {
+      "codigo": 11346,
+      "nome": "Toro Ranch 2.2 16V 4x4 TB Diesel Aut."
+    },
+    {
+      "codigo": 11347,
+      "nome": "Toro Ultra 1.3 16V 4x2 TB Flex Aut."
+    },
+    {
+      "codigo": 10071,
+      "nome": "Toro Ultra 2.0 16V 4x4 TB Diesel Aut."
+    },
+    {
+      "codigo": 11280,
+      "nome": "Toro Vol. TRIBUTO 125 1.3 T270 Flex Aut."
+    },
+    {
+      "codigo": 9495,
+      "nome": "Toro Volcano 1.3 T270 4x2 Flex Aut."
+    },
+    {
+      "codigo": 7479,
+      "nome": "Toro Volcano 2.0 16V 4x4 TB Diesel Aut."
+    },
+    {
+      "codigo": 11348,
+      "nome": "Toro Volcano 2.2 16V 4x4 TB Diesel Aut."
+    },
+    {
+      "codigo": 8237,
+      "nome": "Toro Volcano 2.4 16V Flex Aut."
+    },
+    {
+      "codigo": 634,
+      "nome": "Uno 1.6 mpi 2p e 4p"
+    },
+    {
+      "codigo": 635,
+      "nome": "Uno 1.6R mpi / 1.6R / 1.5R"
+    },
+    {
+      "codigo": 5480,
+      "nome": "UNO ATTRACTI. Celeb.1.4 EVO F.Flex 8V 2p"
+    },
+    {
+      "codigo": 5240,
+      "nome": "UNO ATTRACTI. Celeb.1.4 EVO F.Flex 8V 4p"
+    },
+    {
+      "codigo": 6957,
+      "nome": "UNO ATTRACTIVE 1.0 Fire Flex 8V 5p"
+    },
+    {
+      "codigo": 7732,
+      "nome": "UNO ATTRACTIVE 1.0 Flex 6V 5p"
+    },
+    {
+      "codigo": 5481,
+      "nome": "UNO ATTRACTIVE 1.4 EVO Fire Flex 8V 2p"
+    },
+    {
+      "codigo": 5239,
+      "nome": "UNO ATTRACTIVE 1.4 EVO Fire Flex 8V 4p"
+    },
+    {
+      "codigo": 9725,
+      "nome": "UNO CIAO 1.0 Fire Flex 8V 5p"
+    },
+    {
+      "codigo": 636,
+      "nome": "Uno City / Smart City 1.0 4p"
+    },
+    {
+      "codigo": 637,
+      "nome": "Uno CS/Top/Sport 1.5 i.e. / 1.5 /1.3"
+    },
+    {
+      "codigo": 638,
+      "nome": "Uno CS/Top/Sport 1.5 i.e. / 1.5 4p"
+    },
+    {
+      "codigo": 639,
+      "nome": "Uno CSL 1.6 4p (Argentino)"
+    },
+    {
+      "codigo": 7952,
+      "nome": "UNO DRIVE 1.0 Flex 6V 5p"
+    },
+    {
+      "codigo": 5664,
+      "nome": "UNO ECONOMY 1.4 EVO Fire Flex 8V 2p"
+    },
+    {
+      "codigo": 5665,
+      "nome": "UNO ECONOMY 1.4 EVO Fire Flex 8V 4p"
+    },
+    {
+      "codigo": 5666,
+      "nome": "UNO ECONOMY Celeb. 1.4 EVO F. Flex 8V 2p"
+    },
+    {
+      "codigo": 5667,
+      "nome": "UNO ECONOMY Celeb. 1.4 EVO F. Flex 8V 4p"
+    },
+    {
+      "codigo": 6958,
+      "nome": "UNO EVOLUTION 1.4 Fire Flex 8V 5p"
+    },
+    {
+      "codigo": 7119,
+      "nome": "UNO Furgão 1.0 Fire Flex 8V 3p"
+    },
+    {
+      "codigo": 640,
+      "nome": "Uno Furgão 1.3 mpi Fire/ Fire Flex 8V"
+    },
+    {
+      "codigo": 641,
+      "nome": "Uno Furgão 1.5 mpi/i.e."
+    },
+    {
+      "codigo": 642,
+      "nome": "Uno Furgão 1.5/ 1.3"
+    },
+    {
+      "codigo": 643,
+      "nome": "Uno Mille  ELX  2p e 4p"
+    },
+    {
+      "codigo": 646,
+      "nome": "Uno Mille 1.0 Electronic 4p"
+    },
+    {
+      "codigo": 644,
+      "nome": "Uno Mille 1.0 Fire/ F.Flex/ ECONOMY 2p"
+    },
+    {
+      "codigo": 645,
+      "nome": "Uno Mille 1.0 Fire/ F.Flex/ ECONOMY 4p"
+    },
+    {
+      "codigo": 647,
+      "nome": "Uno Mille 1.0/ i.e./Electronic/Brio 2p"
+    },
+    {
+      "codigo": 4763,
+      "nome": "Uno Mille Celeb. WAY ECON. 1.0 F.Flex 2p"
+    },
+    {
+      "codigo": 4764,
+      "nome": "Uno Mille Celeb. WAY ECON. 1.0 F.Flex 4p"
+    },
+    {
+      "codigo": 4316,
+      "nome": "Uno Mille Celeb/Celeb.ECON 1.0 F.Flex 2p"
+    },
+    {
+      "codigo": 4317,
+      "nome": "Uno Mille Celeb/Celeb.ECON 1.0 F.Flex 4p"
+    },
+    {
+      "codigo": 648,
+      "nome": "Uno Mille EP 2p e 4p"
+    },
+    {
+      "codigo": 6692,
+      "nome": "Uno Mille Grazie 1.0 Fire Flex 8v 4p"
+    },
+    {
+      "codigo": 650,
+      "nome": "Uno Mille SX 2p e 4p"
+    },
+    {
+      "codigo": 651,
+      "nome": "Uno Mille SX Young 1.0 IE"
+    },
+    {
+      "codigo": 6320,
+      "nome": "UNO MILLE WAY ECO.XINGU 1.0 F.Flex 8v 5p"
+    },
+    {
+      "codigo": 4765,
+      "nome": "Uno Mille WAY ECONOMY 1.0 F.Flex 2p"
+    },
+    {
+      "codigo": 4766,
+      "nome": "Uno Mille WAY ECONOMY 1.0 F.Flex 4p"
+    },
+    {
+      "codigo": 649,
+      "nome": "Uno Mille/ Mille EX/ Smart 2p"
+    },
+    {
+      "codigo": 652,
+      "nome": "Uno Mille/ Mille EX/ Smart 4p"
+    },
+    {
+      "codigo": 653,
+      "nome": "Uno S 1.5 i.e. / 1.5 / 1.3/ SX 1.3"
+    },
+    {
+      "codigo": 7616,
+      "nome": "UNO SPORT. Dual. 1.4 B.Edit. Flex 8V 5p"
+    },
+    {
+      "codigo": 6321,
+      "nome": "UNO SPORT.INTERLAGOS 1.4 EVO F.Flex 8v"
+    },
+    {
+      "codigo": 7733,
+      "nome": "UNO SPORTING 1.3 Flex 8V 5p"
+    },
+    {
+      "codigo": 7617,
+      "nome": "UNO SPORTING 1.4 B.Edit. Flex 8V 5p"
+    },
+    {
+      "codigo": 5482,
+      "nome": "UNO SPORTING 1.4 EVO Fire Flex 8V 2p"
+    },
+    {
+      "codigo": 5465,
+      "nome": "UNO SPORTING 1.4 EVO Fire Flex 8V 4p"
+    },
+    {
+      "codigo": 7734,
+      "nome": "UNO SPORTING Dual./GSR 1.3 Flex 8V 5p"
+    },
+    {
+      "codigo": 7070,
+      "nome": "UNO SPORTING Dualogic 1.4 EVO Flex 8V 4p"
+    },
+    {
+      "codigo": 654,
+      "nome": "Uno Turbo 1.4 i.e. 2p"
+    },
+    {
+      "codigo": 5483,
+      "nome": "UNO VIVACE 1.0 EVO Fire Flex 8V 3p"
+    },
+    {
+      "codigo": 5484,
+      "nome": "UNO VIVACE Celeb. 1.0 EVO F. Flex 8V 3p"
+    },
+    {
+      "codigo": 5242,
+      "nome": "UNO VIVACE Celeb. 1.0 EVO F.Flex 8V 5p"
+    },
+    {
+      "codigo": 6520,
+      "nome": "UNO VIVACE College 1.0 EVO FireFlex 5p"
+    },
+    {
+      "codigo": 7149,
+      "nome": "UNO VIVACE ITALIA 1.0 EVO F. Flex 8V 5p"
+    },
+    {
+      "codigo": 5241,
+      "nome": "UNO VIVACE/RUA 1.0 EVO Fire Flex 8V 5p"
+    },
+    {
+      "codigo": 5485,
+      "nome": "UNO WAY 1.0 EVO Fire Flex 8V 2p"
+    },
+    {
+      "codigo": 5243,
+      "nome": "UNO WAY 1.0 EVO Fire Flex 8V 5p"
+    },
+    {
+      "codigo": 7735,
+      "nome": "UNO WAY 1.0 Flex 6V 5p"
+    },
+    {
+      "codigo": 7736,
+      "nome": "UNO WAY 1.3 Flex 8V 5p"
+    },
+    {
+      "codigo": 7027,
+      "nome": "UNO WAY 1.4 EVO Dualogic Flex 8V 5p"
+    },
+    {
+      "codigo": 5486,
+      "nome": "UNO WAY 1.4 EVO Fire Flex 8V 2p"
+    },
+    {
+      "codigo": 5244,
+      "nome": "UNO WAY 1.4 EVO Fire Flex 8V 5p"
+    },
+    {
+      "codigo": 5487,
+      "nome": "UNO WAY Celeb. 1.0 EVO Fire Flex 8V 2p"
+    },
+    {
+      "codigo": 5245,
+      "nome": "UNO WAY Celeb. 1.0 EVO Fire Flex 8V 5p"
+    },
+    {
+      "codigo": 5488,
+      "nome": "UNO WAY Celeb. 1.4 EVO Fire Flex 8V 2p"
+    },
+    {
+      "codigo": 5246,
+      "nome": "UNO WAY Celeb. 1.4 EVO Fire Flex 8V 5p"
+    },
+    {
+      "codigo": 7737,
+      "nome": "UNO WAY Dual./GSR 1.3 Flex 8V 5p"
+    },
+    {
+      "codigo": 7183,
+      "nome": "UNO WAY RIO 450 1.0 EVO Flex 8V 5p"
+    },
+    {
+      "codigo": 6322,
+      "nome": "UNO WAY XINGU 1.0 EVO F.Flex 8V 5P"
+    },
+    {
+      "codigo": 6323,
+      "nome": "UNO WAY XINGU 1.4 EVO F.Flex 8V 5p"
+    }
+  ]
+}

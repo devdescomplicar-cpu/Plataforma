@@ -1,0 +1,401 @@
+{
+  "lastUpdated": "2026-01-30T06:39:01.485Z",
+  "data": [
+    {
+      "codigo": "60",
+      "nome": "ADLY"
+    },
+    {
+      "codigo": "61",
+      "nome": "AGRALE"
+    },
+    {
+      "codigo": "131",
+      "nome": "AMAZONAS"
+    },
+    {
+      "codigo": "62",
+      "nome": "APRILIA"
+    },
+    {
+      "codigo": "63",
+      "nome": "ATALA"
+    },
+    {
+      "codigo": "216",
+      "nome": "AVELLOZ"
+    },
+    {
+      "codigo": "64",
+      "nome": "BAJAJ"
+    },
+    {
+      "codigo": "205",
+      "nome": "BEE"
+    },
+    {
+      "codigo": "162",
+      "nome": "Benelli"
+    },
+    {
+      "codigo": "65",
+      "nome": "BETA"
+    },
+    {
+      "codigo": "66",
+      "nome": "BIMOTA"
+    },
+    {
+      "codigo": "67",
+      "nome": "BMW"
+    },
+    {
+      "codigo": "68",
+      "nome": "BRANDY"
+    },
+    {
+      "codigo": "130",
+      "nome": "BRAVA"
+    },
+    {
+      "codigo": "150",
+      "nome": "BRP"
+    },
+    {
+      "codigo": "117",
+      "nome": "BUELL"
+    },
+    {
+      "codigo": "155",
+      "nome": "BUENO"
+    },
+    {
+      "codigo": "212",
+      "nome": "BULL"
+    },
+    {
+      "codigo": "69",
+      "nome": "byCristo"
+    },
+    {
+      "codigo": "70",
+      "nome": "CAGIVA"
+    },
+    {
+      "codigo": "71",
+      "nome": "CALOI"
+    },
+    {
+      "codigo": "72",
+      "nome": "DAELIM"
+    },
+    {
+      "codigo": "145",
+      "nome": "DAFRA"
+    },
+    {
+      "codigo": "137",
+      "nome": "DAYANG"
+    },
+    {
+      "codigo": "142",
+      "nome": "DAYUN"
+    },
+    {
+      "codigo": "73",
+      "nome": "DERBI"
+    },
+    {
+      "codigo": "74",
+      "nome": "DUCATI"
+    },
+    {
+      "codigo": "75",
+      "nome": "EMME"
+    },
+    {
+      "codigo": "248",
+      "nome": "FEVER"
+    },
+    {
+      "codigo": "132",
+      "nome": "FOX"
+    },
+    {
+      "codigo": "209",
+      "nome": "FUSCO MOTOSEGURA"
+    },
+    {
+      "codigo": "128",
+      "nome": "FYM"
+    },
+    {
+      "codigo": "143",
+      "nome": "GARINNI"
+    },
+    {
+      "codigo": "76",
+      "nome": "GAS GAS"
+    },
+    {
+      "codigo": "133",
+      "nome": "GREEN"
+    },
+    {
+      "codigo": "138",
+      "nome": "HAOBAO"
+    },
+    {
+      "codigo": "203",
+      "nome": "HAOJUE"
+    },
+    {
+      "codigo": "77",
+      "nome": "HARLEY-DAVIDSON"
+    },
+    {
+      "codigo": "78",
+      "nome": "HARTFORD"
+    },
+    {
+      "codigo": "79",
+      "nome": "HERO"
+    },
+    {
+      "codigo": "261",
+      "nome": "Hisun"
+    },
+    {
+      "codigo": "80",
+      "nome": "HONDA"
+    },
+    {
+      "codigo": "81",
+      "nome": "HUSABERG"
+    },
+    {
+      "codigo": "82",
+      "nome": "HUSQVARNA"
+    },
+    {
+      "codigo": "202",
+      "nome": "INDIAN"
+    },
+    {
+      "codigo": "158",
+      "nome": "IROS"
+    },
+    {
+      "codigo": "141",
+      "nome": "JIAPENG VOLCANO"
+    },
+    {
+      "codigo": "174",
+      "nome": "JOHNNYPAG"
+    },
+    {
+      "codigo": "151",
+      "nome": "JONNY"
+    },
+    {
+      "codigo": "129",
+      "nome": "KAHENA"
+    },
+    {
+      "codigo": "118",
+      "nome": "KASINSKI"
+    },
+    {
+      "codigo": "85",
+      "nome": "KAWASAKI"
+    },
+    {
+      "codigo": "87",
+      "nome": "KTM"
+    },
+    {
+      "codigo": "204",
+      "nome": "KYMCO"
+    },
+    {
+      "codigo": "159",
+      "nome": "LANDUM"
+    },
+    {
+      "codigo": "88",
+      "nome": "L'AQUILA"
+    },
+    {
+      "codigo": "89",
+      "nome": "LAVRALE"
+    },
+    {
+      "codigo": "139",
+      "nome": "LERIVO"
+    },
+    {
+      "codigo": "258",
+      "nome": "LEVA"
+    },
+    {
+      "codigo": "178",
+      "nome": "LIFAN"
+    },
+    {
+      "codigo": "148",
+      "nome": "Lon-V"
+    },
+    {
+      "codigo": "175",
+      "nome": "MAGRÃO TRICICLOS"
+    },
+    {
+      "codigo": "146",
+      "nome": "Malaguti"
+    },
+    {
+      "codigo": "126",
+      "nome": "MIZA"
+    },
+    {
+      "codigo": "259",
+      "nome": "Mobílli"
+    },
+    {
+      "codigo": "90",
+      "nome": "MOTO GUZZI"
+    },
+    {
+      "codigo": "201",
+      "nome": "MOTOCAR"
+    },
+    {
+      "codigo": "255",
+      "nome": "MOTOMORINI"
+    },
+    {
+      "codigo": "200",
+      "nome": "MOTORINO"
+    },
+    {
+      "codigo": "160",
+      "nome": "MRX"
+    },
+    {
+      "codigo": "91",
+      "nome": "MV AGUSTA"
+    },
+    {
+      "codigo": "92",
+      "nome": "MVK"
+    },
+    {
+      "codigo": "239",
+      "nome": "NIU"
+    },
+    {
+      "codigo": "93",
+      "nome": "ORCA"
+    },
+    {
+      "codigo": "164",
+      "nome": "PEGASSI"
+    },
+    {
+      "codigo": "94",
+      "nome": "PEUGEOT"
+    },
+    {
+      "codigo": "95",
+      "nome": "PIAGGIO"
+    },
+    {
+      "codigo": "210",
+      "nome": "POLARIS"
+    },
+    {
+      "codigo": "173",
+      "nome": "REGAL RAPTOR"
+    },
+    {
+      "codigo": "198",
+      "nome": "RIGUETE"
+    },
+    {
+      "codigo": "192",
+      "nome": "Royal Enfield"
+    },
+    {
+      "codigo": "96",
+      "nome": "SANYANG"
+    },
+    {
+      "codigo": "134",
+      "nome": "SHINERAY"
+    },
+    {
+      "codigo": "97",
+      "nome": "SIAMOTO"
+    },
+    {
+      "codigo": "98",
+      "nome": "SUNDOWN"
+    },
+    {
+      "codigo": "237",
+      "nome": "SUPER SOCO"
+    },
+    {
+      "codigo": "99",
+      "nome": "SUZUKI"
+    },
+    {
+      "codigo": "176",
+      "nome": "TARGOS"
+    },
+    {
+      "codigo": "187",
+      "nome": "TIGER"
+    },
+    {
+      "codigo": "119",
+      "nome": "TRAXX"
+    },
+    {
+      "codigo": "100",
+      "nome": "TRIUMPH"
+    },
+    {
+      "codigo": "244",
+      "nome": "Ventane Motors"
+    },
+    {
+      "codigo": "180",
+      "nome": "VENTO"
+    },
+    {
+      "codigo": "256",
+      "nome": "VESPA"
+    },
+    {
+      "codigo": "215",
+      "nome": "VOLTZ"
+    },
+    {
+      "codigo": "243",
+      "nome": "WATTS"
+    },
+    {
+      "codigo": "135",
+      "nome": "WUYANG"
+    },
+    {
+      "codigo": "101",
+      "nome": "YAMAHA"
+    },
+    {
+      "codigo": "242",
+      "nome": "ZONTES"
+    }
+  ]
+}

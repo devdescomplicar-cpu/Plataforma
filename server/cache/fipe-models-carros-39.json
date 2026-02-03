@@ -1,0 +1,2185 @@
+{
+  "lastUpdated": "2026-01-30T06:36:08.547Z",
+  "data": [
+    {
+      "codigo": 1527,
+      "nome": "180-D Pick-Up/Furgão 2.4 Diesel"
+    },
+    {
+      "codigo": 1528,
+      "nome": "180-D Van 2.4 Diesel"
+    },
+    {
+      "codigo": 1529,
+      "nome": "190-E 2.3"
+    },
+    {
+      "codigo": 1530,
+      "nome": "230-E 2.3"
+    },
+    {
+      "codigo": 1531,
+      "nome": "260-E 2.6"
+    },
+    {
+      "codigo": 1532,
+      "nome": "300-D 3.0 Diesel"
+    },
+    {
+      "codigo": 1533,
+      "nome": "300-E 3.0"
+    },
+    {
+      "codigo": 1534,
+      "nome": "300-SE 3.0/3.2"
+    },
+    {
+      "codigo": 1535,
+      "nome": "300-SL 3.0"
+    },
+    {
+      "codigo": 1536,
+      "nome": "300-TE Wagon 3.0"
+    },
+    {
+      "codigo": 1537,
+      "nome": "500-E 5.0"
+    },
+    {
+      "codigo": 1538,
+      "nome": "500-SEC/ SL"
+    },
+    {
+      "codigo": 1539,
+      "nome": "500-SEL 5.0/ 5.6"
+    },
+    {
+      "codigo": 1540,
+      "nome": "560-SEL 5.6"
+    },
+    {
+      "codigo": 8752,
+      "nome": "A 200 1.3 TB Advance Aut."
+    },
+    {
+      "codigo": 8905,
+      "nome": "A 200 1.3 TB Hatch Aut."
+    },
+    {
+      "codigo": 8753,
+      "nome": "A 200 1.3 TB Style Aut."
+    },
+    {
+      "codigo": 10775,
+      "nome": "A 200 AMG Line 1.3 TB Aut."
+    },
+    {
+      "codigo": 10984,
+      "nome": "A 200 AMG Line 1.3 TB Aut. (Híbrido)"
+    },
+    {
+      "codigo": 9318,
+      "nome": "A 250 2.0 TB Hatch"
+    },
+    {
+      "codigo": 8579,
+      "nome": "A 250 2.0 TB Hatch Vision"
+    },
+    {
+      "codigo": 8547,
+      "nome": "A 250 2.0 TB Launch Edition"
+    },
+    {
+      "codigo": 9117,
+      "nome": "A-35 AMG 4MATIC 2.0 TB Aut."
+    },
+    {
+      "codigo": 8865,
+      "nome": "A35 AMG Laun. Edition 4MATIC 2.0 TB Aut"
+    },
+    {
+      "codigo": 9118,
+      "nome": "A-35 AMG Sedan 4MATIC 2.0 TB Aut."
+    },
+    {
+      "codigo": 9166,
+      "nome": "A-45  S AMG 4MATIC CGI 2.0 TB Aut."
+    },
+    {
+      "codigo": 7308,
+      "nome": "C-180 1.6 Turbo 16V/Flex 16V Aut."
+    },
+    {
+      "codigo": 6928,
+      "nome": "C-180 CGI Avant. 1.6/1.6 FlexTB 16V Aut."
+    },
+    {
+      "codigo": 5399,
+      "nome": "C-180 CGI Classic 1.8 16V 156cv Aut."
+    },
+    {
+      "codigo": 5625,
+      "nome": "C-180 CGI Coupe 1.8 16V 156cv Aut."
+    },
+    {
+      "codigo": 7957,
+      "nome": "C-180 CGI Coupe Avant. 1.6 TB 16V Aut."
+    },
+    {
+      "codigo": 8963,
+      "nome": "C-180 CGI Coupe Sport 1.5 TB 16V Aut."
+    },
+    {
+      "codigo": 6329,
+      "nome": "C-180 CGI Coupe Sport 1.6 TB 16V Aut."
+    },
+    {
+      "codigo": 7140,
+      "nome": "C-180 CGI Estate Avant. 1.6 TB 16V Aut."
+    },
+    {
+      "codigo": 6929,
+      "nome": "C-180 CGI Exc. 1.6/1.6 Flex TB 16V  Aut."
+    },
+    {
+      "codigo": 6300,
+      "nome": "C-180 CGI Sport 1.6 TB 16V 156cv Aut."
+    },
+    {
+      "codigo": 5979,
+      "nome": "C-180 CGI Touring 1.8 16V Aut."
+    },
+    {
+      "codigo": 6357,
+      "nome": "C-180 CGI Touring Sport 1.6 TB Aut."
+    },
+    {
+      "codigo": 1541,
+      "nome": "C-180 Classic/Classic Plus/Elegance"
+    },
+    {
+      "codigo": 5213,
+      "nome": "C-180 Kompressor Classic 1.6 16V Aut."
+    },
+    {
+      "codigo": 1542,
+      "nome": "C-180 Kompressor Classic 1.8 16V 143cv"
+    },
+    {
+      "codigo": 9966,
+      "nome": "C-200 1.5 TB 16V 183cv Aut. (Híbrido)"
+    },
+    {
+      "codigo": 10134,
+      "nome": "C-200 AMG Line EQ Boost 1.5 TB (Hib.)"
+    },
+    {
+      "codigo": 6963,
+      "nome": "C-200 Avantgarde 2.0 TB 16V 184cv Aut."
+    },
+    {
+      "codigo": 5307,
+      "nome": "C-200 CGI Avantgarde 1.8 16V 184cv Aut."
+    },
+    {
+      "codigo": 5308,
+      "nome": "C-200 CGI Sport 1.8 TB 16V 184cv Aut."
+    },
+    {
+      "codigo": 5348,
+      "nome": "C-200 CGI Touring Avantgarde 1.8 16V Aut"
+    },
+    {
+      "codigo": 1543,
+      "nome": "C-200 Classic/Sport"
+    },
+    {
+      "codigo": 1544,
+      "nome": "C-200 Kompressor 2.0 V6 16v 4p Aut."
+    },
+    {
+      "codigo": 3938,
+      "nome": "C-200 Kompressor Avant.1.8 16V Aut"
+    },
+    {
+      "codigo": 4358,
+      "nome": "C-200 Kompressor Classic 1.8 16V Aut."
+    },
+    {
+      "codigo": 1545,
+      "nome": "C-200 Sportcoupé Komp. 2.0 16V 163cv Aut"
+    },
+    {
+      "codigo": 1546,
+      "nome": "C-200 Touring Komp. 2.0 16V 163cv 5p Aut"
+    },
+    {
+      "codigo": 4662,
+      "nome": "C-200 Touring Komp. Avant. 1.8 16V Aut."
+    },
+    {
+      "codigo": 1547,
+      "nome": "C-220 Classic/Elegance/Sport"
+    },
+    {
+      "codigo": 3826,
+      "nome": "C-230 Avantgarde 2.5 V6 24V 204cv Aut"
+    },
+    {
+      "codigo": 1548,
+      "nome": "C-230 Komp. Sportcoupé 2.3 16V 197cv Aut"
+    },
+    {
+      "codigo": 1549,
+      "nome": "C-230 Kompressor Avantgarde"
+    },
+    {
+      "codigo": 1550,
+      "nome": "C-230 Sport/ Eleg./Touring Eleg.Plus 2.3"
+    },
+    {
+      "codigo": 3939,
+      "nome": "C-230 Touring Avant. 2.5 24V 204cv Aut."
+    },
+    {
+      "codigo": 1551,
+      "nome": "C-230 Touring Kompressor"
+    },
+    {
+      "codigo": 1552,
+      "nome": "C-240 AvantGarde 2.4/ 2.6 4p"
+    },
+    {
+      "codigo": 1553,
+      "nome": "C-240 Classic"
+    },
+    {
+      "codigo": 1554,
+      "nome": "C-240 Elegance 2.4"
+    },
+    {
+      "codigo": 1555,
+      "nome": "C-240 Elegance 2.4 V6 24v 4p Aut."
+    },
+    {
+      "codigo": 7975,
+      "nome": "C-250 Avantgarde 2.0 TB 211cv Aut."
+    },
+    {
+      "codigo": 5500,
+      "nome": "C-250 CGI Sport 1.8 16V Aut."
+    },
+    {
+      "codigo": 6358,
+      "nome": "C-250 CGI Sport Coupe 1.8 16V TB Aut."
+    },
+    {
+      "codigo": 6964,
+      "nome": "C-250 Sport 2.0 16V 211cv Aut."
+    },
+    {
+      "codigo": 7668,
+      "nome": "C-250 Sport Coupe 2.0 16V 211cv Aut."
+    },
+    {
+      "codigo": 4386,
+      "nome": "C-280 Avantgarde 3.0 V6 231cv Aut."
+    },
+    {
+      "codigo": 1556,
+      "nome": "C-280 Classic/Sport"
+    },
+    {
+      "codigo": 1557,
+      "nome": "C-280 Elegance"
+    },
+    {
+      "codigo": 1558,
+      "nome": "C-280 Touring"
+    },
+    {
+      "codigo": 9967,
+      "nome": "C-300 AMG Line 2.0 TB Aut. (Híbrido)"
+    },
+    {
+      "codigo": 7800,
+      "nome": "C-300 Anniversary Lim. Edit. 2.0 Aut."
+    },
+    {
+      "codigo": 5002,
+      "nome": "C-300 Avantgarde 3.0 V6 24V 231cv Aut."
+    },
+    {
+      "codigo": 7801,
+      "nome": "C-300 Cabriolet 2.0 245/258cv Aut."
+    },
+    {
+      "codigo": 8780,
+      "nome": "C-300 Coupé Sport 2.0 16V Aut."
+    },
+    {
+      "codigo": 7976,
+      "nome": "C-300 Estate Avantgarde 2.0 245cv Aut."
+    },
+    {
+      "codigo": 7977,
+      "nome": "C-300 Sport 2.0 16V Aut."
+    },
+    {
+      "codigo": 5349,
+      "nome": "C-300 Sport 3.0 V6 231cv Aut."
+    },
+    {
+      "codigo": 1559,
+      "nome": "C-320 AvantGarde 3.2 V6 24v 4p Aut."
+    },
+    {
+      "codigo": 1560,
+      "nome": "C-320 Elegance 3.2 V6 24v 4p Aut."
+    },
+    {
+      "codigo": 1561,
+      "nome": "C-320 Touring 3.2 V6 18v 4p Aut."
+    },
+    {
+      "codigo": 3802,
+      "nome": "C-350 Avantgarde/ Elegance 3.5 V6 272cv"
+    },
+    {
+      "codigo": 5730,
+      "nome": "C-350 CGI Sport 3.5 306cv Aut."
+    },
+    {
+      "codigo": 4717,
+      "nome": "C-350 Sport 3.5 V6 272cv"
+    },
+    {
+      "codigo": 3893,
+      "nome": "C-350 Sportcoupé 3.5 24V  272cv"
+    },
+    {
+      "codigo": 3894,
+      "nome": "C-350 Touring AvantGarde 3.5 24V 272cv"
+    },
+    {
+      "codigo": 1562,
+      "nome": "C-36 AMG"
+    },
+    {
+      "codigo": 1563,
+      "nome": "C-43 AMG"
+    },
+    {
+      "codigo": 7765,
+      "nome": "C-43 AMG 3.0 V6 Bi-Turbo 367cv Aut"
+    },
+    {
+      "codigo": 7738,
+      "nome": "C-43 Coupe AMG 3.0 V6 Bi-Turbo Aut."
+    },
+    {
+      "codigo": 7376,
+      "nome": "C-450 AMG Sport 3.0 TB 362cv Aut."
+    },
+    {
+      "codigo": 3827,
+      "nome": "C-55 AMG 24V 367cv Aut."
+    },
+    {
+      "codigo": 3828,
+      "nome": "C-55 Touring AMG 24V 367cv Aut."
+    },
+    {
+      "codigo": 7620,
+      "nome": "C-63 AMG 4.0 V8 Bi-Turbo Aut."
+    },
+    {
+      "codigo": 4663,
+      "nome": "C-63 AMG 6.2 V8 Aut."
+    },
+    {
+      "codigo": 11174,
+      "nome": "C-63 AMG S E Perf. F1 Ed. Aut.(Híbrido)"
+    },
+    {
+      "codigo": 11175,
+      "nome": "C-63 AMG S E Performance Aut.(Híbrido)"
+    },
+    {
+      "codigo": 5745,
+      "nome": "C-63 Coupe AMG 6.2 V8 Aut."
+    },
+    {
+      "codigo": 6273,
+      "nome": "C-63 Coupe AMG Black Series 6.3 V8 Aut."
+    },
+    {
+      "codigo": 7309,
+      "nome": "C-63 S AMG 4.0 V8  Bi-Turbo Aut."
+    },
+    {
+      "codigo": 7837,
+      "nome": "C-63 S Coupe AMG 4.0 V8  Bi-Turbo Aut."
+    },
+    {
+      "codigo": 5031,
+      "nome": "C-63 Touring AMG 6.2 V8 Aut."
+    },
+    {
+      "codigo": 1564,
+      "nome": "CL-500 5.0/ 5.5"
+    },
+    {
+      "codigo": 1565,
+      "nome": "CL-600 6.0/ 5.5"
+    },
+    {
+      "codigo": 4516,
+      "nome": "CL-63 AMG 6.2 V8 32V 525cv"
+    },
+    {
+      "codigo": 9679,
+      "nome": "CL-65 AMG 6.0 V12 Aut."
+    },
+    {
+      "codigo": 8215,
+      "nome": "CLA-180 1.6 16V 122cv Aut."
+    },
+    {
+      "codigo": 7958,
+      "nome": "CLA-200 1.6 TB 16V Flex Aut."
+    },
+    {
+      "codigo": 11122,
+      "nome": "CLA-200 AMG Line 1.3 TB 16V Aut. (Híb.)"
+    },
+    {
+      "codigo": 6699,
+      "nome": "CLA-200 First Edition 1.6 TB 16V  Aut."
+    },
+    {
+      "codigo": 11177,
+      "nome": "CLA-200 Progressive 1.3 TB 16V Aut.(Híb)"
+    },
+    {
+      "codigo": 6965,
+      "nome": "CLA-200 Urban 1.6 TB 16V/Flex Aut."
+    },
+    {
+      "codigo": 7039,
+      "nome": "CLA-200 Vision 1.6 TB 16V Flex Aut."
+    },
+    {
+      "codigo": 8866,
+      "nome": "CLA-250 2.0 16V TB Aut."
+    },
+    {
+      "codigo": 6966,
+      "nome": "CLA-250 Sport 4MATIC 2.0 16V 211cv Aut."
+    },
+    {
+      "codigo": 9139,
+      "nome": "CLA-35 AMG 4MATIC 2.0 TB Aut."
+    },
+    {
+      "codigo": 11042,
+      "nome": "CLA-35 AMG 4MATIC 2.0 TB Aut. (Híbrido)"
+    },
+    {
+      "codigo": 8994,
+      "nome": "CLA-35 AMG Launch Edition 4MATIC 2.0 TB"
+    },
+    {
+      "codigo": 6867,
+      "nome": "CLA-45 AMG 4MATIC CGI 2.0 TB Aut."
+    },
+    {
+      "codigo": 9167,
+      "nome": "CLA-45 S AMG 4MATIC CGI 2.0 TB Aut."
+    },
+    {
+      "codigo": 1566,
+      "nome": "Classe A 160 Classic Semi-Aut."
+    },
+    {
+      "codigo": 1567,
+      "nome": "Classe A 160 Classic/ Spirit Mec."
+    },
+    {
+      "codigo": 1568,
+      "nome": "Classe A 160 Elegance Mec."
+    },
+    {
+      "codigo": 1569,
+      "nome": "Classe A 160 Elegance Semi-Aut."
+    },
+    {
+      "codigo": 1570,
+      "nome": "Classe A 190 AvantGarde 1.9 8V 125cv Aut"
+    },
+    {
+      "codigo": 1571,
+      "nome": "Classe A 190 AvantGarde 1.9 8V 125cv Mec"
+    },
+    {
+      "codigo": 1572,
+      "nome": "Classe A 190 Classic 1.9 Semi-Aut."
+    },
+    {
+      "codigo": 1573,
+      "nome": "Classe A 190 Classic/ Spirit 1.9 Mec."
+    },
+    {
+      "codigo": 1574,
+      "nome": "Classe A 190 Elegance 1.9 Aut."
+    },
+    {
+      "codigo": 1575,
+      "nome": "Classe A 190 Elegance 1.9 Mec."
+    },
+    {
+      "codigo": 1576,
+      "nome": "Classe A 190 Elegance 1.9 Semi-Aut."
+    },
+    {
+      "codigo": 6443,
+      "nome": "Classe A 200 1.6 TB 16V Style 156cv Aut."
+    },
+    {
+      "codigo": 6444,
+      "nome": "Classe A 200 1.6 TB 16V Urban 156cv Aut."
+    },
+    {
+      "codigo": 7228,
+      "nome": "Classe A 200 1.6 TB/Flex Aut."
+    },
+    {
+      "codigo": 3829,
+      "nome": "Classe A 200 Elegance 2.0 136cv Aut."
+    },
+    {
+      "codigo": 6754,
+      "nome": "Classe A 250 2.0 TB Sport Aut."
+    },
+    {
+      "codigo": 6698,
+      "nome": "Classe A45 AMG 4MATIC 2.0 Turbo Aut."
+    },
+    {
+      "codigo": 4831,
+      "nome": "Classe B 170 1.7 116cv Aut."
+    },
+    {
+      "codigo": 5003,
+      "nome": "Classe B 180 1.7 116cv Aut."
+    },
+    {
+      "codigo": 4012,
+      "nome": "Classe B 200 2.0 136cv Aut."
+    },
+    {
+      "codigo": 4202,
+      "nome": "Classe B 200 2.0 Turbo 193cv Aut."
+    },
+    {
+      "codigo": 6238,
+      "nome": "Classe B 200 CGI 1.6 TB Sport 156cv Aut"
+    },
+    {
+      "codigo": 6237,
+      "nome": "Classe B 200 CGI 1.6 TB/Flex Aut."
+    },
+    {
+      "codigo": 4064,
+      "nome": "Classe R 500 5.0 V8 306cv Aut."
+    },
+    {
+      "codigo": 5033,
+      "nome": "Classe R 500 L 5.5 V8 388cv Aut."
+    },
+    {
+      "codigo": 1577,
+      "nome": "Classic 6.0"
+    },
+    {
+      "codigo": 4856,
+      "nome": "CLC 200 Kompressor 1.8 184cv Aut."
+    },
+    {
+      "codigo": 1578,
+      "nome": "CLK-230 Cabriolet Kompressor"
+    },
+    {
+      "codigo": 1579,
+      "nome": "CLK-230 Kompressor"
+    },
+    {
+      "codigo": 1580,
+      "nome": "CLK-320 AvantGarde"
+    },
+    {
+      "codigo": 1581,
+      "nome": "CLK-320 AvantGarde Cabriolet"
+    },
+    {
+      "codigo": 1582,
+      "nome": "CLK-320 Elegance"
+    },
+    {
+      "codigo": 1583,
+      "nome": "CLK-320 Elegance Cabriolet"
+    },
+    {
+      "codigo": 1584,
+      "nome": "CLK-320 Sport"
+    },
+    {
+      "codigo": 1585,
+      "nome": "CLK-320 Sport Cabriolet"
+    },
+    {
+      "codigo": 3895,
+      "nome": "CLK-350 Avant./ Elegance 3.5 24V 272cv"
+    },
+    {
+      "codigo": 3896,
+      "nome": "CLK-350 Avant./Eleg. Cabriolet 3.5 272cv"
+    },
+    {
+      "codigo": 1586,
+      "nome": "CLK-430 Avantgard Cabriolet 4.3 V8 24v"
+    },
+    {
+      "codigo": 1587,
+      "nome": "CLK-430 AvantGarde 4.3"
+    },
+    {
+      "codigo": 1588,
+      "nome": "CLK-430 Elegance"
+    },
+    {
+      "codigo": 1589,
+      "nome": "CLK-430 Elegance Cabriolet 4.3 V8 24v"
+    },
+    {
+      "codigo": 1590,
+      "nome": "CLK-430 Sport 4.3"
+    },
+    {
+      "codigo": 1591,
+      "nome": "CLK-500 Cabriolet V8 24V 306cv"
+    },
+    {
+      "codigo": 1592,
+      "nome": "CLK-500 Elegance/ Avant. 5.0 V8 24V Aut"
+    },
+    {
+      "codigo": 1593,
+      "nome": "CLK-55 AMG Cabriolet V8 24v 367cv"
+    },
+    {
+      "codigo": 1594,
+      "nome": "CLK-55 AMG V8 24V 367cv"
+    },
+    {
+      "codigo": 5746,
+      "nome": "CLS-350 CGI 3.5 306cv Aut."
+    },
+    {
+      "codigo": 3897,
+      "nome": "CLS-350 V6 24V 272cv"
+    },
+    {
+      "codigo": 7141,
+      "nome": "CLS-400 3.5 V6 Bi-Turbo 333cv Aut."
+    },
+    {
+      "codigo": 9977,
+      "nome": "CLS-450 3.0 TB 4MATIC  (Híb.)         "
+    },
+    {
+      "codigo": 9978,
+      "nome": "CLS-450 3.0 TB 4MATIC SPORT (Híbrido)"
+    },
+    {
+      "codigo": 1595,
+      "nome": "CLS-500 V8 24V"
+    },
+    {
+      "codigo": 9979,
+      "nome": "CLS-53 AMG 3.0 TB 4MATIC+ (Híbrido)"
+    },
+    {
+      "codigo": 3803,
+      "nome": "CLS-55 Kompressor AMG 5.5 V8 24V 476cv"
+    },
+    {
+      "codigo": 5593,
+      "nome": "CLS-63 AMG 5.5 V8 557cv Aut."
+    },
+    {
+      "codigo": 4191,
+      "nome": "CLS-63 AMG 6.2 V8 32V 514cv"
+    },
+    {
+      "codigo": 1596,
+      "nome": "E-190"
+    },
+    {
+      "codigo": 1597,
+      "nome": "E-190 Classic"
+    },
+    {
+      "codigo": 1598,
+      "nome": "E-200 Classic 2.0"
+    },
+    {
+      "codigo": 1599,
+      "nome": "E-220 Classic/Touring 2.2"
+    },
+    {
+      "codigo": 1600,
+      "nome": "E-230 Elegance"
+    },
+    {
+      "codigo": 1601,
+      "nome": "E-240 Elegance"
+    },
+    {
+      "codigo": 6840,
+      "nome": "E-250 Cabriolet 2.0 TB 211CV Aut."
+    },
+    {
+      "codigo": 5538,
+      "nome": "E-250 CGI Avantgarde 1.8 16V 204cv Aut."
+    },
+    {
+      "codigo": 6540,
+      "nome": "E-250 CGI Avantgarde 2.0 TB 211cv Aut."
+    },
+    {
+      "codigo": 5594,
+      "nome": "E-250 CGI Coupe 1.8 16V 204cv Aut."
+    },
+    {
+      "codigo": 7160,
+      "nome": "E-250 CGI VR4 2.0 TB Aut."
+    },
+    {
+      "codigo": 6615,
+      "nome": "E-250 Coupe 2.0 TB 211cv Aut."
+    },
+    {
+      "codigo": 7766,
+      "nome": "E-250 Excl. Launch Ed. 2.0 TB 211cv Aut."
+    },
+    {
+      "codigo": 7895,
+      "nome": "E-250 Exclusive 2.0 TB 211cv Aut."
+    },
+    {
+      "codigo": 1602,
+      "nome": "E-280 Classic 2.8"
+    },
+    {
+      "codigo": 1603,
+      "nome": "E-280 Touring 2.8"
+    },
+    {
+      "codigo": 9551,
+      "nome": "E-300 AMG Line 2.0 TB 258cv Aut."
+    },
+    {
+      "codigo": 8781,
+      "nome": "E-300 Avantgarde 2.0 TB 258cv Aut."
+    },
+    {
+      "codigo": 9289,
+      "nome": "E-300 Avantgarde Sport 2.0 TB 258cv Aut."
+    },
+    {
+      "codigo": 8320,
+      "nome": "E-300 Cabriolet 2.0 TB 245cv Aut."
+    },
+    {
+      "codigo": 8102,
+      "nome": "E-300 Coupe 2.0 TB 245cv Aut."
+    },
+    {
+      "codigo": 8782,
+      "nome": "E-300 Exclusive 2.0 TB 258cv Aut."
+    },
+    {
+      "codigo": 11071,
+      "nome": "E-300 Exclusive 2.0 TB 258cv Aut. (Híb.)"
+    },
+    {
+      "codigo": 1604,
+      "nome": "E-320"
+    },
+    {
+      "codigo": 1605,
+      "nome": "E-320 3.2 Elegance"
+    },
+    {
+      "codigo": 1606,
+      "nome": "E-320 Avantgarde"
+    },
+    {
+      "codigo": 1607,
+      "nome": "E-320 C 3.2/ CA Classic 3.2"
+    },
+    {
+      "codigo": 1608,
+      "nome": "E-320 Cabriolet"
+    },
+    {
+      "codigo": 1609,
+      "nome": "E-320 Touring Avantgarde 24V V6 5p Aut."
+    },
+    {
+      "codigo": 1610,
+      "nome": "E-320 Touring Eleg./Classic"
+    },
+    {
+      "codigo": 3898,
+      "nome": "E-350  Touring Avant/Eleg. 3.5 24V 272cv"
+    },
+    {
+      "codigo": 5004,
+      "nome": "E-350 Avant./Avant. Execut. 3.5 V6 272cv"
+    },
+    {
+      "codigo": 1611,
+      "nome": "E-350 Avantgarde/ Elegance 3.5 V6 272cv"
+    },
+    {
+      "codigo": 5309,
+      "nome": "E-350 Cabrio 3.5 V6 272cv 2p"
+    },
+    {
+      "codigo": 6210,
+      "nome": "E-350 CGI Avant. Sport 3.5 306cv Aut."
+    },
+    {
+      "codigo": 6541,
+      "nome": "E-350 CGI Cabriolet 3.5 306cv Aut."
+    },
+    {
+      "codigo": 6033,
+      "nome": "E-350 CGI Executive 3.5 306cv Aut."
+    },
+    {
+      "codigo": 6542,
+      "nome": "E-350 CGI Guard VR4 3.5 306cv Aut."
+    },
+    {
+      "codigo": 5034,
+      "nome": "E-350 Coupe 3.5 V6 272cv 2p"
+    },
+    {
+      "codigo": 4627,
+      "nome": "E-350 Sport 3.5 V6 272cv"
+    },
+    {
+      "codigo": 7103,
+      "nome": "E-400 Avantgarde 3.5 V6 Bi-Turbo Aut."
+    },
+    {
+      "codigo": 7262,
+      "nome": "E-400 Cabriolet 3.5 V6 Bi-Turbo Aut."
+    },
+    {
+      "codigo": 1612,
+      "nome": "E-420 Classic/Elegance/Avantgarde"
+    },
+    {
+      "codigo": 1613,
+      "nome": "E-420 Touring Avantgarde"
+    },
+    {
+      "codigo": 7978,
+      "nome": "E-43 AMG 4MATIC 3.0 V6 401cv Aut."
+    },
+    {
+      "codigo": 1614,
+      "nome": "E-430 Avantgarde"
+    },
+    {
+      "codigo": 1615,
+      "nome": "E-430 Elegance"
+    },
+    {
+      "codigo": 1616,
+      "nome": "E-430 Touring Avantgarde"
+    },
+    {
+      "codigo": 5423,
+      "nome": "E-500 Avangarde Executive 5.5 V8 388cv"
+    },
+    {
+      "codigo": 4774,
+      "nome": "E-500 Avant. 5.0 V8 4p Aut. (Blindada)"
+    },
+    {
+      "codigo": 6211,
+      "nome": "E-500 CGI Guard VR4 4.7 V8 408cv 4p"
+    },
+    {
+      "codigo": 6116,
+      "nome": "E-500 CGI Guard VR4 5.5 V8 4p"
+    },
+    {
+      "codigo": 6118,
+      "nome": "E-500 Coupe Sport 4.7 V8 408cv Aut 2p"
+    },
+    {
+      "codigo": 5380,
+      "nome": "E-500 Coupe Sport 5.5 V8 388cv 2p"
+    },
+    {
+      "codigo": 1617,
+      "nome": "E-500 Elegance/ Avant. 5.0 V8 24V 4p Aut"
+    },
+    {
+      "codigo": 4685,
+      "nome": "E-500 Sport Avantgarde 5.0 V8 24V 4p Aut"
+    },
+    {
+      "codigo": 1618,
+      "nome": "E-500 Tour. Avant./ Eleg. 24V V8 5p Aut."
+    },
+    {
+      "codigo": 10001,
+      "nome": "E-53 AMG 3.0 TB 24V 4MATIC+ Aut. (Híb.)"
+    },
+    {
+      "codigo": 1619,
+      "nome": "E-55 AMG"
+    },
+    {
+      "codigo": 1620,
+      "nome": "E-55 Touring AMG 24V V8 5p Aut."
+    },
+    {
+      "codigo": 6120,
+      "nome": "E-63 AMG 5.5 V8 Bi-Turbo Aut."
+    },
+    {
+      "codigo": 4245,
+      "nome": "E-63 AMG 6.2 V8 32V"
+    },
+    {
+      "codigo": 8018,
+      "nome": "E-63 S AMG 4MATIC 4.0 V8 612cv"
+    },
+    {
+      "codigo": 9644,
+      "nome": "E-63 S AMG 4MATIC Final Ed. 4.0 V8 612cv"
+    },
+    {
+      "codigo": 6122,
+      "nome": "E-63 Touring AMG 5.5 V8 Bi-Turbo Aut."
+    },
+    {
+      "codigo": 5489,
+      "nome": "E-63 Touring AMG 6.2 V8 Aut."
+    },
+    {
+      "codigo": 10163,
+      "nome": "EQA 250 (Elétrico)"
+    },
+    {
+      "codigo": 11220,
+      "nome": "EQA 250 AMG Line (Elétrico)"
+    },
+    {
+      "codigo": 10164,
+      "nome": "EQB 250 (Elétrico)"
+    },
+    {
+      "codigo": 11643,
+      "nome": "EQB 250+"
+    },
+    {
+      "codigo": 11074,
+      "nome": "EQB 350 (Elétrico)"
+    },
+    {
+      "codigo": 11221,
+      "nome": "EQB 350 4MATIC AMG Line (Elétrico)"
+    },
+    {
+      "codigo": 9196,
+      "nome": "EQC 400 4MATIC 408CV (Elétrico)"
+    },
+    {
+      "codigo": 9830,
+      "nome": "EQC 400 4MATIC AMG Line (Elétrico)"
+    },
+    {
+      "codigo": 11222,
+      "nome": "EQE 300 AMG Line (Elétrico) "
+    },
+    {
+      "codigo": 10165,
+      "nome": "EQE 300 Edition One (Elétrico) "
+    },
+    {
+      "codigo": 10879,
+      "nome": "EQE 300 SUV AMG Line (Elétrico) "
+    },
+    {
+      "codigo": 11491,
+      "nome": "EQE 350+ AMG Line (Elétrico) "
+    },
+    {
+      "codigo": 11185,
+      "nome": "EQE 350+ SUV AMG Line (Elétrico) "
+    },
+    {
+      "codigo": 10987,
+      "nome": "EQE 53 SUV AMG 4MATIC+ (Elétrico) "
+    },
+    {
+      "codigo": 11186,
+      "nome": "EQS 450 SUV 4MATIC ( Elétrico)"
+    },
+    {
+      "codigo": 11187,
+      "nome": "EQS 450+ SUV AMG Line ( Elétrico)"
+    },
+    {
+      "codigo": 10002,
+      "nome": "EQS 53 AMG 4MATIC+ ( Elétrico) "
+    },
+    {
+      "codigo": 11319,
+      "nome": "eSprinter 320 FURGÃO S. E.L (Elétrico)"
+    },
+    {
+      "codigo": 11320,
+      "nome": "eSprinter 320 FURGÃO S. Longa (Elétrico)"
+    },
+    {
+      "codigo": 11321,
+      "nome": "eSprinter 420 Chassi Longo (Elétrico)"
+    },
+    {
+      "codigo": 11322,
+      "nome": "eSprinter 420 FUR. Vid. Ex.Longa (Elét.)"
+    },
+    {
+      "codigo": 11406,
+      "nome": "eSprinter 420 FURGÃO Ex.Longa (Elétrico)"
+    },
+    {
+      "codigo": 11323,
+      "nome": "eSprinter 420 FURGÃO Longa (Elétrico)"
+    },
+    {
+      "codigo": 5151,
+      "nome": "G-55 Kompressor AMG 5.5 V8 507cv Aut."
+    },
+    {
+      "codigo": 9471,
+      "nome": "G-63 AMG 4M 4.0 Bi-TB Magno Edition Aut."
+    },
+    {
+      "codigo": 11342,
+      "nome": "G-63 AMG 4M 4.0 V8 Bi-TB Aut. (Híb.)"
+    },
+    {
+      "codigo": 11538,
+      "nome": "G-63 AMG 4M Man.4.0 V8 Bi-TB Aut. (Híb.)"
+    },
+    {
+      "codigo": 8499,
+      "nome": "G-63 AMG 4MATIC 4.0 V8 Bi-TB 585cv Aut."
+    },
+    {
+      "codigo": 6491,
+      "nome": "G-63 AMG 5.5 Bi-Turbo 32V 4x4 Aut."
+    },
+    {
+      "codigo": 8500,
+      "nome": "G-63 AMG ED1 4MATIC 4.0 V8 Bi-TB Aut."
+    },
+    {
+      "codigo": 6642,
+      "nome": "GL-350 Sport 3.0 V6 258cv 4x4 Diesel"
+    },
+    {
+      "codigo": 6445,
+      "nome": "GL-500 4.7 Bi-Turbo V8 4x4 Aut."
+    },
+    {
+      "codigo": 4250,
+      "nome": "GL-500 5.5 V8 32V 4x4 388cv Aut."
+    },
+    {
+      "codigo": 6468,
+      "nome": "GL-63 AMG 5.5 Bi-Turbo 32V 4x4 Aut."
+    },
+    {
+      "codigo": 7040,
+      "nome": "GLA 200 Advance 1.6/1.6 TB 16V Flex Aut."
+    },
+    {
+      "codigo": 9329,
+      "nome": "GLA 200 AMG Line 1.3 16V TB Aut."
+    },
+    {
+      "codigo": 10882,
+      "nome": "GLA 200 AMG Line 1.3 16V TB Aut.(Híb.)"
+    },
+    {
+      "codigo": 7397,
+      "nome": "GLA 200 Enduro 1.6 TB 16V Flex Aut."
+    },
+    {
+      "codigo": 8501,
+      "nome": "GLA 200 Night 1.6. TB 16V Flex Aut."
+    },
+    {
+      "codigo": 11129,
+      "nome": "GLA 200 Progressive 1.3 TB 16V Aut.(Híb)"
+    },
+    {
+      "codigo": 7161,
+      "nome": "GLA 200 Style 1.6 TB 16V/Flex Aut."
+    },
+    {
+      "codigo": 7041,
+      "nome": "GLA 200 Vis. Black Ed. 1.6 TB 16V  Aut."
+    },
+    {
+      "codigo": 7042,
+      "nome": "GLA 200 Vision 1.6/1.6 TB 16V Flex Aut."
+    },
+    {
+      "codigo": 7430,
+      "nome": "GLA 250 Enduro 2.0 TB 16V 211cv Aut."
+    },
+    {
+      "codigo": 7195,
+      "nome": "GLA 250 Sport 2.0 TB 16V 4x2  211cv Aut."
+    },
+    {
+      "codigo": 7767,
+      "nome": "GLA 250 Sport 2.0 TB 16V 4x4 211cv Aut."
+    },
+    {
+      "codigo": 7196,
+      "nome": "GLA 250 Vision 2.0 TB 16V 211cv Aut."
+    },
+    {
+      "codigo": 9762,
+      "nome": "GLA 35 AMG 4MATIC 2.0 Turbo Aut."
+    },
+    {
+      "codigo": 10988,
+      "nome": "GLA 35 AMG 4MATIC 2.0 Turbo Aut. (Híb.)"
+    },
+    {
+      "codigo": 7122,
+      "nome": "GLA 45 AMG 4MATIC 2.0 Turbo Aut."
+    },
+    {
+      "codigo": 9350,
+      "nome": "GLB 200 Advance 1.3 TB 16V Aut."
+    },
+    {
+      "codigo": 9214,
+      "nome": "GLB 200 Launch Edition 1.3 TB 16V Aut."
+    },
+    {
+      "codigo": 9351,
+      "nome": "GLB 200 Progressive 1.3 TB 16V Aut."
+    },
+    {
+      "codigo": 10971,
+      "nome": "GLB 200 Progressive 1.3 TB 16V Aut.(Híb)"
+    },
+    {
+      "codigo": 11189,
+      "nome": "GLB 220 4M AMG Line 2.0 TB Aut. (Híb.)"
+    },
+    {
+      "codigo": 11190,
+      "nome": "GLB 220 4M Progressive 2.0 TB Aut. (Híb)"
+    },
+    {
+      "codigo": 9793,
+      "nome": "GLB 35 AMG 4MATIC 2.0 Turbo Aut."
+    },
+    {
+      "codigo": 10972,
+      "nome": "GLB 35 AMG 4MATIC 2.0 Turbo Aut. (Híb.)"
+    },
+    {
+      "codigo": 9615,
+      "nome": "GLC 220D 2.0 TB 4M Enduro Diesel"
+    },
+    {
+      "codigo": 9616,
+      "nome": "GLC 220D 2.0 TB 4M Off-Road Diesel"
+    },
+    {
+      "codigo": 7508,
+      "nome": "GLC 250 4MATIC 2.0 TB 16V Aut."
+    },
+    {
+      "codigo": 7886,
+      "nome": "GLC 250 Coupe 4MATIC 2.0 TB 16V Aut."
+    },
+    {
+      "codigo": 7940,
+      "nome": "GLC 250 Coupe Highway 4MATIC 2.0 TB Aut."
+    },
+    {
+      "codigo": 7941,
+      "nome": "GLC 250 Highway 4MATIC 2.0 TB Aut."
+    },
+    {
+      "codigo": 7509,
+      "nome": "GLC 250 Sport 4MATIC 2.0 TB 16V Aut."
+    },
+    {
+      "codigo": 8909,
+      "nome": "GLC 300 Coupe 4MATIC 2.0 TB 16V Aut."
+    },
+    {
+      "codigo": 10973,
+      "nome": "GLC-300 4MATIC 2.0 TB Aut. (Híb)"
+    },
+    {
+      "codigo": 10952,
+      "nome": "GLC-300 AMG L. Cou. 4M 2.0 TB Aut. (Híb)"
+    },
+    {
+      "codigo": 11224,
+      "nome": "GLC-300 AMG Line 4MATIC 2.0 TB Aut (Híb)"
+    },
+    {
+      "codigo": 9721,
+      "nome": "GLC-300 AMG Line Coupe 4M 2.0 TB Aut."
+    },
+    {
+      "codigo": 11102,
+      "nome": "GLC-43 AMG 4M Coupe 2.0 Turbo Aut.(Híb)."
+    },
+    {
+      "codigo": 11191,
+      "nome": "GLC-43 AMG 4MATIC 2.0 Turbo Aut. (Híb)."
+    },
+    {
+      "codigo": 7802,
+      "nome": "GLC-43 AMG 4MATIC 3.0 V6 Bi-Turbo Aut."
+    },
+    {
+      "codigo": 9660,
+      "nome": "GLC-43 AMG Coupe 3.0 V6 Bi-TB Aut."
+    },
+    {
+      "codigo": 8633,
+      "nome": "GLC-63 AMG 4MATIC 4.0 Bi-TB V8"
+    },
+    {
+      "codigo": 8483,
+      "nome": "GLC-63 S AMG 4MATIC Coupe 4.0 Bi-TB V8"
+    },
+    {
+      "codigo": 11295,
+      "nome": "GLC-63 S AMG E Perf. Coupe 2.0 Aut (Híb)"
+    },
+    {
+      "codigo": 7484,
+      "nome": "GLE-350 3.0 V6 258cv 4x4 Diesel"
+    },
+    {
+      "codigo": 7485,
+      "nome": "GLE-350 Family 3.0 V6 258cv 4x4 Diesel"
+    },
+    {
+      "codigo": 7927,
+      "nome": "GLE-350 Highway 4MATIC 3.0 V6 Diesel"
+    },
+    {
+      "codigo": 7486,
+      "nome": "GLE-350 Sport 4MATIC 3.0 V6 4x4 Diesel"
+    },
+    {
+      "codigo": 9251,
+      "nome": "GLE-400 3.0 TB 4MATIC Coupe Diesel Aut."
+    },
+    {
+      "codigo": 9056,
+      "nome": "GLE-400 3.0 TB 4MATIC Diesel Aut."
+    },
+    {
+      "codigo": 7510,
+      "nome": "GLE-400 Coupe 3.0 V6 333cv Aut."
+    },
+    {
+      "codigo": 7803,
+      "nome": "GLE-400 Coupe High. 4MATIC 3.0 V6  Aut."
+    },
+    {
+      "codigo": 7511,
+      "nome": "GLE-400 Night Coupe 3.0 V6 333cv Aut."
+    },
+    {
+      "codigo": 8103,
+      "nome": "GLE-43 AMG 4MATIC 3.0 V6 Bi-TB Aut."
+    },
+    {
+      "codigo": 7838,
+      "nome": "GLE-43 AMG 4MATIC Coupe 3.0 V6 Bi-TB Aut"
+    },
+    {
+      "codigo": 10923,
+      "nome": "GLE-450 4MATIC 3.0 V6 Diesel (Híb)"
+    },
+    {
+      "codigo": 7739,
+      "nome": "GLE-450 AMG 3.0 V6 367cv Aut."
+    },
+    {
+      "codigo": 11018,
+      "nome": "GLE-450 Coupe 3.0 4MATIC Diesel (Híb)"
+    },
+    {
+      "codigo": 10009,
+      "nome": "GLE-53 AMG 3.0 TB 4MATIC+ (Híbrido)"
+    },
+    {
+      "codigo": 7512,
+      "nome": "GLE-63 AMG 4MATIC Coupe 5.5 V8 Aut."
+    },
+    {
+      "codigo": 7768,
+      "nome": "GLE-63 AMG 5.5 V8 557cv Aut."
+    },
+    {
+      "codigo": 9330,
+      "nome": "GLE-63 S AMG 4M+ Coupé 4.0 Aut"
+    },
+    {
+      "codigo": 6446,
+      "nome": "GLK 220 CDI 2.2 TB 4X4 170cv Aut. Diesel"
+    },
+    {
+      "codigo": 6447,
+      "nome": "GLK 220 Sport CDI 2.2 TB 4X4 Aut. Diesel"
+    },
+    {
+      "codigo": 4832,
+      "nome": "GLK 280 3.0 V6 24V 4x4 231cv Aut."
+    },
+    {
+      "codigo": 5134,
+      "nome": "GLK 300 3.0 V6 24V 4x4 231cv Aut."
+    },
+    {
+      "codigo": 6360,
+      "nome": "GLK 300 3.5 CGI V6 4x4 252cv Aut."
+    },
+    {
+      "codigo": 10010,
+      "nome": "GLS 450 4M 3.0 Bi-TB Aut. (Híbrido)"
+    },
+    {
+      "codigo": 7594,
+      "nome": "GLS-350 V6 258cv 4x4 Diesel"
+    },
+    {
+      "codigo": 7896,
+      "nome": "GLS-500 4MATIC 4.7 Bi-Turbo V8 455cv"
+    },
+    {
+      "codigo": 8130,
+      "nome": "GLS-63 AMG 4MATIC 5.5 V8 Bi-TB Aut."
+    },
+    {
+      "codigo": 10011,
+      "nome": "GT 43 AMG 3.0 Bi-Turbo Aut. (Híbrido)"
+    },
+    {
+      "codigo": 9332,
+      "nome": "GT 63 S AMG 4.0 V8 Bi-Turbo"
+    },
+    {
+      "codigo": 11717,
+      "nome": "GT 63 S AMG E Performance Aut. 2p"
+    },
+    {
+      "codigo": 11718,
+      "nome": "GT 63 S AMG E Performance Aut. 4p"
+    },
+    {
+      "codigo": 7769,
+      "nome": "GT AMG 4.0 V8 Bi-Turbo 462cv"
+    },
+    {
+      "codigo": 9740,
+      "nome": "GT AMG BLACK SERIES 4.0 V8 Bi-Turbo"
+    },
+    {
+      "codigo": 9333,
+      "nome": "GT C Roadster AMG 4.0 V8 Bi-Turbo "
+    },
+    {
+      "codigo": 8104,
+      "nome": "GT R AMG 4.0 V8 Bi-Turbo 585cv"
+    },
+    {
+      "codigo": 7356,
+      "nome": "GT S AMG 4.0 V8 Bi-Turbo 510cv"
+    },
+    {
+      "codigo": 1621,
+      "nome": "ML-230 4x4"
+    },
+    {
+      "codigo": 4686,
+      "nome": "ML-320 3.0 V6 224cv 4x4 diesel"
+    },
+    {
+      "codigo": 1622,
+      "nome": "ML-320 4x4"
+    },
+    {
+      "codigo": 5035,
+      "nome": "ML-350 3.0 V6  4x4 Diesel"
+    },
+    {
+      "codigo": 1623,
+      "nome": "ML-350 3.5  4x4"
+    },
+    {
+      "codigo": 6591,
+      "nome": "ML-350 Sport 3.0 V6 258cv 4X4 Diesel"
+    },
+    {
+      "codigo": 6124,
+      "nome": "ML-350 Sport CGI 3.5 V6 306cv 4x4 Aut."
+    },
+    {
+      "codigo": 1624,
+      "nome": "ML-430"
+    },
+    {
+      "codigo": 1625,
+      "nome": "ML-500 V8 24V"
+    },
+    {
+      "codigo": 1626,
+      "nome": "ML-55 AMG 5.5 24v"
+    },
+    {
+      "codigo": 6239,
+      "nome": "ML-63 AMG 5.5 V8 Bi-Turbo Aut."
+    },
+    {
+      "codigo": 4318,
+      "nome": "ML-63 AMG 6.2 V8 32V 510cv"
+    },
+    {
+      "codigo": 1627,
+      "nome": "S-320 L Classic/Wagon Classic 3.2"
+    },
+    {
+      "codigo": 10062,
+      "nome": "S-400 3.5 V6 279cv Aut. (Híbrido)"
+    },
+    {
+      "codigo": 1628,
+      "nome": "S-420 Classic 4.0"
+    },
+    {
+      "codigo": 1629,
+      "nome": "S-500 5.0"
+    },
+    {
+      "codigo": 1630,
+      "nome": "S-500 C Classic 5.0"
+    },
+    {
+      "codigo": 1631,
+      "nome": "S-500 L/ L Classic/ Wagon Classic 5.0"
+    },
+    {
+      "codigo": 8060,
+      "nome": "S-500 Maybach 4.7 Bi-Turbo V8 455cv Aut."
+    },
+    {
+      "codigo": 6700,
+      "nome": "S-500L 4.7 Bi-Turbo V8 455cv Aut."
+    },
+    {
+      "codigo": 1632,
+      "nome": "S-500L 5.0"
+    },
+    {
+      "codigo": 1633,
+      "nome": "S-55 AMG V8 24V 364cv/ 500cv"
+    },
+    {
+      "codigo": 8216,
+      "nome": "S-560L 4.0 Bi-Turbo V8 469cv Aut."
+    },
+    {
+      "codigo": 1634,
+      "nome": "S-600 L/ L Classic/ Wagon Classic 6.0"
+    },
+    {
+      "codigo": 1635,
+      "nome": "S-600/ S-600 C Classic 6.0"
+    },
+    {
+      "codigo": 5747,
+      "nome": "S-63 AMG 5.5 V8 BI-TURBO Aut."
+    },
+    {
+      "codigo": 4517,
+      "nome": "S-63 AMG 6.2 V8 525cv Aut"
+    },
+    {
+      "codigo": 11237,
+      "nome": "S-63 AMG S E Performance Aut. (Híbrido)"
+    },
+    {
+      "codigo": 7804,
+      "nome": "S-63 Cabriolet AMG 5.5 V8 Bi-Turbo Aut."
+    },
+    {
+      "codigo": 8548,
+      "nome": "S-63 Coupe AMG 4MATIC 4.0 V8 Bi-TB Aut."
+    },
+    {
+      "codigo": 7229,
+      "nome": "S-63 Coupe AMG 5.5 V8 Bi-Turbo Aut."
+    },
+    {
+      "codigo": 4518,
+      "nome": "S-63 L AMG 6.2 V8/5.5 V8 Bi-TB Aut"
+    },
+    {
+      "codigo": 4261,
+      "nome": "S-65 AMG 6.0 V12 612cv Aut"
+    },
+    {
+      "codigo": 8502,
+      "nome": "S-65 AMG Coupe 6.0 Bi-TB V12 630cv Aut."
+    },
+    {
+      "codigo": 7770,
+      "nome": "S-65 L AMG 6.0 V12 630cv Aut."
+    },
+    {
+      "codigo": 1636,
+      "nome": "SE-500"
+    },
+    {
+      "codigo": 1637,
+      "nome": "SL-280 Classic 2.8"
+    },
+    {
+      "codigo": 1638,
+      "nome": "SL-320 3.2/Classic 3.2"
+    },
+    {
+      "codigo": 3899,
+      "nome": "SL-350 3.5 V6 2p"
+    },
+    {
+      "codigo": 5281,
+      "nome": "SL-350 Sport 3.5 V6 316cv"
+    },
+    {
+      "codigo": 7197,
+      "nome": "SL-400 3.0 Bi-Turbo V6 2p"
+    },
+    {
+      "codigo": 1639,
+      "nome": "SL-500 5.0 e 5.5/ Classic 5.0"
+    },
+    {
+      "codigo": 1640,
+      "nome": "SL-55 AMG V8 24V 500cv"
+    },
+    {
+      "codigo": 1641,
+      "nome": "SL-600"
+    },
+    {
+      "codigo": 6359,
+      "nome": "SL-63 AMG 5.5 Bi-Turbo V8 Aut."
+    },
+    {
+      "codigo": 4701,
+      "nome": "SL-63 AMG 6.2 V8 525cv Aut"
+    },
+    {
+      "codigo": 11278,
+      "nome": "SL-63 AMG S E Performance Aut. (Híbrido)"
+    },
+    {
+      "codigo": 4702,
+      "nome": "SL-65 AMG 6.0 V12 612cv Aut"
+    },
+    {
+      "codigo": 7705,
+      "nome": "SLC-300 2.0 Turbo 245cv Aut."
+    },
+    {
+      "codigo": 7719,
+      "nome": "SLC-43 AMG 3.0 V6 Aut."
+    },
+    {
+      "codigo": 1642,
+      "nome": "SLK-200 Kompressor 16V/ 200 CGI 16V"
+    },
+    {
+      "codigo": 1643,
+      "nome": "SLK-230 Kompressor"
+    },
+    {
+      "codigo": 1644,
+      "nome": "SLK-230 Plus"
+    },
+    {
+      "codigo": 5935,
+      "nome": "SLK-250 CGI 1.8 16V 204cv Aut."
+    },
+    {
+      "codigo": 7398,
+      "nome": "SLK-300 2.0 Turbo 245cv Aut."
+    },
+    {
+      "codigo": 1645,
+      "nome": "SLK-320 3.2 218cv"
+    },
+    {
+      "codigo": 1646,
+      "nome": "SLK-350 3.5 V6/SLK-350 CGI"
+    },
+    {
+      "codigo": 1647,
+      "nome": "SLK-55 AMG V8 24V"
+    },
+    {
+      "codigo": 6755,
+      "nome": "SLS-63 AMG 6.2 8V Black Series Aut."
+    },
+    {
+      "codigo": 5641,
+      "nome": "SLS-63 AMG 6.2 V8 Aut."
+    },
+    {
+      "codigo": 5900,
+      "nome": "SLS-63 AMG Roadster 6.3 V8 Aut."
+    },
+    {
+      "codigo": 11050,
+      "nome": "Sprin. 417 F Vidr. Extra L.T.A. Die.(E6)"
+    },
+    {
+      "codigo": 10685,
+      "nome": "Sprin. 517 VAN E.L.P.T.A. 20L Die. (E6)"
+    },
+    {
+      "codigo": 10686,
+      "nome": "Sprin. 517 VAN E.L.P.T.A. 21L Die. (E6)"
+    },
+    {
+      "codigo": 1648,
+      "nome": "Sprinter 310 Chassi Diesel"
+    },
+    {
+      "codigo": 1649,
+      "nome": "Sprinter 310 Furgão 2.5 Diesel"
+    },
+    {
+      "codigo": 1650,
+      "nome": "Sprinter 310 Pick-Up Diesel"
+    },
+    {
+      "codigo": 1651,
+      "nome": "Sprinter 310 Van Exec. 9Lug. Diesel"
+    },
+    {
+      "codigo": 1652,
+      "nome": "Sprinter 310 Van Luxo/Exec. 12/14L Dies."
+    },
+    {
+      "codigo": 1653,
+      "nome": "Sprinter 310 Van Std 12e14L/Luxo 9L.Dies"
+    },
+    {
+      "codigo": 1654,
+      "nome": "Sprinter 310 Van Std. 9Lug. 2.5 Diesel"
+    },
+    {
+      "codigo": 1655,
+      "nome": "Sprinter 311 Chassi 2.2 Diesel"
+    },
+    {
+      "codigo": 7125,
+      "nome": "Sprinter 311 Chassi E. Longa 2.2 Diesel"
+    },
+    {
+      "codigo": 1656,
+      "nome": "Sprinter 311 Furgão Curto 2.2 Dies"
+    },
+    {
+      "codigo": 5642,
+      "nome": "Sprinter 311 Furgão E.Longo T.Alto Dies."
+    },
+    {
+      "codigo": 1657,
+      "nome": "Sprinter 311 Furgão Longo 2.2  Dies"
+    },
+    {
+      "codigo": 1658,
+      "nome": "Sprinter 311 Furgão Longo Teto alto Dies"
+    },
+    {
+      "codigo": 1659,
+      "nome": "Sprinter 311 Street Luxo 2.2 16Lug. Dies"
+    },
+    {
+      "codigo": 1660,
+      "nome": "Sprinter 311 Street Std. 2.2 16Lug. Dies"
+    },
+    {
+      "codigo": 1661,
+      "nome": "Sprinter 311 VAN Luxo 2.2 109cv 13L Dies"
+    },
+    {
+      "codigo": 1662,
+      "nome": "Sprinter 311 VAN Luxo 2.2 109cv 16L Dies"
+    },
+    {
+      "codigo": 1663,
+      "nome": "Sprinter 311 VAN Std. 2.2 109cv 13L Dies"
+    },
+    {
+      "codigo": 1664,
+      "nome": "Sprinter 311 VAN Std. 2.2 109cv 16L Dies"
+    },
+    {
+      "codigo": 1665,
+      "nome": "Sprinter 312 Furgão Curto Diesel"
+    },
+    {
+      "codigo": 1666,
+      "nome": "Sprinter 312 Furgão Longo Diesel"
+    },
+    {
+      "codigo": 1667,
+      "nome": "Sprinter 312 Furgão Longo T.Alto Diesel"
+    },
+    {
+      "codigo": 1668,
+      "nome": "Sprinter 312 Van Exec. 10Lug. 2.5 Diesel"
+    },
+    {
+      "codigo": 1669,
+      "nome": "Sprinter 312 Van Exec. 12Lug. Diesel"
+    },
+    {
+      "codigo": 1670,
+      "nome": "Sprinter 312 Van Luxo 10lug.  Diesel"
+    },
+    {
+      "codigo": 1671,
+      "nome": "Sprinter 312 Van Luxo 12lug. Diesel"
+    },
+    {
+      "codigo": 1672,
+      "nome": "Sprinter 312 Van Luxo 15lug. Diesel"
+    },
+    {
+      "codigo": 1673,
+      "nome": "Sprinter 312 Van Luxo 16lug. Diesel"
+    },
+    {
+      "codigo": 1674,
+      "nome": "Sprinter 312 Van Luxo Lotação 16lug.Dies"
+    },
+    {
+      "codigo": 1675,
+      "nome": "Sprinter 312 Van Std 12lug. Diesel"
+    },
+    {
+      "codigo": 1676,
+      "nome": "Sprinter 312 Van Std 16lug. Diesel"
+    },
+    {
+      "codigo": 1677,
+      "nome": "Sprinter 312 Van Std Lotação 16lug. Dies"
+    },
+    {
+      "codigo": 1678,
+      "nome": "Sprinter 312 Van Street Luxo 15Lug.Dies."
+    },
+    {
+      "codigo": 1679,
+      "nome": "Sprinter 312 Van Street Std. 15Lug.Dies."
+    },
+    {
+      "codigo": 1680,
+      "nome": "Sprinter 312-D Chassi Diesel"
+    },
+    {
+      "codigo": 7706,
+      "nome": "Sprinter 313  Chassi Ex. Longo 2.2 Dies."
+    },
+    {
+      "codigo": 1681,
+      "nome": "Sprinter 313 Chassi 2.2 129cv Diesel"
+    },
+    {
+      "codigo": 7707,
+      "nome": "Sprinter 313 Chassi Longo 2.2 Diesel"
+    },
+    {
+      "codigo": 1682,
+      "nome": "Sprinter 313 Furgão Curto 2.2 129cv Dies"
+    },
+    {
+      "codigo": 7708,
+      "nome": "Sprinter 313 Furgão Ex. Longo T. A. Die."
+    },
+    {
+      "codigo": 1683,
+      "nome": "Sprinter 313 Furgão Longo 2.2 129cv Dies"
+    },
+    {
+      "codigo": 1684,
+      "nome": "Sprinter 313 Furgão Longo T. Alto Diesel"
+    },
+    {
+      "codigo": 1685,
+      "nome": "Sprinter 313 VAN Exec 2.2 Mec/S-Aut Dies"
+    },
+    {
+      "codigo": 1686,
+      "nome": "Sprinter 313 VAN Luxo 2.2 129cv 13L.Dies"
+    },
+    {
+      "codigo": 1687,
+      "nome": "Sprinter 313 VAN Luxo 2.2 129cv 16L Dies"
+    },
+    {
+      "codigo": 1688,
+      "nome": "Sprinter 313 VAN Std. 2.2 129cv 13L.Dies"
+    },
+    {
+      "codigo": 1689,
+      "nome": "Sprinter 313 VAN Std. 2.2 129cv 16L Dies"
+    },
+    {
+      "codigo": 1690,
+      "nome": "Sprinter 313 VAN Street Luxo 16L. Dies."
+    },
+    {
+      "codigo": 1691,
+      "nome": "Sprinter 313 VAN Street Std. 16L. Dies."
+    },
+    {
+      "codigo": 8964,
+      "nome": "Sprinter 314 Chassi E.L T.B. 2.2 Dies."
+    },
+    {
+      "codigo": 8965,
+      "nome": "Sprinter 314 Chassi Longo T.B. 2.2 Dies."
+    },
+    {
+      "codigo": 8910,
+      "nome": "Sprinter 314 Furgão Curto T.B. 2.2 Dies."
+    },
+    {
+      "codigo": 8911,
+      "nome": "Sprinter 314 Furgão E.L. T.A.  2.2 Dies."
+    },
+    {
+      "codigo": 8912,
+      "nome": "Sprinter 314 Furgão Longo T.A. 2.2 Dies."
+    },
+    {
+      "codigo": 8913,
+      "nome": "Sprinter 314 Furgão Longo T.B. 2.2 Dies."
+    },
+    {
+      "codigo": 9873,
+      "nome": "Sprinter 314 Truck E.Longo T.B. 2.2 Dies"
+    },
+    {
+      "codigo": 9874,
+      "nome": "Sprinter 314 Truck Longo T.B. 2.2 Dies."
+    },
+    {
+      "codigo": 10573,
+      "nome": "Sprinter 315 Furg.Str. E.L.T.A. 2.0 Dies"
+    },
+    {
+      "codigo": 10574,
+      "nome": "Sprinter 315 Furgão Str. L T.A 2.0 Dies."
+    },
+    {
+      "codigo": 10575,
+      "nome": "Sprinter 315 Furgão Str. L T.B 2.0 Dies."
+    },
+    {
+      "codigo": 10576,
+      "nome": "Sprinter 315 Furgão Str.Curto 2.0 Dies."
+    },
+    {
+      "codigo": 10577,
+      "nome": "Sprinter 315 Truck E.Longo T.B 2.0 Dies."
+    },
+    {
+      "codigo": 10578,
+      "nome": "Sprinter 315 Truck Longo T.B 2.0 Dies."
+    },
+    {
+      "codigo": 11513,
+      "nome": "Sprinter 317 Chassi E.Longo 2.0 Diesel"
+    },
+    {
+      "codigo": 11514,
+      "nome": "Sprinter 317 Chassi Longo 2.0 Diesel"
+    },
+    {
+      "codigo": 11429,
+      "nome": "Sprinter 317 Furgão E.LT.A. 2.0 Dies."
+    },
+    {
+      "codigo": 11430,
+      "nome": "Sprinter 317 Furgão Longo T.A. 2.0 Dies."
+    },
+    {
+      "codigo": 11431,
+      "nome": "Sprinter 317 Furgão Longo T.B. 2.0 Dies."
+    },
+    {
+      "codigo": 1692,
+      "nome": "Sprinter 412-D Chassi Diesel"
+    },
+    {
+      "codigo": 1693,
+      "nome": "Sprinter 413 Furgão Longo T.Alto Diesel"
+    },
+    {
+      "codigo": 4534,
+      "nome": "Sprinter 413 VAN Luxo 2.2 16 e 20L Dies"
+    },
+    {
+      "codigo": 1694,
+      "nome": "Sprinter 413-D Chassi Curto/Longo Diesel"
+    },
+    {
+      "codigo": 6179,
+      "nome": "Sprinter 415 Chassi L. 2.2 Diesel"
+    },
+    {
+      "codigo": 6180,
+      "nome": "Sprinter 415 Furgão Curto T.B. 2.2 Dies."
+    },
+    {
+      "codigo": 6181,
+      "nome": "Sprinter 415 Furgão E.L.T.Alt. 2.2 Dies."
+    },
+    {
+      "codigo": 6126,
+      "nome": "Sprinter 415 Furgão Lon.T.Alto 2.2 Dies"
+    },
+    {
+      "codigo": 6128,
+      "nome": "Sprinter 415 Furgão Lon.T.Bai. 2.2 Dies."
+    },
+    {
+      "codigo": 6182,
+      "nome": "Sprinter 415 VAN Luxo T.A. 2.2 Diesel"
+    },
+    {
+      "codigo": 6183,
+      "nome": "Sprinter 415 VAN Luxo T.B. 2.2 Diesel"
+    },
+    {
+      "codigo": 6184,
+      "nome": "Sprinter 415 VAN Standard T.A. 2.2 Dies."
+    },
+    {
+      "codigo": 6185,
+      "nome": "Sprinter 415 VAN Standard T.B. 2.2 Dies."
+    },
+    {
+      "codigo": 8914,
+      "nome": "Sprinter 416 Chassi Longo T.B. 2.2 Dies."
+    },
+    {
+      "codigo": 9058,
+      "nome": "Sprinter 416 F. Vidrado E.L T.A. 2.2 Die"
+    },
+    {
+      "codigo": 9083,
+      "nome": "Sprinter 416 F. Vidrado L. T.A. 2.2 Die."
+    },
+    {
+      "codigo": 8915,
+      "nome": "Sprinter 416 Furgão Curto T.B. 2.2 Dies."
+    },
+    {
+      "codigo": 8916,
+      "nome": "Sprinter 416 Furgão E.L. T. A. 2.2 Dies."
+    },
+    {
+      "codigo": 8917,
+      "nome": "Sprinter 416 Furgão Longo T.A. 2.2 Dies."
+    },
+    {
+      "codigo": 8918,
+      "nome": "Sprinter 416 Furgão Longo T.B. 2.2 Dies."
+    },
+    {
+      "codigo": 8919,
+      "nome": "Sprinter 416 VAN L. T.A. 10L 2.2 Diesel"
+    },
+    {
+      "codigo": 8920,
+      "nome": "Sprinter 416 VAN L. T.A. 16L 2.2 Diesel"
+    },
+    {
+      "codigo": 8921,
+      "nome": "Sprinter 416 VAN L. T.B. 10L 2.2 Diesel"
+    },
+    {
+      "codigo": 8922,
+      "nome": "Sprinter 416 VAN L. T.B. 16L 2.2 Diesel"
+    },
+    {
+      "codigo": 10579,
+      "nome": "Sprinter 417 Chassi L.T.B. Dies. (E6)"
+    },
+    {
+      "codigo": 10581,
+      "nome": "Sprinter 417 F. Vidrado L.T.A. Die. (E6)"
+    },
+    {
+      "codigo": 10687,
+      "nome": "Sprinter 417 Furgão Curto T.B. Die. (E6)"
+    },
+    {
+      "codigo": 10583,
+      "nome": "Sprinter 417 Furgão Ext. L.T.A Die. (E6)"
+    },
+    {
+      "codigo": 10584,
+      "nome": "Sprinter 417 Furgão L.T.A. Diesel (E6)"
+    },
+    {
+      "codigo": 10585,
+      "nome": "Sprinter 417 Furgão Longo T.B Die. (E6)"
+    },
+    {
+      "codigo": 10586,
+      "nome": "Sprinter 417 VAN L.T.A. 10L Diesel (E6)"
+    },
+    {
+      "codigo": 10587,
+      "nome": "Sprinter 417 VAN L.T.A. 16L Diesel (E6)"
+    },
+    {
+      "codigo": 10588,
+      "nome": "Sprinter 417 VAN L.T.B 10L Diesel (E6)"
+    },
+    {
+      "codigo": 10589,
+      "nome": "Sprinter 417 VAN L.T.B 16L Diesel( E6)"
+    },
+    {
+      "codigo": 6186,
+      "nome": "Sprinter 515 Chassi E. L. 2.2 Diesel"
+    },
+    {
+      "codigo": 6187,
+      "nome": "Sprinter 515 Chassi L. 2.2  Diesel"
+    },
+    {
+      "codigo": 6129,
+      "nome": "Sprinter 515 Furgão E.L.T. Alto 2.2 Die."
+    },
+    {
+      "codigo": 6361,
+      "nome": "Sprinter 515 VAN 2.2 Diesel"
+    },
+    {
+      "codigo": 8923,
+      "nome": "Sprinter 516 Chassi E.L. T.B. 2.2 Dies."
+    },
+    {
+      "codigo": 8924,
+      "nome": "Sprinter 516 Chassi Longo T.B. 2.2 Dies."
+    },
+    {
+      "codigo": 9084,
+      "nome": "Sprinter 516 F.Vidrado E.L. T.A. 2.2 Die"
+    },
+    {
+      "codigo": 8925,
+      "nome": "Sprinter 516 Furgão E.L.T. Alto 2.2 Dies"
+    },
+    {
+      "codigo": 9197,
+      "nome": "Sprinter 516 VAN E.L. T.A  20L 2.2 Dies."
+    },
+    {
+      "codigo": 8966,
+      "nome": "Sprinter 516 VAN E.L. T.A. 18L 2.2 Dies."
+    },
+    {
+      "codigo": 8967,
+      "nome": "Sprinter 516 VAN E.L. T.A. 21L 2.2 Dies."
+    },
+    {
+      "codigo": 10590,
+      "nome": "Sprinter 517 Chassi E.Lon. T.B. Die.(E6)"
+    },
+    {
+      "codigo": 10591,
+      "nome": "Sprinter 517 Chassi Longo T.B. Die. (E6)"
+    },
+    {
+      "codigo": 10592,
+      "nome": "Sprinter 517 F. Ext. L. T.A. Die. (E6)"
+    },
+    {
+      "codigo": 10593,
+      "nome": "Sprinter 517 F. Ext. L.P.T.A. Die. (E6)"
+    },
+    {
+      "codigo": 10594,
+      "nome": "Sprinter 517 F.Vidr. E.L.P.T.A. Die (E6)"
+    },
+    {
+      "codigo": 11108,
+      "nome": "Sprinter 517 VAN E.L.T.A. 18L Die (E6)"
+    },
+    {
+      "codigo": 7399,
+      "nome": "VITO 111 CDI Furgão 1.6 TB Diesel 4p Mec"
+    },
+    {
+      "codigo": 7400,
+      "nome": "VITO TOURER 119 Comf.2.0 Flex 9Lug. Mec."
+    },
+    {
+      "codigo": 7401,
+      "nome": "VITO TOURER 119 Luxo 2.0 Flex 8Lug. Mec."
+    }
+  ]
+}

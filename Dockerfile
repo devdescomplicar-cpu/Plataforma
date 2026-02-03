@@ -50,8 +50,8 @@ FROM node:20-alpine AS production
 
 WORKDIR /app
 
-# Dependências de runtime do server (Prisma precisa de libc para binário)
-RUN apk add --no-cache libc6-compat
+# Prisma no Alpine precisa de libc e OpenSSL 3 (binaryTargets = linux-musl-openssl-3.0.x)
+RUN apk add --no-cache libc6-compat openssl
 
 # Frontend estático (build do Vite)
 COPY --from=frontend /app/dist ./dist

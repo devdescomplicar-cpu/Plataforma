@@ -67,9 +67,9 @@ ENV PORT=3000
 
 EXPOSE 3000
 
-# Health check (opcional; Easypanel pode usar para checagem)
-HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=3 \
-  CMD wget -q -O- http://localhost:3000/health || exit 1
+# Health check: start-period alto para dar tempo das migrações rodarem antes de checar
+HEALTHCHECK --interval=30s --timeout=10s --start-period=120s --retries=3 \
+  CMD wget -q -O- http://127.0.0.1:3000/health || exit 1
 
 # Migrações: resolve P3009 (migrações falhas) se existirem, depois deploy + app na porta 3000
 CMD ["sh", "-c", "cd /app/server && (npx prisma migrate resolve --rolled-back '20250130000000_webhook_base' 2>/dev/null || true) && (npx prisma migrate resolve --rolled-back '20260130031208_add_vehicle_version' 2>/dev/null || true) && npx prisma migrate deploy --schema=prisma/schema.prisma && exec node dist/app.js"]

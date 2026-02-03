@@ -27,7 +27,7 @@ const corsOptions: cors.CorsOptions = {
 };
 
 const app = express();
-const PORT = process.env.PORT || 3001;
+const PORT = Number(process.env.PORT) || 3001;
 
 // Trust first proxy so req.ip reflects client IP (X-Forwarded-For / X-Real-IP)
 app.set('trust proxy', 1);
@@ -128,14 +128,20 @@ app.use(errorHandler);
 
 async function start() {
   await ensureAdminUser();
-  app.listen(PORT, () => {
+  const host = process.env.NODE_ENV === 'production' ? '0.0.0.0' : undefined;
+  const listenCallback = () => {
     console.log(`🚀 Server running on port ${PORT}`);
     console.log(`📡 Environment: ${process.env.NODE_ENV || 'development'}`);
     if (isProduction) {
       console.log(`🌐 Frontend + /api at http://localhost:${PORT}`);
     }
     startExpirationTriggersJob();
-  });
+  };
+  if (host !== undefined) {
+    app.listen(PORT, host, listenCallback);
+  } else {
+    app.listen(PORT, listenCallback);
+  }
 }
 
 start().catch((err) => {

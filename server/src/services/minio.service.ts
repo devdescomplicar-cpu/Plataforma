@@ -31,28 +31,27 @@ class MinioService {
     return MinioService.instance;
   }
 
+  /**
+   * Garante que o bucket existe no MinIO; cria com política de leitura pública se não existir.
+   * Chamado no init (fire-and-forget) e antes de cada upload (await) para cobrir MinIO que sobe depois do app.
+   */
   private async ensureBucket(): Promise<void> {
-    try {
-      const exists = await this.client.bucketExists(this.bucketName);
-      if (!exists) {
-        await this.client.makeBucket(this.bucketName, 'us-east-1');
-        // Configurar política pública para leitura
-        const policy = {
-          Version: '2012-10-17',
-          Statement: [
-            {
-              Effect: 'Allow',
-              Principal: { AWS: ['*'] },
-              Action: ['s3:GetObject'],
-              Resource: [`arn:aws:s3:::${this.bucketName}/*`],
-            },
-          ],
-        };
-        await this.client.setBucketPolicy(this.bucketName, JSON.stringify(policy));
-      }
-    } catch (error) {
-      console.error('Error ensuring bucket:', error);
-    }
+    const exists = await this.client.bucketExists(this.bucketName);
+    if (exists) return;
+    await this.client.makeBucket(this.bucketName, 'us-east-1');
+    const policy = {
+      Version: '2012-10-17',
+      Statement: [
+        {
+          Effect: 'Allow',
+          Principal: { AWS: ['*'] },
+          Action: ['s3:GetObject'],
+          Resource: [`arn:aws:s3:::${this.bucketName}/*`],
+        },
+      ],
+    };
+    await this.client.setBucketPolicy(this.bucketName, JSON.stringify(policy));
+    console.log('[MinIO] Bucket criado:', this.bucketName);
   }
 
   private static readonly MAX_IMAGE_BYTES = 300 * 1024; // 300KB
@@ -66,6 +65,7 @@ class MinioService {
     vehicleId: string,
     order: number = 0
   ): Promise<{ url: string; key: string; sizeBytes: number }> {
+    await this.ensureBucket();
     const key = `vehicles/${vehicleId}/${Date.now()}-${order}.jpg`;
     console.log('[MinIO] uploadImage started', { vehicleId, order, size: file.buffer?.length });
     try {
@@ -129,6 +129,7 @@ class MinioService {
     accountId: string,
     file: Express.Multer.File
   ): Promise<{ url: string; key: string; sizeBytes: number }> {
+    await this.ensureBucket();
     const key = `stores/${accountId}/logo.jpg`;
     const maxWidth = 400;
     const maxHeight = 400;
@@ -166,6 +167,7 @@ class MinioService {
     accountId: string,
     file: Express.Multer.File
   ): Promise<{ url: string; key: string; sizeBytes: number }> {
+    await this.ensureBucket();
     const key = `stores/${accountId}/logo-dark.jpg`;
     const maxWidth = 400;
     const maxHeight = 400;

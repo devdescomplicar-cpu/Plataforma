@@ -1,0 +1,49 @@
+# Dependências (serão instaladas no build)
+node_modules
+server/node_modules
+
+# Build outputs (serão gerados no Docker)
+dist
+server/dist
+dev-dist
+
+# Git e IDE
+.git
+.gitignore
+.cursor
+.vscode
+*.swp
+*.swo
+
+# Env local (use variáveis no Easypanel, não copie .env para a imagem)
+.env
+.env.*
+!.env.example
+
+# Testes e dev
+coverage
+*.test.ts
+*.test.tsx
+*.spec.ts
+*.spec.tsx
+__tests__
+vitest.config.*
+.eslint*
+
+# Documentação e extras (não necessários em runtime)
+docs
+*.md
+!README.md
+backup
+plans
+Informaçoes
+
+# Docker (evitar contexto desnecessário)
+Dockerfile
+.dockerignore
+docker-compose*.yml
+
+# Outros
+*.log
+.npm
+.cache

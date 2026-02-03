@@ -5,6 +5,12 @@ FROM node:20-alpine AS frontend
 
 WORKDIR /app
 
+# Build args: mesma URL que você coloca no Easypanel (Environment) para o front já sair com a URL certa
+ARG VITE_APP_URL=
+ARG VITE_API_URL=
+ENV VITE_APP_URL=$VITE_APP_URL
+ENV VITE_API_URL=$VITE_API_URL
+
 COPY package.json package-lock.json* ./
 RUN npm ci
 

@@ -71,5 +71,5 @@ EXPOSE 3000
 HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=3 \
   CMD wget -q -O- http://localhost:3000/health || exit 1
 
-# Migrações na subida + seed do admin no startup do app
-CMD ["sh", "-c", "cd /app/server && npx prisma migrate deploy --schema=prisma/schema.prisma && exec node dist/app.js"]
+# Migrações: resolve P3009 (migração falha) se existir, depois deploy + app
+CMD ["sh", "-c", "cd /app/server && (npx prisma migrate resolve --rolled-back '20250130000000_webhook_base' 2>/dev/null || true) && npx prisma migrate deploy --schema=prisma/schema.prisma && exec node dist/app.js"]

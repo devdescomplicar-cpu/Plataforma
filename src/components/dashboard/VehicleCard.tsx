@@ -49,6 +49,7 @@ interface VehicleCardProps {
   onAddExpense?: (id: string) => void;
   onMarkAsSold?: (id: string) => void;
   onReturnToStock?: (id: string) => void;
+  onViewExpenses?: (vehicleId: string, vehicleName: string) => void;
 }
 
 function VehicleCardInner({
@@ -59,6 +60,7 @@ function VehicleCardInner({
   onAddExpense,
   onMarkAsSold,
   onReturnToStock,
+  onViewExpenses,
 }: VehicleCardProps) {
   const [isGalleryOpen, setIsGalleryOpen] = useState(false);
   
@@ -246,13 +248,32 @@ function VehicleCardInner({
               {/* Despesas */}
               <div>
                 <p className="text-[10px] text-muted-foreground mb-0.5">Despesas</p>
-                <p className="text-sm font-semibold text-foreground leading-tight">
+                <div className="flex items-center justify-center gap-1">
                   {vehicle.totalExpenses !== undefined && vehicle.totalExpenses > 0 ? (
-                    <HiddenValue value={vehicle.totalExpenses.toLocaleString('pt-BR')} prefix="R$ " />
+                    <>
+                      <p className="text-sm font-semibold text-foreground leading-tight">
+                        <HiddenValue value={vehicle.totalExpenses.toLocaleString('pt-BR')} prefix="R$ " />
+                      </p>
+                      {onViewExpenses && (
+                        <Button
+                          variant="ghost"
+                          size="icon"
+                          className="h-7 w-7 shrink-0 text-muted-foreground hover:text-foreground"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            onViewExpenses(vehicle.id, `${vehicle.brand} ${vehicle.model}${vehicle.version ? ` ${vehicle.version}` : ''} ${vehicle.year}`);
+                          }}
+                          title="Ver despesas"
+                        >
+                          <Eye className="w-3.5 h-3.5" />
+                        </Button>
+                      )}
+                    </>
                   ) : (
                     <span className="text-muted-foreground text-xs">—</span>
                   )}
-                </p>
+                </div>
               </div>
             </div>
 

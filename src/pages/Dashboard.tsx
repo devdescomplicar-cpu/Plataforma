@@ -96,10 +96,10 @@ const Dashboard = () => {
   };
 
   const quickActionIcons = {
-    carMoto: 'https://gestaodescompliacar.com/assets/car-moto-icon-DCtZYjTO.webp',
-    checklist: 'https://gestaodescompliacar.com/assets/checklist-icon-DoilxyoL.webp',
-    handshake: 'https://gestaodescompliacar.com/assets/handshake-icon-Dxcvw4pw.webp',
-    expense: 'https://gestaodescompliacar.com/assets/expense-icon-3dGAPZSf.webp',
+    carMoto: '/car-moto-icon.webp',
+    checklist: '/checklist-icon.webp',
+    handshake: '/handshake-icon.webp',
+    expense: '/expense-icon.webp',
   };
 
   return (

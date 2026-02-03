@@ -552,14 +552,22 @@ const Checklist = () => {
                       };
 
                       return (
-                        <label
+                        <div
                           key={item.name}
+                          role="button"
+                          tabIndex={0}
                           className="flex items-center gap-2 p-2 rounded-md border border-border hover:bg-muted/30 transition-all cursor-pointer group"
+                          onClick={() => handleChange(!item.done)}
+                          onKeyDown={(e) => {
+                            if (e.key === 'Enter' || e.key === ' ') {
+                              e.preventDefault();
+                              handleChange(!item.done);
+                            }
+                          }}
                         >
                           <Checkbox 
                             checked={item.done} 
-                            onCheckedChange={handleChange}
-                            className="data-[state=checked]:bg-success data-[state=checked]:border-success w-4 h-4" 
+                            className="data-[state=checked]:bg-success data-[state=checked]:border-success w-4 h-4 pointer-events-none" 
                           />
                           <span className={cn(
                             "text-xs font-medium flex-1 select-none",
@@ -567,7 +575,7 @@ const Checklist = () => {
                           )}>
                             {item.name}
                           </span>
-                        </label>
+                        </div>
                       );
                     })}
                   </div>
@@ -582,14 +590,22 @@ const Checklist = () => {
                   {customItems.length > 0 && (
                     <div className="grid grid-cols-2 gap-2 mb-2">
                       {customItems.map((item) => (
-                        <label
+                        <div
                           key={item.id}
+                          role="button"
+                          tabIndex={0}
                           className="flex items-center gap-2 p-2 rounded-md border border-border hover:bg-muted/30 transition-all cursor-pointer group"
+                          onClick={() => handleCheckboxChange(vehicle.id, item.id, !item.done)}
+                          onKeyDown={(e) => {
+                            if (e.key === 'Enter' || e.key === ' ') {
+                              e.preventDefault();
+                              handleCheckboxChange(vehicle.id, item.id, !item.done);
+                            }
+                          }}
                         >
                           <Checkbox 
                             checked={item.done} 
-                            onCheckedChange={(checked) => handleCheckboxChange(vehicle.id, item.id, checked === true)}
-                            className="data-[state=checked]:bg-success data-[state=checked]:border-success w-4 h-4" 
+                            className="data-[state=checked]:bg-success data-[state=checked]:border-success w-4 h-4 pointer-events-none" 
                           />
                           <span className={cn(
                             "text-xs font-medium flex-1 select-none",
@@ -599,15 +615,16 @@ const Checklist = () => {
                           </span>
                           <button
                             type="button"
-                            className="w-5 h-5 flex items-center justify-center rounded-md hover:bg-transparent focus:outline-none focus:ring-0"
+                            className="w-5 h-5 flex items-center justify-center rounded-md hover:bg-transparent focus:outline-none focus:ring-0 shrink-0"
                             onClick={(e) => {
+                              e.preventDefault();
                               e.stopPropagation();
                               handleRemoveCustomTask(vehicle.id, item.id);
                             }}
                           >
                             <Trash2 className="w-3 h-3 text-destructive" />
                           </button>
-                        </label>
+                        </div>
                       ))}
                     </div>
                   )}

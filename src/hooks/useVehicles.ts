@@ -157,6 +157,7 @@ export const useCreateVehicle = () => {
     },
     onSuccess: async () => {
       await queryClient.invalidateQueries({ queryKey: ['vehicles'] });
+      await queryClient.invalidateQueries({ queryKey: ['vehicles-metrics'] });
       await queryClient.invalidateQueries({ queryKey: ['dashboard'] });
     },
     onError: () => {},
@@ -230,6 +231,7 @@ export const useUpdateVehicle = () => {
       // Invalidar todas as queries de veículos (incluindo as com parâmetros diferentes)
       await queryClient.invalidateQueries({ queryKey: ['vehicles'], exact: false });
       await queryClient.invalidateQueries({ queryKey: ['vehicle', variables.id] });
+      await queryClient.invalidateQueries({ queryKey: ['vehicles-metrics'] });
       await queryClient.invalidateQueries({ queryKey: ['dashboard'] });
       // Forçar refetch imediato de todas as queries de veículos
       await queryClient.refetchQueries({ queryKey: ['vehicles'], exact: false });
@@ -261,6 +263,7 @@ export const useDeleteVehicle = () => {
     },
     onSuccess: async () => {
       await queryClient.invalidateQueries({ queryKey: ['vehicles'] });
+      await queryClient.invalidateQueries({ queryKey: ['vehicles-metrics'] });
       await queryClient.invalidateQueries({ queryKey: ['dashboard'] });
     },
   });

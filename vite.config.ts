@@ -55,6 +55,8 @@ export default defineConfig({
         globPatterns: ["**/*.{js,css,html,ico,png,svg,woff2}"],
         maximumFileSizeToCacheInBytes: 3 * 1024 * 1024, // 3 MiB (bundle ~2.1 MB)
         rollupFormat: "iife",
+        // Sem minificação para preservar self.__WB_MANIFEST no output (injection point do Workbox)
+        minify: false,
       },
       includeAssets: ["favicon.svg"],
       manifest: {

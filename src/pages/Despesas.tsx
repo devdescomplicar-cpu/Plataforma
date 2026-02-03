@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo } from 'react';
-import { Plus, Search, Car, Receipt, TrendingUp, List, LayoutGrid, DollarSign, Gauge, Fuel, BarChart3, Wrench, ChevronLeft, ChevronRight, ChevronDown, ChevronUp, Pencil, Trash2 } from 'lucide-react';
+import { Plus, Search, Car, Receipt, TrendingUp, List, LayoutGrid, DollarSign, Gauge, Fuel, BarChart3, Wrench, ChevronLeft, ChevronRight, ChevronDown, ChevronUp, Pencil, Trash2, Eye } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
@@ -23,6 +23,7 @@ import {
   TableRow,
 } from '@/components/ui/table';
 import { TruncatedText } from '@/components/ui/TruncatedText';
+import { VehicleExpensesModal } from '@/components/modals/VehicleExpensesModal';
 
 type ViewMode = 'list' | 'card';
 
@@ -33,6 +34,7 @@ const Despesas = () => {
   const [expenseToEdit, setExpenseToEdit] = useState<string | null>(null);
   const [expenseToDelete, setExpenseToDelete] = useState<{ id: string; type: string; value: number; vehicleName: string } | null>(null);
   const [isExpensesSectionOpen, setIsExpensesSectionOpen] = useState(true);
+  const [expensesModalVehicle, setExpensesModalVehicle] = useState<{ id: string; name: string } | null>(null);
   
   const { data: settingsData } = useSettings();
   
@@ -418,11 +420,31 @@ const Despesas = () => {
                           {vehicle.expensesCount} {vehicle.expensesCount === 1 ? 'despesa' : 'despesas'}
                         </p>
                       </div>
-                      <div className="text-right">
-                        <p className="text-xs text-muted-foreground">Total</p>
-                        <p className="text-sm font-semibold text-destructive">
-                          <HiddenValue value={formatCurrency(vehicle.expensesTotal)} />
-                        </p>
+                      <div className="flex items-center gap-1.5">
+                        <div className="text-right">
+                          <p className="text-xs text-muted-foreground">Total</p>
+                          <p className="text-sm font-semibold text-destructive">
+                            <HiddenValue value={formatCurrency(vehicle.expensesTotal)} />
+                          </p>
+                        </div>
+                        {vehicle.expensesCount > 0 && (
+                          <Button
+                            variant="ghost"
+                            size="icon"
+                            className="h-8 w-8 shrink-0 text-muted-foreground hover:text-foreground self-end"
+                            onClick={(e) => {
+                              e.preventDefault();
+                              e.stopPropagation();
+                              setExpensesModalVehicle({
+                                id: vehicle.id,
+                                name: `${vehicle.brand} ${vehicle.model}${vehicle.version ? ` ${vehicle.version}` : ''} ${vehicle.year}`,
+                              });
+                            }}
+                            title="Ver despesas do veículo"
+                          >
+                            <Eye className="w-4 h-4" />
+                          </Button>
+                        )}
                       </div>
                     </div>
                   </div>
@@ -728,6 +750,14 @@ const Despesas = () => {
             refetchExpenses();
           }
         }}
+      />
+
+      {/* Modal de Despesas do Veículo */}
+      <VehicleExpensesModal
+        open={!!expensesModalVehicle}
+        onOpenChange={(open) => !open && setExpensesModalVehicle(null)}
+        vehicleId={expensesModalVehicle?.id ?? null}
+        vehicleName={expensesModalVehicle?.name ?? ''}
       />
       
       {/* Modal de Editar Despesa */}

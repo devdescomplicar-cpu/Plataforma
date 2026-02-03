@@ -41,6 +41,7 @@ import { toast } from '@/hooks/use-toast';
 import { TruncatedText } from '@/components/ui/TruncatedText';
 import { VEHICLE_COLORS } from '@/components/ui/ColorSelect';
 import { ImageGalleryModal } from '@/components/modals/ImageGalleryModal';
+import { VehicleExpensesModal } from '@/components/modals/VehicleExpensesModal';
 
 type StatusFilter = 'all' | 'available' | 'sold';
 type OriginFilter = 'all' | 'own' | 'consignment' | 'repass';
@@ -50,7 +51,7 @@ const Veiculos = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [statusFilter, setStatusFilter] = useState<StatusFilter>('all');
   const [originFilter, setOriginFilter] = useState<OriginFilter>('all');
-  const [viewMode, setViewMode] = useState<ViewMode>('list');
+  const [viewMode, setViewMode] = useState<ViewMode>('card');
   const [page, setPage] = useState(1);
   
   // Limites diferentes para lista e card
@@ -73,6 +74,7 @@ const Veiculos = () => {
   const [vehicleToAddExpense, setVehicleToAddExpense] = useState<{ id: string; name: string } | null>(null);
   const [galleryVehicle, setGalleryVehicle] = useState<{ id: string; images: Array<{ id: string; url: string; key: string; order: number }> } | null>(null);
   const [galleryInitialIndex, setGalleryInitialIndex] = useState(0);
+  const [expensesModalVehicle, setExpensesModalVehicle] = useState<{ id: string; name: string } | null>(null);
   
   // Resetar página quando mudar filtros ou modo de visualização
   useEffect(() => {
@@ -505,7 +507,11 @@ const Veiculos = () => {
                     )}
                   </TableCell>
                   <TableCell>
-                    <VehicleExpensesCell vehicleId={vehicle.id} />
+                    <VehicleExpensesCell
+                      vehicleId={vehicle.id}
+                      vehicleName={`${vehicle.brand} ${vehicle.model}${vehicle.version ? ` ${vehicle.version}` : ''} ${vehicle.year}`}
+                      onViewExpenses={(id, name) => setExpensesModalVehicle({ id, name })}
+                    />
                   </TableCell>
                   <TableCell className="font-medium">
                     {vehicle.salePrice ? (
@@ -703,6 +709,7 @@ const Veiculos = () => {
                   });
                 }}
                 onReturnToStock={(id) => handleReturnToStock(id)}
+                onViewExpenses={(id, name) => setExpensesModalVehicle({ id, name })}
               />
             ))
         )}
@@ -795,6 +802,14 @@ const Veiculos = () => {
           </div>
         </div>
       )}
+
+      {/* Modal de Despesas do Veículo */}
+      <VehicleExpensesModal
+        open={!!expensesModalVehicle}
+        onOpenChange={(open) => !open && setExpensesModalVehicle(null)}
+        vehicleId={expensesModalVehicle?.id ?? null}
+        vehicleName={expensesModalVehicle?.name ?? ''}
+      />
 
       {/* Image Gallery Modal */}
       {galleryVehicle && (

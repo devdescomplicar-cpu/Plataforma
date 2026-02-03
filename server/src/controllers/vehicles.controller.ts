@@ -35,7 +35,12 @@ export const getVehicles = async (
     };
 
     if (status) {
-      where.status = status;
+      // "available" = em estoque = disponível + reservado (igual às métricas)
+      if (status === 'available') {
+        where.status = { in: ['available', 'reserved'] };
+      } else {
+        where.status = status;
+      }
     }
 
     if (origin) {

@@ -112,6 +112,7 @@ export const useCreateSale = () => {
     onSuccess: async () => {
       await queryClient.invalidateQueries({ queryKey: ['sales'] });
       await queryClient.invalidateQueries({ queryKey: ['vehicles'] });
+      await queryClient.invalidateQueries({ queryKey: ['vehicles-metrics'] });
       await queryClient.invalidateQueries({ queryKey: ['dashboard'] });
       await queryClient.invalidateQueries({ queryKey: ['salesStats'] });
       await queryClient.invalidateQueries({ queryKey: ['salesByMonth'] });
@@ -130,6 +131,8 @@ export const useUpdateSale = () => {
     onSuccess: async (_, variables) => {
       await queryClient.invalidateQueries({ queryKey: ['sales'] });
       await queryClient.invalidateQueries({ queryKey: ['sale', variables.id] });
+      await queryClient.invalidateQueries({ queryKey: ['vehicles'] });
+      await queryClient.invalidateQueries({ queryKey: ['vehicles-metrics'] });
       await queryClient.invalidateQueries({ queryKey: ['dashboard'] });
       await queryClient.invalidateQueries({ queryKey: ['salesStats'] });
       await queryClient.invalidateQueries({ queryKey: ['salesByMonth'] });
@@ -148,6 +151,7 @@ export const useDeleteSale = () => {
     onSuccess: async () => {
       await queryClient.invalidateQueries({ queryKey: ['sales'] });
       await queryClient.invalidateQueries({ queryKey: ['vehicles'] });
+      await queryClient.invalidateQueries({ queryKey: ['vehicles-metrics'] });
       await queryClient.invalidateQueries({ queryKey: ['dashboard'] });
       await queryClient.invalidateQueries({ queryKey: ['salesStats'] });
       await queryClient.invalidateQueries({ queryKey: ['salesByMonth'] });

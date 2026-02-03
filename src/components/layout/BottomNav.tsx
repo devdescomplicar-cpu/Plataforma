@@ -1,4 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
+import { prefetchRoute } from '@/routes/LazyRoutes';
 import { LayoutDashboard, Car, Receipt, ClipboardCheck, TrendingUp, MoreHorizontal, Users, CircleUser, CreditCard, BarChart3, ArrowLeft } from 'lucide-react';
 import { useApp } from '@/contexts/AppContext';
 import { cn } from '@/lib/utils';
@@ -49,6 +50,8 @@ export function BottomNav() {
         {/* Botão Dashboard Cliente - primeiro item */}
         <Link
           to="/"
+          onMouseEnter={() => prefetchRoute('/')}
+          onFocus={() => prefetchRoute('/')}
           className={cn(
             'flex flex-col items-center justify-center gap-0.5 min-w-0 flex-1 mx-0.5 my-1 py-1.5 px-2 rounded-xl transition-all touch-manipulation',
             'text-muted-foreground hover:text-foreground hover:bg-muted/50'
@@ -65,6 +68,8 @@ export function BottomNav() {
             <Link
               key={item.href}
               to={item.href}
+              onMouseEnter={() => prefetchRoute(item.href)}
+              onFocus={() => prefetchRoute(item.href)}
               className={cn(
                 'flex flex-col items-center justify-center gap-0.5 min-w-0 flex-1 mx-0.5 my-1 py-1.5 px-2 rounded-xl transition-all touch-manipulation',
                 isActive
@@ -117,6 +122,8 @@ export function BottomNav() {
           <Link
             key={item.href}
             to={item.href}
+            onMouseEnter={() => prefetchRoute(item.href)}
+            onFocus={() => prefetchRoute(item.href)}
             className={cn(
               'flex flex-col items-center justify-center gap-0.5 min-w-0 flex-1 mx-0.5 my-1 py-1.5 px-2 rounded-xl transition-all touch-manipulation',
               isActive

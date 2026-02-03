@@ -204,7 +204,7 @@ const Dashboard = () => {
             className="flex flex-col items-center justify-center gap-2 rounded-xl border border-border/60 bg-background p-4 sm:p-5 text-center transition-colors hover:bg-muted/50 active:scale-[0.98] min-h-[120px] sm:min-h-[128px] touch-manipulation"
           >
             <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl overflow-hidden">
-              <img src={quickActionIcons.carMoto} alt="" className="h-10 w-10 object-contain object-center" />
+              <img src={quickActionIcons.carMoto} alt="" className="h-10 w-10 object-contain object-center" loading="eager" fetchPriority="high" decoding="async" />
             </span>
             <span className="font-semibold text-foreground text-sm sm:text-base">Cadastrar veículo</span>
             <span className="text-xs text-muted-foreground">Novo veículo</span>
@@ -226,7 +226,7 @@ const Dashboard = () => {
             className="flex flex-col items-center justify-center gap-2 rounded-xl border border-border/60 bg-background p-4 sm:p-5 text-center transition-colors hover:bg-muted/50 active:scale-[0.98] min-h-[120px] sm:min-h-[128px] touch-manipulation"
           >
             <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl overflow-hidden">
-              <img src={quickActionIcons.handshake} alt="" className="h-10 w-10 object-contain object-center" />
+              <img src={quickActionIcons.handshake} alt="" className="h-10 w-10 object-contain object-center" loading="eager" fetchPriority="high" decoding="async" />
             </span>
             <span className="font-semibold text-foreground text-sm sm:text-base">Registrar Venda</span>
             <span className="text-xs text-muted-foreground">Nova venda</span>
@@ -237,7 +237,7 @@ const Dashboard = () => {
             className="flex flex-col items-center justify-center gap-2 rounded-xl border border-border/60 bg-background p-4 sm:p-5 text-center transition-colors hover:bg-muted/50 active:scale-[0.98] min-h-[120px] sm:min-h-[128px] touch-manipulation"
           >
             <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl overflow-hidden">
-              <img src={quickActionIcons.expense} alt="" className="h-10 w-10 object-contain object-center" />
+              <img src={quickActionIcons.expense} alt="" className="h-10 w-10 object-contain object-center" loading="eager" fetchPriority="high" decoding="async" />
             </span>
             <span className="font-semibold text-foreground text-sm sm:text-base">Adicionar Despesa</span>
             <span className="text-xs text-muted-foreground">Novo gasto</span>

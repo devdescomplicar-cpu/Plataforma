@@ -1,4 +1,5 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { prefetchRoute } from '@/routes/LazyRoutes';
 import { useQueryClient } from '@tanstack/react-query';
 import { apiClient } from '@/lib/api';
 import {
@@ -98,6 +99,8 @@ export function Sidebar() {
                   key={item.name}
                   to={item.href}
                   onClick={() => setSidebarOpen(false)}
+                  onMouseEnter={() => prefetchRoute(item.href)}
+                  onFocus={() => prefetchRoute(item.href)}
                   className={cn(
                     "nav-item",
                     isActive && "active"
@@ -118,6 +121,8 @@ export function Sidebar() {
               <Link
                 to="/admin"
                 onClick={() => setSidebarOpen(false)}
+                onMouseEnter={() => prefetchRoute('/admin')}
+                onFocus={() => prefetchRoute('/admin')}
                 className={cn(
                   'nav-item',
                   location.pathname.startsWith('/admin') && 'active'
@@ -139,6 +144,8 @@ export function Sidebar() {
                   key={item.name}
                   to={item.href}
                   onClick={() => setSidebarOpen(false)}
+                  onMouseEnter={() => prefetchRoute(item.href)}
+                  onFocus={() => prefetchRoute(item.href)}
                   className={cn(
                     "nav-item",
                     isActive && "active"

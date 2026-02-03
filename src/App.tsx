@@ -1,9 +1,9 @@
-import { Suspense } from "react";
+import { Suspense, useEffect } from "react";
 import { ThemeProvider } from "next-themes";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import { QueryClientProvider } from "@tanstack/react-query";
+import { PersistQueryClientProvider } from "@tanstack/react-query-persist-client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AppProvider } from "@/contexts/AppContext";
 import { PwaInstallProvider } from "@/contexts/PwaInstallContext";
@@ -15,6 +15,7 @@ import { RequireAdmin } from "@/components/RequireAdmin";
 import { PageLoader } from "@/components/PageLoader";
 import { getRouterBasename } from "@/lib/app-config";
 import { queryClient } from "@/lib/queryClient";
+import { queryPersister } from "@/lib/queryPersister";
 import { useServiceWorkerUpdate } from "@/hooks/useServiceWorkerUpdate";
 import { useViewportFix } from "@/hooks/useViewportFix";
 import {
@@ -43,11 +44,22 @@ import {
   AdminClientes,
 } from "@/routes/LazyRoutes";
 
+const DASHBOARD_ICONS = ['/car-moto-icon.webp', '/checklist-icon.webp', '/handshake-icon.webp', '/expense-icon.webp'] as const;
+
 const AppContent = () => {
   // Gerencia atualizações automáticas do Service Worker
   useServiceWorkerUpdate();
   // Corrige cálculo do viewport no PWA mobile
   useViewportFix();
+
+  // Pré-carrega ícones do dashboard em cache para exibição instantânea ao navegar
+  useEffect(() => {
+    const base = getRouterBasename() || '';
+    DASHBOARD_ICONS.forEach((path) => {
+      const img = new Image();
+      img.src = base + path;
+    });
+  }, []);
 
   return (
     <>
@@ -92,8 +104,16 @@ const AppContent = () => {
   );
 };
 
+const ONE_DAY_MS = 24 * 60 * 60 * 1000;
+
 const App = () => (
-  <QueryClientProvider client={queryClient}>
+  <PersistQueryClientProvider
+    client={queryClient}
+    persistOptions={{
+      persister: queryPersister,
+      maxAge: ONE_DAY_MS,
+    }}
+  >
     <ThemeProvider attribute="class" defaultTheme="light" storageKey="theme" enableSystem={false}>
       <TooltipProvider>
         <AppProvider>
@@ -103,7 +123,7 @@ const App = () => (
         </AppProvider>
       </TooltipProvider>
     </ThemeProvider>
-  </QueryClientProvider>
+  </PersistQueryClientProvider>
 );
 
 export default App;

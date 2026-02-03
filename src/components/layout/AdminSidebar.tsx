@@ -1,4 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
+import { prefetchRoute } from '@/routes/LazyRoutes';
 import { Users, CreditCard, BarChart3, Mail, Webhook, FileSearch, HardDrive, LayoutDashboard, X, ArrowLeft, Bell, FileText, CircleUser } from 'lucide-react';
 import { useApp } from '@/contexts/AppContext';
 import { cn } from '@/lib/utils';
@@ -34,7 +35,7 @@ export function AdminSidebar() {
         )}
       >
         <div className="flex items-center justify-between px-4 lg:px-5 py-4 lg:py-6 shrink-0">
-          <Link to="/admin" className="flex items-center gap-2">
+          <Link to="/admin" onMouseEnter={() => prefetchRoute('/admin')} onFocus={() => prefetchRoute('/admin')} className="flex items-center gap-2">
             <div className="w-9 h-9 rounded-xl bg-primary flex items-center justify-center">
               <LayoutDashboard className="w-5 h-5 text-primary-foreground" />
             </div>
@@ -50,7 +51,7 @@ export function AdminSidebar() {
           {adminNavigation.map((item) => {
             const isActive = item.href === '/admin' ? location.pathname === '/admin' : location.pathname.startsWith(item.href);
             return (
-              <Link key={item.name} to={item.href} onClick={() => setSidebarOpen(false)} className={cn('nav-item', isActive && 'active')}>
+              <Link key={item.name} to={item.href} onClick={() => setSidebarOpen(false)} onMouseEnter={() => prefetchRoute(item.href)} onFocus={() => prefetchRoute(item.href)} className={cn('nav-item', isActive && 'active')}>
                 <item.icon className="w-5 h-5 flex-shrink-0" />
                 <span className="font-medium">{item.name}</span>
               </Link>
@@ -59,7 +60,7 @@ export function AdminSidebar() {
         </nav>
 
         <div className="p-3 border-t border-sidebar-border shrink-0">
-          <Link to="/" onClick={() => setSidebarOpen(false)}>
+          <Link to="/" onClick={() => setSidebarOpen(false)} onMouseEnter={() => prefetchRoute('/')} onFocus={() => prefetchRoute('/')}>
             <Button variant="outline" className="w-full justify-start gap-2 border-sidebar-border bg-sidebar-accent/30 hover:bg-sidebar-accent text-sidebar-foreground">
               <ArrowLeft className="w-4 h-4" />
               Dashboard Cliente

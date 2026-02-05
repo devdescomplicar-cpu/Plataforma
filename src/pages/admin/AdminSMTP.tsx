@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { adminApi } from '@/lib/admin-api';
+import { formatDateTimeBR } from '@/lib/date-br';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -237,7 +238,7 @@ export default function AdminSMTP() {
                       {emailLogs.map((log) => (
                         <TableRow key={log.id}>
                           <TableCell className="whitespace-nowrap text-muted-foreground text-sm">
-                            {new Date(log.sentAt).toLocaleString('pt-BR')}
+                            {formatDateTimeBR(log.sentAt)}
                           </TableCell>
                           <TableCell className="font-medium">{log.to}</TableCell>
                           <TableCell className="max-w-[180px] truncate" title={log.subject}>

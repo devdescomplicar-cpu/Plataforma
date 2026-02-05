@@ -28,19 +28,32 @@ router.get('/me', authMiddleware, async (req: AuthRequest, res: Response) => {
     }
     const user = await prisma.user.findFirst({
       where: { id: userId, deletedAt: null },
-      select: { id: true, email: true, name: true, role: true, phone: true, cpfCnpj: true },
+      select: { id: true, email: true, name: true, role: true },
     });
     const account = await prisma.account.findFirst({
       where: { id: accountId, deletedAt: null },
-      select: { id: true, name: true },
+      select: { id: true, name: true, userId: true },
     });
     if (!user || !account) {
       res.status(401).json({ success: false, error: { message: 'Usuário ou conta não encontrados' } });
       return;
     }
+    const isOwner = account.userId === userId;
+    const collaboration = isOwner
+      ? null
+      : await prisma.accountCollaborator.findFirst({
+          where: { accountId, userId, deletedAt: null },
+          select: { role: true, status: true },
+        });
+    const collaboratorRole = isOwner ? 'owner' : (collaboration?.role === 'manager' ? 'manager' : 'seller');
     res.json({
       success: true,
-      data: { user, account },
+      data: {
+        user,
+        account: { id: account.id, name: account.name },
+        isAccountOwner: isOwner,
+        collaboratorRole,
+      },
     });
   } catch (e) {
     console.error('GET /me error:', e);
@@ -170,21 +183,46 @@ router.post('/login', async (req: Request, res: Response) => {
       return;
     }
 
-    // Buscar ou criar conta
+    // Buscar conta: primeiro como dono, depois como colaborador ativo
     let account = user.accounts[0];
     if (!account) {
-      account = await prisma.account.create({
-        data: {
-          name: `${user.name}'s Account`,
-          userId: user.id,
-          status: 'active',
-        },
+      const activeCollaboration = await prisma.accountCollaborator.findFirst({
+        where: { userId: user.id, status: 'active', deletedAt: null },
+        include: { account: true },
       });
+      if (activeCollaboration) {
+        account = activeCollaboration.account;
+      } else {
+        const anyCollaboration = await prisma.accountCollaborator.findFirst({
+          where: { userId: user.id, deletedAt: null },
+        });
+        if (anyCollaboration) {
+          res.status(403).json({
+            success: false,
+            error: { message: 'Acesso bloqueado. Sua conta de colaborador está inativa.' },
+          });
+          return;
+        }
+        account = await prisma.account.create({
+          data: {
+            name: `${user.name}'s Account`,
+            userId: user.id,
+            status: 'active',
+          },
+        });
+      }
     }
 
-    // Usuários comuns: se data de vencimento passou, bloquear acesso e marcar status vencido
+    // Usuários comuns (dono e colaboradores): se conta já está vencida ou data de vencimento passou, bloquear acesso
     if (user.role !== 'admin') {
       const now = new Date();
+      if (account.status === 'vencido') {
+        res.status(403).json({
+          success: false,
+          error: { message: 'Conta vencida. Entre em contato com o suporte.' },
+        });
+        return;
+      }
       if (account.trialEndsAt && account.trialEndsAt < now) {
         await prisma.account.update({
           where: { id: account.id },
@@ -404,9 +442,13 @@ router.post('/reset-password', async (req: Request, res: Response) => {
   }
 });
 
-/** Update own profile (name, email, phone, cpfCnpj). */
+/** Update own profile (name, email, phone, cpfCnpj). Colaboradores não podem alterar. */
 router.put('/profile', authMiddleware, async (req: AuthRequest, res: Response) => {
   try {
+    if (!req.isAccountOwner) {
+      res.status(403).json({ success: false, error: { message: 'Colaboradores não podem alterar o perfil da conta.' } });
+      return;
+    }
     const userId = req.userId;
     if (!userId) {
       res.status(401).json({ success: false, error: { message: 'Não autenticado' } });
@@ -521,9 +563,13 @@ router.put('/profile', authMiddleware, async (req: AuthRequest, res: Response) =
   }
 });
 
-/** Change password (requires current password). */
+/** Change password (requires current password). Colaboradores não podem alterar. */
 router.put('/change-password', authMiddleware, async (req: AuthRequest, res: Response) => {
   try {
+    if (!req.isAccountOwner) {
+      res.status(403).json({ success: false, error: { message: 'Colaboradores não podem alterar a senha da conta.' } });
+      return;
+    }
     const userId = req.userId;
     if (!userId) {
       res.status(401).json({ success: false, error: { message: 'Não autenticado' } });

@@ -1,13 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Loader2, User, Mail, Phone, MapPin, FileText, UserPlus, MessageSquare } from 'lucide-react';
 import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select';
-import {
   Dialog,
   DialogContent,
   DialogDescription,
@@ -88,36 +81,6 @@ export function ClientFormModal({
   ];
 
   const EMPTY_STATE = '_';
-  const BR_STATES = [
-    { value: EMPTY_STATE, label: 'Selecione o estado' },
-    { value: 'AC', label: 'Acre' },
-    { value: 'AL', label: 'Alagoas' },
-    { value: 'AP', label: 'Amapá' },
-    { value: 'AM', label: 'Amazonas' },
-    { value: 'BA', label: 'Bahia' },
-    { value: 'CE', label: 'Ceará' },
-    { value: 'DF', label: 'Distrito Federal' },
-    { value: 'ES', label: 'Espírito Santo' },
-    { value: 'GO', label: 'Goiás' },
-    { value: 'MA', label: 'Maranhão' },
-    { value: 'MT', label: 'Mato Grosso' },
-    { value: 'MS', label: 'Mato Grosso do Sul' },
-    { value: 'MG', label: 'Minas Gerais' },
-    { value: 'PA', label: 'Pará' },
-    { value: 'PB', label: 'Paraíba' },
-    { value: 'PR', label: 'Paraná' },
-    { value: 'PE', label: 'Pernambuco' },
-    { value: 'PI', label: 'Piauí' },
-    { value: 'RJ', label: 'Rio de Janeiro' },
-    { value: 'RN', label: 'Rio Grande do Norte' },
-    { value: 'RS', label: 'Rio Grande do Sul' },
-    { value: 'RO', label: 'Rondônia' },
-    { value: 'RR', label: 'Roraima' },
-    { value: 'SC', label: 'Santa Catarina' },
-    { value: 'SP', label: 'São Paulo' },
-    { value: 'SE', label: 'Sergipe' },
-    { value: 'TO', label: 'Tocantins' },
-  ];
 
   const createClientMutation = useCreateClient();
   const updateClientMutation = useUpdateClient();
@@ -220,7 +183,7 @@ export function ClientFormModal({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
+      <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto scrollbar-modal">
         <DialogHeader>
           <div className="flex items-center gap-3">
             {isEditMode ? (
@@ -302,40 +265,22 @@ export function ClientFormModal({
             </div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div className="space-y-2">
-              <Label htmlFor="cpfCnpj">CPF/CNPJ</Label>
-              <div className="relative">
-                <FileText className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-                <Input
-                  id="cpfCnpj"
-                  className="pl-9"
-                  placeholder="000.000.000-00"
-                  value={cpfCnpj}
-                  onChange={(e) => {
-                    const formatted = formatCpfCnpj(e.target.value);
-                    if (formatted.replace(/\D/g, '').length <= 14) {
-                      setCpfCnpj(formatted);
-                    }
-                  }}
-                />
-              </div>
-            </div>
-
-            <div className="space-y-2">
-              <Label htmlFor="state">Estado (UF)</Label>
-              <Select value={state || '_'} onValueChange={(v) => setState(v === '_' ? '' : v)}>
-                <SelectTrigger id="state">
-                  <SelectValue placeholder="Selecione o estado" />
-                </SelectTrigger>
-                <SelectContent>
-                  {BR_STATES.map((s) => (
-                    <SelectItem key={s.value} value={s.value}>
-                      {s.label}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
+          <div className="space-y-2">
+            <Label htmlFor="cpfCnpj">CPF/CNPJ</Label>
+            <div className="relative">
+              <FileText className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+              <Input
+                id="cpfCnpj"
+                className="pl-9"
+                placeholder="000.000.000-00"
+                value={cpfCnpj}
+                onChange={(e) => {
+                  const formatted = formatCpfCnpj(e.target.value);
+                  if (formatted.replace(/\D/g, '').length <= 14) {
+                    setCpfCnpj(formatted);
+                  }
+                }}
+              />
             </div>
           </div>
 
@@ -437,7 +382,7 @@ export function ClientFormModal({
               />
             </div>
             
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-[1fr_80px] gap-4">
               <div className="space-y-2">
                 <Label htmlFor="city">Cidade</Label>
                 <Input
@@ -447,6 +392,7 @@ export function ClientFormModal({
                   onChange={(e) => setCity(e.target.value)}
                 />
               </div>
+              
               <div className="space-y-2">
                 <Label htmlFor="stateFromAddress">Estado (UF)</Label>
                 <Input
@@ -456,6 +402,8 @@ export function ClientFormModal({
                   value={state && state !== EMPTY_STATE ? state : ''}
                   onChange={(e) => setState(e.target.value.toUpperCase() || EMPTY_STATE)}
                   className="uppercase"
+                  readOnly
+                  title="Preenchido automaticamente pelo CEP"
                 />
               </div>
             </div>

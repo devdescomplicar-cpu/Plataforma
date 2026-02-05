@@ -3,7 +3,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { Car, Loader2, Download } from 'lucide-react';
+import { Loader2, Download } from 'lucide-react';
 import { usePwaInstallContext } from '@/contexts/PwaInstallContext';
 import { ThemeToggle } from '@/components/ui/theme-toggle';
 import { Button } from '@/components/ui/button';
@@ -27,6 +27,7 @@ import {
 } from '@/components/ui/dialog';
 import { apiClient } from '@/lib/api';
 import { useQueryClient } from '@tanstack/react-query';
+import { Logo } from '@/components/Logo';
 
 const AUTH_TOKEN_KEY = 'auth_token';
 
@@ -42,7 +43,8 @@ export default function Login() {
   const location = useLocation();
   const queryClient = useQueryClient();
   const { showInstructions, isStandalone } = usePwaInstallContext();
-  const from = (location.state as { from?: { pathname: string } })?.from?.pathname ?? '/';
+  const from = (location.state as { from?: { pathname: string }; contaVencida?: boolean })?.from?.pathname ?? '/';
+  const contaVencidaState = (location.state as { contaVencida?: boolean })?.contaVencida ?? false;
   const [forgotOpen, setForgotOpen] = useState(false);
   const [forgotInput, setForgotInput] = useState('');
   const [forgotError, setForgotError] = useState('');
@@ -123,24 +125,32 @@ export default function Login() {
     }
   }
 
+  const showContaVencida = contaVencidaState || (errors.root?.message?.includes('Conta vencida') ?? false);
+  const contaVencidaMessage = 'Seu plano venceu. Entre em contato com o suporte para renovar.';
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-muted/30 p-4 relative">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-muted/30 p-4 relative">
       <div className="absolute top-[calc(1rem+env(safe-area-inset-top,0px))] right-4">
         <ThemeToggle className="text-muted-foreground hover:text-foreground" />
       </div>
+      {showContaVencida && (
+        <div
+          className="w-full max-w-md mb-4 p-4 rounded-lg bg-destructive/10 border border-destructive/30 text-destructive text-center text-sm font-medium"
+          role="alert"
+        >
+          {contaVencidaMessage}
+        </div>
+      )}
       <Card className="w-full max-w-md shadow-lg border-border">
-        <CardHeader className="text-center space-y-2">
-          <div className="flex justify-center">
-            <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
-              <Car className="w-6 h-6 text-primary" />
-            </div>
+        <CardHeader className="text-center space-y-4 pb-4">
+          <div className="flex justify-center w-full">
+            <Logo size="large" showText={false} linkable={false} />
           </div>
-          <CardTitle className="text-2xl">DescompliCAR</CardTitle>
           <CardDescription>Entre com seu email e senha para acessar o sistema</CardDescription>
         </CardHeader>
         <form onSubmit={handleSubmit(onSubmit)}>
           <CardContent className="space-y-4">
-            {errors.root && (
+            {errors.root && !showContaVencida && (
               <p className="text-sm text-destructive text-center" role="alert">
                 {errors.root.message}
               </p>

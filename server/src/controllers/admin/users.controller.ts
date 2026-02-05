@@ -387,12 +387,28 @@ export async function updateUser(
     const account = user.accounts[0];
     const effectiveRole = newRole ?? user.role;
     const isAdminUser = effectiveRole === 'admin';
-    const trialEndsAtVal =
-      body.trialEndsAt === null || body.trialEndsAt === ''
-        ? null
-        : body.trialEndsAt
-          ? new Date(body.trialEndsAt)
-          : undefined;
+    
+    // Manter a data exatamente como foi enviada (sem conversão de timezone)
+    let trialEndsAtVal: Date | null | undefined = undefined;
+    if (body.trialEndsAt !== undefined) {
+      if (body.trialEndsAt === null || body.trialEndsAt === '') {
+        trialEndsAtVal = null;
+      } else if (account?.trialEndsAt) {
+        // Se já existe uma data e a data enviada é a mesma, manter o objeto Date original
+        const existingDateStr = account.trialEndsAt.toISOString().split('T')[0];
+        if (body.trialEndsAt === existingDateStr) {
+          trialEndsAtVal = account.trialEndsAt;
+        } else {
+          // Nova data: parse como local (meio-dia UTC para evitar problemas de timezone)
+          const [year, month, day] = body.trialEndsAt.split('-').map(Number);
+          trialEndsAtVal = new Date(Date.UTC(year, month - 1, day, 12, 0, 0, 0));
+        }
+      } else {
+        // Nova data: parse como local (meio-dia UTC para evitar problemas de timezone)
+        const [year, month, day] = body.trialEndsAt.split('-').map(Number);
+        trialEndsAtVal = new Date(Date.UTC(year, month - 1, day, 12, 0, 0, 0));
+      }
+    }
     const hasAccountUpdates =
       body.accountName !== undefined ||
       body.trialEndsAt !== undefined;
@@ -683,7 +699,28 @@ export async function updateAccountTrial(
       res.status(404).json({ success: false, error: { message: 'Conta não encontrada' } });
       return;
     }
-    const newDate = trialEndsAt === null || trialEndsAt === '' ? null : trialEndsAt ? new Date(trialEndsAt) : undefined;
+    
+    // Manter a data exatamente como foi enviada (sem conversão de timezone)
+    let newDate: Date | null | undefined = undefined;
+    if (trialEndsAt !== undefined) {
+      if (trialEndsAt === null || trialEndsAt === '') {
+        newDate = null;
+      } else if (account.trialEndsAt) {
+        // Se já existe uma data e a data enviada é a mesma, manter o objeto Date original
+        const existingDateStr = account.trialEndsAt.toISOString().split('T')[0];
+        if (trialEndsAt === existingDateStr) {
+          newDate = account.trialEndsAt;
+        } else {
+          // Nova data: parse como local (meio-dia UTC para evitar problemas de timezone)
+          const [year, month, day] = trialEndsAt.split('-').map(Number);
+          newDate = new Date(Date.UTC(year, month - 1, day, 12, 0, 0, 0));
+        }
+      } else {
+        // Nova data: parse como local (meio-dia UTC para evitar problemas de timezone)
+        const [year, month, day] = trialEndsAt.split('-').map(Number);
+        newDate = new Date(Date.UTC(year, month - 1, day, 12, 0, 0, 0));
+      }
+    }
     await prisma.account.update({
       where: { id: accountId },
       data: newDate !== undefined ? { trialEndsAt: newDate } : {},
@@ -826,7 +863,26 @@ export async function changeAccountPlan(
       where: { accountId, deletedAt: null },
       orderBy: { startDate: 'desc' },
     });
-    const endDateVal = endDate ? new Date(endDate) : null;
+    // Manter a data exatamente como foi enviada (sem conversão de timezone)
+    // Parse da data como local (meio-dia UTC para evitar problemas de timezone)
+    let endDateVal: Date | null = null;
+    if (endDate) {
+      // Se já existe uma subscription e a data enviada é a mesma, manter o objeto Date original
+      if (existing?.endDate) {
+        const existingDateStr = existing.endDate.toISOString().split('T')[0];
+        if (endDate === existingDateStr) {
+          endDateVal = existing.endDate;
+        } else {
+          // Nova data: parse como local (meio-dia para evitar problemas de timezone)
+          const [year, month, day] = endDate.split('-').map(Number);
+          endDateVal = new Date(Date.UTC(year, month - 1, day, 12, 0, 0, 0));
+        }
+      } else {
+        // Nova data: parse como local (meio-dia para evitar problemas de timezone)
+        const [year, month, day] = endDate.split('-').map(Number);
+        endDateVal = new Date(Date.UTC(year, month - 1, day, 12, 0, 0, 0));
+      }
+    }
     if (existing) {
       await prisma.subscription.update({
         where: { id: existing.id },

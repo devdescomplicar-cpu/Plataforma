@@ -3,6 +3,7 @@ import { AuthRequest } from '../middleware/auth.middleware.js';
 import { prisma } from '../services/prisma.service.js';
 import { saleSchema, parseSaleBody, normalizeSaleUpdateBody } from '../utils/validators.js';
 import { getPublicImageUrl } from '../services/minio.service.js';
+import { getBrazilDateParts, getBrazilMonthRange, parseDateStringAsBrazilDay } from '../utils/timezone.js';
 
 export const getSales = async (
   req: AuthRequest,
@@ -11,7 +12,7 @@ export const getSales = async (
 ): Promise<void> => {
   try {
     const { accountId } = req;
-    const { search, page = '1', limit = '20' } = req.query;
+    const { search, page = '1', limit = '20', registeredById } = req.query;
 
     const skip = (parseInt(page as string) - 1) * parseInt(limit as string);
     const take = parseInt(limit as string);
@@ -27,6 +28,11 @@ export const getSales = async (
         { vehicle: { model: { contains: search as string, mode: 'insensitive' } } },
         { client: { name: { contains: search as string, mode: 'insensitive' } } },
       ];
+    }
+
+    // Filtro por colaborador (vendedor que registrou a venda)
+    if (registeredById && registeredById !== 'all') {
+      where.registeredById = registeredById as string;
     }
 
     const [sales, total] = await Promise.all([
@@ -54,6 +60,7 @@ export const getSales = async (
               city: true,
             },
           },
+          registeredBy: { select: { id: true, name: true } },
         },
         orderBy: { saleDate: 'desc' },
       }),
@@ -108,6 +115,7 @@ export const getSaleById = async (
       include: {
         vehicle: true,
         client: true,
+        registeredBy: { select: { id: true, name: true } },
       },
     });
 
@@ -139,10 +147,16 @@ export const createSale = async (
       res.status(401).json({ success: false, error: { message: 'Não autenticado' } });
       return;
     }
+    const rawSaleDate = req.body.saleDate;
+    const saleDateParsed = rawSaleDate
+      ? (typeof rawSaleDate === 'string' && rawSaleDate.length <= 10
+          ? parseDateStringAsBrazilDay(rawSaleDate)
+          : new Date(rawSaleDate))
+      : undefined;
     const saleData = saleSchema.parse({
       ...req.body,
       salePrice: parseFloat(req.body.salePrice),
-      saleDate: req.body.saleDate ? new Date(req.body.saleDate) : undefined,
+      saleDate: saleDateParsed,
     });
 
     const vehicle = await prisma.vehicle.findFirst({
@@ -160,6 +174,10 @@ export const createSale = async (
       });
       return;
     }
+
+    // Salvar o salePrice original (preço pretendido) antes de atualizar
+    // Este valor será usado quando a venda for deletada para restaurar o preço pretendido
+    const originalSalePrice = vehicle.salePrice;
 
     // Buscar despesas do veículo
     const expenses = await prisma.expense.findMany({
@@ -179,19 +197,40 @@ export const createSale = async (
     const profit = saleData.salePrice - totalCost;
     const profitPercent = totalCost > 0 ? (profit / totalCost) * 100 : 0;
 
+    let commissionAmount: number | undefined;
+    if (req.userId) {
+      const collaborator = await prisma.accountCollaborator.findFirst({
+        where: { accountId, userId: req.userId, role: 'seller', status: 'active', deletedAt: null },
+      });
+      if (collaborator?.commissionType && collaborator.commissionValue != null) {
+        commissionAmount =
+          collaborator.commissionType === 'percent'
+            ? (saleData.salePrice * collaborator.commissionValue) / 100
+            : collaborator.commissionValue;
+      }
+    }
+
+    // Usar registeredById do body se fornecido (dono/gerente), senão usar req.userId
+    const registeredById = saleData.registeredById || req.userId || undefined;
+    
     const sale = await prisma.sale.create({
       data: {
         ...saleData,
         accountId,
+        originalSalePrice: originalSalePrice ?? undefined, // Salvar o preço pretendido original
         profit,
         profitPercent: parseFloat(profitPercent.toFixed(2)),
+        registeredById,
+        commissionAmount: commissionAmount ?? undefined,
       },
       include: {
         vehicle: true,
         client: true,
+        registeredBy: { select: { id: true, name: true } },
       },
     });
 
+    // Atualizar veículo: status sold e salePrice
     await prisma.vehicle.updateMany({
       where: {
         id: saleData.vehicleId,
@@ -199,6 +238,7 @@ export const createSale = async (
       },
       data: {
         status: 'sold',
+        salePrice: saleData.salePrice,
         updatedAt: new Date(),
       },
     });
@@ -232,23 +272,28 @@ export const updateSale = async (
       saleDate?: Date;
       profit?: number;
       profitPercent?: number;
+      registeredById?: string;
       updatedAt: Date;
     } = {
       ...saleData,
       updatedAt: new Date(),
     };
 
-    if (saleData.salePrice !== undefined) {
+    // Recalcular lucro se o preço ou veículo mudar
+    if (saleData.salePrice !== undefined || saleData.vehicleId !== undefined) {
       const sale = await prisma.sale.findFirst({
         where: { id, accountId },
         include: { vehicle: true },
       });
 
       if (sale) {
+        // Usar o vehicleId novo se foi alterado, senão usar o atual
+        const vehicleIdToUse = saleData.vehicleId || sale.vehicleId;
+        
         // Buscar despesas do veículo
         const expenses = await prisma.expense.findMany({
           where: {
-            vehicleId: sale.vehicleId,
+            vehicleId: vehicleIdToUse,
             accountId,
             deletedAt: null,
           },
@@ -258,9 +303,18 @@ export const updateSale = async (
         });
 
         const totalExpenses = expenses.reduce((sum, exp) => sum + exp.value, 0);
-        const purchasePrice = sale.vehicle.purchasePrice ?? 0;
+        
+        // Buscar o veículo correto (novo ou atual)
+        const vehicle = saleData.vehicleId 
+          ? await prisma.vehicle.findFirst({
+              where: { id: saleData.vehicleId, accountId, deletedAt: null },
+            })
+          : sale.vehicle;
+        
+        const purchasePrice = vehicle?.purchasePrice ?? 0;
         const totalCost = purchasePrice + totalExpenses;
-        updatePayload.profit = saleData.salePrice - totalCost;
+        const salePriceToUse = saleData.salePrice ?? sale.salePrice;
+        updatePayload.profit = salePriceToUse - totalCost;
         updatePayload.profitPercent = totalCost > 0
           ? parseFloat(((updatePayload.profit / totalCost) * 100).toFixed(2))
           : 0;
@@ -289,8 +343,36 @@ export const updateSale = async (
       include: {
         vehicle: true,
         client: true,
+        registeredBy: { select: { id: true, name: true } },
       },
     });
+
+    // Atualizar salePrice do veículo se o preço da venda foi alterado
+    if (updatedSale && (saleData.salePrice !== undefined || saleData.vehicleId !== undefined)) {
+      const vehicleIdToUpdate = saleData.vehicleId || updatedSale.vehicleId;
+      
+      // Buscar a venda mais recente do veículo para atualizar o salePrice
+      const latestSale = await prisma.sale.findFirst({
+        where: {
+          vehicleId: vehicleIdToUpdate,
+          accountId,
+          deletedAt: null,
+        },
+        orderBy: { saleDate: 'desc' },
+        select: { salePrice: true },
+      });
+
+      await prisma.vehicle.updateMany({
+        where: {
+          id: vehicleIdToUpdate,
+          accountId,
+        },
+        data: {
+          salePrice: latestSale?.salePrice ?? null,
+          updatedAt: new Date(),
+        },
+      });
+    }
 
     res.json({
       success: true,
@@ -310,8 +392,8 @@ export const deleteSale = async (
     const { accountId } = req;
     const { id } = req.params;
 
-    // Buscar a venda para obter o vehicleId
-    const sale = await prisma.sale.findFirst({
+    // Buscar a venda que está sendo deletada ANTES do soft delete para obter o originalSalePrice
+    const saleToDelete = await prisma.sale.findFirst({
       where: {
         id,
         accountId,
@@ -319,10 +401,11 @@ export const deleteSale = async (
       },
       select: {
         vehicleId: true,
+        originalSalePrice: true,
       },
     });
 
-    if (!sale) {
+    if (!saleToDelete) {
       res.status(404).json({
         success: false,
         error: { message: 'Venda não encontrada' },
@@ -343,14 +426,33 @@ export const deleteSale = async (
       },
     });
 
-    // Voltar o veículo para estoque
+    // Verificar se há outras vendas ativas para o veículo
+    const otherSales = await prisma.sale.findFirst({
+      where: {
+        vehicleId: saleToDelete.vehicleId,
+        accountId,
+        id: { not: id }, // Excluir a venda atual
+        deletedAt: null,
+      },
+      orderBy: { saleDate: 'desc' },
+      select: { salePrice: true },
+    });
+
+    // Se não há outras vendas ativas, restaurar o originalSalePrice (preço pretendido)
+    // Se há outras vendas, usar o salePrice da venda mais recente
+    const salePriceToRestore = otherSales 
+      ? otherSales.salePrice 
+      : (saleToDelete.originalSalePrice ?? null);
+
+    // Voltar o veículo para estoque e restaurar salePrice
     await prisma.vehicle.updateMany({
       where: {
-        id: sale.vehicleId,
+        id: saleToDelete.vehicleId,
         accountId,
       },
       data: {
-        status: 'available',
+        status: otherSales ? 'sold' : 'available',
+        salePrice: salePriceToRestore,
         updatedAt: new Date(),
       },
     });
@@ -429,6 +531,11 @@ export const getSalesStats = async (
   }
 };
 
+function saleMonthKeyBrazil(saleDate: Date): string {
+  const br = getBrazilDateParts(saleDate);
+  return `${br.year}-${String(br.month).padStart(2, '0')}`;
+}
+
 export const getSalesByMonth = async (
   req: AuthRequest,
   res: Response,
@@ -437,11 +544,16 @@ export const getSalesByMonth = async (
   try {
     const { accountId } = req;
     const { months = '6' } = req.query;
-    const monthsCount = parseInt(months as string, 10) || 6;
-
-    const endDate = new Date();
-    const startDate = new Date();
-    startDate.setMonth(startDate.getMonth() - monthsCount);
+    const monthsCount = Math.min(24, Math.max(1, parseInt(months as string, 10) || 6));
+    const brNow = getBrazilDateParts(new Date());
+    let startYear = brNow.year;
+    let startMonth = brNow.month - monthsCount;
+    if (startMonth < 1) {
+      startMonth += 12;
+      startYear -= 1;
+    }
+    const startDate = getBrazilMonthRange(startYear, startMonth).start;
+    const endDate = getBrazilMonthRange(brNow.year, brNow.month).end;
 
     const sales = await prisma.sale.findMany({
       where: {
@@ -462,18 +574,21 @@ export const getSalesByMonth = async (
       },
     });
 
-    // Agrupar por mês
+    // Agrupar por mês (fuso Brasil)
     const byMonth = new Map<string, { sales: number; revenue: number; profit: number }>();
-    const currentDate = new Date(startDate);
-    
-    while (currentDate <= endDate) {
-      const key = `${currentDate.getFullYear()}-${String(currentDate.getMonth() + 1).padStart(2, '0')}`;
+    for (let i = 0; i < monthsCount; i++) {
+      let m = startMonth + i;
+      let y = startYear;
+      if (m > 12) {
+        m -= 12;
+        y += 1;
+      }
+      const key = `${y}-${String(m).padStart(2, '0')}`;
       byMonth.set(key, { sales: 0, revenue: 0, profit: 0 });
-      currentDate.setMonth(currentDate.getMonth() + 1);
     }
 
     sales.forEach((sale) => {
-      const key = `${sale.saleDate.getFullYear()}-${String(sale.saleDate.getMonth() + 1).padStart(2, '0')}`;
+      const key = saleMonthKeyBrazil(sale.saleDate);
       const monthData = byMonth.get(key);
       if (monthData) {
         monthData.sales += 1;

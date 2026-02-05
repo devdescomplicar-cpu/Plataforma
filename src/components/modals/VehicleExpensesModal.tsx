@@ -47,7 +47,7 @@ export function VehicleExpensesModal({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-2xl max-h-[85vh] flex flex-col">
+      <DialogContent className="max-w-2xl max-h-[85vh] flex flex-col overflow-hidden">
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2">
             <Receipt className="w-5 h-5" />
@@ -72,7 +72,7 @@ export function VehicleExpensesModal({
             <p className="text-sm text-muted-foreground">
               Total: <span className="font-semibold text-foreground">R$ {total.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</span>
             </p>
-            <div className="border border-border rounded-lg overflow-auto flex-1 min-h-0">
+            <div className="border border-border rounded-lg overflow-y-auto scrollbar-modal flex-1 min-h-0">
               <Table>
                 <TableHeader>
                   <TableRow className="bg-muted/50">

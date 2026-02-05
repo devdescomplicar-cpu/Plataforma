@@ -90,6 +90,7 @@ import webhooksReceiveRoutes from './routes/webhooks.receive.routes.js';
 import pushRoutes from './routes/push.routes.js';
 import fipeRoutes from './routes/fipe.routes.js';
 import settingsRoutes from './routes/settings.routes.js';
+import collaboratorsRoutes from './routes/collaborators.routes.js';
 import { startExpirationTriggersJob } from './jobs/expiration-triggers.job.js';
 import { ensureAdminUser } from './lib/ensure-admin.js';
 
@@ -106,6 +107,7 @@ app.use('/api/clients', clientsRoutes);
 app.use('/api/checklists', checklistsRoutes);
 app.use('/api/fipe', fipeRoutes);
 app.use('/api/settings', settingsRoutes);
+app.use('/api/collaborators', collaboratorsRoutes);
 
 // Production: API 404 for unhandled /api/*, then static + SPA
 if (isProduction) {

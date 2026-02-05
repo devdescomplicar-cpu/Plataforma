@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { Eye, RefreshCw } from 'lucide-react';
 import { adminApi, type AuditLogEntry } from '@/lib/admin-api';
+import { formatDateTimeBR } from '@/lib/date-br';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -223,7 +224,7 @@ export default function AdminAuditoria() {
                 {logs.map((log) => (
                   <TableRow key={log.id}>
                     <TableCell className="text-muted-foreground text-sm whitespace-nowrap">
-                      {new Date(log.createdAt).toLocaleString('pt-BR')}
+                      {formatDateTimeBR(log.createdAt)}
                     </TableCell>
                     <TableCell className="text-sm">
                       {log.userEmail ?? (log.userId ? `— (${log.userId.slice(0, 8)}…)` : '—')}
@@ -330,7 +331,7 @@ export default function AdminAuditoria() {
               <div className="space-y-1">
                 <Label className="text-muted-foreground text-xs">Data e Hora</Label>
                 <p className="text-sm font-medium">
-                  {new Date(detailLog.createdAt).toLocaleString('pt-BR')}
+                  {formatDateTimeBR(detailLog.createdAt)}
                 </p>
               </div>
               <div className="space-y-1">

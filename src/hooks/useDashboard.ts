@@ -98,14 +98,20 @@ export interface DashboardData {
   }>;
 }
 
-export const useDashboardData = (period?: string, startDate?: Date, endDate?: Date) => {
+function toDateParam(d: Date | string | undefined): string | undefined {
+  if (d == null) return undefined;
+  if (typeof d === 'string') return d;
+  return d.toISOString().split('T')[0];
+}
+
+export const useDashboardData = (period?: string, startDate?: string | Date, endDate?: string | Date) => {
   const params: Record<string, string> = {};
   if (period) params.period = period;
-  if (startDate) params.startDate = startDate.toISOString();
-  if (endDate) params.endDate = endDate.toISOString();
+  if (startDate) params.startDate = toDateParam(startDate);
+  if (endDate) params.endDate = toDateParam(endDate);
 
   return useQuery({
-    queryKey: ['dashboard', 'data', period, startDate?.toISOString(), endDate?.toISOString()],
+    queryKey: ['dashboard', 'data', period, toDateParam(startDate), toDateParam(endDate)],
     queryFn: async (): Promise<DashboardData> => {
       const response = await apiClient.get<{ data: DashboardData }>(
         '/dashboard/data',

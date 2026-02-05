@@ -52,13 +52,13 @@ export default defineConfig({
       srcDir: "src",
       filename: "sw.ts",
       injectManifest: {
-        globPatterns: ["**/*.{js,css,html,ico,png,svg,woff2}"],
+        globPatterns: ["**/*.{js,css,html,ico,png,svg,webp,woff2}"],
         maximumFileSizeToCacheInBytes: 3 * 1024 * 1024, // 3 MiB (bundle ~2.1 MB)
         rollupFormat: "iife",
         // Sem minificação para preservar self.__WB_MANIFEST no output (injection point do Workbox)
         minify: false,
       },
-      includeAssets: ["favicon.svg"],
+      includeAssets: ["favicon.webp"],
       manifest: {
         name: "DescompliCAR - Gestão de Veículos",
         short_name: "DescompliCAR",
@@ -71,27 +71,27 @@ export default defineConfig({
         start_url: "/",
         icons: [
           {
-            src: "/favicon.svg",
+            src: "/favicon.webp",
             sizes: "any",
-            type: "image/svg+xml",
+            type: "image/webp",
             purpose: "any",
           },
           {
-            src: "/pwa-192.png",
+            src: "/favicon.webp",
             sizes: "192x192",
-            type: "image/png",
+            type: "image/webp",
             purpose: "any",
           },
           {
-            src: "/pwa-512.png",
+            src: "/favicon.webp",
             sizes: "512x512",
-            type: "image/png",
+            type: "image/webp",
             purpose: "any",
           },
           {
-            src: "/pwa-512.png",
+            src: "/favicon.webp",
             sizes: "512x512",
-            type: "image/png",
+            type: "image/webp",
             purpose: "maskable",
           },
         ],

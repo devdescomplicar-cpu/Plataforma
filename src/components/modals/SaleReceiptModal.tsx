@@ -9,9 +9,8 @@ import {
 import { Button } from '@/components/ui/button';
 import { Sale } from '@/hooks/useSales';
 import { useSettings } from '@/hooks/useSettings';
-import { format } from 'date-fns';
-import { ptBR } from 'date-fns/locale';
 import { toPublicImageUrl } from '@/lib/utils';
+import { formatDateBR, formatDateTimeBR } from '@/lib/date-br';
 import { formatCpfCnpj } from '@/lib/cpf-cnpj';
 
 /** Texto jurídico fixo do rodapé do comprovante (recibo). Não usa configuração da loja. */
@@ -39,7 +38,7 @@ export function SaleReceiptModal({
   const legalNoticeText = settings?.report?.legalNoticeText?.trim()
     || 'Este documento possui caráter exclusivamente informativo e operacional, sendo gerado automaticamente pelo sistema. Não possui validade fiscal ou contábil, não substitui Nota Fiscal, recibo fiscal ou qualquer documento fiscal exigido pela legislação vigente.';
   const cityState = [store?.city, store?.state].filter(Boolean).join(' — ');
-  const emissionDate = format(new Date(sale?.saleDate ?? Date.now()), "dd/MM/yyyy 'às' HH:mm", { locale: ptBR });
+  const emissionDate = sale?.saleDate ? formatDateTimeBR(sale.saleDate) : formatDateTimeBR(new Date());
 
   if (!sale) return null;
 
@@ -204,7 +203,7 @@ export function SaleReceiptModal({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto print:max-w-none print:max-h-none print:overflow-visible print:m-0 print:p-0 print:border-0 print:shadow-none print:bg-white">
+      <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto scrollbar-modal print:max-w-none print:max-h-none print:overflow-visible print:m-0 print:p-0 print:border-0 print:shadow-none print:bg-white">
         <div className="print:hidden">
           <DialogHeader>
             <div className="flex items-center gap-3">
@@ -278,7 +277,7 @@ export function SaleReceiptModal({
                 <div className="flex justify-between">
                   <span className="text-gray-600 font-medium">Data da Venda:</span>
                   <span className="text-gray-900 font-semibold">
-                    {format(new Date(sale.saleDate), "dd 'de' MMMM 'de' yyyy", { locale: ptBR })}
+                    {formatDateBR(sale.saleDate)}
                   </span>
                 </div>
                 <div className="flex justify-between">

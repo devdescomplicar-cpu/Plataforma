@@ -86,7 +86,8 @@ export default function AdminUsuarios() {
     accountName: string;
     trialEndsAt: string;
     planId: string;
-  }>({ name: '', email: '', phone: '', cpfCnpj: '', role: 'user', accountName: '', trialEndsAt: '', planId: '' });
+    subscriptionEndDate: string;
+  }>({ name: '', email: '', phone: '', cpfCnpj: '', role: 'user', accountName: '', trialEndsAt: '', planId: '', subscriptionEndDate: '' });
   const [cpfCnpjError, setCpfCnpjError] = useState<string | null>(null);
   const [createOpen, setCreateOpen] = useState(false);
   const [createForm, setCreateForm] = useState<{
@@ -169,8 +170,8 @@ export default function AdminUsuarios() {
   });
 
   const changePlanMutation = useMutation({
-    mutationFn: async ({ accountId, planId }: { accountId: string; planId: string }) => {
-      const res = await adminApi.users.changePlan(accountId, planId);
+    mutationFn: async ({ accountId, planId, endDate }: { accountId: string; planId: string; endDate?: string | null }) => {
+      const res = await adminApi.users.changePlan(accountId, planId, endDate);
       if (!res.success) throw new Error(res.error?.message ?? 'Erro ao alterar plano');
       return res;
     },
@@ -217,6 +218,10 @@ export default function AdminUsuarios() {
   const openEdit = (u: AdminUser) => {
     setEditUser(u);
     const rawCpf = u.cpfCnpj ?? '';
+    // Capturar endDate da subscription e formatar corretamente (apenas data, sem hora)
+    const subscriptionEndDate = u.account?.subscription?.endDate 
+      ? format(new Date(u.account.subscription.endDate), 'yyyy-MM-dd') 
+      : '';
     setEditForm({
       name: u.name,
       email: u.email,
@@ -226,6 +231,7 @@ export default function AdminUsuarios() {
       accountName: u.account?.name ?? '',
       trialEndsAt: u.account?.trialEndsAt ? format(new Date(u.account.trialEndsAt), 'yyyy-MM-dd') : '',
       planId: u.account?.subscription?.plan?.id ?? '',
+      subscriptionEndDate,
     });
     setCpfCnpjError(null);
     setPlanOfferOpen(false);
@@ -273,7 +279,9 @@ export default function AdminUsuarios() {
       {
         onSuccess: () => {
           if (planChanged && accountId && editForm.planId) {
-            changePlanMutation.mutate({ accountId, planId: editForm.planId });
+            // Manter o endDate atual da subscription ao alterar o plano
+            const endDateToKeep = editForm.subscriptionEndDate || null;
+            changePlanMutation.mutate({ accountId, planId: editForm.planId, endDate: endDateToKeep });
           }
         },
       }

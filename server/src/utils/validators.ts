@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { parseDateStringAsBrazilDay } from './timezone.js';
 
 const FUEL_OPTIONS = ['Flex', 'Gasolina', 'Etanol', 'Diesel', 'Elétrico', 'Híbrido'] as const;
 const FUEL_NORMALIZE: Record<string, (typeof FUEL_OPTIONS)[number]> = {
@@ -52,6 +53,7 @@ const vehicleSchemaBase = z.object({
   consignmentCommissionValue: z.number().min(0).optional(),
   consignmentMinRepassValue: z.number().min(0).optional(),
   consignmentStartDate: z.date().optional(),
+  purchaseDate: z.date().optional(), // Data de cadastro do veículo (permite retroativa)
 });
 
 /** Schema para validação de update (campos opcionais). */
@@ -140,6 +142,14 @@ export function parseVehicleBody(body: unknown): z.infer<typeof vehicleSchema> {
     parsed.consignmentStartDate = new Date(obj.consignmentStartDate as string);
   }
   
+  if (obj.purchaseDate !== undefined && obj.purchaseDate !== null && obj.purchaseDate !== '') {
+    // Parse como data no fuso Brasil (meio-dia para evitar problemas de timezone)
+    const dateStr = String(obj.purchaseDate);
+    parsed.purchaseDate = dateStr.length <= 10 
+      ? parseDateStringAsBrazilDay(dateStr)
+      : new Date(dateStr);
+  }
+  
   return vehicleSchema.parse(parsed);
 }
 
@@ -169,6 +179,13 @@ export function normalizeVehicleUpdateBody(body: Record<string, unknown>): Recor
   }
   if (out.consignmentStartDate !== undefined && out.consignmentStartDate !== null && out.consignmentStartDate !== '') {
     out.consignmentStartDate = new Date(out.consignmentStartDate as string);
+  }
+  if (out.purchaseDate !== undefined && out.purchaseDate !== null && out.purchaseDate !== '') {
+    // Parse como data no fuso Brasil (meio-dia para evitar problemas de timezone)
+    const dateStr = String(out.purchaseDate);
+    out.purchaseDate = dateStr.length <= 10 
+      ? parseDateStringAsBrazilDay(dateStr)
+      : new Date(dateStr);
   }
   if (Array.isArray(out.features)) {
     out.features = out.features;
@@ -234,6 +251,7 @@ export const saleSchema = z.object({
   salePrice: z.number().positive('Preço de venda deve ser positivo'),
   paymentMethod: z.string().min(1, 'Forma de pagamento é obrigatória'), // Aceita múltiplas formas separadas por vírgula
   saleDate: z.date().optional(),
+  registeredById: z.string().optional(),
 });
 
 export function parseSaleBody(body: unknown): z.infer<typeof saleSchema> {
@@ -259,7 +277,10 @@ export function normalizeSaleUpdateBody(body: Record<string, unknown>): Record<s
     out.paymentMethod = out.paymentMethod.trim();
   }
   if (out.salePrice !== undefined) out.salePrice = parseFloat(String(out.salePrice));
-  if (out.saleDate !== undefined) out.saleDate = new Date(out.saleDate as string);
+  if (out.saleDate !== undefined) {
+    const v = out.saleDate as string;
+    out.saleDate = typeof v === 'string' && v.length <= 10 ? parseDateStringAsBrazilDay(v) : new Date(v);
+  }
   return out;
 }
 

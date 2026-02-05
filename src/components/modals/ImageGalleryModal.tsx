@@ -84,7 +84,7 @@ export function ImageGalleryModal({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-5xl w-[95vw] sm:w-[90vw] h-[70vh] sm:h-[90vh] p-0 bg-white border border-border overflow-hidden">
+      <DialogContent className="max-w-5xl w-[95vw] sm:w-[90vw] h-[70vh] sm:h-[90vh] p-0 bg-white border border-border overflow-hidden [&>button]:hidden">
         <DialogHeader className="absolute w-px h-px overflow-hidden -m-px" style={{ clip: 'rect(0, 0, 0, 0)', whiteSpace: 'nowrap', borderWidth: 0 }}>
           <DialogTitle>Galeria de Imagens do Veículo</DialogTitle>
           <DialogDescription>
@@ -172,7 +172,7 @@ export function ImageGalleryModal({
           {images.length > 1 && (
             <div className="flex-shrink-0 pb-1.5 pt-1.5 sm:pb-4 sm:pt-4 bg-white border-t border-border z-50">
               <div className="flex justify-center">
-                <div className="flex gap-1.5 sm:gap-2 px-2 sm:px-4 py-1 sm:py-2 bg-muted/50 rounded-lg border border-border max-w-[90vw] sm:max-w-[85vw] overflow-x-auto scrollbar-thin">
+                <div className="flex gap-1.5 sm:gap-2 px-2 sm:px-4 py-1 sm:py-2 bg-muted/50 rounded-lg border border-border max-w-[90vw] sm:max-w-[85vw] overflow-x-auto scrollbar-modal">
                   {images.map((img, index) => {
                     const thumbUrl = toPublicImageUrl(img.url) || img.url;
                     return (

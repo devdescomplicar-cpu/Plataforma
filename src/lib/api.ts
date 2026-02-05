@@ -84,8 +84,9 @@ class ApiClient {
       ...options.headers,
     };
 
-    if (this.token) {
-      headers['Authorization'] = `Bearer ${this.token}`;
+    const token = this.token ?? (typeof window !== 'undefined' ? localStorage.getItem('auth_token') : null);
+    if (token) {
+      headers['Authorization'] = `Bearer ${token}`;
     }
 
     const controller = new AbortController();
@@ -123,6 +124,12 @@ class ApiClient {
       }
 
       if (!response.ok) {
+        if (response.status === 401) {
+          this.setToken(null);
+        }
+        if (response.status === 403 && data.error?.message?.includes('Conta vencida')) {
+          this.setToken(null);
+        }
         throw new Error(data.error?.message || 'Request failed');
       }
 
@@ -183,8 +190,9 @@ class ApiClient {
     const url = `${this.baseURL}${endpoint}`;
     const headers: HeadersInit = {};
 
-    if (this.token) {
-      headers['Authorization'] = `Bearer ${this.token}`;
+    const token = this.token ?? (typeof window !== 'undefined' ? localStorage.getItem('auth_token') : null);
+    if (token) {
+      headers['Authorization'] = `Bearer ${token}`;
     }
 
     const controller = new AbortController();

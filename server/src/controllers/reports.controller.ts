@@ -1,56 +1,305 @@
 import { Response, NextFunction } from 'express';
 import { AuthRequest } from '../middleware/auth.middleware.js';
 import { prisma } from '../services/prisma.service.js';
-
-function getDateRange(period?: string, startDate?: string, endDate?: string): { start: Date; end: Date } {
-  // Se tiver datas personalizadas, usar elas
-  if (startDate && endDate) {
-    return {
-      start: new Date(startDate),
-      end: new Date(endDate),
-    };
-  }
-
-  const end = new Date();
-  const start = new Date();
-  
-  switch (period) {
-    case 'current-month':
-      start.setDate(1);
-      start.setHours(0, 0, 0, 0);
-      end.setMonth(end.getMonth() + 1);
-      end.setDate(0);
-      end.setHours(23, 59, 59, 999);
-      break;
-    case 'last-month':
-      start.setMonth(start.getMonth() - 1);
-      start.setDate(1);
-      start.setHours(0, 0, 0, 0);
-      end.setDate(0);
-      end.setHours(23, 59, 59, 999);
-      break;
-    case '3m':
-      start.setMonth(start.getMonth() - 3);
-      break;
-    case '6m':
-      start.setMonth(start.getMonth() - 6);
-      break;
-    case '7d':
-      start.setDate(start.getDate() - 7);
-      break;
-    case '30d':
-      start.setDate(start.getDate() - 30);
-      break;
-    case '1y':
-      start.setFullYear(start.getFullYear() - 1);
-      break;
-    default:
-      start.setMonth(start.getMonth() - 6);
-  }
-  return { start, end };
-}
+import { getDateRange } from '../utils/date-range.js';
+import { getBrazilDateParts, getLastDayOfMonth, startOfDayBrazil, endOfDayBrazil, daysDifferenceBrazil } from '../utils/timezone.js';
 
 const MONTH_NAMES = ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'];
+
+/** Relatório limitado do vendedor: vendas, comissão, evolução mensal; sem custos/lucro. */
+export const getReportsSeller = async (
+  req: AuthRequest,
+  res: Response,
+  next: NextFunction
+): Promise<void> => {
+  try {
+    const { accountId, userId } = req;
+    if (!userId) {
+      res.status(401).json({ success: false, error: { message: 'Não autenticado' } });
+      return;
+    }
+    const period = req.query.period as string;
+    const startDate = req.query.startDate as string;
+    const endDate = req.query.endDate as string;
+    const { start, end } = getDateRange(period, startDate, endDate);
+
+    const sales = await prisma.sale.findMany({
+      where: {
+        accountId,
+        registeredById: userId,
+        deletedAt: null,
+        saleDate: { gte: start, lte: end },
+      },
+      include: {
+        vehicle: {
+          select: { id: true, brand: true, model: true, version: true, year: true },
+        },
+        client: { select: { id: true, name: true } },
+      },
+      orderBy: { saleDate: 'desc' },
+    });
+
+    const totalCommission = sales.reduce((acc, s) => acc + (s.commissionAmount ?? 0), 0);
+    const totalVendido = sales.reduce((acc, s) => acc + s.salePrice, 0);
+
+    // Últimos 7 meses (fuso Brasil) para gráfico de evolução de comissão
+    const brNow = getBrazilDateParts(new Date());
+    const byMonth = new Map<string, { vendas: number; faturamento: number; comissao: number }>();
+    for (let i = 6; i >= 0; i--) {
+      let month = brNow.month - i;
+      let year = brNow.year;
+      if (month < 1) {
+        month += 12;
+        year -= 1;
+      }
+      const key = `${year}-${String(month).padStart(2, '0')}`;
+      byMonth.set(key, { vendas: 0, faturamento: 0, comissao: 0 });
+    }
+    const firstMonth = brNow.month - 6 >= 1 ? brNow.month - 6 : brNow.month - 6 + 12;
+    const firstYear = brNow.month - 6 >= 1 ? brNow.year : brNow.year - 1;
+    const chartStart = startOfDayBrazil(firstYear, firstMonth, 1);
+    const lastDay = getLastDayOfMonth(brNow.year, brNow.month);
+    const chartEnd = endOfDayBrazil(brNow.year, brNow.month, lastDay);
+
+    const salesForCharts = await prisma.sale.findMany({
+      where: {
+        accountId,
+        registeredById: userId,
+        deletedAt: null,
+        saleDate: { gte: chartStart, lte: chartEnd },
+      },
+      select: { saleDate: true, salePrice: true, commissionAmount: true },
+    });
+
+    for (const s of salesForCharts) {
+      const key = saleMonthKeyBrazil(s.saleDate);
+      const cur = byMonth.get(key);
+      if (cur) {
+        cur.vendas += 1;
+        cur.faturamento += s.salePrice;
+        cur.comissao += s.commissionAmount ?? 0;
+      }
+    }
+
+    const comissaoMensais = Array.from(byMonth.entries())
+      .sort(([a], [b]) => a.localeCompare(b))
+      .map(([key, v]) => {
+        const [, m] = key.split('-');
+        return {
+          month: MONTH_NAMES[parseInt(m, 10) - 1],
+          vendas: v.vendas,
+          faturamento: Math.round(v.faturamento),
+          comissao: Math.round(v.comissao * 100) / 100,
+        };
+      });
+
+    res.json({
+      success: true,
+      data: {
+        summary: {
+          veiculosVendidos: sales.length,
+          totalVendido: Math.round(totalVendido * 100) / 100,
+          totalComissaoReceber: Math.round(totalCommission * 100) / 100,
+        },
+        comissaoMensais,
+        vendas: sales.map((s) => ({
+          id: s.id,
+          saleDate: s.saleDate,
+          salePrice: s.salePrice,
+          commissionAmount: s.commissionAmount,
+          vehicle: s.vehicle ? `${s.vehicle.brand} ${s.vehicle.model}${s.vehicle.version ? ` ${s.vehicle.version}` : ''} ${s.vehicle.year}`.trim() : null,
+          clientName: s.client?.name ?? null,
+        })),
+      },
+    });
+  } catch (e) {
+    next(e);
+  }
+};
+
+/** Lista colaboradores com métricas de vendas e comissão (apenas dono). */
+export const getReportsCollaborators = async (
+  req: AuthRequest,
+  res: Response,
+  next: NextFunction
+): Promise<void> => {
+  try {
+    if (!req.isAccountOwner) {
+      res.status(403).json({ success: false, error: { message: 'Apenas o dono da conta pode ver esta seção.' } });
+      return;
+    }
+    const accountId = req.accountId!;
+    const period = req.query.period as string;
+    const startDate = req.query.startDate as string;
+    const endDate = req.query.endDate as string;
+    const { start, end } = getDateRange(period, startDate, endDate);
+
+    const collaborators = await prisma.accountCollaborator.findMany({
+      where: { accountId, deletedAt: null },
+      include: { user: { select: { id: true, name: true, email: true } } },
+    });
+
+    const stats = await Promise.all(
+      collaborators.map(async (c) => {
+        const sales = await prisma.sale.findMany({
+          where: {
+            accountId,
+            registeredById: c.userId,
+            deletedAt: null,
+            saleDate: { gte: start, lte: end },
+          },
+          select: { id: true, salePrice: true, commissionAmount: true },
+        });
+        const totalSold = sales.reduce((acc, s) => acc + s.salePrice, 0);
+        const totalCommission = sales.reduce((acc, s) => acc + (s.commissionAmount ?? 0), 0);
+        return {
+          userId: c.userId,
+          name: c.user.name,
+          email: c.user.email,
+          role: c.role,
+          status: c.status,
+          vendasCount: sales.length,
+          totalVendido: Math.round(totalSold * 100) / 100,
+          totalComissao: Math.round(totalCommission * 100) / 100,
+        };
+      })
+    );
+
+    res.json({ success: true, data: stats });
+  } catch (e) {
+    next(e);
+  }
+};
+
+/** Relatório individual de um colaborador (apenas dono). */
+export const getReportsCollaboratorById = async (
+  req: AuthRequest,
+  res: Response,
+  next: NextFunction
+): Promise<void> => {
+  try {
+    if (!req.isAccountOwner) {
+      res.status(403).json({ success: false, error: { message: 'Apenas o dono da conta pode ver este relatório.' } });
+      return;
+    }
+    const accountId = req.accountId!;
+    const userId = req.params.userId;
+    const period = req.query.period as string;
+    const startDate = req.query.startDate as string;
+    const endDate = req.query.endDate as string;
+    const { start, end } = getDateRange(period, startDate, endDate);
+
+    const collaborator = await prisma.accountCollaborator.findFirst({
+      where: { accountId, userId, deletedAt: null },
+      include: { user: { select: { id: true, name: true, email: true } } },
+    });
+    if (!collaborator) {
+      res.status(404).json({ success: false, error: { message: 'Colaborador não encontrado' } });
+      return;
+    }
+
+    const sales = await prisma.sale.findMany({
+      where: {
+        accountId,
+        registeredById: userId,
+        deletedAt: null,
+        saleDate: { gte: start, lte: end },
+      },
+      include: {
+        vehicle: { select: { id: true, brand: true, model: true, version: true, year: true } },
+        client: { select: { id: true, name: true } },
+      },
+      orderBy: { saleDate: 'desc' },
+    });
+
+    const totalCommission = sales.reduce((acc, s) => acc + (s.commissionAmount ?? 0), 0);
+    const totalVendido = sales.reduce((a, s) => a + s.salePrice, 0);
+
+    // Últimos 7 meses para gráfico de evolução de comissão (igual ao relatório do vendedor)
+    const brNow = getBrazilDateParts(new Date());
+    const byMonth = new Map<string, { vendas: number; faturamento: number; comissao: number }>();
+    for (let i = 6; i >= 0; i--) {
+      let month = brNow.month - i;
+      let year = brNow.year;
+      if (month < 1) {
+        month += 12;
+        year -= 1;
+      }
+      const key = `${year}-${String(month).padStart(2, '0')}`;
+      byMonth.set(key, { vendas: 0, faturamento: 0, comissao: 0 });
+    }
+    const firstMonth = brNow.month - 6 >= 1 ? brNow.month - 6 : brNow.month - 6 + 12;
+    const firstYear = brNow.month - 6 >= 1 ? brNow.year : brNow.year - 1;
+    const chartStart = startOfDayBrazil(firstYear, firstMonth, 1);
+    const lastDay = getLastDayOfMonth(brNow.year, brNow.month);
+    const chartEnd = endOfDayBrazil(brNow.year, brNow.month, lastDay);
+
+    const salesForCharts = await prisma.sale.findMany({
+      where: {
+        accountId,
+        registeredById: userId,
+        deletedAt: null,
+        saleDate: { gte: chartStart, lte: chartEnd },
+      },
+      select: { saleDate: true, salePrice: true, commissionAmount: true },
+    });
+
+    for (const s of salesForCharts) {
+      const key = saleMonthKeyBrazil(s.saleDate);
+      const cur = byMonth.get(key);
+      if (cur) {
+        cur.vendas += 1;
+        cur.faturamento += s.salePrice;
+        cur.comissao += s.commissionAmount ?? 0;
+      }
+    }
+
+    const comissaoMensais = Array.from(byMonth.entries())
+      .sort(([a], [b]) => a.localeCompare(b))
+      .map(([key, v]) => {
+        const [, m] = key.split('-');
+        return {
+          month: MONTH_NAMES[parseInt(m, 10) - 1],
+          vendas: v.vendas,
+          faturamento: Math.round(v.faturamento),
+          comissao: Math.round(v.comissao * 100) / 100,
+        };
+      });
+
+    res.json({
+      success: true,
+      data: {
+        collaborator: {
+          userId: collaborator.userId,
+          name: collaborator.user.name,
+          email: collaborator.user.email,
+          role: collaborator.role,
+        },
+        summary: {
+          veiculosVendidos: sales.length,
+          totalVendido: Math.round(totalVendido * 100) / 100,
+          totalComissao: Math.round(totalCommission * 100) / 100,
+        },
+        comissaoMensais,
+        vendas: sales.map((s) => ({
+          id: s.id,
+          saleDate: s.saleDate,
+          salePrice: s.salePrice,
+          commissionAmount: s.commissionAmount,
+          vehicle: s.vehicle ? `${s.vehicle.brand} ${s.vehicle.model}${s.vehicle.version ? ` ${s.vehicle.version}` : ''} ${s.vehicle.year}`.trim() : null,
+          clientName: s.client?.name ?? null,
+        })),
+      },
+    });
+  } catch (e) {
+    next(e);
+  }
+};
+
+function saleMonthKeyBrazil(saleDate: Date): string {
+  const br = getBrazilDateParts(saleDate);
+  return `${br.year}-${String(br.month).padStart(2, '0')}`;
+}
 const CATEGORY_COLORS = [
   'hsl(220, 70%, 50%)',
   'hsl(160, 65%, 40%)',
@@ -66,6 +315,9 @@ export const getReports = async (
   next: NextFunction
 ): Promise<void> => {
   try {
+    if (req.collaboratorRole === 'seller') {
+      return getReportsSeller(req, res, next);
+    }
     const { accountId } = req;
     const period = req.query.period as string;
     const startDate = req.query.startDate as string;
@@ -83,7 +335,8 @@ export const getReports = async (
           select: { 
             id: true, 
             brand: true, 
-            model: true, 
+            model: true,
+            version: true,
             year: true,
             createdAt: true,
             purchasePrice: true,
@@ -112,12 +365,12 @@ export const getReports = async (
     const recurringClients = Array.from(clientPurchaseCount.values()).filter(count => count >= 2).length;
 
     // Tempo médio em estoque (apenas vendas no período filtrado)
+    // Calcular considerando apenas datas (dia/mês/ano), ignorando horário
     const daysInStockArray: number[] = [];
     sales.forEach((s) => {
       if (s.vehicle?.createdAt) {
-        const daysInStock = Math.floor(
-          (s.saleDate.getTime() - s.vehicle.createdAt.getTime()) / (1000 * 60 * 60 * 24)
-        );
+        // Calcular diferença entre data de criação e data de venda (apenas datas)
+        const daysInStock = daysDifferenceBrazil(s.vehicle.createdAt, s.saleDate);
         daysInStockArray.push(daysInStock);
       }
     });
@@ -125,21 +378,25 @@ export const getReports = async (
       ? Math.round(daysInStockArray.reduce((sum, d) => sum + d, 0) / daysInStockArray.length)
       : 0;
 
-    // Dados mensais: vendas, lucro, faturamento, tempo médio em estoque
-    // Sempre incluir os últimos 7 meses (mês atual + 6 anteriores) para os gráficos
+    // Dados mensais (fuso Brasil): últimos 7 meses para os gráficos
     const byMonth = new Map<string, { vendas: number; lucro: number; faturamento: number; daysInStock: number[] }>();
-    const today = new Date();
-    const chartStart = new Date(today.getFullYear(), today.getMonth() - 6, 1);
-    const chartEnd = new Date(today.getFullYear(), today.getMonth() + 1, 0, 23, 59, 59);
-    
-    // Inicializar todos os meses dos últimos 7 meses
-    const d = new Date(chartStart);
-    while (d <= chartEnd) {
-      const key = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`;
+    const brNow = getBrazilDateParts(new Date());
+    for (let i = 6; i >= 0; i--) {
+      let month = brNow.month - i;
+      let year = brNow.year;
+      if (month < 1) {
+        month += 12;
+        year -= 1;
+      }
+      const key = `${year}-${String(month).padStart(2, '0')}`;
       byMonth.set(key, { vendas: 0, lucro: 0, faturamento: 0, daysInStock: [] });
-      d.setMonth(d.getMonth() + 1);
     }
-    
+    const firstMonth = brNow.month - 6 >= 1 ? brNow.month - 6 : brNow.month - 6 + 12;
+    const firstYear = brNow.month - 6 >= 1 ? brNow.year : brNow.year - 1;
+    const chartStart = startOfDayBrazil(firstYear, firstMonth, 1);
+    const lastDay = getLastDayOfMonth(brNow.year, brNow.month);
+    const chartEnd = endOfDayBrazil(brNow.year, brNow.month, lastDay);
+
     // Buscar TODAS as vendas dos últimos 7 meses para os gráficos (não apenas as do período filtrado)
     const allSalesForCharts = await prisma.sale.findMany({
       where: {
@@ -152,7 +409,8 @@ export const getReports = async (
           select: { 
             id: true, 
             brand: true, 
-            model: true, 
+            model: true,
+            version: true,
             year: true,
             createdAt: true,
             purchasePrice: true,
@@ -167,20 +425,18 @@ export const getReports = async (
       orderBy: { saleDate: 'asc' },
     });
     
-    // Preencher dados mensais com todas as vendas dos últimos 7 meses
+    // Preencher dados mensais com todas as vendas dos últimos 7 meses (agrupamento por mês no fuso Brasil)
     for (const s of allSalesForCharts) {
-      const key = `${s.saleDate.getFullYear()}-${String(s.saleDate.getMonth() + 1).padStart(2, '0')}`;
+      const key = saleMonthKeyBrazil(s.saleDate);
       const cur = byMonth.get(key);
       if (cur) {
         cur.vendas += 1;
         cur.lucro += s.profit;
         cur.faturamento += s.salePrice;
         
-        // Calcular dias em estoque
+        // Calcular dias em estoque (apenas datas, ignorando horário)
         if (s.vehicle?.createdAt) {
-          const daysInStock = Math.floor(
-            (s.saleDate.getTime() - s.vehicle.createdAt.getTime()) / (1000 * 60 * 60 * 24)
-          );
+          const daysInStock = daysDifferenceBrazil(s.vehicle.createdAt, s.saleDate);
           cur.daysInStock.push(daysInStock);
         }
       }
@@ -249,6 +505,85 @@ export const getReports = async (
         color: CATEGORY_COLORS[i % CATEGORY_COLORS.length],
       }));
 
+    // Veículos em estoque há mais tempo
+    const vehiclesInStock = await prisma.vehicle.findMany({
+      where: {
+        accountId,
+        deletedAt: null,
+        status: { in: ['available', 'reserved'] },
+      },
+      select: {
+        id: true,
+        brand: true,
+        model: true,
+        version: true,
+        year: true,
+        createdAt: true,
+      },
+      orderBy: { createdAt: 'asc' },
+    });
+
+    // Calcular dias em estoque considerando apenas a data (dia/mês/ano), ignorando horário
+    const veiculosMaisTempoEstoque = vehiclesInStock
+      .map((v) => {
+        const daysInStock = daysDifferenceBrazil(v.createdAt);
+        const name = `${v.brand} ${v.model}${v.version ? ` ${v.version}` : ''}${v.year ? ` ${v.year}` : ''}`.trim();
+        return {
+          name,
+          dias: daysInStock,
+        };
+      })
+      .sort((a, b) => b.dias - a.dias)
+      .slice(0, 5)
+      .map((v, i) => ({
+        ...v,
+        color: CATEGORY_COLORS[i % CATEGORY_COLORS.length],
+      }));
+
+    // Veículos que venderam mais rápido (menor tempo em estoque)
+    // Buscar veículos vendidos com informações completas incluindo version
+    const soldVehicles = await prisma.sale.findMany({
+      where: {
+        accountId,
+        deletedAt: null,
+        saleDate: { gte: chartStart, lte: chartEnd },
+      },
+      include: {
+        vehicle: {
+          select: {
+            id: true,
+            brand: true,
+            model: true,
+            version: true,
+            year: true,
+            createdAt: true,
+          },
+        },
+      },
+      orderBy: { saleDate: 'desc' },
+    });
+
+    // Calcular dias até venda considerando apenas a data (dia/mês/ano), ignorando horário
+    const veiculosVendaRapida = soldVehicles
+      .map((s) => {
+        if (!s.vehicle?.createdAt) return null;
+        const daysInStock = daysDifferenceBrazil(s.vehicle.createdAt, s.saleDate);
+        const name = s.vehicle 
+          ? `${s.vehicle.brand} ${s.vehicle.model}${s.vehicle.version ? ` ${s.vehicle.version}` : ''}${s.vehicle.year ? ` ${s.vehicle.year}` : ''}`.trim()
+          : 'Outros';
+        return {
+          name,
+          dias: daysInStock,
+        };
+      })
+      .filter((v): v is { name: string; dias: number } => v !== null)
+      .sort((a, b) => a.dias - b.dias)
+      .slice(0, 5)
+      .map((v, i) => ({
+        ...v,
+        color: CATEGORY_COLORS[i % CATEGORY_COLORS.length],
+      }));
+
     res.json({
       success: true,
       data: {
@@ -263,6 +598,8 @@ export const getReports = async (
         vendasMensais,
         topVeiculosLucrativos,
         marcasLucrativas,
+        veiculosMaisTempoEstoque,
+        veiculosVendaRapida,
       },
     });
   } catch (error) {

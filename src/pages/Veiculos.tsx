@@ -1,5 +1,6 @@
 import { useState, useEffect, useMemo, useCallback } from 'react';
 import { Plus, Search, MoreHorizontal, Eye, Pencil, Trash2, Car, DollarSign, RotateCcw, Wrench, CheckCircle2, XCircle, LayoutGrid, List, Filter, X, Clock, ChevronDown, ChevronLeft, ChevronRight } from 'lucide-react';
+import { formatDateBR } from '@/lib/date-br';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -36,6 +37,7 @@ import { useVehicles, useDeleteVehicle, useUpdateVehicle } from '@/hooks/useVehi
 import { useSales, useDeleteSale } from '@/hooks/useSales';
 import { useVehiclesMetrics } from '@/hooks/useVehiclesMetrics';
 import { useSettings } from '@/hooks/useSettings';
+import { useUser } from '@/hooks/useUser';
 import { Vehicle, VehicleCard } from '@/components/dashboard/VehicleCard';
 import { toast } from '@/hooks/use-toast';
 import { TruncatedText } from '@/components/ui/TruncatedText';
@@ -81,6 +83,8 @@ const Veiculos = () => {
     setPage(1);
   }, [searchTerm, statusFilter, originFilter, viewMode, listLimit, cardLimit]);
   
+  const { data: userData } = useUser();
+  const canAddVehicle = userData?.collaboratorRole !== 'seller';
   const { data: vehiclesData, isLoading, isError, error, refetch } = useVehicles({ 
     search: searchTerm || undefined,
     status: statusFilter === 'all' ? undefined : statusFilter,
@@ -174,10 +178,12 @@ const Veiculos = () => {
           <h1 className="text-2xl font-bold text-foreground">Veículos</h1>
           <p className="text-muted-foreground mt-1">Gerencie seu estoque de veículos</p>
         </div>
-        <Button onClick={() => setIsAddModalOpen(true)} className="gap-2 shadow-sm">
-          <Plus className="w-4 h-4" />
-          Novo Veículo
-        </Button>
+        {canAddVehicle && (
+          <Button onClick={() => setIsAddModalOpen(true)} className="gap-2 shadow-sm">
+            <Plus className="w-4 h-4" />
+            Novo Veículo
+          </Button>
+        )}
       </div>
 
       {/* Metrics Cards — 2 por linha no mobile; card sozinho estica */}
@@ -365,6 +371,7 @@ const Veiculos = () => {
               <TableHead className="font-semibold">FIPE</TableHead>
               <TableHead className="font-semibold">Lucro</TableHead>
               <TableHead className="font-semibold">Status</TableHead>
+              <TableHead className="font-semibold">Entrada</TableHead>
               <TableHead className="font-semibold">Dias</TableHead>
               <TableHead className="font-semibold w-[100px]">Ações</TableHead>
             </TableRow>
@@ -372,19 +379,19 @@ const Veiculos = () => {
           <TableBody>
             {isError ? (
               <TableRow>
-                <TableCell colSpan={10} className="text-center py-8">
+                <TableCell colSpan={11} className="text-center py-8">
                   <QueryErrorState message={error?.message} onRetry={() => refetch()} variant="inline" />
                 </TableCell>
               </TableRow>
             ) : isLoading ? (
               <TableRow>
-                <TableCell colSpan={10} className="text-center py-8">
+                <TableCell colSpan={11} className="text-center py-8">
                   <p className="text-muted-foreground">Carregando veículos...</p>
                 </TableCell>
               </TableRow>
             ) : filteredVehicles.length === 0 ? (
               <TableRow>
-                <TableCell colSpan={10} className="text-center py-16">
+                <TableCell colSpan={11} className="text-center py-16">
                   <div className="flex flex-col items-center justify-center">
                     <div className="w-16 h-16 rounded-full bg-muted/50 flex items-center justify-center mb-4">
                       <Car className="w-8 h-8 text-muted-foreground/50" />
@@ -395,7 +402,7 @@ const Veiculos = () => {
                         ? 'Tente ajustar os filtros de busca para encontrar veículos.'
                         : 'Comece adicionando seu primeiro veículo ao estoque.'}
                     </p>
-                    {!searchTerm && statusFilter === 'all' && originFilter === 'all' && (
+                    {!searchTerm && statusFilter === 'all' && originFilter === 'all' && canAddVehicle && (
                       <Button
                         onClick={() => setIsAddModalOpen(true)}
                         className="mt-4 gap-2"
@@ -536,13 +543,19 @@ const Veiculos = () => {
                   <TableCell>
                     {vehicle.profit !== undefined && vehicle.profitPercent !== undefined ? (
                       <>
-                    <span className="text-success font-medium">
+                    <span className={cn(
+                      "font-medium",
+                      vehicle.profit >= 0 ? "text-success" : "text-destructive"
+                    )}>
                       <HiddenValue 
-                        value={vehicle.profit.toLocaleString('pt-BR')} 
-                        prefix="+R$ " 
+                        value={Math.abs(vehicle.profit).toLocaleString('pt-BR')} 
+                        prefix={vehicle.profit >= 0 ? "+R$ " : "-R$ "} 
                       />
                     </span>
-                    <span className="text-xs text-muted-foreground ml-1">
+                    <span className={cn(
+                      "text-xs ml-1",
+                      vehicle.profit >= 0 ? "text-muted-foreground" : "text-destructive/80"
+                    )}>
                           ({vehicle.profitPercent.toFixed(1)}%)
                     </span>
                       </>
@@ -556,6 +569,15 @@ const Veiculos = () => {
                     </Badge>
                   </TableCell>
                   <TableCell>
+                    {vehicle.createdAt ? (
+                      <span className="text-sm text-muted-foreground">
+                        {formatDateBR(vehicle.createdAt)}
+                      </span>
+                    ) : (
+                      <span className="text-muted-foreground">—</span>
+                    )}
+                  </TableCell>
+                  <TableCell>
                     <span className={cn(
                       "text-sm font-medium",
                       vehicle.daysInStock > 30 ? "text-warning" : "text-muted-foreground"
@@ -566,28 +588,40 @@ const Veiculos = () => {
                   <TableCell>
                     <DropdownMenu>
                       <DropdownMenuTrigger asChild>
-                        <Button variant="ghost" size="icon" className="h-8 w-8">
+                        <Button 
+                          variant="ghost" 
+                          size="icon" 
+                          className="h-8 w-8"
+                          onClick={(e) => e.stopPropagation()}
+                        >
                           <MoreHorizontal className="w-4 h-4" />
                         </Button>
                       </DropdownMenuTrigger>
                       <DropdownMenuContent align="end" className="bg-popover border border-border">
                         <DropdownMenuItem 
                           className="gap-2"
-                          onClick={() => setVehicleToView(vehicle.id)}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setVehicleToView(vehicle.id);
+                          }}
                         >
                           <Eye className="w-4 h-4" />
                           Ver detalhes
                         </DropdownMenuItem>
                         <DropdownMenuItem 
                           className="gap-2"
-                          onClick={() => setVehicleToEdit(vehicle.id)}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setVehicleToEdit(vehicle.id);
+                          }}
                         >
                           <Pencil className="w-4 h-4" />
                           Editar
                         </DropdownMenuItem>
                         <DropdownMenuItem 
                           className="gap-2 text-destructive focus:text-destructive focus:bg-destructive/10"
-                          onClick={() => {
+                          onClick={(e) => {
+                            e.stopPropagation();
                             setVehicleToAddExpense({
                               id: vehicle.id,
                               name: `${vehicle.brand} ${vehicle.model}${vehicle.version ? ` ${vehicle.version}` : ''} ${vehicle.year}`,
@@ -600,7 +634,8 @@ const Veiculos = () => {
                         {vehicle.status !== 'sold' ? (
                           <DropdownMenuItem 
                             className="gap-2 text-success focus:text-success focus:bg-success/10"
-                            onClick={() => {
+                            onClick={(e) => {
+                              e.stopPropagation();
                               setVehicleToMarkAsSold({
                                 id: vehicle.id,
                                 name: `${vehicle.brand} ${vehicle.model}${vehicle.version ? ` ${vehicle.version}` : ''} ${vehicle.year}`,
@@ -614,7 +649,10 @@ const Veiculos = () => {
                         ) : (
                           <DropdownMenuItem 
                             className="gap-2 text-info focus:text-info focus:bg-info/10"
-                            onClick={() => handleReturnToStock(vehicle.id)}
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              handleReturnToStock(vehicle.id);
+                            }}
                           >
                             <RotateCcw className="w-4 h-4" />
                             <span className="font-medium">Voltar para Estoque</span>
@@ -623,7 +661,8 @@ const Veiculos = () => {
                         <DropdownMenuSeparator />
                         <DropdownMenuItem 
                           className="gap-2 text-destructive focus:text-destructive"
-                          onClick={() => {
+                          onClick={(e) => {
+                            e.stopPropagation();
                             setVehicleToDelete({
                               id: vehicle.id,
                               name: `${vehicle.brand} ${vehicle.model} ${vehicle.year}`
@@ -666,7 +705,7 @@ const Veiculos = () => {
                   ? 'Tente ajustar os filtros de busca para encontrar veículos.'
                   : 'Comece adicionando seu primeiro veículo ao estoque.'}
               </p>
-              {!searchTerm && statusFilter === 'all' && originFilter === 'all' && (
+              {!searchTerm && statusFilter === 'all' && originFilter === 'all' && canAddVehicle && (
                 <Button
                   onClick={() => setIsAddModalOpen(true)}
                   className="gap-2"

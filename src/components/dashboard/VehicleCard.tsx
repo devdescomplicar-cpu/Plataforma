@@ -1,6 +1,7 @@
 import React, { useState, useMemo } from "react";
 import { Car, MoreVertical, Clock, TrendingUp, Calendar, Fuel, Eye, Pencil, Trash2, Wrench, DollarSign, RotateCcw, Gauge, Tag, TrendingDown, Award, ArrowUpRight } from 'lucide-react';
 import { HiddenValue } from '@/contexts/AppContext';
+import { formatDateBR } from '@/lib/date-br';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import {
@@ -33,6 +34,7 @@ export interface Vehicle {
   image?: string;
   status: 'available' | 'reserved' | 'sold';
   totalExpenses?: number;
+  createdAt?: string;
   images?: Array<{
     id: string;
     url: string;
@@ -87,7 +89,7 @@ function VehicleCardInner({
   }, [vehicle.images, vehicle.image]);
 
   return (
-    <div className="card-interactive overflow-hidden group">
+    <div className="card-interactive relative overflow-hidden group">
       {/* Image */}
       <div 
         className="relative h-40 bg-muted overflow-hidden cursor-pointer"
@@ -111,13 +113,16 @@ function VehicleCardInner({
         <Badge className={cn("absolute top-3 left-3 pointer-events-none", status.className)}>
           {status.label}
         </Badge>
-        
+      </div>
+
+      {/* Menu fixo: fora do overflow-hidden para não ser cortado em nenhum dispositivo */}
+      <div className="absolute top-3 right-3 z-20 shrink-0 pointer-events-none [&>*]:pointer-events-auto">
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button 
               variant="secondary" 
               size="icon" 
-              className="absolute top-3 right-3 h-8 w-8 bg-card/90 hover:bg-card shadow-sm opacity-0 group-hover:opacity-100 transition-opacity"
+              className="h-8 w-8 min-w-8 min-h-8 bg-card/90 hover:bg-card shadow-sm"
             >
               <MoreVertical className="w-4 h-4" />
             </Button>
@@ -248,17 +253,17 @@ function VehicleCardInner({
               {/* Despesas */}
               <div>
                 <p className="text-[10px] text-muted-foreground mb-0.5">Despesas</p>
-                <div className="flex items-center justify-center gap-1">
-                  {vehicle.totalExpenses !== undefined && vehicle.totalExpenses > 0 ? (
-                    <>
-                      <p className="text-sm font-semibold text-foreground leading-tight">
-                        <HiddenValue value={vehicle.totalExpenses.toLocaleString('pt-BR')} prefix="R$ " />
-                      </p>
-                      {onViewExpenses && (
+                {vehicle.totalExpenses !== undefined && vehicle.totalExpenses > 0 ? (
+                  <>
+                    <p className="text-sm font-semibold text-foreground leading-tight">
+                      <HiddenValue value={vehicle.totalExpenses.toLocaleString('pt-BR')} prefix="R$ " />
+                    </p>
+                    {onViewExpenses && (
+                      <div className="flex items-center justify-center mt-1">
                         <Button
                           variant="ghost"
                           size="icon"
-                          className="h-7 w-7 shrink-0 text-muted-foreground hover:text-foreground"
+                          className="h-6 w-6 shrink-0 text-muted-foreground hover:text-foreground"
                           onClick={(e) => {
                             e.preventDefault();
                             e.stopPropagation();
@@ -268,12 +273,12 @@ function VehicleCardInner({
                         >
                           <Eye className="w-3.5 h-3.5" />
                         </Button>
-                      )}
-                    </>
-                  ) : (
-                    <span className="text-muted-foreground text-xs">—</span>
-                  )}
-                </div>
+                      </div>
+                    )}
+                  </>
+                ) : (
+                  <span className="text-muted-foreground text-xs">—</span>
+                )}
               </div>
             </div>
 
@@ -293,31 +298,55 @@ function VehicleCardInner({
                 </p>
               </div>
 
-              {/* Lucro - DESTAQUE PRINCIPAL */}
+              {/* Lucro/Prejuízo - DESTAQUE PRINCIPAL */}
               {vehicle.profit !== undefined && vehicle.profitPercent !== undefined ? (
                 <div>
-                  <p className="text-[10px] text-muted-foreground mb-0.5">Lucro</p>
-                  <div className="flex items-baseline justify-center gap-1.5 leading-tight">
-                    <p className="text-base font-bold text-success">
-                      <HiddenValue value={vehicle.profit.toLocaleString('pt-BR')} prefix="+R$ " />
-                    </p>
-                    <p className="text-[10px] font-medium text-success">
-                      ({vehicle.profitPercent.toFixed(1)}%)
-                    </p>
-                  </div>
+                  <p className="text-[10px] text-muted-foreground mb-0.5">
+                    {vehicle.profit >= 0 ? 'Lucro' : 'Prejuízo'}
+                  </p>
+                  <p className={cn(
+                    "text-base font-bold leading-tight",
+                    vehicle.profit >= 0 ? "text-success" : "text-destructive"
+                  )}>
+                    <HiddenValue 
+                      value={Math.abs(vehicle.profit).toLocaleString('pt-BR')} 
+                      prefix={vehicle.profit >= 0 ? "+R$ " : "-R$ "} 
+                    />
+                  </p>
+                  <p className={cn(
+                    "text-xs font-medium mt-0.5",
+                    vehicle.profit >= 0 ? "text-success" : "text-destructive"
+                  )}>
+                    ({vehicle.profitPercent.toFixed(1)}%)
+                  </p>
                 </div>
               ) : null}
             </div>
           </div>
 
           {/* Informações Secundárias - Linha inferior */}
-          <div className="grid grid-cols-2 gap-4 pt-3 border-t border-border/40">
+          <div className="grid grid-cols-3 gap-4 pt-3 border-t border-border/40">
             {/* FIPE */}
             <div className="pr-4 border-r border-border/40 text-center">
               <p className="text-[10px] text-muted-foreground mb-0.5">FIPE</p>
               <p className="text-xs font-medium text-muted-foreground leading-tight">
                 {vehicle.fipePrice ? (
                   <HiddenValue value={vehicle.fipePrice.toLocaleString('pt-BR')} prefix="R$ " />
+                ) : (
+                  <span>—</span>
+                )}
+              </p>
+            </div>
+
+            {/* Data de Entrada */}
+            <div className="px-2 border-r border-border/40 text-center">
+              <p className="text-[10px] text-muted-foreground mb-0.5">Entrada</p>
+              <p className="text-xs font-medium text-muted-foreground leading-tight flex items-center justify-center gap-1">
+                {vehicle.createdAt ? (
+                  <>
+                    <Calendar className="w-3 h-3" />
+                    <span>{formatDateBR(vehicle.createdAt)}</span>
+                  </>
                 ) : (
                   <span>—</span>
                 )}

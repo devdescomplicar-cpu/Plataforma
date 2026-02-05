@@ -20,7 +20,9 @@ model User {
   updatedAt DateTime @updatedAt
   deletedAt DateTime?
 
-  accounts Account[]
+  accounts             Account[]
+  accountCollaborators AccountCollaborator[]
+  salesRegistered     Sale[]               @relation("SaleRegisteredBy")
 
   @@index([email])
   @@index([deletedAt])
@@ -37,19 +39,44 @@ model Account {
   updatedAt  DateTime @updatedAt
   deletedAt  DateTime?
 
-  user      User       @relation(fields: [userId], references: [id])
-  vehicles  Vehicle[]
-  sales     Sale[]
-  expenses  Expense[]
-  clients   Client[]
-  checklists Checklist[]
-  subscriptions Subscription[]
-  pushSubscriptions PushSubscription[]
+  user                 User                  @relation(fields: [userId], references: [id])
+  accountCollaborators AccountCollaborator[]
+  vehicles             Vehicle[]
+  sales                Sale[]
+  expenses             Expense[]
+  clients              Client[]
+  checklists           Checklist[]
+  subscriptions        Subscription[]
+  pushSubscriptions    PushSubscription[]
 
   @@index([userId])
   @@index([status])
   @@index([deletedAt])
   @@map("accounts")
+}
+
+// Colaboradores da conta: vendedores e gerentes com permissões distintas (apenas dono adiciona).
+model AccountCollaborator {
+  id              String   @id @default(cuid())
+  accountId       String
+  userId          String
+  role            String   // manager | seller
+  status          String   @default("active") // active | inactive
+  commissionType  String?  // fixed | percent (apenas para seller)
+  commissionValue Float?   // valor fixo ou percentual
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  deletedAt       DateTime?
+
+  account Account @relation(fields: [accountId], references: [id], onDelete: Cascade)
+  user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([accountId, userId])
+  @@index([accountId])
+  @@index([userId])
+  @@index([status])
+  @@index([deletedAt])
+  @@map("account_collaborators")
 }
 
 model Vehicle {
@@ -114,26 +141,30 @@ model VehicleImage {
 }
 
 model Sale {
-  id           String   @id @default(cuid())
-  accountId    String
-  vehicleId    String
-  clientId     String?
-  salePrice    Float
-  profit       Float    // Calculado: salePrice - purchasePrice
-  profitPercent Float   // Calculado: (profit / purchasePrice) * 100
-  paymentMethod String  // À vista, Financiamento, Consórcio
-  saleDate     DateTime @default(now())
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
-  deletedAt    DateTime?
+  id             String   @id @default(cuid())
+  accountId      String
+  vehicleId      String
+  clientId       String?
+  registeredById   String?  // Colaborador que registrou a venda (para comissão e relatório)
+  commissionAmount Float?   // Comissão do vendedor nesta venda (snapshot ao registrar)
+  salePrice        Float
+  profit           Float    // Calculado: salePrice - purchasePrice
+  profitPercent  Float    // Calculado: (profit / purchasePrice) * 100
+  paymentMethod  String   // À vista, Financiamento, Consórcio
+  saleDate       DateTime @default(now())
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+  deletedAt      DateTime?
 
-  account Account  @relation(fields: [accountId], references: [id])
-  vehicle Vehicle  @relation(fields: [vehicleId], references: [id])
-  client  Client?  @relation(fields: [clientId], references: [id])
+  account       Account  @relation(fields: [accountId], references: [id])
+  vehicle       Vehicle  @relation(fields: [vehicleId], references: [id])
+  client        Client?  @relation(fields: [clientId], references: [id])
+  registeredBy  User?    @relation("SaleRegisteredBy", fields: [registeredById], references: [id])
 
   @@index([accountId])
   @@index([vehicleId])
   @@index([clientId])
+  @@index([registeredById])
   @@index([saleDate])
   @@index([deletedAt])
   @@map("sales")

@@ -21,12 +21,52 @@ export const getClients = async (
     };
 
     if (search) {
-      where.OR = [
-        { name: { contains: search as string, mode: 'insensitive' } },
-        { email: { contains: search as string, mode: 'insensitive' } },
-        { phone: { contains: search as string, mode: 'insensitive' } },
-        { cpfCnpj: { contains: search as string, mode: 'insensitive' } },
+      const searchStr = (search as string).trim();
+      const normalizedSearch = searchStr.replace(/\D/g, ''); // Remove tudo que não é dígito
+      
+      // Buscar por nome e email normalmente
+      const orConditions: any[] = [
+        { name: { contains: searchStr, mode: 'insensitive' } },
+        { email: { contains: searchStr, mode: 'insensitive' } },
       ];
+      
+      // Se a busca contém apenas números ou tem números, buscar também em phone e cpfCnpj normalizados
+      if (normalizedSearch.length >= 2) {
+        // Buscar telefones normalizados (removendo formatação)
+        const phoneMatches = await prisma.$queryRaw<Array<{ id: string }>>`
+          SELECT id FROM "clients"
+          WHERE "accountId" = ${accountId}
+            AND "deletedAt" IS NULL
+            AND phone IS NOT NULL
+            AND REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(phone, '(', ''), ')', ''), ' ', ''), '-', ''), '.', '') LIKE ${`%${normalizedSearch}%`}
+        `;
+        
+        // Buscar CPF/CNPJ normalizados (removendo formatação)
+        const cpfCnpjMatches = await prisma.$queryRaw<Array<{ id: string }>>`
+          SELECT id FROM "clients"
+          WHERE "accountId" = ${accountId}
+            AND "deletedAt" IS NULL
+            AND "cpfCnpj" IS NOT NULL
+            AND REPLACE(REPLACE(REPLACE(REPLACE(REPLACE("cpfCnpj", '.', ''), '/', ''), '-', ''), '(', ''), ')', '') LIKE ${`%${normalizedSearch}%`}
+        `;
+        
+        const matchingIds = [
+          ...phoneMatches.map(m => m.id),
+          ...cpfCnpjMatches.map(m => m.id)
+        ];
+        
+        if (matchingIds.length > 0) {
+          orConditions.push({ id: { in: matchingIds } });
+        }
+      } else {
+        // Se não tem números suficientes, buscar normalmente com formatação
+        orConditions.push(
+          { phone: { contains: searchStr, mode: 'insensitive' } },
+          { cpfCnpj: { contains: searchStr, mode: 'insensitive' } }
+        );
+      }
+      
+      where.OR = orConditions;
     }
 
     const [clients, total] = await Promise.all([

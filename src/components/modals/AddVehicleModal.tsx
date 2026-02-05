@@ -96,6 +96,7 @@ const initialFormData = {
   consignmentCommissionValue: '',
   consignmentMinRepassValue: '',
   consignmentStartDate: undefined as Date | undefined,
+  purchaseDate: undefined as Date | undefined, // Data de cadastro do veículo (permite retroativa)
 };
 
 interface ImageItem {
@@ -106,7 +107,10 @@ interface ImageItem {
 
 export function AddVehicleModal({ open, onOpenChange }: AddVehicleModalProps) {
   const fileInputRef = useRef<HTMLInputElement>(null);
-  const [formData, setFormData] = useState(initialFormData);
+  // Inicializar com data atual
+  const today = new Date();
+  today.setHours(12, 0, 0, 0); // Meio-dia para evitar problemas de timezone
+  const [formData, setFormData] = useState({ ...initialFormData, purchaseDate: today });
   const [images, setImages] = useState<ImageItem[]>([]);
   const [draggedIndex, setDraggedIndex] = useState<number | null>(null);
   const [customFeature, setCustomFeature] = useState('');
@@ -164,10 +168,18 @@ export function AddVehicleModal({ open, onOpenChange }: AddVehicleModalProps) {
         prev.forEach((img) => URL.revokeObjectURL(img.preview));
         return [];
       });
-      setFormData(initialFormData);
+      // Resetar com data atual como padrão
+      const today = new Date();
+      today.setHours(12, 0, 0, 0); // Meio-dia para evitar problemas de timezone
+      setFormData({ ...initialFormData, purchaseDate: today });
       setCustomFeature('');
       setDraggedIndex(null);
       if (fileInputRef.current) fileInputRef.current.value = '';
+    } else {
+      // Quando abrir o modal, inicializar com data atual
+      const today = new Date();
+      today.setHours(12, 0, 0, 0); // Meio-dia para evitar problemas de timezone
+      setFormData((prev) => ({ ...prev, purchaseDate: prev.purchaseDate || today }));
     }
   }, [open]);
 
@@ -318,7 +330,10 @@ export function AddVehicleModal({ open, onOpenChange }: AddVehicleModalProps) {
   };
 
   const resetForm = () => {
-    setFormData(initialFormData);
+    // Resetar com data atual como padrão
+    const today = new Date();
+    today.setHours(12, 0, 0, 0); // Meio-dia para evitar problemas de timezone
+    setFormData({ ...initialFormData, purchaseDate: today });
     images.forEach((img) => URL.revokeObjectURL(img.preview));
     setImages([]);
     setCustomFeature('');
@@ -395,6 +410,7 @@ export function AddVehicleModal({ open, onOpenChange }: AddVehicleModalProps) {
         consignmentCommissionValue: commissionValue,
         consignmentMinRepassValue: minRepassValue,
         consignmentStartDate: formData.consignmentStartDate,
+        purchaseDate: formData.purchaseDate, // Data de cadastro (permite retroativa)
         images: imageFilesToSend.length > 0 ? imageFilesToSend : undefined,
       },
       {
@@ -470,7 +486,7 @@ export function AddVehicleModal({ open, onOpenChange }: AddVehicleModalProps) {
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-[700px] max-h-[90vh] overflow-y-auto scrollbar-thin bg-card rounded-xl">
+      <DialogContent className="sm:max-w-[700px] max-h-[90vh] overflow-y-auto scrollbar-modal bg-card rounded-xl">
         <DialogHeader>
           <div className="flex items-center gap-3">
             {formData.vehicleType === 'motorcycle' ? (
@@ -865,6 +881,42 @@ export function AddVehicleModal({ open, onOpenChange }: AddVehicleModalProps) {
                 <SelectItem value="repass">Repasse</SelectItem>
               </SelectContent>
             </Select>
+          </div>
+
+          {/* Data de Entrada em Estoque */}
+          <div className="space-y-2">
+            <Label htmlFor="purchaseDate">Data de Entrada em Estoque</Label>
+            <Popover>
+              <PopoverTrigger asChild>
+                <Button
+                  id="purchaseDate"
+                  variant="outline"
+                  className={cn(
+                    "w-full justify-start text-left font-normal",
+                    !formData.purchaseDate && "text-muted-foreground"
+                  )}
+                >
+                  <CalendarIcon className="mr-2 h-4 w-4" />
+                  {formData.purchaseDate ? (
+                    format(formData.purchaseDate, "dd/MM/yyyy", { locale: ptBR })
+                  ) : (
+                    <span>Selecione a data</span>
+                  )}
+                </Button>
+              </PopoverTrigger>
+              <PopoverContent className="w-auto p-0" align="start">
+                <Calendar
+                  mode="single"
+                  selected={formData.purchaseDate}
+                  onSelect={(date) => setFormData({ ...formData, purchaseDate: date })}
+                  initialFocus
+                  locale={ptBR}
+                />
+              </PopoverContent>
+            </Popover>
+            <p className="text-xs text-muted-foreground">
+              Data em que o veículo entrou no estoque. Por padrão, data atual. Permite data retroativa para cadastrar estoque antigo.
+            </p>
           </div>
 
           {/* Prices for Own */}

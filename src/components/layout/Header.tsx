@@ -19,6 +19,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
+import { Logo } from '@/components/Logo';
 
 export function Header() {
   const navigate = useNavigate();
@@ -56,10 +57,14 @@ export function Header() {
   return (
     <header className="fixed top-0 left-0 right-0 z-30 w-full bg-card/95 backdrop-blur-sm border-b border-border lg:left-56 lg:w-[calc(100%-14rem)] xl:left-64 xl:w-[calc(100%-16rem)] pt-[env(safe-area-inset-top,0px)] supports-[padding:max(0px)]:pt-[max(0px,env(safe-area-inset-top))]">
       <div className="flex items-center justify-between h-16 px-3 sm:px-4 md:px-5 lg:px-6 overflow-visible">
-        {/* Left Section — sem menu sanduíche no mobile; navegação via bottom nav + "Mais" */}
+        {/* Left Section — Logo no mobile/tablet + Search no desktop */}
         <div className="flex items-center gap-2 sm:gap-4">
-          {/* Search */}
-          <div className="hidden sm:flex relative w-48 md:w-56 lg:w-64 xl:w-80">
+          {/* Logo - visível apenas em mobile e tablet (até lg) */}
+          <div className="lg:hidden flex-shrink-0">
+            <Logo href="/" linkable showText={false} size="small" />
+          </div>
+          {/* Search - visível apenas em desktop (lg+) */}
+          <div className="hidden lg:flex relative w-48 xl:w-64 2xl:w-80">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
             <Input 
               placeholder="Buscar veículos, clientes..." 
@@ -70,11 +75,6 @@ export function Header() {
 
         {/* Right Section */}
         <div className="flex items-center gap-2">
-          {/* Mobile Search Button */}
-          <Button variant="ghost" size="icon" className="sm:hidden">
-            <Search className="w-5 h-5" />
-          </Button>
-
           {/* Hide Values Toggle */}
           <Button 
             variant="ghost" 

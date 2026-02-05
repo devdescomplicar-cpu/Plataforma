@@ -58,7 +58,12 @@ export function AddExpenseFromVehiclesModal({
   }, [settingsData]);
 
   const vehicles = vehiclesData?.data || [];
-  const filteredVehicles = vehicles.filter((vehicle) => {
+  // Filtrar apenas veículos em estoque (available ou reserved), excluindo vendidos
+  const availableVehicles = vehicles.filter((vehicle) => 
+    vehicle.status === 'available' || vehicle.status === 'reserved'
+  );
+  
+  const filteredVehicles = availableVehicles.filter((vehicle) => {
     if (!searchTerm) return true;
     const search = searchTerm.toLowerCase();
     return (
@@ -69,7 +74,7 @@ export function AddExpenseFromVehiclesModal({
     );
   });
 
-  const selectedVehicle = vehicles.find((v) => v.id === selectedVehicleId);
+  const selectedVehicle = availableVehicles.find((v) => v.id === selectedVehicleId);
 
   const formatCurrency = (value: string): string => {
     const numericValue = value.replace(/\D/g, '');
@@ -182,7 +187,7 @@ export function AddExpenseFromVehiclesModal({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-[500px] rounded-xl max-h-[90vh] flex flex-col">
+      <DialogContent className="sm:max-w-[500px] rounded-xl max-h-[90vh] flex flex-col overflow-hidden">
         <DialogHeader className="flex-shrink-0">
           <div className="flex items-center gap-3">
             <Wrench className="w-8 h-8 text-destructive" />
@@ -221,11 +226,7 @@ export function AddExpenseFromVehiclesModal({
                 </div>
               ) : (
                 <div 
-                  className="h-[440px] overflow-y-auto space-y-2 pr-1 scrollbar-thin"
-                  style={{
-                    scrollbarWidth: 'thin',
-                    scrollbarColor: '#cbd5e1 #f1f5f9'
-                  }}
+                  className="h-[440px] overflow-y-auto space-y-2 pr-1 scrollbar-modal"
                 >
                   {filteredVehicles.map((vehicle) => {
                     const imageUrl = getVehicleImage(vehicle);

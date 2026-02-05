@@ -9,9 +9,8 @@ import {
 } from '@/components/ui/dialog';
 import { Badge } from '@/components/ui/badge';
 import { formatCpfCnpj } from '@/lib/cpf-cnpj';
-import { format } from 'date-fns';
-import { ptBR } from 'date-fns/locale';
 import { cn } from '@/lib/utils';
+import { formatDateBR } from '@/lib/date-br';
 import {
   Table,
   TableBody,
@@ -86,7 +85,7 @@ export function ClientProfileModal({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
+      <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto scrollbar-modal">
         <DialogHeader>
           <div className="flex items-center gap-3">
             <User className="w-8 h-8 text-primary" />
@@ -255,7 +254,7 @@ export function ClientProfileModal({
                               </div>
                             </TableCell>
                             <TableCell>
-                              {format(new Date(sale.saleDate), 'dd/MM/yyyy', { locale: ptBR })}
+                              {formatDateBR(sale.saleDate)}
                             </TableCell>
                             <TableCell className="font-medium">
                               {formatCurrency(sale.salePrice)}

@@ -65,21 +65,7 @@ function getStoredViewMode(): WebhooksViewMode {
   return 'list';
 }
 
-function formatDateTime(date: string | Date): string {
-  const d = typeof date === 'string' ? new Date(date) : date;
-  return d.toLocaleString('pt-BR', {
-    day: '2-digit',
-    month: '2-digit',
-    year: 'numeric',
-    hour: '2-digit',
-    minute: '2-digit',
-  });
-}
-
-function formatDate(date: string | Date): string {
-  const d = typeof date === 'string' ? new Date(date) : date;
-  return d.toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit', year: 'numeric' });
-}
+import { formatDateBR, formatDateTimeBR } from '@/lib/date-br';
 
 function extractAllFields(
   obj: unknown,
@@ -546,7 +532,7 @@ export default function AdminWebhooks() {
                         </div>
                       </TableCell>
                       <TableCell className="hidden md:table-cell text-muted-foreground text-sm">
-                        {formatDate(webhook.createdAt)}
+                        {formatDateBR(webhook.createdAt)}
                       </TableCell>
                       <TableCell className="w-12 text-right">
                         <DropdownMenu>
@@ -699,7 +685,7 @@ export default function AdminWebhooks() {
                       <CardContent className="p-3">
                         <div className="flex justify-between items-start gap-2">
                           <span className="text-sm font-medium">
-                            {formatDateTime(log.receivedAt)}
+                            {formatDateTimeBR(log.receivedAt)}
                           </span>
                           <Badge
                             variant={log.webhookTestMode ? 'outline' : 'default'}
@@ -791,7 +777,7 @@ export default function AdminWebhooks() {
                       </p>
                       <p>
                         <span className="text-muted-foreground">Recebido em:</span>{' '}
-                        {formatDateTime(selectedHistoryLog.receivedAt)}
+                        {formatDateTimeBR(selectedHistoryLog.receivedAt)}
                       </p>
                       {selectedHistoryLog.statusCode != null && (
                         <p>
@@ -885,7 +871,7 @@ export default function AdminWebhooks() {
                       >
                         <CardContent className="p-4">
                           <div className="flex justify-between items-center mb-2">
-                            <span className="text-sm font-medium">{formatDateTime(log.receivedAt)}</span>
+                            <span className="text-sm font-medium">{formatDateTimeBR(log.receivedAt)}</span>
                             {log.statusCode != null && log.statusCode >= 200 && log.statusCode < 300 ? (
                               <Badge className="bg-green-600">OK</Badge>
                             ) : (

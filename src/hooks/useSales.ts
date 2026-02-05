@@ -10,6 +10,7 @@ export interface Sale {
   profitPercent: number;
   paymentMethod: string;
   saleDate: string;
+  registeredBy?: { id: string; name: string } | null;
   vehicle?: {
     id: string;
     brand: string;
@@ -45,6 +46,7 @@ export interface CreateSaleData {
   paymentMethod: 'PIX' | 'DINHEIRO' | 'CARTÃO DE CRÉDITO' | 'FINANCIAMENTO' | 'TROCA';
   saleDate?: string;
   observations?: string;
+  registeredById?: string;
 }
 
 export interface SalesStats {
@@ -66,11 +68,12 @@ export const useSales = (params?: {
   search?: string;
   page?: number;
   limit?: number;
+  registeredById?: string;
 }) => {
   const safeParams =
     params && Object.keys(params).length > 0
       ? (Object.fromEntries(
-          Object.entries(params).filter(([, v]) => v !== undefined && v !== '')
+          Object.entries(params).filter(([, v]) => v !== undefined && v !== '' && v !== 'all')
         ) as Record<string, string | number>)
       : undefined;
 
@@ -114,6 +117,8 @@ export const useCreateSale = () => {
       await queryClient.invalidateQueries({ queryKey: ['vehicles'] });
       await queryClient.invalidateQueries({ queryKey: ['vehicles-metrics'] });
       await queryClient.invalidateQueries({ queryKey: ['dashboard'] });
+      await queryClient.invalidateQueries({ queryKey: ['dashboard', 'data'] });
+      await queryClient.invalidateQueries({ queryKey: ['dashboard', 'reports'] });
       await queryClient.invalidateQueries({ queryKey: ['salesStats'] });
       await queryClient.invalidateQueries({ queryKey: ['salesByMonth'] });
     },
@@ -134,6 +139,8 @@ export const useUpdateSale = () => {
       await queryClient.invalidateQueries({ queryKey: ['vehicles'] });
       await queryClient.invalidateQueries({ queryKey: ['vehicles-metrics'] });
       await queryClient.invalidateQueries({ queryKey: ['dashboard'] });
+      await queryClient.invalidateQueries({ queryKey: ['dashboard', 'data'] });
+      await queryClient.invalidateQueries({ queryKey: ['dashboard', 'reports'] });
       await queryClient.invalidateQueries({ queryKey: ['salesStats'] });
       await queryClient.invalidateQueries({ queryKey: ['salesByMonth'] });
     },
@@ -149,12 +156,18 @@ export const useDeleteSale = () => {
       return response;
     },
     onSuccess: async () => {
+      // Invalidar todas as queries relacionadas
       await queryClient.invalidateQueries({ queryKey: ['sales'] });
-      await queryClient.invalidateQueries({ queryKey: ['vehicles'] });
+      await queryClient.invalidateQueries({ queryKey: ['vehicles'], exact: false });
       await queryClient.invalidateQueries({ queryKey: ['vehicles-metrics'] });
       await queryClient.invalidateQueries({ queryKey: ['dashboard'] });
+      await queryClient.invalidateQueries({ queryKey: ['dashboard', 'data'] });
+      await queryClient.invalidateQueries({ queryKey: ['dashboard', 'reports'] });
       await queryClient.invalidateQueries({ queryKey: ['salesStats'] });
       await queryClient.invalidateQueries({ queryKey: ['salesByMonth'] });
+      
+      // Forçar refetch imediato de todas as queries de veículos para atualizar os dados
+      await queryClient.refetchQueries({ queryKey: ['vehicles'], exact: false });
     },
   });
 };

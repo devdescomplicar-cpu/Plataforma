@@ -1,5 +1,5 @@
 import { useState, useMemo } from 'react';
-import { Plus, Search, MoreHorizontal, Trash2, Pencil, Car, DollarSign, TrendingUp, Package, ChevronLeft, ChevronRight, FileText } from 'lucide-react';
+import { Plus, Search, MoreHorizontal, Trash2, Pencil, Car, DollarSign, TrendingUp, Package, ChevronLeft, ChevronRight, FileText, User } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
@@ -21,12 +21,79 @@ import { HiddenValue } from '@/contexts/AppContext';
 import { useSales, useDeleteSale, useSalesStats, useSalesByMonth, Sale } from '@/hooks/useSales';
 import { QueryErrorState } from '@/components/QueryErrorState';
 import { cn, toPublicImageUrl } from '@/lib/utils';
+import { formatDateBR } from '@/lib/date-br';
 import { TruncatedText } from '@/components/ui/TruncatedText';
 import { RegisterSaleModal } from '@/components/modals/RegisterSaleModal';
 import { ConfirmDialog } from '@/components/modals/ConfirmDialog';
 import { SaleReceiptModal } from '@/components/modals/SaleReceiptModal';
 import { toast } from '@/hooks/use-toast';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from '@/components/ui/tooltip';
+import { useCollaborators } from '@/hooks/useCollaborators';
+import { useUser } from '@/hooks/useUser';
+
+// Função para parsear formas de pagamento (apenas nomes)
+const parsePaymentMethods = (paymentMethod: string): string[] => {
+  if (!paymentMethod) return [];
+  
+  // Se não contém vírgula, é uma única forma de pagamento
+  if (!paymentMethod.includes(',')) {
+    // Verificar se tem formato METHOD:VALUE
+    if (paymentMethod.includes(':')) {
+      const [method] = paymentMethod.split(':').map(s => s.trim());
+      return [method];
+    }
+    return [paymentMethod];
+  }
+  
+  // Múltiplas formas de pagamento separadas por vírgula
+  return paymentMethod
+    .split(',')
+    .map(part => part.trim())
+    .filter(part => part)
+    .map(part => {
+      if (part.includes(':')) {
+        const [method] = part.split(':').map(s => s.trim());
+        return method;
+      }
+      return part;
+    });
+};
+
+// Função para parsear formas de pagamento com valores
+const parsePaymentMethodsWithValues = (paymentMethod: string): Array<{ method: string; value: number }> => {
+  if (!paymentMethod) return [];
+  
+  // Se não contém vírgula, é uma única forma de pagamento
+  if (!paymentMethod.includes(',')) {
+    // Verificar se tem formato METHOD:VALUE
+    if (paymentMethod.includes(':')) {
+      const [method, valueStr] = paymentMethod.split(':').map(s => s.trim());
+      const value = valueStr ? parseFloat(valueStr) : 0; // Valores já estão em reais
+      return [{ method, value }];
+    }
+    return [{ method: paymentMethod, value: 0 }];
+  }
+  
+  // Múltiplas formas de pagamento separadas por vírgula
+  return paymentMethod
+    .split(',')
+    .map(part => part.trim())
+    .filter(part => part)
+    .map(part => {
+      if (part.includes(':')) {
+        const [method, valueStr] = part.split(':').map(s => s.trim());
+        const value = valueStr ? parseFloat(valueStr) : 0; // Valores já estão em reais
+        return { method, value };
+      }
+      return { method: part, value: 0 };
+    });
+};
 
 const Vendas = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -36,13 +103,60 @@ const Vendas = () => {
   const [saleToViewReceipt, setSaleToViewReceipt] = useState<Sale | null>(null);
   const [paymentFilter, setPaymentFilter] = useState<string>('all');
   const [profitFilter, setProfitFilter] = useState<string>('all');
+  const [collaboratorFilter, setCollaboratorFilter] = useState<string>('all');
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(10);
   
+  const { data: userData } = useUser();
+  // Buscar colaboradores apenas se for dono da conta
+  const { data: collaborators = [], isLoading: isLoadingCollaborators } = useCollaborators();
+  
+  // Mostrar apenas colaboradores ATIVOS (vendedores e gerentes)
+  // Também incluir o próprio usuário se ele não for dono (colaborador)
+  const allCollaborators = useMemo(() => {
+    // Filtrar apenas colaboradores ativos
+    const active = collaborators
+      .filter((c) => c.status === 'active')
+      .map((c) => ({
+        userId: c.userId,
+        name: c.name,
+        role: c.role,
+        status: c.status,
+      }));
+    
+    // Se o usuário atual não é dono e não está na lista de colaboradores, adicionar ele mesmo
+    if (userData?.user && !userData.isAccountOwner && !active.find((c) => c.userId === userData.user.id)) {
+      return [
+        {
+          userId: userData.user.id,
+          name: userData.user.name,
+          role: 'seller' as const,
+          status: 'active' as const,
+        },
+        ...active,
+      ];
+    }
+    
+    // Se for dono, adicionar ele mesmo na lista
+    if (userData?.user && userData.isAccountOwner && !active.find((c) => c.userId === userData.user.id)) {
+      return [
+        {
+          userId: userData.user.id,
+          name: userData.user.name,
+          role: 'manager' as const,
+          status: 'active' as const,
+        },
+        ...active,
+      ];
+    }
+    
+    return active;
+  }, [collaborators, userData]);
   const { data: salesData, isLoading, isError, error, refetch } = useSales({ 
     search: searchTerm || undefined,
     page,
-    limit
+    limit,
+    registeredById: collaboratorFilter !== 'all' ? collaboratorFilter : undefined,
   });
   const { data: statsData, isLoading: isLoadingStats } = useSalesStats();
   const deleteSaleMutation = useDeleteSale();
@@ -204,6 +318,49 @@ const Vendas = () => {
             />
           </div>
           <div className="flex flex-wrap gap-2">
+            {(allCollaborators.length > 0 || userData?.user) && (
+              <Select
+                value={collaboratorFilter}
+                onValueChange={(value) => {
+                  setCollaboratorFilter(value);
+                  setPage(1);
+                }}
+                disabled={isLoadingCollaborators}
+              >
+                <SelectTrigger className="w-full min-w-0 sm:w-[240px]">
+                  <SelectValue placeholder="Todos os colaboradores">
+                    {collaboratorFilter === 'all' 
+                      ? 'Todos os colaboradores'
+                      : (() => {
+                          const selected = allCollaborators.find(c => c.userId === collaboratorFilter);
+                          if (!selected) return 'Todos os colaboradores';
+                          const isOwner = userData?.isAccountOwner && selected.userId === userData.user.id;
+                          const isCurrentUser = !userData?.isAccountOwner && selected.userId === userData?.user?.id;
+                          return isOwner ? `${selected.name} (Dono)` : isCurrentUser ? `${selected.name} (Você)` : selected.name;
+                        })()}
+                  </SelectValue>
+                </SelectTrigger>
+                <SelectContent className="max-h-[300px]">
+                  <SelectItem value="all">Todos os colaboradores</SelectItem>
+                  {allCollaborators.map((collaborator) => {
+                    const isOwner = userData?.isAccountOwner && collaborator.userId === userData.user.id;
+                    const isCurrentUser = !userData?.isAccountOwner && collaborator.userId === userData?.user?.id;
+                    const roleLabel = collaborator.role === 'manager' ? 'Gerente' : 'Vendedor';
+                    const displayText = isOwner 
+                      ? `${collaborator.name} (Dono)`
+                      : isCurrentUser 
+                        ? `${collaborator.name} (Você)`
+                        : `${collaborator.name} - ${roleLabel}`;
+                    
+                    return (
+                      <SelectItem key={collaborator.userId} value={collaborator.userId} className="py-2">
+                        {displayText}
+                      </SelectItem>
+                    );
+                  })}
+                </SelectContent>
+              </Select>
+            )}
             <Select
               value={paymentFilter}
               onValueChange={(value) => {
@@ -246,6 +403,7 @@ const Vendas = () => {
       {/* Tabela de Vendas — scroll horizontal no mobile */}
       <div className="card-elevated overflow-hidden">
         <div className="overflow-x-auto">
+        <TooltipProvider delayDuration={0} skipDelayDuration={0}>
         <Table>
           <TableHeader>
             <TableRow className="bg-muted/50">
@@ -287,6 +445,57 @@ const Vendas = () => {
                 const hasProfit = venda.profit >= 0;
                 const vehicleImage = venda.vehicle?.image;
                 
+                // Componente interno para tooltip com controle manual
+                const PaymentMethodsTooltip = ({ methods, methodsWithValues }: { methods: string[], methodsWithValues: Array<{ method: string; value: number }> }) => {
+                  const [open, setOpen] = useState(false);
+                  
+                  return (
+                    <Tooltip open={open} onOpenChange={setOpen}>
+                      <TooltipTrigger asChild>
+                        <span 
+                          className="inline-block"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            setOpen(!open);
+                          }}
+                        >
+                          <Badge 
+                            variant="outline" 
+                            className="font-medium text-xs whitespace-nowrap shrink-0 cursor-pointer touch-manipulation"
+                          >
+                            +{methods.length - 1}
+                          </Badge>
+                        </span>
+                      </TooltipTrigger>
+                      <TooltipContent 
+                        side="top" 
+                        align="end" 
+                        className="max-w-[240px] p-2 z-[9999]" 
+                        sideOffset={5}
+                        alignOffset={-40}
+                        onPointerDownOutside={() => setOpen(false)}
+                      >
+                        <div className="space-y-1">
+                          <p className="font-semibold text-xs mb-1.5">Formas de Pagamento:</p>
+                          {methodsWithValues.map((item, idx) => (
+                            <div key={idx} className="flex items-center justify-between gap-2 text-xs">
+                              <span className="font-medium truncate flex-1 min-w-0">{item.method}</span>
+                              {item.value > 0 ? (
+                                <span className="text-muted-foreground whitespace-nowrap shrink-0">
+                                  R$ {item.value.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                                </span>
+                              ) : (
+                                <span className="text-muted-foreground text-[10px] shrink-0">—</span>
+                              )}
+                            </div>
+                          ))}
+                        </div>
+                      </TooltipContent>
+                    </Tooltip>
+                  );
+                };
+                
                 return (
                   <TableRow key={venda.id} className="group hover:bg-muted/30">
                     <TableCell>
@@ -305,12 +514,22 @@ const Vendas = () => {
                       )}
                     </TableCell>
                     <TableCell className="font-medium">
-                      <TruncatedText 
-                        text={vehicleName}
-                        maxWidth="200px"
-                      >
-                        {vehicleName}
-                      </TruncatedText>
+                      <div className="space-y-1.5">
+                        <TruncatedText 
+                          text={vehicleName}
+                          maxWidth="200px"
+                        >
+                          {vehicleName}
+                        </TruncatedText>
+                        {venda.registeredBy?.name && (
+                          <div className="flex items-center justify-start mt-1.5">
+                            <Badge variant="secondary" className="text-xs font-normal px-2.5 py-1 bg-primary/10 text-primary border-primary/20">
+                              <User className="w-3 h-3 mr-1.5" />
+                              Vendido por: {venda.registeredBy.name}
+                            </Badge>
+                          </div>
+                        )}
+                      </div>
                     </TableCell>
                     <TableCell>
                       <TruncatedText 
@@ -337,12 +556,43 @@ const Vendas = () => {
                       </Badge>
                     </TableCell>
                     <TableCell className="text-muted-foreground">
-                      {new Date(venda.saleDate).toLocaleDateString('pt-BR')}
+                      {formatDateBR(venda.saleDate)}
                     </TableCell>
                     <TableCell>
-                      <Badge variant="secondary" className="font-medium">
-                        {venda.paymentMethod}
-                      </Badge>
+                      {(() => {
+                        const methods = parsePaymentMethods(venda.paymentMethod);
+                        const methodsWithValues = parsePaymentMethodsWithValues(venda.paymentMethod);
+                        
+                        if (methods.length === 0) {
+                          return (
+                            <Badge variant="secondary" className="font-medium">
+                              {venda.paymentMethod || '—'}
+                            </Badge>
+                          );
+                        }
+                        
+                        // Se for apenas uma forma de pagamento, exibir normalmente
+                        if (methods.length === 1) {
+                          return (
+                            <Badge variant="secondary" className="font-medium whitespace-nowrap">
+                              {methods[0]}
+                            </Badge>
+                          );
+                        }
+                        
+                        // Múltiplas formas (2+): exibir primeira forma + badge "+N" com tooltip
+                        return (
+                          <div className="flex items-center gap-1 flex-wrap max-w-[200px]">
+                            <Badge 
+                              variant="secondary" 
+                              className="font-medium text-xs whitespace-nowrap shrink-0"
+                            >
+                              {methods[0].length > 12 ? `${methods[0].substring(0, 10)}...` : methods[0]}
+                            </Badge>
+                            <PaymentMethodsTooltip methods={methods} methodsWithValues={methodsWithValues} />
+                          </div>
+                        );
+                      })()}
                     </TableCell>
                     <TableCell>
                       <DropdownMenu>
@@ -382,6 +632,7 @@ const Vendas = () => {
             )}
           </TableBody>
         </Table>
+        </TooltipProvider>
         </div>
       </div>
 

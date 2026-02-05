@@ -4,6 +4,7 @@ import { Users, CreditCard, BarChart3, Mail, Webhook, FileSearch, HardDrive, Lay
 import { useApp } from '@/contexts/AppContext';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
+import { Logo } from '@/components/Logo';
 
 const adminNavigation = [
   { name: 'Visão geral', href: '/admin', icon: LayoutDashboard },
@@ -34,16 +35,14 @@ export function AdminSidebar() {
           sidebarOpen ? 'translate-x-0' : '-translate-x-full'
         )}
       >
-        <div className="flex items-center justify-between px-4 lg:px-5 py-4 lg:py-6 shrink-0">
-          <Link to="/admin" onMouseEnter={() => prefetchRoute('/admin')} onFocus={() => prefetchRoute('/admin')} className="flex items-center gap-2">
-            <div className="w-9 h-9 rounded-xl bg-primary flex items-center justify-center">
-              <LayoutDashboard className="w-5 h-5 text-primary-foreground" />
-            </div>
-            <span className="text-xl font-bold text-sidebar-primary tracking-tight">
+        <div className="flex items-center justify-center px-4 lg:px-5 py-3 shrink-0 relative">
+          <Link to="/admin" onMouseEnter={() => prefetchRoute('/admin')} onFocus={() => prefetchRoute('/admin')} className="flex flex-col items-center gap-2">
+            <Logo size="default" showText={false} linkable={false} />
+            <span className="text-base font-bold text-sidebar-primary tracking-tight">
               Painel <span className="text-primary">Admin</span>
             </span>
           </Link>
-          <Button variant="ghost" size="icon" className="lg:hidden text-sidebar-foreground hover:bg-sidebar-accent" onClick={() => setSidebarOpen(false)}>
+          <Button variant="ghost" size="icon" className="lg:hidden absolute right-4 text-sidebar-foreground hover:bg-sidebar-accent" onClick={() => setSidebarOpen(false)}>
             <X className="w-5 h-5" />
           </Button>
         </div>

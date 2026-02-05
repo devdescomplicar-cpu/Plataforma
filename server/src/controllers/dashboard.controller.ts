@@ -2,49 +2,16 @@ import { Request, Response, NextFunction } from 'express';
 import { AuthRequest } from '../middleware/auth.middleware.js';
 import { prisma } from '../services/prisma.service.js';
 import { getPublicImageUrl } from '../services/minio.service.js';
+import { getDateRange } from '../utils/date-range.js';
+import { getBrazilDateParts, getBrazilMonthRange, daysDifferenceBrazil } from '../utils/timezone.js';
 
-function getDateRange(period?: string, startDate?: string, endDate?: string): { start: Date; end: Date } {
-  if (startDate && endDate) {
-    const parsedStart = new Date(startDate);
-    const parsedEnd = new Date(endDate);
-    parsedEnd.setHours(23, 59, 59, 999);
-    return { start: parsedStart, end: parsedEnd };
-  }
-
-  const end = new Date();
-  const start = new Date();
-  
-  switch (period) {
-    case 'current-month':
-      start.setDate(1);
-      start.setHours(0, 0, 0, 0);
-      end.setMonth(end.getMonth() + 1);
-      end.setDate(0);
-      end.setHours(23, 59, 59, 999);
-      break;
-    case 'last-month':
-      start.setMonth(start.getMonth() - 1);
-      start.setDate(1);
-      start.setHours(0, 0, 0, 0);
-      end.setDate(0);
-      end.setHours(23, 59, 59, 999);
-      break;
-    case '3m':
-      start.setMonth(start.getMonth() - 3);
-      start.setHours(0, 0, 0, 0);
-      break;
-    case '6m':
-      start.setMonth(start.getMonth() - 6);
-      start.setHours(0, 0, 0, 0);
-      break;
-    default:
-      start.setDate(1);
-      start.setHours(0, 0, 0, 0);
-      end.setMonth(end.getMonth() + 1);
-      end.setDate(0);
-      end.setHours(23, 59, 59, 999);
-  }
-  return { start, end };
+function saleDateKeyBrazil(saleDate: Date): string {
+  const br = getBrazilDateParts(saleDate);
+  return `${br.year}-${String(br.month).padStart(2, '0')}-${String(br.day).padStart(2, '0')}`;
+}
+function saleMonthKeyBrazil(saleDate: Date): string {
+  const br = getBrazilDateParts(saleDate);
+  return `${br.year}-${String(br.month).padStart(2, '0')}`;
 }
 
 export const getDashboardMetrics = async (
@@ -56,13 +23,14 @@ export const getDashboardMetrics = async (
     const { accountId } = req;
     const { month, year } = req.query;
 
-    const startDate = month && year
-      ? new Date(parseInt(year as string), parseInt(month as string) - 1, 1)
-      : new Date(new Date().getFullYear(), new Date().getMonth(), 1);
-    
-    const endDate = month && year
-      ? new Date(parseInt(year as string), parseInt(month as string), 0, 23, 59, 59)
-      : new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0, 23, 59, 59);
+    const br = getBrazilDateParts(new Date());
+    const useMonth = month && year
+      ? parseInt(month as string)
+      : br.month;
+    const useYear = month && year
+      ? parseInt(year as string)
+      : br.year;
+    const { start: startDate, end: endDate } = getBrazilMonthRange(useYear, useMonth);
 
     const [vehiclesCount, salesCount, totalProfit, avgDaysInStock] = await Promise.all([
       // Veículos em estoque
@@ -114,23 +82,22 @@ export const getDashboardMetrics = async (
       }),
     ]);
 
-    // Calcular tempo médio em estoque
+    // Calcular tempo médio em estoque (apenas datas, ignorando horário)
     const daysInStockArray = avgDaysInStock.map((sale) => {
-      const days = Math.floor(
-        (sale.saleDate.getTime() - sale.vehicle.createdAt.getTime()) / (1000 * 60 * 60 * 24)
-      );
+      const days = daysDifferenceBrazil(sale.vehicle.createdAt, sale.saleDate);
       return days;
     });
     const avgDays = daysInStockArray.length > 0
       ? Math.round(daysInStockArray.reduce((a, b) => a + b, 0) / daysInStockArray.length)
       : 0;
 
+    const monthlyProfit = req.collaboratorRole === 'seller' ? 0 : (totalProfit._sum.profit || 0);
     res.json({
       success: true,
       data: {
         vehiclesInStock: vehiclesCount,
         monthlySales: salesCount,
-        monthlyProfit: totalProfit._sum.profit || 0,
+        monthlyProfit,
         avgDaysInStock: avgDays,
       },
     });
@@ -165,23 +132,45 @@ export const getDashboardVehicles = async (
       take: limit,
     });
 
-    const vehiclesWithCalculations = vehicles.map((vehicle) => {
-      const daysInStock = Math.floor(
-        (Date.now() - vehicle.createdAt.getTime()) / (1000 * 60 * 60 * 24)
-      );
-      const purchasePrice = vehicle.purchasePrice ?? 0;
-      const salePrice = vehicle.salePrice ?? 0;
-      const profit = salePrice - purchasePrice;
-      const profitPercent = purchasePrice > 0 ? (profit / purchasePrice) * 100 : 0;
+    // Calcular dias em estoque considerando apenas a data (dia/mês/ano), ignorando horário
+    // Para veículos vendidos, usar data de venda; para em estoque, usar data atual
+    const vehiclesWithCalculations = await Promise.all(
+      vehicles.map(async (vehicle) => {
+        // Buscar venda do veículo para obter data de venda (se vendido)
+        const sale = await prisma.sale.findFirst({
+          where: {
+            vehicleId: vehicle.id,
+            accountId,
+            deletedAt: null,
+          },
+          orderBy: { saleDate: 'desc' },
+          select: { saleDate: true },
+        });
 
-      return {
-        ...vehicle,
-        daysInStock,
-        profit,
-        profitPercent: parseFloat(profitPercent.toFixed(2)),
-        image: vehicle.images[0] ? getPublicImageUrl(vehicle.images[0].key) : null,
-      };
-    });
+        // Calcular dias em estoque:
+        // - Se vendido: data de entrada até data de venda
+        // - Se ainda em estoque: data de entrada até hoje
+        const daysInStock = sale?.saleDate
+          ? daysDifferenceBrazil(vehicle.createdAt, sale.saleDate)
+          : daysDifferenceBrazil(vehicle.createdAt);
+        const purchasePrice = vehicle.purchasePrice ?? 0;
+        const salePrice = vehicle.salePrice ?? 0;
+        const profit = salePrice - purchasePrice;
+        const profitPercent = purchasePrice > 0 ? (profit / purchasePrice) * 100 : 0;
+        const isSeller = req.collaboratorRole === 'seller';
+
+        return {
+          ...vehicle,
+          purchasePrice: isSeller ? undefined : vehicle.purchasePrice,
+          daysInStock,
+          profit: isSeller ? undefined : profit,
+          profitPercent: isSeller ? undefined : parseFloat(profitPercent.toFixed(2)),
+          image: vehicle.images && vehicle.images[0] && vehicle.images[0].key 
+            ? getPublicImageUrl(vehicle.images[0].key) 
+            : null,
+        };
+      })
+    );
 
     res.json({
       success: true,
@@ -271,31 +260,31 @@ export const getDashboardData = async (
     // Ticket médio
     const avgTicket = vehiclesSold > 0 ? totalRevenue / vehiclesSold : 0;
 
-    // Dados dia a dia: quando período > 30 dias, gráfico mostra apenas últimos 30 dias
-    const daysInRange = Math.floor((end.getTime() - start.getTime()) / (1000 * 60 * 60 * 24)) + 1;
-    const chartStart = daysInRange > 30 ? new Date(end) : new Date(start);
-    if (daysInRange > 30) {
-      chartStart.setDate(chartStart.getDate() - 29);
-      chartStart.setHours(0, 0, 0, 0);
-    }
-    const chartEnd = new Date(end);
-    chartEnd.setHours(23, 59, 59, 999);
+    // Dados dia a dia (datas no fuso Brasil): sempre mostrar todos os dias do mês selecionado
+    // Para visualização "Dia", sempre usar o mês mais recente do período (último mês)
+    const endBr = getBrazilDateParts(end);
+    // Sempre usar o mês do fim do período (último mês) para mostrar todos os dias
+    const { start: monthStart, end: monthEnd } = getBrazilMonthRange(endBr.year, endBr.month);
+    const chartStart = monthStart;
+    const chartEnd = monthEnd;
 
     const dailyData = new Map<string, { date: string; revenue: number; sales: number; profit: number }>();
-    const d = new Date(chartStart);
-    while (d <= chartEnd) {
-      const key = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+    let t = chartStart.getTime();
+    const dayMs = 24 * 60 * 60 * 1000;
+    while (t <= chartEnd.getTime()) {
+      const br = getBrazilDateParts(new Date(t));
+      const key = `${br.year}-${String(br.month).padStart(2, '0')}-${String(br.day).padStart(2, '0')}`;
       dailyData.set(key, {
-        date: `${String(d.getDate()).padStart(2, '0')}/${String(d.getMonth() + 1).padStart(2, '0')}`,
+        date: `${String(br.day).padStart(2, '0')}/${String(br.month).padStart(2, '0')}`,
         revenue: 0,
         sales: 0,
         profit: 0,
       });
-      d.setDate(d.getDate() + 1);
+      t += dayMs;
     }
 
     sales.forEach((s) => {
-      const key = `${s.saleDate.getFullYear()}-${String(s.saleDate.getMonth() + 1).padStart(2, '0')}-${String(s.saleDate.getDate()).padStart(2, '0')}`;
+      const key = saleDateKeyBrazil(s.saleDate);
       const entry = dailyData.get(key);
       if (entry) {
         entry.revenue += s.salePrice;
@@ -311,15 +300,20 @@ export const getDashboardData = async (
       return dayA - dayB;
     });
 
-    // Dados mensais: últimos 6 meses (mês atual para trás) para gráficos em visualização "Mês"
+    // Dados mensais (fuso Brasil): últimos 6 meses para gráficos em visualização "Mês"
     const MONTH_SHORT = ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'];
     const monthlyData = new Map<string, { date: string; monthKey: string; revenue: number; sales: number; profit: number }>();
-    const now = new Date();
+    const brNow = getBrazilDateParts(new Date());
     for (let i = 5; i >= 0; i--) {
-      const m = new Date(now.getFullYear(), now.getMonth() - i, 1);
-      const key = `${m.getFullYear()}-${String(m.getMonth() + 1).padStart(2, '0')}`;
+      let month = brNow.month - i;
+      let year = brNow.year;
+      if (month < 1) {
+        month += 12;
+        year -= 1;
+      }
+      const key = `${year}-${String(month).padStart(2, '0')}`;
       monthlyData.set(key, {
-        date: MONTH_SHORT[m.getMonth()],
+        date: MONTH_SHORT[month - 1],
         monthKey: key,
         revenue: 0,
         sales: 0,
@@ -327,7 +321,7 @@ export const getDashboardData = async (
       });
     }
     sales.forEach((s) => {
-      const key = `${s.saleDate.getFullYear()}-${String(s.saleDate.getMonth() + 1).padStart(2, '0')}`;
+      const key = saleMonthKeyBrazil(s.saleDate);
       const entry = monthlyData.get(key);
       if (entry) {
         entry.revenue += s.salePrice;
@@ -345,17 +339,18 @@ export const getDashboardData = async (
       { date: '', revenue: 0, sales: 0 }
     );
 
-    // Cliente destaque
-    const topClientMap = new Map<string, { name: string; count: number }>();
+    // Cliente destaque: quem mais comprou veículos no período (desempate por valor total)
+    const topClientMap = new Map<string, { name: string; count: number; revenue: number }>();
     sales.forEach((s) => {
       if (s.clientId && s.client) {
-        const current = topClientMap.get(s.clientId) || { name: s.client.name, count: 0 };
+        const current = topClientMap.get(s.clientId) || { name: s.client.name, count: 0, revenue: 0 };
         current.count += 1;
+        current.revenue += s.salePrice;
         topClientMap.set(s.clientId, current);
       }
     });
     const topClient = Array.from(topClientMap.values())
-      .sort((a, b) => b.count - a.count)[0] || null;
+      .sort((a, b) => b.count - a.count || b.revenue - a.revenue)[0] || null;
 
     // Veículo mais vendido
     const vehicleCountMap = new Map<string, number>();
@@ -408,6 +403,14 @@ export const getDashboardData = async (
       value: s.salePrice,
     }));
 
+    const isSeller = req.collaboratorRole === 'seller';
+    const dailyChartForResponse = isSeller
+      ? dailyChart.map((d) => ({ ...d, profit: 0 }))
+      : dailyChart;
+    const monthlyChartForResponse = isSeller
+      ? monthlyChart.map((m) => ({ ...m, profit: 0 }))
+      : monthlyChart;
+
     res.json({
       success: true,
       data: {
@@ -422,15 +425,15 @@ export const getDashboardData = async (
             change: parseFloat(vehiclesSoldChange.toFixed(1)),
           },
           netProfit: {
-            value: Math.round(totalProfit),
-            change: parseFloat(profitChange.toFixed(1)),
+            value: isSeller ? 0 : Math.round(totalProfit),
+            change: isSeller ? 0 : parseFloat(profitChange.toFixed(1)),
           },
           avgTicket: {
             value: Math.round(avgTicket),
           },
         },
-        dailyChart,
-        monthlyChart,
+        dailyChart: dailyChartForResponse,
+        monthlyChart: monthlyChartForResponse,
         insights: {
           bestDay: bestDay.revenue > 0 ? {
             day: bestDay.date,

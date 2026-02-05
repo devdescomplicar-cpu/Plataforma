@@ -206,39 +206,52 @@ export default function AdminPlanos() {
     staleTime: 30_000,
   });
 
-  // Atualizar editForm quando allPlansForEdit carregar para incluir períodos desativados
+  // Atualizar editForm quando allPlansForEdit carregar para garantir que sempre tenha as 4 opções
   React.useEffect(() => {
     if (editGroup && allPlansForEdit.length > 0 && editForm) {
-      // Verificar se há planos novos que não estão no form
-      const hasNewPlans = allPlansForEdit.some(
-        (p) => !editForm.prices[p.id] || editForm.enabledPlans[p.id] === undefined
-      );
+      const newPrices: Record<string, string> = { ...editForm.prices };
+      const newEnabledPlans: Record<string, boolean> = { ...editForm.enabledPlans };
       
-      if (hasNewPlans) {
-        const newPrices: Record<string, string> = { ...editForm.prices };
-        const newEnabledPlans: Record<string, boolean> = { ...editForm.enabledPlans };
+      // Garantir que sempre temos as 4 opções de período
+      for (const opt of DURATION_OPTIONS) {
+        const existingPlans = allPlansForEdit.filter((p) => p.durationType === opt.key);
+        const existingPlan = existingPlans.find((p) => p.active) || existingPlans[0];
         
-        for (const plan of allPlansForEdit) {
-          if (!newPrices[plan.id]) {
-            newPrices[plan.id] = reaisToDigits(plan.price);
+        if (existingPlan) {
+          // Se existe plano, usar o ID real
+          if (!newPrices[existingPlan.id]) {
+            newPrices[existingPlan.id] = reaisToDigits(existingPlan.price);
           }
-          if (newEnabledPlans[plan.id] === undefined) {
-            newEnabledPlans[plan.id] = plan.active ?? false;
+          if (newEnabledPlans[existingPlan.id] === undefined) {
+            newEnabledPlans[existingPlan.id] = existingPlan.active ?? false;
+          }
+          // Remover IDs virtuais antigos se existirem
+          const virtualId = `new-${opt.key}`;
+          if (newPrices[virtualId]) {
+            delete newPrices[virtualId];
+            delete newEnabledPlans[virtualId];
+          }
+        } else {
+          // Se não existe, garantir que temos um ID virtual
+          const virtualId = `new-${opt.key}`;
+          if (!newPrices[virtualId]) {
+            newPrices[virtualId] = '';
+            newEnabledPlans[virtualId] = false;
           }
         }
-        
-        setEditForm((prev) =>
-          prev
-            ? {
-                ...prev,
-                prices: newPrices,
-                enabledPlans: newEnabledPlans,
-              }
-            : null
-        );
       }
+      
+      setEditForm((prev) =>
+        prev
+          ? {
+              ...prev,
+              prices: newPrices,
+              enabledPlans: newEnabledPlans,
+            }
+          : null
+      );
     }
-  }, [allPlansForEdit, editGroup]);
+  }, [allPlansForEdit, editGroup, editForm]);
 
   const createBatch = useMutation({
     mutationFn: (body: Parameters<typeof adminApi.plans.createBatch>[0]) =>
@@ -382,7 +395,27 @@ export default function AdminPlanos() {
     if (!first) return;
     setEditGroup(group);
     setEditCurrentStep(1);
-    // Inicializar o form com os planos visíveis, mas vamos atualizar quando allPlansForEdit carregar
+    
+    // Inicializar o form sempre com as 4 opções de período
+    const prices: Record<string, string> = {};
+    const enabledPlans: Record<string, boolean> = {};
+    
+    // Para cada período, encontrar o plano existente (priorizar ativo)
+    for (const opt of DURATION_OPTIONS) {
+      const existingPlans = group.plans.filter((p) => p.durationType === opt.key);
+      const existingPlan = existingPlans.find((p) => p.active) || existingPlans[0];
+      
+      if (existingPlan) {
+        prices[existingPlan.id] = reaisToDigits(existingPlan.price);
+        enabledPlans[existingPlan.id] = existingPlan.active ?? true;
+      } else {
+        // Se não existe, criar um ID virtual
+        const virtualId = `new-${opt.key}`;
+        prices[virtualId] = '';
+        enabledPlans[virtualId] = false;
+      }
+    }
+    
     setEditForm({
       name: first.name,
       description: first.description ?? '',
@@ -391,12 +424,8 @@ export default function AdminPlanos() {
       maxClients: first.maxClients != null ? String(first.maxClients) : '',
       customBenefits: Array.isArray(first.customBenefits) ? first.customBenefits : [],
       active: first.active,
-      prices: Object.fromEntries(
-        group.plans.map((p) => [p.id, reaisToDigits(p.price)])
-      ),
-      enabledPlans: Object.fromEntries(
-        group.plans.map((p) => [p.id, p.active ?? true])
-      ),
+      prices,
+      enabledPlans,
     });
   }
 
@@ -433,18 +462,41 @@ export default function AdminPlanos() {
   async function saveEditGroup() {
     if (!editGroup || !editForm) return;
     
-    // Usar allPlansForEdit se disponível, senão usar editGroup.plans
-    const plansToUpdate = allPlansForEdit.length > 0 ? allPlansForEdit : editGroup.plans;
+    const allPlans = allPlansForEdit.length > 0 ? allPlansForEdit : editGroup.plans;
     
-    // Atualizar todos os planos do grupo (habilitados e desabilitados)
-    for (const plan of plansToUpdate) {
-      const isEnabled = editForm.enabledPlans[plan.id] ?? (plan.active ?? true);
-      const price = digitsToReais(editForm.prices[plan.id] ?? '0');
+    // Processar cada período (sempre 4: mensal, trimestral, semestral, anual)
+    for (const opt of DURATION_OPTIONS) {
+      // Encontrar plano existente para este período
+      const existingPlans = allPlans.filter((p) => p.durationType === opt.key);
+      const existingPlan = existingPlans.find((p) => p.active) || existingPlans[0];
       
-      // Atualizar o plano, mas se estiver desabilitado, apenas desativar (não excluir)
-      await updatePlanMutation.mutateAsync({
-        id: plan.id,
-        body: {
+      // Encontrar o planId usado no formulário (pode ser o ID real ou virtual)
+      const virtualId = `new-${opt.key}`;
+      const formPlanId = existingPlan?.id || virtualId;
+      
+      const isEnabled = editForm.enabledPlans[formPlanId] ?? false;
+      const priceStr = editForm.prices[formPlanId] ?? '';
+      const price = digitsToReais(priceStr);
+      
+      if (existingPlan) {
+        // Atualizar plano existente
+        await updatePlanMutation.mutateAsync({
+          id: existingPlan.id,
+          body: {
+            name: editForm.name.trim(),
+            description: editForm.description.trim() || null,
+            checkoutUrl: editForm.checkoutUrl.trim() || null,
+            maxVehicles: editForm.maxVehicles.trim() ? Number(editForm.maxVehicles) : null,
+            maxClients: editForm.maxClients.trim() ? Number(editForm.maxClients) : null,
+            customBenefits:
+              editForm.customBenefits.length > 0 ? editForm.customBenefits : null,
+            active: editForm.active && isEnabled,
+            price,
+          },
+        });
+      } else if (isEnabled && price > 0) {
+        // Criar novo plano se estiver habilitado e tiver preço
+        await createBatch.mutateAsync({
           name: editForm.name.trim(),
           description: editForm.description.trim() || null,
           checkoutUrl: editForm.checkoutUrl.trim() || null,
@@ -452,10 +504,16 @@ export default function AdminPlanos() {
           maxClients: editForm.maxClients.trim() ? Number(editForm.maxClients) : null,
           customBenefits:
             editForm.customBenefits.length > 0 ? editForm.customBenefits : null,
-          active: editForm.active && isEnabled, // Só ativo se o plano geral estiver ativo E o período estiver habilitado
-          price,
-        },
-      });
+          active: editForm.active,
+          offers: [
+            {
+              durationType: opt.key,
+              durationMonths: opt.durationMonths,
+              price,
+            },
+          ],
+        });
+      }
     }
     
     queryClient.invalidateQueries({ queryKey: ['admin', 'plans'] });
@@ -1154,31 +1212,41 @@ export default function AdminPlanos() {
                     </div>
                   </div>
 
-                  {/* Ofertas - Cards neutros lado a lado */}
+                  {/* Ofertas - Cards neutros lado a lado - apenas períodos ativos */}
                   <div className="space-y-1.5">
                     <p className="text-[10px] font-semibold text-muted-foreground uppercase tracking-wide">
                       Ofertas
                     </p>
-                    <div className="grid grid-cols-2 gap-1.5">
-                      {group.plans.map((p) => (
-                        <div
-                          key={p.id}
-                          className="p-2 rounded border bg-background hover:bg-muted/50 transition-colors"
-                        >
-                          <div className="flex flex-col gap-0.5">
-                            <span className="text-[10px] font-medium text-muted-foreground">
-                              {periodLabel(p.durationType)}
-                            </span>
-                            <span className="text-base font-bold text-foreground tabular-nums leading-tight">
-                              {formatCurrency(p.price)}
-                            </span>
-                            <span className="text-[9px] text-muted-foreground">
-                              {durationLabel(p.durationType, p.durationMonths)}
-                            </span>
-                          </div>
+                    {(() => {
+                      const activePlans = group.plans.filter((p) => p.active);
+                      if (activePlans.length === 0) {
+                        return (
+                          <p className="text-[10px] text-muted-foreground">Nenhuma oferta ativa</p>
+                        );
+                      }
+                      return (
+                        <div className="grid grid-cols-2 gap-1.5">
+                          {activePlans.map((p) => (
+                            <div
+                              key={p.id}
+                              className="p-2 rounded border bg-background hover:bg-muted/50 transition-colors"
+                            >
+                              <div className="flex flex-col gap-0.5">
+                                <span className="text-[10px] font-medium text-muted-foreground">
+                                  {periodLabel(p.durationType)}
+                                </span>
+                                <span className="text-base font-bold text-foreground tabular-nums leading-tight">
+                                  {formatCurrency(p.price)}
+                                </span>
+                                <span className="text-[9px] text-muted-foreground">
+                                  {durationLabel(p.durationType, p.durationMonths)}
+                                </span>
+                              </div>
+                            </div>
+                          ))}
                         </div>
-                      ))}
-                    </div>
+                      );
+                    })()}
                   </div>
 
                   {/* Limites - Compacto */}
@@ -1418,11 +1486,23 @@ export default function AdminPlanos() {
                           Desmarque um período para desativá-lo temporariamente. Você pode reativá-lo depois. Pelo menos um período deve estar ativo.
                         </p>
                         <div className="rounded-lg border p-3 space-y-2">
-                          {(allPlansForEdit.length > 0 ? allPlansForEdit : editGroup.plans).map((p) => {
-                            const isEnabled = editForm.enabledPlans[p.id] ?? (p.active ?? true);
+                          {DURATION_OPTIONS.map((opt) => {
+                            // Encontrar o plano existente para este período (pode haver múltiplos, pegar o mais recente ou ativo)
+                            const existingPlans = (allPlansForEdit.length > 0 ? allPlansForEdit : editGroup.plans).filter(
+                              (p) => p.durationType === opt.key
+                            );
+                            // Priorizar plano ativo, senão pegar o primeiro
+                            const existingPlan = existingPlans.find((p) => p.active) || existingPlans[0];
+                            
+                            // Se não existe plano, criar um virtual para edição
+                            const planId = existingPlan?.id || `new-${opt.key}`;
+                            const isEnabled = existingPlan 
+                              ? (editForm.enabledPlans[planId] ?? (existingPlan.active ?? true))
+                              : (editForm.enabledPlans[planId] ?? false);
+                            
                             return (
                               <div
-                                key={p.id}
+                                key={opt.key}
                                 className={cn(
                                   "flex items-center gap-3 p-3 rounded-lg border",
                                   !isEnabled && "opacity-50 bg-muted/20"
@@ -1446,7 +1526,7 @@ export default function AdminPlanos() {
                                             ...prev,
                                             enabledPlans: {
                                               ...prev.enabledPlans,
-                                              [p.id]: checked as boolean,
+                                              [planId]: checked as boolean,
                                             },
                                           }
                                         : null
@@ -1456,7 +1536,7 @@ export default function AdminPlanos() {
                                 <Label
                                   className="flex-1 min-w-[150px] font-normal cursor-pointer"
                                 >
-                                  {periodLabel(p.durationType)} — {durationLabel(p.durationType, p.durationMonths)}
+                                  {opt.label} — {opt.durationLabel}
                                 </Label>
                                 <div className="flex items-center gap-2">
                                   <span className="text-muted-foreground text-sm">R$</span>
@@ -1466,17 +1546,17 @@ export default function AdminPlanos() {
                                     placeholder="0,00"
                                     className="w-32 tabular-nums"
                                     value={
-                                      editForm.prices[p.id]
-                                        ? formatDigitsToBRL(editForm.prices[p.id])
+                                      editForm.prices[planId]
+                                        ? formatDigitsToBRL(editForm.prices[planId])
                                         : ''
                                     }
-                                    onKeyDown={(e) => handleEditPriceKeyDown(p.id, e)}
-                                    onPaste={(e) => handleEditPricePaste(p.id, e)}
+                                    onKeyDown={(e) => handleEditPriceKeyDown(planId, e)}
+                                    onPaste={(e) => handleEditPricePaste(planId, e)}
                                     onChange={(e) => {
                                       const digits = e.target.value
                                         .replace(/\D/g, '')
                                         .slice(0, MAX_PRICE_DIGITS);
-                                      setEditPrice(p.id, digits);
+                                      setEditPrice(planId, digits);
                                     }}
                                     disabled={!isEnabled}
                                   />

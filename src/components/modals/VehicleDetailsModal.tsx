@@ -69,7 +69,7 @@ export function VehicleDetailsModal({ open, onOpenChange, vehicleId }: VehicleDe
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-[800px] max-h-[90vh] overflow-y-auto scrollbar-thin rounded-xl">
+      <DialogContent className="sm:max-w-[800px] max-h-[90vh] overflow-y-auto scrollbar-modal rounded-xl">
         <DialogHeader>
           <div className="flex items-center gap-3">
             <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
@@ -243,10 +243,20 @@ export function VehicleDetailsModal({ open, onOpenChange, vehicleId }: VehicleDe
                   )}
                   {vehicle.profit !== undefined && vehicle.profitPercent !== undefined && (
                     <div className="space-y-1">
-                      <p className="text-xs text-muted-foreground">Lucro</p>
-                      <p className="font-semibold text-lg text-success">
-                        +R$ {vehicle.profit.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
-                        <span className="text-sm ml-1">({vehicle.profitPercent.toFixed(1)}%)</span>
+                      <p className="text-xs text-muted-foreground">
+                        {vehicle.profit >= 0 ? 'Lucro' : 'Prejuízo'}
+                      </p>
+                      <p className={cn(
+                        "font-semibold text-lg",
+                        vehicle.profit >= 0 ? "text-success" : "text-destructive"
+                      )}>
+                        {vehicle.profit >= 0 ? '+' : '-'}R$ {Math.abs(vehicle.profit).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
+                        <span className={cn(
+                          "text-sm ml-1",
+                          vehicle.profit >= 0 ? "text-success/80" : "text-destructive/80"
+                        )}>
+                          ({vehicle.profitPercent.toFixed(1)}%)
+                        </span>
                       </p>
                     </div>
                   )}

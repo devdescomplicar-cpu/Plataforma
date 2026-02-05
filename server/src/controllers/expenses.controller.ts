@@ -4,12 +4,21 @@ import { prisma } from '../services/prisma.service.js';
 import { expenseSchema, parseExpenseBody, normalizeExpenseUpdateBody } from '../utils/validators.js';
 import { getPublicImageUrl } from '../services/minio.service.js';
 
+function blockSellerExpenses(req: AuthRequest, res: Response): boolean {
+  if (req.collaboratorRole === 'seller') {
+    res.status(403).json({ success: false, error: { message: 'Vendedores não têm acesso a despesas.' } });
+    return true;
+  }
+  return false;
+}
+
 export const getExpenses = async (
   req: AuthRequest,
   res: Response,
   next: NextFunction
 ): Promise<void> => {
   try {
+    if (blockSellerExpenses(req, res)) return;
     const { accountId } = req;
     const { search, status, vehicleId, page = '1', limit = '20' } = req.query;
 
@@ -80,6 +89,7 @@ export const getExpenseById = async (
   next: NextFunction
 ): Promise<void> => {
   try {
+    if (blockSellerExpenses(req, res)) return;
     const { accountId } = req;
     const { id } = req.params;
 
@@ -117,6 +127,7 @@ export const createExpense = async (
   next: NextFunction
 ): Promise<void> => {
   try {
+    if (blockSellerExpenses(req, res)) return;
     const { accountId } = req;
     if (!accountId) {
       res.status(401).json({ success: false, error: { message: 'Não autenticado' } });
@@ -171,6 +182,7 @@ export const updateExpense = async (
   next: NextFunction
 ): Promise<void> => {
   try {
+    if (blockSellerExpenses(req, res)) return;
     const { accountId } = req;
     const { id } = req.params;
 
@@ -237,6 +249,7 @@ export const deleteExpense = async (
   next: NextFunction
 ): Promise<void> => {
   try {
+    if (blockSellerExpenses(req, res)) return;
     const { accountId } = req;
     const { id } = req.params;
 
@@ -275,6 +288,7 @@ export const getVehiclesWithExpenses = async (
   next: NextFunction
 ): Promise<void> => {
   try {
+    if (blockSellerExpenses(req, res)) return;
     const { accountId } = req;
 
     // Buscar todos os veículos com imagens

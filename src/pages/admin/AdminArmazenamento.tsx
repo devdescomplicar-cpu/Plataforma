@@ -13,6 +13,7 @@ import {
 } from 'lucide-react';
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
 import { adminApi } from '@/lib/admin-api';
+import { formatDateTimeBR } from '@/lib/date-br';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
@@ -337,7 +338,7 @@ export default function AdminArmazenamento() {
               </Card>
             </div>
             <p className="text-xs text-muted-foreground mt-2">
-              Atualizado em: {new Date(stats.generatedAt).toLocaleString('pt-BR')}
+              Atualizado em: {formatDateTimeBR(stats.generatedAt)}
             </p>
           </>
         )}
@@ -471,7 +472,7 @@ export default function AdminArmazenamento() {
                 )}
                 {cleanupHistory?.map((e) => (
                   <TableRow key={e.id}>
-                    <TableCell>{new Date(e.cleanedAt).toLocaleString('pt-BR')}</TableCell>
+                    <TableCell>{formatDateTimeBR(e.cleanedAt)}</TableCell>
                     <TableCell className="text-right">{e.filesRemoved}</TableCell>
                     <TableCell className="text-right">{formatBytes(e.bytesFreed)}</TableCell>
                     <TableCell>{e.triggerType}</TableCell>

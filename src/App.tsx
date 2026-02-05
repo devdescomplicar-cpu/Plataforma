@@ -28,6 +28,7 @@ import {
   Clientes,
   Checklist,
   Perfil,
+  Colaboradores,
   Login,
   ResetPassword,
   NotFound,
@@ -79,6 +80,7 @@ const AppContent = () => {
               <Route path="/vendas" element={<Vendas />} />
               <Route path="/clientes" element={<Clientes />} />
               <Route path="/relatorios" element={<Relatorios />} />
+              <Route path="/colaboradores" element={<Colaboradores />} />
               <Route path="/configuracoes" element={<Configuracoes />} />
               <Route path="/perfil" element={<Perfil />} />
             </Route>

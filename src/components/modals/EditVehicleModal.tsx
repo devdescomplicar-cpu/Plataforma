@@ -105,6 +105,7 @@ export function EditVehicleModal({ open, onOpenChange, vehicleId }: EditVehicleM
     consignmentCommissionValue: '',
     consignmentMinRepassValue: '',
     consignmentStartDate: undefined as Date | undefined,
+    purchaseDate: undefined as Date | undefined, // Data de entrada em estoque (permite retroativa)
   });
 
   // FIPE API hooks (depois de formData estar declarado)
@@ -217,6 +218,9 @@ export function EditVehicleModal({ open, onOpenChange, vehicleId }: EditVehicleM
         consignmentStartDate: v.consignmentStartDate
           ? new Date(v.consignmentStartDate)
           : undefined,
+        purchaseDate: v.createdAt
+          ? new Date(v.createdAt)
+          : undefined,
       });
 
       // Carregar imagens existentes
@@ -263,6 +267,7 @@ export function EditVehicleModal({ open, onOpenChange, vehicleId }: EditVehicleM
         consignmentCommissionValue: '',
         consignmentMinRepassValue: '',
         consignmentStartDate: undefined as Date | undefined,
+        purchaseDate: undefined as Date | undefined,
       });
       setImages([]);
       setDraggedIndex(null);
@@ -513,6 +518,7 @@ export function EditVehicleModal({ open, onOpenChange, vehicleId }: EditVehicleM
         consignmentCommissionValue: commissionValue,
         consignmentMinRepassValue: minRepassValue,
         consignmentStartDate: formData.consignmentStartDate,
+        purchaseDate: formData.purchaseDate, // Data de entrada em estoque (permite retroativa)
         images: imageFilesToSend.length > 0 ? imageFilesToSend : undefined,
         imageOrder: shouldSendImageOrder ? imageOrder : undefined,
         imagesToDelete: imagesToDelete.length > 0 ? imagesToDelete : undefined,
@@ -554,7 +560,7 @@ export function EditVehicleModal({ open, onOpenChange, vehicleId }: EditVehicleM
   // Por questão de espaço, vou criar uma versão simplificada que reutiliza a lógica
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-[700px] max-h-[90vh] overflow-y-auto scrollbar-thin bg-card rounded-xl">
+      <DialogContent className="sm:max-w-[700px] max-h-[90vh] overflow-y-auto scrollbar-modal bg-card rounded-xl">
         <DialogHeader>
           <div className="flex items-center gap-3">
             {formData.vehicleType === 'motorcycle' ? (
@@ -967,6 +973,42 @@ export function EditVehicleModal({ open, onOpenChange, vehicleId }: EditVehicleM
                 <SelectItem value="repass">Repasse</SelectItem>
               </SelectContent>
             </Select>
+          </div>
+
+          {/* Data de Entrada em Estoque */}
+          <div className="space-y-2">
+            <Label htmlFor="purchaseDate">Data de Entrada em Estoque</Label>
+            <Popover>
+              <PopoverTrigger asChild>
+                <Button
+                  id="purchaseDate"
+                  variant="outline"
+                  className={cn(
+                    "w-full justify-start text-left font-normal",
+                    !formData.purchaseDate && "text-muted-foreground"
+                  )}
+                >
+                  <CalendarIcon className="mr-2 h-4 w-4" />
+                  {formData.purchaseDate ? (
+                    format(formData.purchaseDate, "dd/MM/yyyy", { locale: ptBR })
+                  ) : (
+                    <span>Selecione a data</span>
+                  )}
+                </Button>
+              </PopoverTrigger>
+              <PopoverContent className="w-auto p-0" align="start">
+                <Calendar
+                  mode="single"
+                  selected={formData.purchaseDate}
+                  onSelect={(date) => setFormData({ ...formData, purchaseDate: date })}
+                  initialFocus
+                  locale={ptBR}
+                />
+              </PopoverContent>
+            </Popover>
+            <p className="text-xs text-muted-foreground">
+              Permite alterar a data de entrada em estoque (ex: para corrigir data retroativa).
+            </p>
           </div>
 
           {/* Prices for Own */}

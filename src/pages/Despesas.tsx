@@ -10,6 +10,7 @@ import { EditExpenseModal } from '@/components/modals/EditExpenseModal';
 import { ConfirmDialog } from '@/components/modals/ConfirmDialog';
 import { QueryErrorState } from '@/components/QueryErrorState';
 import { cn } from '@/lib/utils';
+import { formatDateBR } from '@/lib/date-br';
 import { HiddenValue } from '@/contexts/AppContext';
 import { AddExpenseFromVehiclesModal } from '@/components/modals/AddExpenseFromVehiclesModal';
 import { VEHICLE_COLORS } from '@/components/ui/ColorSelect';
@@ -620,7 +621,7 @@ const Despesas = () => {
                     <HiddenValue value={despesa.value.toLocaleString('pt-BR')} prefix="R$ " />
                   </TableCell>
                   <TableCell className="text-muted-foreground">
-                    {new Date(despesa.date).toLocaleDateString('pt-BR')}
+                    {formatDateBR(despesa.date)}
                   </TableCell>
                   <TableCell>
                               <div className="flex items-center gap-2">

@@ -3,6 +3,7 @@ import { AuthRequest } from '../middleware/auth.middleware.js';
 import { prisma } from '../services/prisma.service.js';
 import { minioService, getPublicImageUrl } from '../services/minio.service.js';
 import { parseVehicleBody, vehicleUpdateSchema, normalizeVehicleUpdateBody } from '../utils/validators.js';
+import { daysDifferenceBrazil } from '../utils/timezone.js';
 import multer from 'multer';
 
 const upload = multer({
@@ -74,9 +75,23 @@ export const getVehicles = async (
 
     // Calcular dias em estoque e lucro; URLs de imagem sempre pela API (HTTPS, sem expor MinIO)
     const vehiclesWithCalculations = await Promise.all(vehicles.map(async (vehicle) => {
-      const daysInStock = Math.floor(
-        (Date.now() - vehicle.createdAt.getTime()) / (1000 * 60 * 60 * 24)
-      );
+      // Buscar venda do veículo para obter data de venda e preço (se vendido)
+      const sale = await prisma.sale.findFirst({
+        where: {
+          vehicleId: vehicle.id,
+          accountId,
+          deletedAt: null,
+        },
+        orderBy: { saleDate: 'desc' }, // Pegar a venda mais recente
+        select: { saleDate: true, salePrice: true },
+      });
+
+      // Calcular dias em estoque:
+      // - Se vendido: data de entrada até data de venda
+      // - Se ainda em estoque: data de entrada até hoje
+      const daysInStock = sale?.saleDate
+        ? daysDifferenceBrazil(vehicle.createdAt, sale.saleDate)
+        : daysDifferenceBrazil(vehicle.createdAt);
       
       // Calcular total de despesas
       const totalExpenses = await prisma.expense.aggregate({
@@ -91,7 +106,9 @@ export const getVehicles = async (
       const expensesTotal = totalExpenses._sum.value ?? 0;
       
       const purchasePrice = vehicle.purchasePrice ?? 0;
-      const salePrice = vehicle.salePrice;
+      // Priorizar salePrice do veículo (que é atualizado quando cria/deleta venda)
+      // Se não houver salePrice no veículo e houver venda ativa, usar o da venda
+      const salePrice = vehicle.salePrice ?? (sale ? sale.salePrice : null);
       let profit: number | undefined;
       let profitPercent: number | undefined;
       
@@ -104,16 +121,24 @@ export const getVehicles = async (
       }
       
       const images = vehicle.images.map((img) => ({ ...img, url: getPublicImageUrl(img.key) }));
+      const isSeller = req.collaboratorRole === 'seller';
 
-      return {
+      const out: Record<string, unknown> = {
         ...vehicle,
+        salePrice: salePrice, // Garantir que o salePrice retornado seja o calculado (do veículo ou da venda)
         images,
         daysInStock,
-        profit,
-        profitPercent,
-        totalExpenses: expensesTotal,
         image: vehicle.images[0] ? getPublicImageUrl(vehicle.images[0].key) : null,
+        createdAt: vehicle.createdAt.toISOString(),
       };
+      if (!isSeller) {
+        out.profit = profit;
+        out.profitPercent = profitPercent;
+        out.totalExpenses = expensesTotal;
+      } else {
+        out.purchasePrice = null;
+      }
+      return out;
     }));
 
     res.json({
@@ -162,9 +187,23 @@ export const getVehicleById = async (
       return;
     }
 
-    const daysInStock = Math.floor(
-      (Date.now() - vehicle.createdAt.getTime()) / (1000 * 60 * 60 * 24)
-    );
+    // Buscar venda do veículo para obter data de venda e preço (se vendido)
+    const sale = await prisma.sale.findFirst({
+      where: {
+        vehicleId: vehicle.id,
+        accountId,
+        deletedAt: null,
+      },
+      orderBy: { saleDate: 'desc' }, // Pegar a venda mais recente
+      select: { saleDate: true, salePrice: true },
+    });
+
+    // Calcular dias em estoque:
+    // - Se vendido: data de entrada até data de venda
+    // - Se ainda em estoque: data de entrada até hoje
+    const daysInStock = sale?.saleDate
+      ? daysDifferenceBrazil(vehicle.createdAt, sale.saleDate)
+      : daysDifferenceBrazil(vehicle.createdAt);
     
     // Calcular total de despesas
     const totalExpenses = await prisma.expense.aggregate({
@@ -179,7 +218,9 @@ export const getVehicleById = async (
     const expensesTotal = totalExpenses._sum.value ?? 0;
     
     const purchasePrice = vehicle.purchasePrice ?? 0;
-    const salePrice = vehicle.salePrice;
+    // Priorizar salePrice do veículo (que é atualizado quando cria/deleta venda)
+    // Se não houver salePrice no veículo e houver venda ativa, usar o da venda
+    const salePrice = vehicle.salePrice ?? (sale ? sale.salePrice : null);
     let profit: number | undefined;
     let profitPercent: number | undefined;
     
@@ -197,6 +238,7 @@ export const getVehicleById = async (
       success: true,
       data: {
         ...vehicle,
+        salePrice: salePrice, // Garantir que o salePrice retornado seja o calculado (do veículo ou da venda)
         images,
         daysInStock,
         profit,
@@ -230,10 +272,15 @@ export const createVehicle = [
       const vehicleData = parseVehicleBody(req.body);
       console.log('[POST /vehicles] Body validated', { brand: vehicleData.brand, model: vehicleData.model });
 
+      // Se purchaseDate foi fornecido, usar como createdAt; caso contrário, usar data atual
+      const createdAt = vehicleData.purchaseDate || new Date();
+      const { purchaseDate, ...vehicleDataWithoutDate } = vehicleData;
+
       const vehicle = await prisma.vehicle.create({
         data: {
-          ...vehicleData,
+          ...vehicleDataWithoutDate,
           accountId,
+          createdAt,
         },
       });
       console.log('[POST /vehicles] Vehicle created', { id: vehicle.id });
@@ -345,6 +392,18 @@ export const updateVehicle = async (
       return;
     }
 
+    // Se purchaseDate foi fornecido, usar como createdAt; caso contrário, manter o createdAt existente
+    const { purchaseDate, ...vehicleDataWithoutDate } = vehicleData;
+    const updateData: Record<string, unknown> = {
+      ...vehicleDataWithoutDate,
+      updatedAt: new Date(),
+    };
+    
+    // Se purchaseDate foi fornecido, atualizar createdAt
+    if (purchaseDate !== undefined) {
+      updateData.createdAt = purchaseDate;
+    }
+
     // Atualizar dados do veículo
     await prisma.vehicle.updateMany({
       where: {
@@ -352,10 +411,7 @@ export const updateVehicle = async (
         accountId,
         deletedAt: null,
       },
-      data: {
-        ...vehicleData,
-        updatedAt: new Date(),
-      },
+      data: updateData,
     });
 
     // 1. Processar imagens para deletar (primeiro)
@@ -731,9 +787,23 @@ export const getVehiclesMetrics = async (
       }
 
       // Tempo médio em estoque
-      const daysInStock = Math.floor(
-        (Date.now() - vehicle.createdAt.getTime()) / (1000 * 60 * 60 * 24)
-      );
+      // Buscar venda do veículo para obter data de venda (se vendido)
+      const sale = await prisma.sale.findFirst({
+        where: {
+          vehicleId: vehicle.id,
+          accountId,
+          deletedAt: null,
+        },
+        orderBy: { saleDate: 'desc' },
+        select: { saleDate: true },
+      });
+
+      // Calcular dias em estoque:
+      // - Se vendido: data de entrada até data de venda
+      // - Se ainda em estoque: data de entrada até hoje
+      const daysInStock = sale?.saleDate
+        ? daysDifferenceBrazil(vehicle.createdAt, sale.saleDate)
+        : daysDifferenceBrazil(vehicle.createdAt);
       totalDaysInStock += daysInStock;
       vehiclesWithDays++;
     }

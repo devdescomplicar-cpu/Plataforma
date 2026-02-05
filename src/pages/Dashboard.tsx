@@ -18,9 +18,8 @@ import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, LineChart, L
 import { useDashboardData } from '@/hooks/useDashboard';
 import { QueryErrorState } from '@/components/QueryErrorState';
 import { HiddenValue } from '@/contexts/AppContext';
-import { format } from 'date-fns';
-import { ptBR } from 'date-fns/locale';
 import { cn } from '@/lib/utils';
+import { formatDateBR } from '@/lib/date-br';
 import { useNavigate } from 'react-router-dom';
 import {
   Table,
@@ -48,8 +47,8 @@ const Dashboard = () => {
     if (period === 'custom' && startDate && endDate) {
       return {
         period: undefined,
-        startDate,
-        endDate,
+        startDate: format(startDate, 'yyyy-MM-dd'),
+        endDate: format(endDate, 'yyyy-MM-dd'),
       };
     }
     return { period };
@@ -139,7 +138,7 @@ const Dashboard = () => {
                 <Button variant="outline" className="gap-2">
                   <Calendar className="w-4 h-4" />
                   {startDate && endDate
-                    ? `${format(startDate, 'dd/MM/yyyy')} - ${format(endDate, 'dd/MM/yyyy')}`
+                    ? `${formatDateBR(startDate)} - ${formatDateBR(endDate)}`
                     : 'Selecionar datas'}
                 </Button>
               </PopoverTrigger>
@@ -204,7 +203,7 @@ const Dashboard = () => {
             className="flex flex-col items-center justify-center gap-2 rounded-xl border border-border/60 bg-background p-4 sm:p-5 text-center transition-colors hover:bg-muted/50 active:scale-[0.98] min-h-[120px] sm:min-h-[128px] touch-manipulation"
           >
             <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl overflow-hidden">
-              <img src={quickActionIcons.carMoto} alt="" className="h-10 w-10 object-contain object-center" loading="eager" fetchPriority="high" decoding="async" />
+              <img src={quickActionIcons.carMoto} alt="" className="h-10 w-10 object-contain object-center" loading="eager" fetchpriority="high" decoding="async" />
             </span>
             <span className="font-semibold text-foreground text-sm sm:text-base">Cadastrar veículo</span>
             <span className="text-xs text-muted-foreground">Novo veículo</span>
@@ -226,7 +225,7 @@ const Dashboard = () => {
             className="flex flex-col items-center justify-center gap-2 rounded-xl border border-border/60 bg-background p-4 sm:p-5 text-center transition-colors hover:bg-muted/50 active:scale-[0.98] min-h-[120px] sm:min-h-[128px] touch-manipulation"
           >
             <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl overflow-hidden">
-              <img src={quickActionIcons.handshake} alt="" className="h-10 w-10 object-contain object-center" loading="eager" fetchPriority="high" decoding="async" />
+              <img src={quickActionIcons.handshake} alt="" className="h-10 w-10 object-contain object-center" loading="eager" fetchpriority="high" decoding="async" />
             </span>
             <span className="font-semibold text-foreground text-sm sm:text-base">Registrar Venda</span>
             <span className="text-xs text-muted-foreground">Nova venda</span>
@@ -237,7 +236,7 @@ const Dashboard = () => {
             className="flex flex-col items-center justify-center gap-2 rounded-xl border border-border/60 bg-background p-4 sm:p-5 text-center transition-colors hover:bg-muted/50 active:scale-[0.98] min-h-[120px] sm:min-h-[128px] touch-manipulation"
           >
             <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl overflow-hidden">
-              <img src={quickActionIcons.expense} alt="" className="h-10 w-10 object-contain object-center" loading="eager" fetchPriority="high" decoding="async" />
+              <img src={quickActionIcons.expense} alt="" className="h-10 w-10 object-contain object-center" loading="eager" fetchpriority="high" decoding="async" />
             </span>
             <span className="font-semibold text-foreground text-sm sm:text-base">Adicionar Despesa</span>
             <span className="text-xs text-muted-foreground">Novo gasto</span>
@@ -578,7 +577,7 @@ const Dashboard = () => {
                       <HiddenValue value={formatCurrency(sale.value)} />
                     </span>
                     <span className="text-xs text-muted-foreground shrink-0">
-                      {format(new Date(sale.date), "dd 'de' MMM 'de' yyyy", { locale: ptBR })}
+                      {formatDateBR(sale.date)}
                     </span>
                   </div>
                 </div>
@@ -604,7 +603,7 @@ const Dashboard = () => {
                         <HiddenValue value={formatCurrency(sale.value)} />
                       </TableCell>
                       <TableCell className="text-muted-foreground">
-                        {format(new Date(sale.date), "dd 'de' MMM 'de' yyyy", { locale: ptBR })}
+                        {formatDateBR(sale.date)}
                       </TableCell>
                     </TableRow>
                   ))}

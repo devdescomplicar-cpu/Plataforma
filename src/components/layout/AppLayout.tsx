@@ -3,24 +3,30 @@ import { Outlet, useNavigate } from 'react-router-dom';
 import { Sidebar } from './Sidebar';
 import { Header } from './Header';
 import { BottomNav } from './BottomNav';
+import { PageLoader } from '@/components/PageLoader';
 import { useUser } from '@/hooks/useUser';
 import { usePushSubscribe } from '@/hooks/usePushSubscribe';
 import { apiClient } from '@/lib/api';
 
 export function AppLayout() {
   const navigate = useNavigate();
-  const { isError } = useUser();
+  const { data: userData, isLoading, isError, error } = useUser();
   usePushSubscribe();
 
   useEffect(() => {
     if (isError) {
       apiClient.setToken(null);
-      navigate('/login', { replace: true });
+      const isContaVencida = error?.message?.includes('Conta vencida') ?? false;
+      navigate('/login', { replace: true, state: isContaVencida ? { contaVencida: true } : undefined });
     }
-  }, [isError, navigate]);
+  }, [isError, error?.message, navigate]);
 
   if (isError) {
     return null;
+  }
+
+  if (isLoading || !userData) {
+    return <PageLoader />;
   }
 
   return (

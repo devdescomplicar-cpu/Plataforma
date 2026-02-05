@@ -11,6 +11,7 @@ const loaders = {
   "/clientes": () => import("@/pages/Clientes"),
   "/checklist": () => import("@/pages/Checklist"),
   "/perfil": () => import("@/pages/Perfil"),
+  "/colaboradores": () => import("@/pages/Colaboradores"),
   "/admin": () => import("@/pages/admin/AdminDashboard"),
   "/admin/usuarios": () => import("@/pages/admin/AdminUsuarios"),
   "/admin/clientes": () => import("@/pages/admin/AdminClientes"),
@@ -40,6 +41,7 @@ export const Configuracoes = lazy(loaders["/configuracoes"]);
 export const Clientes = lazy(loaders["/clientes"]);
 export const Checklist = lazy(loaders["/checklist"]);
 export const Perfil = lazy(loaders["/perfil"]);
+export const Colaboradores = lazy(loaders["/colaboradores"]);
 
 // Auth pages
 export const Login = lazy(() => import("@/pages/Login"));

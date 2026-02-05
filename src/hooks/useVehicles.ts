@@ -22,6 +22,7 @@ export interface VehicleResponse {
   description?: string;
   image?: string;
   totalExpenses?: number;
+  createdAt?: string;
   images?: Array<{
     id: string;
     url: string;
@@ -66,6 +67,7 @@ export interface CreateVehicleData {
   consignmentCommissionValue?: number;
   consignmentMinRepassValue?: number;
   consignmentStartDate?: Date;
+  purchaseDate?: Date; // Data de cadastro do veículo (permite retroativa)
   images?: File[];
 }
 

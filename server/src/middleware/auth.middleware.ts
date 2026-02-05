@@ -5,6 +5,10 @@ import { prisma } from '../services/prisma.service.js';
 export interface AuthRequest extends Request {
   userId?: string;
   accountId?: string;
+  /** True when the user is the account owner (Account.userId). */
+  isAccountOwner?: boolean;
+  /** For collaborators: 'manager' | 'seller'. For owner: 'owner'. */
+  collaboratorRole?: 'owner' | 'manager' | 'seller';
 }
 
 export const authMiddleware = async (
@@ -43,9 +47,24 @@ export const authMiddleware = async (
       return;
     }
 
-    let account = await prisma.account.findFirst({
+    // Conta pode ser do dono (Account.userId) ou de colaborador ativo (AccountCollaborator)
+    const accountAsOwner = await prisma.account.findFirst({
       where: { id: decoded.accountId, userId: user.id, deletedAt: null },
     });
+    const collaboration = await prisma.accountCollaborator.findFirst({
+      where: {
+        accountId: decoded.accountId,
+        userId: user.id,
+        status: 'active',
+        deletedAt: null,
+      },
+    });
+
+    const account = accountAsOwner ?? (collaboration
+      ? await prisma.account.findFirst({
+          where: { id: decoded.accountId, deletedAt: null },
+        })
+      : null);
 
     if (!account) {
       res.status(401).json({
@@ -54,6 +73,9 @@ export const authMiddleware = async (
       });
       return;
     }
+
+    req.isAccountOwner = !!accountAsOwner;
+    req.collaboratorRole = accountAsOwner ? 'owner' : (collaboration?.role === 'manager' ? 'manager' : 'seller');
 
     // Usuários comuns: se vencido ou data de vencimento passou, bloquear acesso
     if (user.role !== 'admin') {

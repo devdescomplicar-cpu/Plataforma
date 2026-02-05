@@ -9,6 +9,7 @@ import {
   ClipboardCheck,
   TrendingUp,
   Users,
+  UserCog,
   BarChart3,
   Settings,
   LogOut,
@@ -21,11 +22,12 @@ import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { Separator } from '@/components/ui/separator';
+import { Logo } from '@/components/Logo';
 
-const navigation = [
+const baseNavigation = [
   { name: 'Dashboard', href: '/', icon: LayoutDashboard },
   { name: 'Veículos', href: '/veiculos', icon: Car },
-  { name: 'Despesas', href: '/despesas', icon: Receipt },
+  { name: 'Despesas', href: '/despesas', icon: Receipt, hideForSeller: true },
   { name: 'Checklist', href: '/checklist', icon: ClipboardCheck },
   { name: 'Vendas', href: '/vendas', icon: TrendingUp },
   { name: 'Clientes', href: '/clientes', icon: Users },
@@ -47,7 +49,7 @@ export function Sidebar() {
 
   const handleLogout = () => {
     apiClient.setToken(null);
-    queryClient.removeQueries({ queryKey: ['user', 'me'] });
+    queryClient.removeQueries();
     setSidebarOpen(false);
     navigate('/login', { replace: true });
   };
@@ -70,19 +72,12 @@ export function Sidebar() {
         )}
       >
         {/* Logo */}
-        <div className="flex items-center justify-between px-4 lg:px-5 py-4 lg:py-6 shrink-0">
-          <Link to="/" className="flex items-center gap-2">
-            <div className="w-9 h-9 rounded-xl bg-primary flex items-center justify-center">
-              <Car className="w-5 h-5 text-primary-foreground" />
-            </div>
-            <span className="text-xl font-bold text-sidebar-primary tracking-tight">
-              Descompli<span className="text-primary">CAR</span>
-            </span>
-          </Link>
+        <div className="flex items-center justify-center px-4 lg:px-5 py-3 shrink-0 relative">
+          <Logo href="/" linkable showText={false} />
           <Button 
             variant="ghost" 
             size="icon" 
-            className="lg:hidden text-sidebar-foreground hover:bg-sidebar-accent"
+            className="lg:hidden absolute right-2 top-2 text-sidebar-foreground hover:bg-sidebar-accent"
             onClick={() => setSidebarOpen(false)}
           >
             <X className="w-5 h-5" />
@@ -92,25 +87,27 @@ export function Sidebar() {
         {/* Scrollable navigation area - sidebar-scroll garante scroll no iOS */}
         <div className="sidebar-scroll scrollbar-thin">
           <nav className="px-2 lg:px-3 py-2 space-y-1">
-            {navigation.map((item) => {
-              const isActive = location.pathname === item.href;
-              return (
-                <Link
-                  key={item.name}
-                  to={item.href}
-                  onClick={() => setSidebarOpen(false)}
-                  onMouseEnter={() => prefetchRoute(item.href)}
-                  onFocus={() => prefetchRoute(item.href)}
-                  className={cn(
-                    "nav-item",
-                    isActive && "active"
-                  )}
-                >
-                  <item.icon className="w-5 h-5 flex-shrink-0" />
-                  <span className="font-medium">{item.name}</span>
-                </Link>
-              );
-            })}
+            {baseNavigation
+              .filter((item) => !(userData?.collaboratorRole === 'seller' && 'hideForSeller' in item && item.hideForSeller))
+              .map((item) => {
+                const isActive = location.pathname === item.href;
+                return (
+                  <Link
+                    key={item.name}
+                    to={item.href}
+                    onClick={() => setSidebarOpen(false)}
+                    onMouseEnter={() => prefetchRoute(item.href)}
+                    onFocus={() => prefetchRoute(item.href)}
+                    className={cn(
+                      "nav-item",
+                      isActive && "active"
+                    )}
+                  >
+                    <item.icon className="w-5 h-5 flex-shrink-0" />
+                    <span className="font-medium">{item.name}</span>
+                  </Link>
+                );
+              })}
           </nav>
 
           <Separator className="bg-sidebar-border w-full" />
@@ -137,6 +134,21 @@ export function Sidebar() {
           <Separator className="bg-sidebar-border w-full" />
 
           <nav className="px-3 py-2 space-y-1 pb-2">
+            {userData?.isAccountOwner && (
+              <Link
+                to="/colaboradores"
+                onClick={() => setSidebarOpen(false)}
+                onMouseEnter={() => prefetchRoute('/colaboradores')}
+                onFocus={() => prefetchRoute('/colaboradores')}
+                className={cn(
+                  "nav-item",
+                  location.pathname === '/colaboradores' && "active"
+                )}
+              >
+                <UserCog className="w-5 h-5 flex-shrink-0" />
+                <span className="font-medium">Colaboradores</span>
+              </Link>
+            )}
             {bottomNavigation.map((item) => {
               const isActive = location.pathname === item.href;
               return (

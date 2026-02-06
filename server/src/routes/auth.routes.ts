@@ -98,10 +98,10 @@ router.post('/register', async (req: Request, res: Response) => {
       },
     });
 
-    // Criar conta padrão
+    // Criar conta padrão (nome da empresa zerado; usuário preenche em Configurações)
     const account = await prisma.account.create({
       data: {
-        name: `${name}'s Account`,
+        name: '',
         userId: user.id,
         status: 'active',
       },
@@ -205,7 +205,7 @@ router.post('/login', async (req: Request, res: Response) => {
         }
         account = await prisma.account.create({
           data: {
-            name: `${user.name}'s Account`,
+            name: '',
             userId: user.id,
             status: 'active',
           },

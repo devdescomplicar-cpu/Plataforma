@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useTheme } from 'next-themes';
 import { Search, Eye, EyeOff, Bell, BellOff, LogOut, Download, User, Settings } from 'lucide-react';
 import { ThemeToggle } from '@/components/ui/theme-toggle';
 import { useApp } from '@/contexts/AppContext';
@@ -24,6 +25,7 @@ import { Logo } from '@/components/Logo';
 export function Header() {
   const navigate = useNavigate();
   const queryClient = useQueryClient();
+  const { resolvedTheme } = useTheme();
   const { hideValues, toggleHideValues } = useApp();
   const { showInstructions, isStandalone } = usePwaInstallContext();
   const { data: userData } = useUser();
@@ -31,6 +33,7 @@ export function Header() {
   const initials = user?.name ? user.name.trim().split(/\s+/).map((n) => n[0]).join('').slice(0, 2).toUpperCase() : 'U';
   const [pushLoading, setPushLoading] = useState(false);
   const [pushEnabled, setPushEnabled] = useState(false);
+  const isLightTheme = resolvedTheme === 'light';
   const canAskPush =
     typeof window !== 'undefined' &&
     'Notification' in window &&
@@ -61,7 +64,7 @@ export function Header() {
         <div className="flex items-center gap-2 sm:gap-4">
           {/* Logo - visível apenas em mobile e tablet (até lg) */}
           <div className="lg:hidden flex-shrink-0">
-            <Logo href="/" linkable showText={false} size="small" />
+            <Logo href="/" linkable showText={false} size="small" variant={isLightTheme ? 'light' : 'default'} />
           </div>
           {/* Search - visível apenas em desktop (lg+) */}
           <div className="hidden lg:flex relative w-48 xl:w-64 2xl:w-80">

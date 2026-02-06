@@ -20,14 +20,13 @@ import { ptBR } from 'date-fns/locale';
 import { cn } from '@/lib/utils';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, LineChart, Line, Legend } from 'recharts';
 
-type PeriodType = 'current-month' | 'last-month' | '3m' | '6m' | 'custom';
+type PeriodType = 'current-month' | 'last-month' | '3m' | '6m' | '12m' | 'custom';
 
 export default function AdminRelatorios() {
   const [period, setPeriod] = useState<PeriodType>('current-month');
   const [startDate, setStartDate] = useState<Date | undefined>();
   const [endDate, setEndDate] = useState<Date | undefined>();
   const [isDatePickerOpen, setIsDatePickerOpen] = useState(false);
-  const [revenueChartType, setRevenueChartType] = useState<'day' | 'month'>('day');
 
   const getReportParams = () => {
     if (period === 'custom' && startDate && endDate) {
@@ -135,6 +134,7 @@ export default function AdminRelatorios() {
                 <SelectItem value="last-month">Mês passado</SelectItem>
                 <SelectItem value="3m">Últimos 3 meses</SelectItem>
                 <SelectItem value="6m">Últimos 6 meses</SelectItem>
+                <SelectItem value="12m">Últimos 12 meses</SelectItem>
                 <SelectItem value="custom">Personalizado</SelectItem>
               </SelectContent>
             </Select>
@@ -333,41 +333,42 @@ export default function AdminRelatorios() {
                 {/* Revenue Over Time */}
                 <Card className="card-elevated">
                   <CardHeader>
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <CardTitle>Faturamento no Tempo</CardTitle>
-                        <CardDescription>Evolução da receita</CardDescription>
-                      </div>
-                      <div className="flex gap-2">
-                        <Button
-                          variant={revenueChartType === 'day' ? 'default' : 'outline'}
-                          size="sm"
-                          onClick={() => setRevenueChartType('day')}
-                        >
-                          Dia
-                        </Button>
-                        <Button
-                          variant={revenueChartType === 'month' ? 'default' : 'outline'}
-                          size="sm"
-                          onClick={() => setRevenueChartType('month')}
-                        >
-                          Mês
-                        </Button>
-                      </div>
+                    <div>
+                      <CardTitle>Faturamento no Tempo</CardTitle>
+                      <CardDescription>Evolução da receita</CardDescription>
                     </div>
                   </CardHeader>
                   <CardContent>
                     <ResponsiveContainer width="100%" height={350}>
                       <LineChart data={financialData.revenueOverTime} margin={{ top: 5, right: 20, bottom: 5, left: 0 }}>
-                        <XAxis 
-                          dataKey="date" 
-                          tick={{ fill: 'hsl(var(--muted-foreground))', fontSize: 12 }}
-                          tickFormatter={(value) => {
-                            try {
-                              return format(new Date(value), "dd/MM", { locale: ptBR });
-                            } catch {
-                              return value;
+                        <XAxis
+                          dataKey="date"
+                          stroke="hsl(var(--muted-foreground))"
+                          fontSize={11}
+                          angle={0}
+                          textAnchor="middle"
+                          height={50}
+                          ticks={financialData.revenueOverTime
+                            .filter((item: any) => item.showTick !== false)
+                            .map((item: any) => item.date)}
+                          tick={(props: any) => {
+                            const { payload, x, y } = props;
+                            const dataPoint = financialData.revenueOverTime.find((d: any) => d.date === payload.value);
+                            if (dataPoint && 'showLabel' in dataPoint && dataPoint.showLabel === false) {
+                              return null;
                             }
+                            return (
+                              <text
+                                x={x}
+                                y={y}
+                                dy={16}
+                                fill="hsl(var(--muted-foreground))"
+                                fontSize={11}
+                                textAnchor="middle"
+                              >
+                                {payload.value}
+                              </text>
+                            );
                           }}
                         />
                         <YAxis 
@@ -375,19 +376,30 @@ export default function AdminRelatorios() {
                           tickFormatter={(value) => formatCurrency(value)}
                         />
                         <Tooltip
-                          formatter={(value: number) => [formatCurrency(value), 'Faturamento']}
-                          labelFormatter={(label) => {
-                            try {
-                              return format(new Date(label), "dd/MM/yyyy", { locale: ptBR });
-                            } catch {
-                              return label;
-                            }
-                          }}
-                          contentStyle={{ 
-                            backgroundColor: 'hsl(var(--background))', 
+                          contentStyle={{
+                            backgroundColor: 'hsl(var(--popover))',
                             border: '1px solid hsl(var(--border))',
-                            borderRadius: '8px'
+                            borderRadius: '8px',
+                            padding: '12px',
+                            boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
                           }}
+                          labelStyle={{
+                            fontWeight: 600,
+                            fontSize: '13px',
+                            marginBottom: '8px',
+                            color: 'hsl(var(--foreground))',
+                          }}
+                          itemStyle={{
+                            fontSize: '12px',
+                            color: 'hsl(var(--muted-foreground))',
+                          }}
+                          labelFormatter={(label, payload) => {
+                            if (payload && payload[0] && payload[0].payload && payload[0].payload.tooltipDate) {
+                              return payload[0].payload.tooltipDate;
+                            }
+                            return label;
+                          }}
+                          formatter={(value: number) => [formatCurrency(value), 'Faturamento']}
                         />
                         <Line
                           type="monotone"
@@ -411,15 +423,34 @@ export default function AdminRelatorios() {
                   <CardContent>
                     <ResponsiveContainer width="100%" height={350}>
                       <LineChart data={financialData.mrrOverTime} margin={{ top: 5, right: 20, bottom: 5, left: 0 }}>
-                        <XAxis 
-                          dataKey="date" 
-                          tick={{ fill: 'hsl(var(--muted-foreground))', fontSize: 12 }}
-                          tickFormatter={(value) => {
-                            try {
-                              return format(new Date(value), "MM/yyyy", { locale: ptBR });
-                            } catch {
-                              return value;
+                        <XAxis
+                          dataKey="date"
+                          stroke="hsl(var(--muted-foreground))"
+                          fontSize={11}
+                          angle={0}
+                          textAnchor="middle"
+                          height={50}
+                          ticks={financialData.mrrOverTime
+                            .filter((item: any) => item.showTick !== false)
+                            .map((item: any) => item.date)}
+                          tick={(props: any) => {
+                            const { payload, x, y } = props;
+                            const dataPoint = financialData.mrrOverTime.find((d: any) => d.date === payload.value);
+                            if (dataPoint && 'showLabel' in dataPoint && dataPoint.showLabel === false) {
+                              return null;
                             }
+                            return (
+                              <text
+                                x={x}
+                                y={y}
+                                dy={16}
+                                fill="hsl(var(--muted-foreground))"
+                                fontSize={11}
+                                textAnchor="middle"
+                              >
+                                {payload.value}
+                              </text>
+                            );
                           }}
                         />
                         <YAxis 
@@ -427,19 +458,30 @@ export default function AdminRelatorios() {
                           tickFormatter={(value) => formatCurrency(value)}
                         />
                         <Tooltip
-                          formatter={(value: number) => [formatCurrency(value), 'MRR']}
-                          labelFormatter={(label) => {
-                            try {
-                              return format(new Date(label), "MM/yyyy", { locale: ptBR });
-                            } catch {
-                              return label;
-                            }
-                          }}
-                          contentStyle={{ 
-                            backgroundColor: 'hsl(var(--background))', 
+                          contentStyle={{
+                            backgroundColor: 'hsl(var(--popover))',
                             border: '1px solid hsl(var(--border))',
-                            borderRadius: '8px'
+                            borderRadius: '8px',
+                            padding: '12px',
+                            boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
                           }}
+                          labelStyle={{
+                            fontWeight: 600,
+                            fontSize: '13px',
+                            marginBottom: '8px',
+                            color: 'hsl(var(--foreground))',
+                          }}
+                          itemStyle={{
+                            fontSize: '12px',
+                            color: 'hsl(var(--muted-foreground))',
+                          }}
+                          labelFormatter={(label, payload) => {
+                            if (payload && payload[0] && payload[0].payload && payload[0].payload.tooltipDate) {
+                              return payload[0].payload.tooltipDate;
+                            }
+                            return label;
+                          }}
+                          formatter={(value: number) => [formatCurrency(value), 'MRR']}
                         />
                         <Line
                           type="monotone"

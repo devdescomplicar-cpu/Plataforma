@@ -47,6 +47,9 @@ export const Colaboradores = lazy(loaders["/colaboradores"]);
 export const Login = lazy(() => import("@/pages/Login"));
 export const ResetPassword = lazy(() => import("@/pages/ResetPassword"));
 
+// Public pages
+export const Planos = lazy(() => import("@/pages/Planos"));
+
 // Fallback
 export const NotFound = lazy(() => import("@/pages/NotFound"));
 

@@ -22,13 +22,12 @@ import { format } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
 import { cn } from '@/lib/utils';
 
-type PeriodType = 'current-month' | 'last-month' | '3m' | '6m' | 'custom';
+type PeriodType = 'current-month' | 'last-month' | '3m' | '6m' | '12m' | 'custom';
 
 const Relatorios = () => {
   const [period, setPeriod] = useState<PeriodType>('current-month');
   const [startDate, setStartDate] = useState<Date | undefined>();
   const [endDate, setEndDate] = useState<Date | undefined>();
-  const [salesChartType, setSalesChartType] = useState<'vendas' | 'lucro'>('vendas');
   const [isDatePickerOpen, setIsDatePickerOpen] = useState(false);
   const [reportTab, setReportTab] = useState<'negocio' | 'colaboradores'>('negocio');
   const [selectedCollaboratorId, setSelectedCollaboratorId] = useState<string | null>(null);
@@ -84,9 +83,13 @@ const Relatorios = () => {
     }).format(value);
   };
 
-  // Preparar dados para gráfico de vendas
+  // Preparar dados para gráfico de vendas (usando date se disponível, senão month)
   const salesChartData = vendasMensais.map((v) => ({
-    month: v.month,
+    month: v.date || v.month,
+    date: v.date || v.month,
+    tooltipDate: v.tooltipDate,
+    showLabel: v.showLabel,
+    showTick: v.showTick,
     vendas: v.vendas,
     faturamento: v.faturamento,
     lucro: v.lucro,
@@ -134,20 +137,23 @@ const Relatorios = () => {
       color: item.color || ['hsl(var(--success))', 'hsl(var(--info))', 'hsl(var(--primary))', 'hsl(var(--warning))', 'hsl(var(--destructive))'][i % 5],
     }));
 
-  // Preparar dados para evolução do lucro (com cores)
-  const profitChartData = vendasMensais.map((v, index) => {
-    const prevLucro = index > 0 ? vendasMensais[index - 1].lucro : v.lucro;
-    const isPositive = v.lucro >= prevLucro;
-    return {
-      month: v.month,
-      lucro: v.lucro,
-      isPositive,
-    };
-  });
+  // Preparar dados para evolução do lucro
+  const profitChartData = vendasMensais.map((v) => ({
+    month: v.date || v.month,
+    date: v.date || v.month,
+    tooltipDate: v.tooltipDate,
+    showLabel: v.showLabel,
+    showTick: v.showTick,
+    lucro: v.lucro,
+  }));
 
   // Preparar dados para tempo médio em estoque
   const stockTimeData = vendasMensais.map((v) => ({
-    month: v.month,
+    month: v.date || v.month,
+    date: v.date || v.month,
+    tooltipDate: v.tooltipDate,
+    showLabel: v.showLabel,
+    showTick: v.showTick,
     dias: v.tempoMedioEstoque,
   }));
 
@@ -206,6 +212,7 @@ const Relatorios = () => {
                 <SelectItem value="last-month">Mês passado</SelectItem>
                 <SelectItem value="3m">Últimos 3 meses</SelectItem>
                 <SelectItem value="6m">Últimos 6 meses</SelectItem>
+                <SelectItem value="12m">Últimos 12 meses</SelectItem>
                 <SelectItem value="custom">Personalizado</SelectItem>
               </SelectContent>
             </Select>
@@ -387,6 +394,7 @@ const Relatorios = () => {
               <SelectItem value="last-month">Mês passado</SelectItem>
               <SelectItem value="3m">Últimos 3 meses</SelectItem>
               <SelectItem value="6m">Últimos 6 meses</SelectItem>
+              <SelectItem value="12m">Últimos 12 meses</SelectItem>
               <SelectItem value="custom">Personalizado</SelectItem>
             </SelectContent>
           </Select>
@@ -559,141 +567,68 @@ const Relatorios = () => {
 
       {/* Charts */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5 lg:gap-6">
-        {/* Vendas por Mês com Toggle */}
+        {/* 1. Faturamento por Mês (R$) */}
         <div className="card-elevated p-6">
-          <div className="flex items-center justify-between mb-4">
-            <h3 className="font-semibold text-foreground">Vendas por Mês</h3>
-            <Tabs value={salesChartType} onValueChange={(v) => setSalesChartType(v as any)}>
-              <TabsList>
-                <TabsTrigger value="vendas" className="text-xs">Quantidade</TabsTrigger>
-                <TabsTrigger value="lucro" className="text-xs">Lucro</TabsTrigger>
-              </TabsList>
-            </Tabs>
-          </div>
-          <div className="h-[300px]">
-            <ResponsiveContainer width="100%" height="100%">
-              <BarChart data={salesChartData}>
-                <XAxis dataKey="month" stroke="hsl(var(--muted-foreground))" fontSize={12} />
-                <YAxis stroke="hsl(var(--muted-foreground))" fontSize={12} />
-                <Tooltip
-                  contentStyle={{
-                    backgroundColor: 'hsl(var(--popover))',
-                    border: '1px solid hsl(var(--border))',
-                    borderRadius: '8px',
-                  }}
-                  formatter={(value: number) => {
-                    if (salesChartType === 'vendas') {
-                      return [`${value}`, 'Vendas'];
-                    }
-                    return [`R$ ${Number(value).toLocaleString('pt-BR')}`, 'Lucro'];
-                  }}
-                />
-                <Bar 
-                  dataKey={salesChartType} 
-                  fill={salesChartType === 'lucro' ? 'hsl(var(--success))' : 'hsl(var(--primary))'} 
-                  radius={[4, 4, 0, 0]} 
-                />
-              </BarChart>
-            </ResponsiveContainer>
-          </div>
-        </div>
-
-        {/* Evolução do Lucro */}
-        <div className="card-elevated p-6">
-          <h3 className="font-semibold text-foreground mb-4">Evolução do Lucro</h3>
-          <div className="h-[300px]">
-            <ResponsiveContainer width="100%" height="100%">
-              <LineChart data={profitChartData}>
-                <XAxis dataKey="month" stroke="hsl(var(--muted-foreground))" fontSize={12} />
-                <YAxis stroke="hsl(var(--muted-foreground))" fontSize={12} />
-                <Tooltip
-                  contentStyle={{
-                    backgroundColor: 'hsl(var(--popover))',
-                    border: '1px solid hsl(var(--border))',
-                    borderRadius: '8px',
-                  }}
-                  formatter={(value: number) => [`R$ ${Number(value).toLocaleString('pt-BR')}`, 'Lucro']}
-                />
-                <Line
-                  type="monotone"
-                  dataKey="lucro"
-                  stroke="hsl(var(--success))"
-                  strokeWidth={2}
-                  dot={(props: any) => {
-                    const dataIndex = props.payload?.index ?? props.index ?? 0;
-                    const isPositive = profitChartData[dataIndex]?.isPositive ?? true;
-                    const color = isPositive ? 'hsl(var(--success))' : 'hsl(var(--destructive))';
-                    return (
-                      <circle
-                        key={`dot-${props.index ?? dataIndex}`}
-                        cx={props.cx}
-                        cy={props.cy}
-                        r={4}
-                        fill={color}
-                        stroke={color}
-                        strokeWidth={2}
-                      />
-                    );
-                  }}
-                  activeDot={(props: any) => {
-                    const dataIndex = props.payload?.index ?? props.index ?? 0;
-                    const isPositive = profitChartData[dataIndex]?.isPositive ?? true;
-                    const color = isPositive ? 'hsl(var(--success))' : 'hsl(var(--destructive))';
-                    return (
-                      <circle
-                        key={`activeDot-${props.index ?? dataIndex}`}
-                        cx={props.cx}
-                        cy={props.cy}
-                        r={6}
-                        fill={color}
-                        stroke={color}
-                        strokeWidth={2}
-                      />
-                    );
-                  }}
-                />
-              </LineChart>
-            </ResponsiveContainer>
-          </div>
-        </div>
-
-        {/* Tempo Médio em Estoque */}
-        <div className="card-elevated p-6">
-          <h3 className="font-semibold text-foreground mb-4">Tempo Médio em Estoque</h3>
-          <div className="h-[300px]">
-            <ResponsiveContainer width="100%" height="100%">
-              <BarChart data={stockTimeData}>
-                <XAxis dataKey="month" stroke="hsl(var(--muted-foreground))" fontSize={12} />
-                <YAxis stroke="hsl(var(--muted-foreground))" fontSize={12} label={{ value: 'Dias', angle: -90, position: 'insideLeft' }} />
-                <Tooltip
-                  contentStyle={{
-                    backgroundColor: 'hsl(var(--popover))',
-                    border: '1px solid hsl(var(--border))',
-                    borderRadius: '8px',
-                  }}
-                  formatter={(value: number) => [`${value} dias`, 'Tempo médio']}
-                />
-                <Bar dataKey="dias" fill="hsl(var(--info))" radius={[4, 4, 0, 0]} />
-              </BarChart>
-            </ResponsiveContainer>
-          </div>
-        </div>
-
-        {/* Faturamento por Mês */}
-        <div className="card-elevated p-6">
-          <h3 className="font-semibold text-foreground mb-4">Faturamento por Mês</h3>
+          <h3 className="font-semibold text-foreground mb-4">Faturamento por Mês (R$)</h3>
           <div className="h-[300px]">
             <ResponsiveContainer width="100%" height="100%">
               <LineChart data={salesChartData}>
-                <XAxis dataKey="month" stroke="hsl(var(--muted-foreground))" fontSize={12} />
+                <XAxis
+                  dataKey="month"
+                  stroke="hsl(var(--muted-foreground))"
+                  fontSize={11}
+                  angle={0}
+                  textAnchor="middle"
+                  height={50}
+                  ticks={salesChartData
+                    .filter((item) => item.showTick !== false)
+                    .map((item) => item.month)}
+                  tick={(props) => {
+                    const { payload, x, y } = props;
+                    const dataPoint = salesChartData.find(d => d.month === payload.value);
+                    if (dataPoint && 'showLabel' in dataPoint && dataPoint.showLabel === false) {
+                      return null;
+                    }
+                    return (
+                      <text
+                        x={x}
+                        y={y}
+                        dy={16}
+                        fill="hsl(var(--muted-foreground))"
+                        fontSize={11}
+                        textAnchor="middle"
+                      >
+                        {payload.value}
+                      </text>
+                    );
+                  }}
+                />
                 <YAxis stroke="hsl(var(--muted-foreground))" fontSize={12} />
                 <Tooltip
                   contentStyle={{
                     backgroundColor: 'hsl(var(--popover))',
                     border: '1px solid hsl(var(--border))',
                     borderRadius: '8px',
+                    padding: '12px',
+                    boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
                   }}
-                  formatter={(value: number) => [`R$ ${Number(value).toLocaleString('pt-BR')}`, 'Faturamento']}
+                  labelStyle={{
+                    fontWeight: 600,
+                    fontSize: '13px',
+                    marginBottom: '8px',
+                    color: 'hsl(var(--foreground))',
+                  }}
+                  itemStyle={{
+                    fontSize: '12px',
+                    color: 'hsl(var(--muted-foreground))',
+                  }}
+                  labelFormatter={(label, payload) => {
+                    if (payload && payload[0] && payload[0].payload && payload[0].payload.tooltipDate) {
+                      return payload[0].payload.tooltipDate;
+                    }
+                    return label;
+                  }}
+                  formatter={(value: number) => [`R$ ${Number(value).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`, 'Faturamento']}
                 />
                 <Line
                   type="monotone"
@@ -704,6 +639,224 @@ const Relatorios = () => {
                   activeDot={{ r: 6 }}
                 />
               </LineChart>
+            </ResponsiveContainer>
+          </div>
+        </div>
+
+        {/* 2. Vendas por Mês (Quantidade) */}
+        <div className="card-elevated p-6">
+          <h3 className="font-semibold text-foreground mb-4">Vendas por Mês (Quantidade)</h3>
+          <div className="h-[300px]">
+            <ResponsiveContainer width="100%" height="100%">
+              <BarChart data={salesChartData}>
+                <XAxis
+                  dataKey="month"
+                  stroke="hsl(var(--muted-foreground))"
+                  fontSize={11}
+                  angle={0}
+                  textAnchor="middle"
+                  height={50}
+                  ticks={salesChartData
+                    .filter((item) => item.showTick !== false)
+                    .map((item) => item.month)}
+                  tick={(props) => {
+                    const { payload, x, y } = props;
+                    const dataPoint = salesChartData.find(d => d.month === payload.value);
+                    if (dataPoint && 'showLabel' in dataPoint && dataPoint.showLabel === false) {
+                      return null;
+                    }
+                    return (
+                      <text
+                        x={x}
+                        y={y}
+                        dy={16}
+                        fill="hsl(var(--muted-foreground))"
+                        fontSize={11}
+                        textAnchor="middle"
+                      >
+                        {payload.value}
+                      </text>
+                    );
+                  }}
+                />
+                <YAxis stroke="hsl(var(--muted-foreground))" fontSize={12} />
+                <Tooltip
+                  contentStyle={{
+                    backgroundColor: 'hsl(var(--popover))',
+                    border: '1px solid hsl(var(--border))',
+                    borderRadius: '8px',
+                    padding: '12px',
+                    boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
+                  }}
+                  labelStyle={{
+                    fontWeight: 600,
+                    fontSize: '13px',
+                    marginBottom: '8px',
+                    color: 'hsl(var(--foreground))',
+                  }}
+                  itemStyle={{
+                    fontSize: '12px',
+                    color: 'hsl(var(--muted-foreground))',
+                  }}
+                  labelFormatter={(label, payload) => {
+                    if (payload && payload[0] && payload[0].payload && payload[0].payload.tooltipDate) {
+                      return payload[0].payload.tooltipDate;
+                    }
+                    return label;
+                  }}
+                  formatter={(value: number) => [`${value}`, 'Vendas']}
+                />
+                <Bar
+                  dataKey="vendas"
+                  fill="hsl(var(--primary))"
+                  radius={[4, 4, 0, 0]}
+                />
+              </BarChart>
+            </ResponsiveContainer>
+          </div>
+        </div>
+
+        {/* 3. Evolução do Lucro */}
+        <div className="card-elevated p-6">
+          <h3 className="font-semibold text-foreground mb-4">Evolução do Lucro</h3>
+          <div className="h-[300px]">
+            <ResponsiveContainer width="100%" height="100%">
+              <LineChart data={profitChartData}>
+                <XAxis
+                  dataKey="month"
+                  stroke="hsl(var(--muted-foreground))"
+                  fontSize={11}
+                  angle={0}
+                  textAnchor="middle"
+                  height={50}
+                  ticks={profitChartData
+                    .filter((item) => item.showTick !== false)
+                    .map((item) => item.month)}
+                  tick={(props) => {
+                    const { payload, x, y } = props;
+                    const dataPoint = profitChartData.find(d => d.month === payload.value);
+                    if (dataPoint && 'showLabel' in dataPoint && dataPoint.showLabel === false) {
+                      return null;
+                    }
+                    return (
+                      <text
+                        x={x}
+                        y={y}
+                        dy={16}
+                        fill="hsl(var(--muted-foreground))"
+                        fontSize={11}
+                        textAnchor="middle"
+                      >
+                        {payload.value}
+                      </text>
+                    );
+                  }}
+                />
+                <YAxis stroke="hsl(var(--muted-foreground))" fontSize={12} />
+                <Tooltip
+                  contentStyle={{
+                    backgroundColor: 'hsl(var(--popover))',
+                    border: '1px solid hsl(var(--border))',
+                    borderRadius: '8px',
+                    padding: '12px',
+                    boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
+                  }}
+                  labelStyle={{
+                    fontWeight: 600,
+                    fontSize: '13px',
+                    marginBottom: '8px',
+                    color: 'hsl(var(--foreground))',
+                  }}
+                  itemStyle={{
+                    fontSize: '12px',
+                    color: 'hsl(var(--muted-foreground))',
+                  }}
+                  labelFormatter={(label, payload) => {
+                    if (payload && payload[0] && payload[0].payload && payload[0].payload.tooltipDate) {
+                      return payload[0].payload.tooltipDate;
+                    }
+                    return label;
+                  }}
+                  formatter={(value: number) => [`R$ ${Number(value).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`, 'Lucro']}
+                />
+                <Line
+                  type="monotone"
+                  dataKey="lucro"
+                  stroke="hsl(var(--success))"
+                  strokeWidth={2}
+                  dot={{ fill: 'hsl(var(--success))', strokeWidth: 2, r: 4 }}
+                  activeDot={{ r: 6 }}
+                />
+              </LineChart>
+            </ResponsiveContainer>
+          </div>
+        </div>
+
+        {/* 4. Tempo Médio em Estoque */}
+        <div className="card-elevated p-6">
+          <h3 className="font-semibold text-foreground mb-4">Tempo Médio em Estoque</h3>
+          <div className="h-[300px]">
+            <ResponsiveContainer width="100%" height="100%">
+              <BarChart data={stockTimeData}>
+                <XAxis
+                  dataKey="month"
+                  stroke="hsl(var(--muted-foreground))"
+                  fontSize={11}
+                  angle={0}
+                  textAnchor="middle"
+                  height={50}
+                  ticks={stockTimeData
+                    .filter((item) => item.showTick !== false)
+                    .map((item) => item.month)}
+                  tick={(props) => {
+                    const { payload, x, y } = props;
+                    const dataPoint = stockTimeData.find(d => d.month === payload.value);
+                    if (dataPoint && 'showLabel' in dataPoint && dataPoint.showLabel === false) {
+                      return null;
+                    }
+                    return (
+                      <text
+                        x={x}
+                        y={y}
+                        dy={16}
+                        fill="hsl(var(--muted-foreground))"
+                        fontSize={11}
+                        textAnchor="middle"
+                      >
+                        {payload.value}
+                      </text>
+                    );
+                  }}
+                />
+                <YAxis stroke="hsl(var(--muted-foreground))" fontSize={12} label={{ value: 'Dias', angle: -90, position: 'insideLeft' }} />
+                <Tooltip
+                  contentStyle={{
+                    backgroundColor: 'hsl(var(--popover))',
+                    border: '1px solid hsl(var(--border))',
+                    borderRadius: '8px',
+                    padding: '12px',
+                    boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
+                  }}
+                  labelStyle={{
+                    fontWeight: 600,
+                    fontSize: '13px',
+                    marginBottom: '8px',
+                    color: 'hsl(var(--foreground))',
+                  }}
+                  itemStyle={{
+                    fontSize: '12px',
+                    color: 'hsl(var(--muted-foreground))',
+                  }}
+                  labelFormatter={(label, payload) => {
+                    if (payload && payload[0] && payload[0].payload && payload[0].payload.tooltipDate) {
+                      return payload[0].payload.tooltipDate;
+                    }
+                    return label;
+                  }}
+                  formatter={(value: number) => [`${value} dias`, 'Tempo médio']}
+                />
+                <Bar dataKey="dias" fill="hsl(var(--info))" radius={[4, 4, 0, 0]} />
+              </BarChart>
             </ResponsiveContainer>
           </div>
         </div>
@@ -736,21 +889,27 @@ const Relatorios = () => {
                       backgroundColor: 'hsl(var(--popover))',
                       border: '1px solid hsl(var(--border))',
                       borderRadius: '8px',
-                      padding: '8px 12px',
-                      fontSize: '12px',
+                      padding: '12px',
+                      boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
                       maxWidth: 'calc(100vw - 40px)',
                     }}
                     wrapperStyle={{
                       maxWidth: 'calc(100vw - 40px)',
                     }}
                     formatter={(value: number, name: string, props: any) => [
-                      `R$ ${Number(value).toLocaleString('pt-BR')}`,
+                      `R$ ${Number(value).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`,
                       `Lucro (Margem: ${props.payload.margem.toFixed(1)}%)`,
                     ]}
                     labelFormatter={(label) => `Veículo: ${label}`}
                     labelStyle={{
-                      fontSize: '11px',
-                      marginBottom: '4px',
+                      fontWeight: 600,
+                      fontSize: '13px',
+                      marginBottom: '8px',
+                      color: 'hsl(var(--foreground))',
+                    }}
+                    itemStyle={{
+                      fontSize: '12px',
+                      color: 'hsl(var(--muted-foreground))',
                     }}
                   />
                   <Bar
@@ -796,21 +955,27 @@ const Relatorios = () => {
                       backgroundColor: 'hsl(var(--popover))',
                       border: '1px solid hsl(var(--border))',
                       borderRadius: '8px',
-                      padding: '8px 12px',
-                      fontSize: '12px',
+                      padding: '12px',
+                      boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
                       maxWidth: 'calc(100vw - 40px)',
                     }}
                     wrapperStyle={{
                       maxWidth: 'calc(100vw - 40px)',
                     }}
                     formatter={(value: number, name: string, props: any) => [
-                      `R$ ${Number(value).toLocaleString('pt-BR')}`,
+                      `R$ ${Number(value).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`,
                       `Lucro (Margem: ${props.payload.margem.toFixed(1)}%)`,
                     ]}
                     labelFormatter={(label) => `Marca: ${label}`}
                     labelStyle={{
-                      fontSize: '11px',
-                      marginBottom: '4px',
+                      fontWeight: 600,
+                      fontSize: '13px',
+                      marginBottom: '8px',
+                      color: 'hsl(var(--foreground))',
+                    }}
+                    itemStyle={{
+                      fontSize: '12px',
+                      color: 'hsl(var(--muted-foreground))',
                     }}
                   />
                   <Bar
@@ -859,8 +1024,8 @@ const Relatorios = () => {
                       backgroundColor: 'hsl(var(--popover))',
                       border: '1px solid hsl(var(--border))',
                       borderRadius: '8px',
-                      padding: '8px 12px',
-                      fontSize: '12px',
+                      padding: '12px',
+                      boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
                       maxWidth: 'calc(100vw - 40px)',
                     }}
                     wrapperStyle={{
@@ -872,8 +1037,14 @@ const Relatorios = () => {
                     ]}
                     labelFormatter={(label) => `Veículo: ${label}`}
                     labelStyle={{
-                      fontSize: '11px',
-                      marginBottom: '4px',
+                      fontWeight: 600,
+                      fontSize: '13px',
+                      marginBottom: '8px',
+                      color: 'hsl(var(--foreground))',
+                    }}
+                    itemStyle={{
+                      fontSize: '12px',
+                      color: 'hsl(var(--muted-foreground))',
                     }}
                   />
                   <Bar
@@ -919,8 +1090,8 @@ const Relatorios = () => {
                       backgroundColor: 'hsl(var(--popover))',
                       border: '1px solid hsl(var(--border))',
                       borderRadius: '8px',
-                      padding: '8px 12px',
-                      fontSize: '12px',
+                      padding: '12px',
+                      boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
                       maxWidth: 'calc(100vw - 40px)',
                     }}
                     wrapperStyle={{
@@ -932,8 +1103,14 @@ const Relatorios = () => {
                     ]}
                     labelFormatter={(label) => `Veículo: ${label}`}
                     labelStyle={{
-                      fontSize: '11px',
-                      marginBottom: '4px',
+                      fontWeight: 600,
+                      fontSize: '13px',
+                      marginBottom: '8px',
+                      color: 'hsl(var(--foreground))',
+                    }}
+                    itemStyle={{
+                      fontSize: '12px',
+                      color: 'hsl(var(--muted-foreground))',
                     }}
                   />
                   <Bar
@@ -1048,7 +1225,23 @@ const Relatorios = () => {
                             <XAxis dataKey="month" stroke="hsl(var(--muted-foreground))" fontSize={12} />
                             <YAxis stroke="hsl(var(--muted-foreground))" fontSize={12} tickFormatter={(v) => `R$ ${(v / 1000).toFixed(0)}k`} />
                             <Tooltip
-                              contentStyle={{ backgroundColor: 'hsl(var(--popover))', border: '1px solid hsl(var(--border))', borderRadius: '8px' }}
+                              contentStyle={{
+                                backgroundColor: 'hsl(var(--popover))',
+                                border: '1px solid hsl(var(--border))',
+                                borderRadius: '8px',
+                                padding: '12px',
+                                boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
+                              }}
+                              labelStyle={{
+                                fontWeight: 600,
+                                fontSize: '13px',
+                                marginBottom: '8px',
+                                color: 'hsl(var(--foreground))',
+                              }}
+                              itemStyle={{
+                                fontSize: '12px',
+                                color: 'hsl(var(--muted-foreground))',
+                              }}
                               formatter={(value: number) => [formatCurrency(value), 'Comissão']}
                             />
                             <Line type="monotone" dataKey="comissao" name="Comissão" stroke="hsl(var(--success))" strokeWidth={2} dot={{ fill: 'hsl(var(--success))' }} />

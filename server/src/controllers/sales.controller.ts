@@ -197,10 +197,14 @@ export const createSale = async (
     const profit = saleData.salePrice - totalCost;
     const profitPercent = totalCost > 0 ? (profit / totalCost) * 100 : 0;
 
+    // Usar registeredById do body se fornecido (dono/gerente registrando para colaborador), senão usar req.userId
+    const registeredById = saleData.registeredById || req.userId || undefined;
+
+    // Comissão: calcular para o colaborador que recebe a venda (registeredById), não para quem está registrando
     let commissionAmount: number | undefined;
-    if (req.userId) {
+    if (registeredById) {
       const collaborator = await prisma.accountCollaborator.findFirst({
-        where: { accountId, userId: req.userId, role: 'seller', status: 'active', deletedAt: null },
+        where: { accountId, userId: registeredById, role: 'seller', status: 'active', deletedAt: null },
       });
       if (collaborator?.commissionType && collaborator.commissionValue != null) {
         commissionAmount =
@@ -209,9 +213,6 @@ export const createSale = async (
             : collaborator.commissionValue;
       }
     }
-
-    // Usar registeredById do body se fornecido (dono/gerente), senão usar req.userId
-    const registeredById = saleData.registeredById || req.userId || undefined;
     
     const sale = await prisma.sale.create({
       data: {
@@ -261,6 +262,29 @@ export const updateSale = async (
     const { accountId } = req;
     const { id } = req.params;
 
+    // Verificar se a venda existe e se o vendedor tem permissão para editá-la
+    const existingSale = await prisma.sale.findFirst({
+      where: { id, accountId, deletedAt: null },
+      select: { registeredById: true },
+    });
+
+    if (!existingSale) {
+      res.status(404).json({
+        success: false,
+        error: { message: 'Venda não encontrada' },
+      });
+      return;
+    }
+
+    // Se for vendedor, só pode editar vendas que ele mesmo registrou
+    if (req.collaboratorRole === 'seller' && existingSale.registeredById !== req.userId) {
+      res.status(403).json({
+        success: false,
+        error: { message: 'Você só pode editar vendas que você mesmo registrou' },
+      });
+      return;
+    }
+
     const normalized = normalizeSaleUpdateBody(req.body);
     const saleData = saleSchema.partial().parse(normalized);
 
@@ -273,11 +297,14 @@ export const updateSale = async (
       profit?: number;
       profitPercent?: number;
       registeredById?: string;
+      commissionAmount?: number | null;
       updatedAt: Date;
     } = {
       ...saleData,
       updatedAt: new Date(),
     };
+
+    let saleFromDb: { salePrice: number; registeredById: string | null; vehicleId: string; vehicle: { purchasePrice: number | null } } | null = null;
 
     // Recalcular lucro se o preço ou veículo mudar
     if (saleData.salePrice !== undefined || saleData.vehicleId !== undefined) {
@@ -287,6 +314,7 @@ export const updateSale = async (
       });
 
       if (sale) {
+        saleFromDb = sale;
         // Usar o vehicleId novo se foi alterado, senão usar o atual
         const vehicleIdToUse = saleData.vehicleId || sale.vehicleId;
         
@@ -318,6 +346,29 @@ export const updateSale = async (
         updatePayload.profitPercent = totalCost > 0
           ? parseFloat(((updatePayload.profit / totalCost) * 100).toFixed(2))
           : 0;
+      }
+    }
+
+    // Recalcular comissão quando mudar responsável pela venda ou valor: usar o colaborador (registeredById) que recebe a venda
+    if (saleData.registeredById !== undefined || saleData.salePrice !== undefined) {
+      const saleForCommission = saleFromDb ?? await prisma.sale.findFirst({
+        where: { id, accountId },
+        select: { salePrice: true, registeredById: true },
+      });
+      const effectiveRegisteredById = saleData.registeredById ?? saleForCommission?.registeredById ?? existingSale.registeredById;
+      const salePriceToUse = saleData.salePrice ?? saleForCommission?.salePrice;
+      if (effectiveRegisteredById && salePriceToUse != null) {
+        const collaborator = await prisma.accountCollaborator.findFirst({
+          where: { accountId, userId: effectiveRegisteredById, role: 'seller', status: 'active', deletedAt: null },
+        });
+        if (collaborator?.commissionType != null && collaborator.commissionValue != null) {
+          updatePayload.commissionAmount =
+            collaborator.commissionType === 'percent'
+              ? (salePriceToUse * collaborator.commissionValue) / 100
+              : collaborator.commissionValue;
+        } else {
+          updatePayload.commissionAmount = null;
+        }
       }
     }
 
@@ -402,6 +453,7 @@ export const deleteSale = async (
       select: {
         vehicleId: true,
         originalSalePrice: true,
+        registeredById: true,
       },
     });
 
@@ -409,6 +461,15 @@ export const deleteSale = async (
       res.status(404).json({
         success: false,
         error: { message: 'Venda não encontrada' },
+      });
+      return;
+    }
+
+    // Se for vendedor, só pode excluir vendas que ele mesmo registrou
+    if (req.collaboratorRole === 'seller' && saleToDelete.registeredById !== req.userId) {
+      res.status(403).json({
+        success: false,
+        error: { message: 'Você só pode cancelar vendas que você mesmo registrou' },
       });
       return;
     }
@@ -473,41 +534,58 @@ export const getSalesStats = async (
 ): Promise<void> => {
   try {
     const { accountId } = req;
+    
+    // Se for vendedor, filtrar apenas vendas dele. Se for dono/gerente, mostrar todas
+    const isSeller = req.collaboratorRole === 'seller';
+    const baseWhere: any = {
+      accountId,
+      deletedAt: null,
+    };
+    
+    if (isSeller && req.userId) {
+      baseWhere.registeredById = req.userId;
+    }
 
     const [
       totalSold,
       totalRevenue,
-      totalProfit,
+      totalProfitSeller,
+      totalProfitOwner,
       vehiclesInStock,
     ] = await Promise.all([
       // Total de veículos vendidos
       prisma.sale.count({
-        where: {
-          accountId,
-          deletedAt: null,
-        },
+        where: baseWhere,
       }),
       // Faturamento total
       prisma.sale.aggregate({
-        where: {
-          accountId,
-          deletedAt: null,
-        },
+        where: baseWhere,
         _sum: {
           salePrice: true,
         },
       }),
-      // Lucro total
-      prisma.sale.aggregate({
-        where: {
-          accountId,
-          deletedAt: null,
-        },
-        _sum: {
-          profit: true,
-        },
-      }),
-      // Veículos em estoque
+      // Lucro total para vendedor (commissionAmount)
+      isSeller && req.userId
+        ? prisma.sale.aggregate({
+            where: {
+              ...baseWhere,
+              commissionAmount: { not: null },
+            },
+            _sum: {
+              commissionAmount: true,
+            },
+          })
+        : Promise.resolve({ _sum: { commissionAmount: null } }),
+      // Lucro total para dono/gerente (profit)
+      !isSeller
+        ? prisma.sale.aggregate({
+            where: baseWhere,
+            _sum: {
+              profit: true,
+            },
+          })
+        : Promise.resolve({ _sum: { profit: null } }),
+      // Veículos em estoque (sempre mostrar todos, independente de vendedor)
       prisma.vehicle.count({
         where: {
           accountId,
@@ -522,7 +600,9 @@ export const getSalesStats = async (
       data: {
         totalSold,
         totalRevenue: totalRevenue._sum.salePrice ?? 0,
-        totalProfit: totalProfit._sum.profit ?? 0,
+        totalProfit: isSeller 
+          ? (totalProfitSeller._sum.commissionAmount ?? 0)
+          : (totalProfitOwner._sum.profit ?? 0),
         vehiclesInStock,
       },
     });

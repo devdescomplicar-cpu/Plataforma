@@ -23,7 +23,7 @@ const settingsSchema = z.object({
 const hexColor = z.string().regex(/^#[0-9A-Fa-f]{6}$/).optional().or(z.literal(''));
 
 const storeInfoSchema = z.object({
-  // Nome fantasia (exibido)
+  // Nome da empresa (exibido em relatórios)
   name: z.string().min(1),
   // Dados fiscais
   legalName: z.string().optional(),

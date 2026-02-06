@@ -91,9 +91,11 @@ import pushRoutes from './routes/push.routes.js';
 import fipeRoutes from './routes/fipe.routes.js';
 import settingsRoutes from './routes/settings.routes.js';
 import collaboratorsRoutes from './routes/collaborators.routes.js';
+import publicRoutes from './routes/public.routes.js';
 import { startExpirationTriggersJob } from './jobs/expiration-triggers.job.js';
 import { ensureAdminUser } from './lib/ensure-admin.js';
 
+app.use('/api/public', publicRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/admin', adminRoutes);
 app.use('/api/push', pushRoutes);

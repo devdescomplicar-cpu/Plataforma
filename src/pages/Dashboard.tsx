@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { format } from 'date-fns';
+import { ptBR } from 'date-fns/locale/pt-BR';
 import { DollarSign, Car, TrendingUp, Calendar, ArrowUpRight, ArrowDownRight, Award, Star, RefreshCw, ExternalLink } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { AddVehicleModal } from '@/components/modals/AddVehicleModal';
@@ -13,9 +15,9 @@ import {
 } from '@/components/ui/select';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { Calendar as CalendarComponent } from '@/components/ui/calendar';
-import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, LineChart, Line } from 'recharts';
 import { useDashboardData } from '@/hooks/useDashboard';
+import { useUser } from '@/hooks/useUser';
 import { QueryErrorState } from '@/components/QueryErrorState';
 import { HiddenValue } from '@/contexts/AppContext';
 import { cn } from '@/lib/utils';
@@ -30,14 +32,13 @@ import {
   TableRow,
 } from '@/components/ui/table';
 
-type PeriodType = 'current-month' | 'last-month' | '3m' | '6m' | 'custom';
+type PeriodType = 'current-month' | 'last-month' | '3m' | '6m' | '12m' | 'custom';
 
 const Dashboard = () => {
   const navigate = useNavigate();
   const [period, setPeriod] = useState<PeriodType>('current-month');
   const [startDate, setStartDate] = useState<Date | undefined>();
   const [endDate, setEndDate] = useState<Date | undefined>();
-  const [chartView, setChartView] = useState<'month' | 'day'>('month');
   const [isDatePickerOpen, setIsDatePickerOpen] = useState(false);
   const [isAddVehicleOpen, setIsAddVehicleOpen] = useState(false);
   const [isRegisterSaleOpen, setIsRegisterSaleOpen] = useState(false);
@@ -55,6 +56,7 @@ const Dashboard = () => {
   };
 
   const params = getReportParams();
+  const { data: userData } = useUser();
   const { data, isLoading, isError, error } = useDashboardData(
     params.period,
     params.startDate,
@@ -67,6 +69,8 @@ const Dashboard = () => {
       currency: 'BRL',
     }).format(value);
   };
+
+  const isSeller = userData?.collaboratorRole === 'seller';
 
   if (isError) {
     return (
@@ -128,6 +132,7 @@ const Dashboard = () => {
               <SelectItem value="last-month">Mês passado</SelectItem>
               <SelectItem value="3m">Últimos 3 meses</SelectItem>
               <SelectItem value="6m">Últimos 6 meses</SelectItem>
+              <SelectItem value="12m">Últimos 12 meses</SelectItem>
               <SelectItem value="custom">Personalizado</SelectItem>
             </SelectContent>
           </Select>
@@ -149,7 +154,13 @@ const Dashboard = () => {
                     <CalendarComponent
                       mode="single"
                       selected={startDate}
-                      onSelect={setStartDate}
+                      onSelect={(date) => {
+                        setStartDate(date);
+                        // Fechar popover automaticamente quando ambas as datas estiverem selecionadas
+                        if (date && endDate) {
+                          setIsDatePickerOpen(false);
+                        }
+                      }}
                       locale={ptBR}
                     />
                   </div>
@@ -158,7 +169,13 @@ const Dashboard = () => {
                     <CalendarComponent
                       mode="single"
                       selected={endDate}
-                      onSelect={setEndDate}
+                      onSelect={(date) => {
+                        setEndDate(date);
+                        // Fechar popover automaticamente quando ambas as datas estiverem selecionadas
+                        if (startDate && date) {
+                          setIsDatePickerOpen(false);
+                        }
+                      }}
                       locale={ptBR}
                     />
                   </div>
@@ -172,17 +189,6 @@ const Dashboard = () => {
                       }}
                     >
                       Limpar
-                    </Button>
-                    <Button
-                      size="sm"
-                      onClick={() => {
-                        if (startDate && endDate) {
-                          setIsDatePickerOpen(false);
-                        }
-                      }}
-                      disabled={!startDate || !endDate}
-                    >
-                      Aplicar
                     </Button>
                   </div>
                 </div>
@@ -250,7 +256,9 @@ const Dashboard = () => {
         <div className="card-dashboard-gradient p-6">
           <div className="flex flex-col gap-4 h-full">
             <div className="flex items-center justify-between">
-              <p className="text-sm font-medium text-white/90">Faturamento no período</p>
+              <p className="text-sm font-medium text-white/90">
+                {isSeller ? 'Meu faturamento no período' : 'Faturamento no período'}
+              </p>
               <DollarSign className="w-8 h-8 text-white/90" />
             </div>
             <div className="flex-1 flex flex-col justify-center">
@@ -283,7 +291,9 @@ const Dashboard = () => {
         <div className="card-dashboard-gradient p-6">
           <div className="flex flex-col gap-4 h-full">
             <div className="flex items-center justify-between">
-              <p className="text-sm font-medium text-white/90">Veículos vendidos</p>
+              <p className="text-sm font-medium text-white/90">
+                {isSeller ? 'Meus veículos vendidos' : 'Veículos vendidos'}
+              </p>
               <Car className="w-8 h-8 text-white/90" />
             </div>
             <div className="flex-1 flex flex-col justify-center">
@@ -316,11 +326,13 @@ const Dashboard = () => {
           </div>
         </div>
 
-        {/* Lucro Líquido */}
+        {/* Lucro Líquido / Comissão */}
         <div className="card-dashboard-gradient p-6">
           <div className="flex flex-col gap-4 h-full">
             <div className="flex items-center justify-between">
-              <p className="text-sm font-medium text-white/90">Lucro Líquido</p>
+              <p className="text-sm font-medium text-white/90">
+                {isSeller ? 'Minha comissão' : 'Lucro Líquido'}
+              </p>
               <TrendingUp className="w-8 h-8 text-white/90" />
             </div>
             <div className="flex-1 flex flex-col justify-center">
@@ -372,32 +384,49 @@ const Dashboard = () => {
 
       {/* Gráficos — mesma largura dos cards no mobile (sem padding extra) */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5 lg:gap-6">
-        {/* Evolução (Faturamento) — sem tabs Faturamento/Veículos; toggle Mês/Dia */}
+        {/* Evolução (Faturamento) */}
         <div className="card-elevated p-4 sm:p-6">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-4">
             <h3 className="font-semibold text-foreground">Faturamento</h3>
-            <Tabs value={chartView} onValueChange={(v) => setChartView(v as 'month' | 'day')}>
-              <TabsList className="w-full sm:w-auto">
-                <TabsTrigger value="month" className="text-xs flex-1 sm:flex-none">Mês</TabsTrigger>
-                <TabsTrigger value="day" className="text-xs flex-1 sm:flex-none">Dia</TabsTrigger>
-              </TabsList>
-            </Tabs>
           </div>
           <div className="h-[260px] sm:h-[300px]">
             {isLoading ? (
               <div className="flex items-center justify-center h-full">
                 <RefreshCw className="w-6 h-6 animate-spin text-muted-foreground" />
               </div>
-            ) : (chartView === 'month' ? dashboardData.monthlyChart : dashboardData.dailyChart).length > 0 ? (
+            ) : dashboardData.chart && dashboardData.chart.length > 0 ? (
               <ResponsiveContainer width="100%" height="100%">
-                <BarChart data={chartView === 'month' ? dashboardData.monthlyChart : dashboardData.dailyChart}>
+                <BarChart data={dashboardData.chart}>
                   <XAxis
                     dataKey="date"
                     stroke="hsl(var(--muted-foreground))"
                     fontSize={11}
-                    angle={chartView === 'day' ? -45 : 0}
-                    textAnchor={chartView === 'day' ? 'end' : 'middle'}
+                    angle={0}
+                    textAnchor="middle"
                     height={50}
+                    ticks={dashboardData.chart
+                      .filter((item) => item.showTick !== false)
+                      .map((item) => item.date)}
+                    tick={(props) => {
+                      const { payload, x, y } = props;
+                      const dataPoint = dashboardData.chart?.find(d => d.date === payload.value);
+                      // Mostrar apenas se showLabel for true (ou se não existir o campo, mostrar todos para compatibilidade)
+                      if (dataPoint && 'showLabel' in dataPoint && dataPoint.showLabel === false) {
+                        return null;
+                      }
+                      return (
+                        <text
+                          x={x}
+                          y={y}
+                          dy={16}
+                          fill="hsl(var(--muted-foreground))"
+                          fontSize={11}
+                          textAnchor="middle"
+                        >
+                          {payload.value}
+                        </text>
+                      );
+                    }}
                   />
                   <YAxis stroke="hsl(var(--muted-foreground))" fontSize={12} />
                   <Tooltip
@@ -405,8 +434,26 @@ const Dashboard = () => {
                       backgroundColor: 'hsl(var(--popover))',
                       border: '1px solid hsl(var(--border))',
                       borderRadius: '8px',
+                      padding: '12px',
+                      boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
                     }}
-                    formatter={(value: number) => [`R$ ${Number(value).toLocaleString('pt-BR')}`, 'Faturamento']}
+                    labelStyle={{
+                      fontWeight: 600,
+                      fontSize: '13px',
+                      marginBottom: '8px',
+                      color: 'hsl(var(--foreground))',
+                    }}
+                    itemStyle={{
+                      fontSize: '12px',
+                      color: 'hsl(var(--muted-foreground))',
+                    }}
+                    labelFormatter={(label, payload) => {
+                      if (payload && payload[0] && payload[0].payload && payload[0].payload.tooltipDate) {
+                        return payload[0].payload.tooltipDate;
+                      }
+                      return label;
+                    }}
+                    formatter={(value: number) => [`R$ ${Number(value).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`, 'Faturamento']}
                   />
                   <Bar dataKey="revenue" fill="hsl(var(--primary))" radius={[4, 4, 0, 0]} />
                 </BarChart>
@@ -419,32 +466,51 @@ const Dashboard = () => {
           </div>
         </div>
 
-        {/* Evolução do Lucro — toggle Mês/Dia */}
+        {/* Evolução do Lucro */}
         <div className="card-elevated p-4 sm:p-6">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-4">
-            <h3 className="font-semibold text-foreground">Evolução do Lucro</h3>
-            <Tabs value={chartView} onValueChange={(v) => setChartView(v as 'month' | 'day')}>
-              <TabsList className="w-full sm:w-auto">
-                <TabsTrigger value="month" className="text-xs flex-1 sm:flex-none">Mês</TabsTrigger>
-                <TabsTrigger value="day" className="text-xs flex-1 sm:flex-none">Dia</TabsTrigger>
-              </TabsList>
-            </Tabs>
+            <h3 className="font-semibold text-foreground">
+              {isSeller ? 'Evolução da Comissão' : 'Evolução do Lucro'}
+            </h3>
           </div>
           <div className="h-[260px] sm:h-[300px]">
             {isLoading ? (
               <div className="flex items-center justify-center h-full">
                 <RefreshCw className="w-6 h-6 animate-spin text-muted-foreground" />
               </div>
-            ) : (chartView === 'month' ? dashboardData.monthlyChart : dashboardData.dailyChart).length > 0 ? (
+            ) : dashboardData.chart && dashboardData.chart.length > 0 ? (
               <ResponsiveContainer width="100%" height="100%">
-                <LineChart data={chartView === 'month' ? dashboardData.monthlyChart : dashboardData.dailyChart}>
+                <LineChart data={dashboardData.chart}>
                   <XAxis
                     dataKey="date"
                     stroke="hsl(var(--muted-foreground))"
                     fontSize={11}
-                    angle={chartView === 'day' ? -45 : 0}
-                    textAnchor={chartView === 'day' ? 'end' : 'middle'}
+                    angle={0}
+                    textAnchor="middle"
                     height={50}
+                    ticks={dashboardData.chart
+                      .filter((item) => item.showTick !== false)
+                      .map((item) => item.date)}
+                    tick={(props) => {
+                      const { payload, x, y } = props;
+                      const dataPoint = dashboardData.chart?.find(d => d.date === payload.value);
+                      // Mostrar apenas se showLabel for true (ou se não existir o campo, mostrar todos para compatibilidade)
+                      if (dataPoint && 'showLabel' in dataPoint && dataPoint.showLabel === false) {
+                        return null;
+                      }
+                      return (
+                        <text
+                          x={x}
+                          y={y}
+                          dy={16}
+                          fill="hsl(var(--muted-foreground))"
+                          fontSize={11}
+                          textAnchor="middle"
+                        >
+                          {payload.value}
+                        </text>
+                      );
+                    }}
                   />
                   <YAxis stroke="hsl(var(--muted-foreground))" fontSize={12} />
                   <Tooltip
@@ -452,8 +518,26 @@ const Dashboard = () => {
                       backgroundColor: 'hsl(var(--popover))',
                       border: '1px solid hsl(var(--border))',
                       borderRadius: '8px',
+                      padding: '12px',
+                      boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
                     }}
-                    formatter={(value: number) => [`R$ ${Number(value).toLocaleString('pt-BR')}`, 'Lucro']}
+                    labelStyle={{
+                      fontWeight: 600,
+                      fontSize: '13px',
+                      marginBottom: '8px',
+                      color: 'hsl(var(--foreground))',
+                    }}
+                    itemStyle={{
+                      fontSize: '12px',
+                      color: 'hsl(var(--muted-foreground))',
+                    }}
+                    labelFormatter={(label, payload) => {
+                      if (payload && payload[0] && payload[0].payload && payload[0].payload.tooltipDate) {
+                        return payload[0].payload.tooltipDate;
+                      }
+                      return label;
+                    }}
+                    formatter={(value: number) => [`R$ ${Number(value).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`, isSeller ? 'Comissão' : 'Lucro']}
                   />
                   <Line
                     type="monotone"

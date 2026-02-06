@@ -108,32 +108,6 @@ export function Sidebar() {
                   </Link>
                 );
               })}
-          </nav>
-
-          <Separator className="bg-sidebar-border w-full" />
-
-          {/* Admin (only for admin role) */}
-          {userData?.user && isAdmin(userData.user.role) && (
-            <nav className="px-2 lg:px-3 py-2 space-y-1">
-              <Link
-                to="/admin"
-                onClick={() => setSidebarOpen(false)}
-                onMouseEnter={() => prefetchRoute('/admin')}
-                onFocus={() => prefetchRoute('/admin')}
-                className={cn(
-                  'nav-item',
-                  location.pathname.startsWith('/admin') && 'active'
-                )}
-              >
-                <ShieldCheck className="w-5 h-5 flex-shrink-0" />
-                <span className="font-medium">Painel Admin</span>
-              </Link>
-            </nav>
-          )}
-
-          <Separator className="bg-sidebar-border w-full" />
-
-          <nav className="px-3 py-2 space-y-1 pb-2">
             {userData?.isAccountOwner && (
               <Link
                 to="/colaboradores"
@@ -169,6 +143,28 @@ export function Sidebar() {
               );
             })}
           </nav>
+
+          {/* Painel Admin por último (apenas para role admin) */}
+          {userData?.user && isAdmin(userData.user.role) && (
+            <>
+              <Separator className="bg-sidebar-border w-full" />
+              <nav className="px-2 lg:px-3 py-2 space-y-1">
+                <Link
+                  to="/admin"
+                  onClick={() => setSidebarOpen(false)}
+                  onMouseEnter={() => prefetchRoute('/admin')}
+                  onFocus={() => prefetchRoute('/admin')}
+                  className={cn(
+                    'nav-item',
+                    location.pathname.startsWith('/admin') && 'active'
+                  )}
+                >
+                  <ShieldCheck className="w-5 h-5 flex-shrink-0" />
+                  <span className="font-medium">Painel Admin</span>
+                </Link>
+              </nav>
+            </>
+          )}
         </div>
 
         {/* User Profile - fixed at bottom */}

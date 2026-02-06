@@ -1,8 +1,10 @@
 import { Response, NextFunction } from 'express';
 import { AuthRequest } from '../../middleware/auth.middleware.js';
 import { prisma } from '../../services/prisma.service.js';
+import { getDateRange } from '../../utils/date-range.js';
+import { getBrazilDateParts, getBrazilMonthRange, startOfDayBrazil, endOfDayBrazil, getLastDayOfMonth } from '../../utils/timezone.js';
 
-function getDateRange(period?: string, startDate?: string, endDate?: string): { start: Date; end: Date } {
+function getDateRangeOld(period?: string, startDate?: string, endDate?: string): { start: Date; end: Date } {
   if (startDate && endDate) {
     const parsedStart = new Date(startDate);
     const parsedEnd = new Date(endDate);
@@ -228,128 +230,301 @@ export async function getFinancialReport(
       ? (cancelledSubscriptions / activeSubscriptions) * 100 
       : 0;
 
-    // Revenue over time (daily or monthly) - mostra desde o início do período até hoje
+    // Determinar se deve mostrar dia a dia ou mês a mês baseado no período
+    const startBr = getBrazilDateParts(start);
+    const endBr = getBrazilDateParts(end);
+    let isSingleMonthPeriod = false;
+    const isCustomPeriod = (!period || period === 'custom') && startDate && endDate;
+    if (isCustomPeriod) {
+      isSingleMonthPeriod = startBr.year === endBr.year && startBr.month === endBr.month;
+    } else {
+      isSingleMonthPeriod = period === 'current-month' || period === 'last-month';
+    }
+
+    const MONTH_SHORT = ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'];
+    const MONTH_FULL = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
+    
+    let chartStart: Date;
+    let chartEnd: Date;
+    
+    if (isSingleMonthPeriod) {
+      const { start: monthStart, end: monthEnd } = getBrazilMonthRange(endBr.year, endBr.month);
+      chartStart = monthStart;
+      chartEnd = monthEnd;
+    } else {
+      chartStart = start;
+      chartEnd = end;
+    }
+
+    // Dados dia a dia (quando for 1 mês)
+    const dailyData = new Map<string, { date: string; tooltipDate: string; value: number }>();
+    
+    if (isSingleMonthPeriod) {
+      let t = chartStart.getTime();
+      const dayMs = 24 * 60 * 60 * 1000;
+      while (t <= chartEnd.getTime()) {
+        const br = getBrazilDateParts(new Date(t));
+        const key = `${br.year}-${String(br.month).padStart(2, '0')}-${String(br.day).padStart(2, '0')}`;
+        dailyData.set(key, {
+          date: `${String(br.day).padStart(2, '0')}/${String(br.month).padStart(2, '0')}`,
+          tooltipDate: `${String(br.day).padStart(2, '0')} ${MONTH_SHORT[br.month - 1]}, ${br.year}`,
+          value: 0,
+        });
+        t += dayMs;
+      }
+    }
+
+    // Dados mensais (quando for múltiplos meses)
+    const monthlyData = new Map<string, { date: string; tooltipDate: string; monthKey: string; value: number; showLabel: boolean; showTick: boolean }>();
+    
+    if (!isSingleMonthPeriod) {
+      let currentYear = startBr.year;
+      let currentMonth = startBr.month;
+      const endYear = endBr.year;
+      const endMonth = endBr.month;
+      
+      // Contar total de meses
+      let totalMonths = 0;
+      let tempYear = startBr.year;
+      let tempMonth = startBr.month;
+      while (tempYear < endYear || (tempYear === endYear && tempMonth <= endMonth)) {
+        totalMonths++;
+        tempMonth++;
+        if (tempMonth > 12) {
+          tempMonth = 1;
+          tempYear++;
+        }
+      }
+      
+      // Determinar intervalo de exibição baseado no total de meses
+      let labelInterval = 1;
+      let labelFormat: 'month' | 'year' = 'month';
+      
+      if (totalMonths <= 6) {
+        labelInterval = 1;
+      } else if (totalMonths <= 12) {
+        labelInterval = 2;
+      } else if (totalMonths <= 24) {
+        labelInterval = 3;
+      } else {
+        labelInterval = 1;
+        labelFormat = 'year';
+      }
+      
+      let monthIndex = 0;
+      while (currentYear < endYear || (currentYear === endYear && currentMonth <= endMonth)) {
+        const key = `${currentYear}-${String(currentMonth).padStart(2, '0')}`;
+        
+        let showLabel = false;
+        let showTick = false;
+        if (labelFormat === 'year') {
+          showLabel = currentMonth === 1;
+          showTick = showLabel;
+          if (showLabel) {
+            monthlyData.set(key, {
+              date: `${currentYear}`,
+              tooltipDate: `${MONTH_FULL[currentMonth - 1]}, ${currentYear}`,
+              monthKey: key,
+              value: 0,
+              showLabel: true,
+              showTick: true,
+            });
+          } else {
+            monthlyData.set(key, {
+              date: `${MONTH_SHORT[currentMonth - 1]}, ${currentYear}`,
+              tooltipDate: `${MONTH_FULL[currentMonth - 1]}, ${currentYear}`,
+              monthKey: key,
+              value: 0,
+              showLabel: false,
+              showTick: false,
+            });
+          }
+        } else {
+          showLabel = monthIndex % labelInterval === 0;
+          showTick = showLabel;
+          monthlyData.set(key, {
+            date: `${MONTH_SHORT[currentMonth - 1]}, ${currentYear}`,
+            tooltipDate: `${MONTH_FULL[currentMonth - 1]}, ${currentYear}`,
+            monthKey: key,
+            value: 0,
+            showLabel,
+            showTick,
+          });
+        }
+        
+        monthIndex++;
+        currentMonth++;
+        if (currentMonth > 12) {
+          currentMonth = 1;
+          currentYear++;
+        }
+      }
+    }
+
+    // Buscar assinaturas do período
+    const subscriptionsForChart = await prisma.subscription.findMany({
+      where: {
+        deletedAt: null,
+        status: 'active',
+        startDate: { gte: chartStart, lte: chartEnd },
+      },
+      include: { plan: { select: { price: true } } },
+    });
+
+    // Preencher dados com as assinaturas
+    for (const sub of subscriptionsForChart) {
+      const subDate = getBrazilDateParts(sub.startDate);
+      if (isSingleMonthPeriod) {
+        const key = `${subDate.year}-${String(subDate.month).padStart(2, '0')}-${String(subDate.day).padStart(2, '0')}`;
+        const entry = dailyData.get(key);
+        if (entry) {
+          entry.value += sub.plan.price;
+        }
+      } else {
+        const key = `${subDate.year}-${String(subDate.month).padStart(2, '0')}`;
+        const entry = monthlyData.get(key);
+        if (entry) {
+          entry.value += sub.plan.price;
+        }
+      }
+    }
+
+    // Converter para array final
+    const revenueOverTime: Array<{
+      date: string;
+      tooltipDate?: string;
+      showLabel?: boolean;
+      showTick?: boolean;
+      value: number;
+    }> = isSingleMonthPeriod
+      ? Array.from(dailyData.values()).sort((a, b) => {
+          const [dayA, monthA] = a.date.split('/').map(Number);
+          const [dayB, monthB] = b.date.split('/').map(Number);
+          if (monthA !== monthB) return monthA - monthB;
+          return dayA - dayB;
+        })
+      : Array.from(monthlyData.values()).sort((a, b) => a.monthKey.localeCompare(b.monthKey));
+
+    // MRR over time (monthly) - mostra desde o início do período até hoje
     const today = new Date();
     today.setHours(23, 59, 59, 999);
-    // chartEnd deve ser o menor entre end e today
-    const chartEnd = end > today ? today : end;
-    
-    // Determina se deve ser diário ou mensal baseado no período e duração
-    const daysDiff = Math.ceil((chartEnd.getTime() - start.getTime()) / (1000 * 60 * 60 * 24));
-    const isDaily = period === 'current-month' || period === 'last-month' || (startDate && endDate && daysDiff <= 31);
-    
-    const revenueOverTime: { date: string; value: number }[] = [];
-    if (isDaily) {
-      const current = new Date(start);
-      while (current <= chartEnd) {
-        const dayStart = new Date(current);
-        dayStart.setHours(0, 0, 0, 0);
-        const dayEnd = new Date(current);
-        dayEnd.setHours(23, 59, 59, 999);
-        
-        // Receita de assinaturas criadas neste dia
-        const daySubs = await prisma.subscription.findMany({
-          where: {
-            deletedAt: null,
-            status: 'active',
-            startDate: { gte: dayStart, lte: dayEnd },
-          },
-          include: { plan: { select: { price: true } } },
-        });
-        
-        const dayRevenue = daySubs.reduce((sum, sub) => sum + sub.plan.price, 0);
-        revenueOverTime.push({
-          date: current.toISOString().split('T')[0],
-          value: dayRevenue,
-        });
-        
-        current.setDate(current.getDate() + 1);
-      }
-    } else {
-      // Monthly - mostra desde o início do período até o mês atual
-      const current = new Date(start);
-      const todayMonth = new Date(today.getFullYear(), today.getMonth(), 1);
+    const mrrChartEnd = end > today ? today : end;
+    const mrrOverTime: Array<{
+      date: string;
+      tooltipDate?: string;
+      showLabel?: boolean;
+      showTick?: boolean;
+      value: number;
+    }> = [];
+
+    // Usar a mesma lógica de meses do revenueOverTime
+    if (!isSingleMonthPeriod) {
+      let currentYear = startBr.year;
+      let currentMonth = startBr.month;
+      const endYear = endBr.year;
+      const endMonth = endBr.month;
       
-      while (current <= chartEnd) {
-        const monthStart = new Date(current.getFullYear(), current.getMonth(), 1);
-        const monthEnd = new Date(current.getFullYear(), current.getMonth() + 1, 0, 23, 59, 59, 999);
-        const monthEndActual = monthEnd > today ? today : monthEnd;
-        
-        // Receita de assinaturas criadas neste mês
+      // Contar total de meses
+      let totalMonths = 0;
+      let tempYear = startBr.year;
+      let tempMonth = startBr.month;
+      while (tempYear < endYear || (tempYear === endYear && tempMonth <= endMonth)) {
+        totalMonths++;
+        tempMonth++;
+        if (tempMonth > 12) {
+          tempMonth = 1;
+          tempYear++;
+        }
+      }
+      
+      // Determinar intervalo de exibição
+      let labelInterval = 1;
+      let labelFormat: 'month' | 'year' = 'month';
+      
+      if (totalMonths <= 6) {
+        labelInterval = 1;
+      } else if (totalMonths <= 12) {
+        labelInterval = 2;
+      } else if (totalMonths <= 24) {
+        labelInterval = 3;
+      } else {
+        labelInterval = 1;
+        labelFormat = 'year';
+      }
+      
+      let monthIndex = 0;
+      while (currentYear < endYear || (currentYear === endYear && currentMonth <= endMonth)) {
+        const monthStart = startOfDayBrazil(currentYear, currentMonth, 1);
+        const lastDay = getLastDayOfMonth(currentYear, currentMonth);
+        const monthEnd = endOfDayBrazil(currentYear, currentMonth, lastDay);
+        const monthEndActual = monthEnd > mrrChartEnd ? mrrChartEnd : monthEnd;
+        const key = `${currentYear}-${String(currentMonth).padStart(2, '0')}`;
+      
+        // MRR no final deste mês (assinaturas ativas até o final do mês)
         const monthSubs = await prisma.subscription.findMany({
           where: {
             deletedAt: null,
             status: 'active',
-            startDate: { gte: monthStart, lte: monthEndActual },
+            startDate: { lte: monthEndActual },
+            OR: [
+              { endDate: null },
+              { endDate: { gte: monthStart } },
+            ],
           },
-          include: { plan: { select: { price: true } } },
-        });
-        
-        const monthRevenue = monthSubs.reduce((sum, sub) => sum + sub.plan.price, 0);
-        revenueOverTime.push({
-          date: `${current.getFullYear()}-${String(current.getMonth() + 1).padStart(2, '0')}-01`,
-          value: monthRevenue,
-        });
-        
-        current.setMonth(current.getMonth() + 1);
-        if (current > chartEnd) break;
-      }
-    }
-
-    // MRR over time (monthly) - mostra desde o início do período até hoje
-    const mrrOverTime: { date: string; value: number }[] = [];
-
-    const current = new Date(start);
-    while (current <= chartEnd) {
-      const monthStart = new Date(current.getFullYear(), current.getMonth(), 1);
-      const monthEnd = new Date(current.getFullYear(), current.getMonth() + 1, 0, 23, 59, 59, 999);
-      const monthEndActual = monthEnd > today ? today : monthEnd;
-      
-      // MRR no final deste mês (assinaturas ativas até o final do mês)
-      const monthSubs = await prisma.subscription.findMany({
-        where: {
-          deletedAt: null,
-          status: 'active',
-          startDate: { lte: monthEndActual },
-          OR: [
-            { endDate: null },
-            { endDate: { gte: monthStart } },
-          ],
-        },
-        include: {
-          plan: {
-            select: {
-              price: true,
-              durationType: true,
-              durationMonths: true,
+          include: {
+            plan: {
+              select: {
+                price: true,
+                durationType: true,
+                durationMonths: true,
+              },
             },
           },
-        },
-      });
-      
-      let monthMRR = 0;
-      for (const sub of monthSubs) {
-        const { price, durationType, durationMonths } = sub.plan;
-        if (durationType === 'monthly') {
-          monthMRR += price;
-        } else if (durationType === 'quarterly') {
-          monthMRR += price / 3;
-        } else if (durationType === 'semiannual') {
-          monthMRR += price / 6;
-        } else if (durationType === 'annual') {
-          monthMRR += price / 12;
-        } else if (durationMonths) {
-          monthMRR += price / durationMonths;
+        });
+        
+        let monthMRR = 0;
+        for (const sub of monthSubs) {
+          const { price, durationType, durationMonths } = sub.plan;
+          if (durationType === 'monthly') {
+            monthMRR += price;
+          } else if (durationType === 'quarterly') {
+            monthMRR += price / 3;
+          } else if (durationType === 'semiannual') {
+            monthMRR += price / 6;
+          } else if (durationType === 'annual') {
+            monthMRR += price / 12;
+          } else if (durationMonths) {
+            monthMRR += price / durationMonths;
+          }
+        }
+        
+        let showLabel = false;
+        let showTick = false;
+        if (labelFormat === 'year') {
+          showLabel = currentMonth === 1;
+          showTick = showLabel;
+        } else {
+          showLabel = monthIndex % labelInterval === 0;
+          showTick = showLabel;
+        }
+        
+        mrrOverTime.push({
+          date: labelFormat === 'year' && showLabel
+            ? `${currentYear}`
+            : `${MONTH_SHORT[currentMonth - 1]}, ${currentYear}`,
+          tooltipDate: `${MONTH_FULL[currentMonth - 1]}, ${currentYear}`,
+          showLabel,
+          showTick,
+          value: monthMRR,
+        });
+        
+        monthIndex++;
+        currentMonth++;
+        if (currentMonth > 12) {
+          currentMonth = 1;
+          currentYear++;
         }
       }
-      
-      mrrOverTime.push({
-        date: `${current.getFullYear()}-${String(current.getMonth() + 1).padStart(2, '0')}-01`,
-        value: monthMRR,
-      });
-      
-      current.setMonth(current.getMonth() + 1);
-      if (current > chartEnd) break;
     }
 
     // Revenue by plan

@@ -25,6 +25,12 @@ interface LogoProps {
    */
   href?: string;
   /**
+   * Variante do logo
+   * @default "default" - logo padrão
+   * @default "light" - logo para fundo claro (logofundoclaro.webp)
+   */
+  variant?: 'default' | 'light';
+  /**
    * Classes CSS adicionais para a imagem
    */
   className?: string;
@@ -58,13 +64,16 @@ export function Logo({
   showText = false,
   linkable = true,
   href = '/',
+  variant = 'default',
   className,
   containerClassName,
   textClassName,
 }: LogoProps) {
   const config = sizeConfig[size];
   const basename = getRouterBasename() || '';
-  const logoPath = `${basename}/logo.webp`;
+  const logoPath = variant === 'light' 
+    ? `${basename}/logofundoclaro.webp`
+    : `${basename}/logo.webp`;
 
   const [imageError, setImageError] = React.useState(false);
 

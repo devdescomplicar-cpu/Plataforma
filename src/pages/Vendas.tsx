@@ -1,5 +1,5 @@
-import { useState, useMemo } from 'react';
-import { Plus, Search, MoreHorizontal, Trash2, Pencil, Car, DollarSign, TrendingUp, Package, ChevronLeft, ChevronRight, FileText, User } from 'lucide-react';
+import { useState, useMemo, useEffect } from 'react';
+import { Plus, Minus, Search, MoreHorizontal, Trash2, Pencil, Car, DollarSign, TrendingUp, Package, ChevronLeft, ChevronRight, FileText, User, List, LayoutGrid } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
@@ -36,6 +36,9 @@ import {
 } from '@/components/ui/tooltip';
 import { useCollaborators } from '@/hooks/useCollaborators';
 import { useUser } from '@/hooks/useUser';
+import { SaleCard } from '@/components/sales/SaleCard';
+
+type ViewMode = 'list' | 'card';
 
 // Função para parsear formas de pagamento (apenas nomes)
 const parsePaymentMethods = (paymentMethod: string): string[] => {
@@ -95,6 +98,8 @@ const parsePaymentMethodsWithValues = (paymentMethod: string): Array<{ method: s
     });
 };
 
+const DESKTOP_BREAKPOINT = 1024;
+
 const Vendas = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
@@ -105,8 +110,19 @@ const Vendas = () => {
   const [profitFilter, setProfitFilter] = useState<string>('all');
   const [collaboratorFilter, setCollaboratorFilter] = useState<string>('all');
   const [page, setPage] = useState(1);
-  const [limit, setLimit] = useState(10);
-  
+  const [viewMode, setViewMode] = useState<ViewMode>(() =>
+    typeof window !== 'undefined' && window.innerWidth >= DESKTOP_BREAKPOINT ? 'list' : 'card'
+  );
+  const listLimits = [10, 25, 50, 100];
+  const cardLimits = [12, 24, 48, 96];
+  const [listLimit, setListLimit] = useState(10);
+  const [cardLimit, setCardLimit] = useState(12);
+  const currentLimit = viewMode === 'list' ? listLimit : cardLimit;
+
+  useEffect(() => {
+    setPage(1);
+  }, [viewMode, listLimit, cardLimit]);
+
   const { data: userData } = useUser();
   // Buscar colaboradores apenas se for dono da conta
   const { data: collaborators = [], isLoading: isLoadingCollaborators } = useCollaborators();
@@ -155,7 +171,7 @@ const Vendas = () => {
   const { data: salesData, isLoading, isError, error, refetch } = useSales({ 
     search: searchTerm || undefined,
     page,
-    limit,
+    limit: currentLimit,
     registeredById: collaboratorFilter !== 'all' ? collaboratorFilter : undefined,
   });
   const { data: statsData, isLoading: isLoadingStats } = useSalesStats();
@@ -175,7 +191,10 @@ const Vendas = () => {
     let filtered = vendas;
 
     if (paymentFilter !== 'all') {
-      filtered = filtered.filter((v) => v.paymentMethod === paymentFilter);
+      filtered = filtered.filter((v) => {
+        const methods = parsePaymentMethods(v.paymentMethod);
+        return methods.includes(paymentFilter);
+      });
     }
 
     if (profitFilter === 'profit') {
@@ -213,6 +232,8 @@ const Vendas = () => {
     }).format(value);
   };
 
+  const isSeller = userData?.collaboratorRole === 'seller';
+
   return (
     <div className="space-y-6 animate-fade-in">
       {/* Header */}
@@ -242,14 +263,18 @@ const Vendas = () => {
           <div className="card-elevated p-6">
             <div className="flex flex-col gap-4 h-full">
               <div className="flex items-center justify-between">
-                <p className="text-sm font-medium text-muted-foreground">Veículos vendidos</p>
+                <p className="text-sm font-medium text-muted-foreground">
+                  {isSeller ? 'Meus veículos vendidos' : 'Veículos vendidos'}
+                </p>
                 <Car className="w-8 h-8 text-foreground" />
               </div>
               <div className="flex-1 flex flex-col justify-center">
                 <p className="card-value-number text-foreground">
                   {stats.totalSold}
                 </p>
-                <p className="text-xs text-muted-foreground mt-2">Total de veículos vendidos</p>
+                <p className="text-xs text-muted-foreground mt-2">
+                  {isSeller ? 'Total de veículos que você vendeu' : 'Total de veículos vendidos'}
+                </p>
               </div>
             </div>
           </div>
@@ -257,14 +282,18 @@ const Vendas = () => {
           <div className="card-elevated p-6">
             <div className="flex flex-col gap-4 h-full">
               <div className="flex items-center justify-between">
-                <p className="text-sm font-medium text-muted-foreground">Faturamento total</p>
+                <p className="text-sm font-medium text-muted-foreground">
+                  {isSeller ? 'Meu faturamento total' : 'Faturamento total'}
+                </p>
                 <DollarSign className="w-8 h-8 text-success" />
               </div>
               <div className="flex-1 flex flex-col justify-center">
                 <p className="card-value-number text-success">
                   <HiddenValue value={formatCurrencyValue(stats.totalRevenue)} />
                 </p>
-                <p className="text-xs text-muted-foreground mt-2">Soma de todas as vendas</p>
+                <p className="text-xs text-muted-foreground mt-2">
+                  {isSeller ? 'Soma de todas as suas vendas' : 'Soma de todas as vendas'}
+                </p>
               </div>
             </div>
           </div>
@@ -272,14 +301,18 @@ const Vendas = () => {
           <div className="card-elevated p-6">
             <div className="flex flex-col gap-4 h-full">
               <div className="flex items-center justify-between">
-                <p className="text-sm font-medium text-muted-foreground">Lucro total</p>
+                <p className="text-sm font-medium text-muted-foreground">
+                  {isSeller ? 'Minha comissão' : 'Lucro total'}
+                </p>
                 <TrendingUp className="w-8 h-8 text-info" />
               </div>
               <div className="flex-1 flex flex-col justify-center">
                 <p className="card-value-number text-info">
                   <HiddenValue value={formatCurrencyValue(stats.totalProfit)} />
                 </p>
-                <p className="text-xs text-muted-foreground mt-2">Lucro acumulado de todas as vendas</p>
+                <p className="text-xs text-muted-foreground mt-2">
+                  {isSeller ? 'Comissão acumulada de todas as suas vendas' : 'Lucro acumulado de todas as vendas'}
+                </p>
               </div>
             </div>
           </div>
@@ -302,10 +335,10 @@ const Vendas = () => {
       )}
 
 
-      {/* Filtros e Busca */}
+      {/* Filtros e Busca: desktop = toggle à direita; mobile = busca + toggle na mesma linha */}
       <div className="card-elevated p-4">
-        <div className="flex flex-col sm:flex-row gap-3">
-          <div className="relative flex-1 max-w-md">
+        <div className="flex flex-wrap items-center gap-3">
+          <div className="relative flex-1 min-w-0 max-w-md order-1">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
             <Input 
               placeholder="Buscar por veículo, cliente..." 
@@ -317,7 +350,27 @@ const Vendas = () => {
               }}
             />
           </div>
-          <div className="flex flex-wrap gap-2">
+          <div className="flex shrink-0 items-center gap-1 rounded-md border border-border p-1 bg-muted/30 order-2 md:order-3">
+            <Button
+              variant={viewMode === 'list' ? 'default' : 'ghost'}
+              size="icon"
+              className="h-8 w-8"
+              onClick={() => setViewMode('list')}
+              title="Modo Lista"
+            >
+              <List className="h-4 w-4" />
+            </Button>
+            <Button
+              variant={viewMode === 'card' ? 'default' : 'ghost'}
+              size="icon"
+              className="h-8 w-8"
+              onClick={() => setViewMode('card')}
+              title="Modo Card"
+            >
+              <LayoutGrid className="h-4 w-4" />
+            </Button>
+          </div>
+          <div className="flex w-full flex-wrap items-center gap-2 order-3 md:order-2 md:w-auto md:flex-1">
             {(allCollaborators.length > 0 || userData?.user) && (
               <Select
                 value={collaboratorFilter}
@@ -400,7 +453,8 @@ const Vendas = () => {
         </div>
       </div>
 
-      {/* Tabela de Vendas — scroll horizontal no mobile */}
+      {/* Conteúdo: Lista ou Cards */}
+      {viewMode === 'list' ? (
       <div className="card-elevated overflow-hidden">
         <div className="overflow-x-auto">
         <TooltipProvider delayDuration={0} skipDelayDuration={0}>
@@ -522,10 +576,10 @@ const Vendas = () => {
                           {vehicleName}
                         </TruncatedText>
                         {venda.registeredBy?.name && (
-                          <div className="flex items-center justify-start mt-1.5">
-                            <Badge variant="secondary" className="text-xs font-normal px-2.5 py-1 bg-primary/10 text-primary border-primary/20">
-                              <User className="w-3 h-3 mr-1.5" />
-                              Vendido por: {venda.registeredBy.name}
+                          <div className="flex min-w-0 max-w-full items-center justify-start mt-1.5">
+                            <Badge variant="secondary" className="text-xs font-normal px-2.5 py-1 bg-primary/10 text-primary border-primary/20 max-w-[220px] flex items-center min-w-0">
+                              <User className="w-3 h-3 mr-1.5 shrink-0" />
+                              <span className="truncate min-w-0">Vendido por: {venda.registeredBy.name}</span>
                             </Badge>
                           </div>
                         )}
@@ -548,10 +602,15 @@ const Vendas = () => {
                     <TableCell>
                       <Badge 
                         className={cn(
-                          "font-medium text-white",
+                          "font-medium text-white gap-1.5",
                           hasProfit ? "bg-success" : "bg-destructive"
                         )}
                       >
+                        {hasProfit ? (
+                          <Plus className="h-3.5 w-3.5 shrink-0" />
+                        ) : (
+                          <Minus className="h-3.5 w-3.5 shrink-0" />
+                        )}
                         <HiddenValue value={formatCurrencyValue(Math.abs(venda.profit))} />
                       </Badge>
                     </TableCell>
@@ -595,36 +654,49 @@ const Vendas = () => {
                       })()}
                     </TableCell>
                     <TableCell>
-                      <DropdownMenu>
-                        <DropdownMenuTrigger asChild>
-                          <Button variant="ghost" size="icon" className="h-8 w-8">
-                            <MoreHorizontal className="w-4 h-4" />
-                          </Button>
-                        </DropdownMenuTrigger>
-                        <DropdownMenuContent align="end" className="bg-popover border border-border">
-                          <DropdownMenuItem 
-                            className="gap-2"
-                            onClick={() => setSaleToViewReceipt(venda)}
-                          >
-                            <FileText className="w-4 h-4" />
-                            Ver Comprovante
-                          </DropdownMenuItem>
-                          <DropdownMenuItem 
-                            className="gap-2"
-                            onClick={() => setSaleToEdit(venda)}
-                          >
-                            <Pencil className="w-4 h-4" />
-                            Editar
-                          </DropdownMenuItem>
-                          <DropdownMenuItem 
-                            className="gap-2 text-destructive"
-                            onClick={() => setSaleToDelete({ id: venda.id, vehicleName })}
-                          >
-                            <Trash2 className="w-4 h-4" />
-                            Cancelar venda
-                          </DropdownMenuItem>
-                        </DropdownMenuContent>
-                      </DropdownMenu>
+                      {(() => {
+                        // Verificar se é vendedor e se a venda foi registrada por ele
+                        const isSeller = userData?.collaboratorRole === 'seller';
+                        const isOwnSale = venda.registeredBy?.id === userData?.user?.id;
+                        const canEditOrDelete = !isSeller || isOwnSale;
+                        
+                        return (
+                          <DropdownMenu>
+                            <DropdownMenuTrigger asChild>
+                              <Button variant="ghost" size="icon" className="h-8 w-8">
+                                <MoreHorizontal className="w-4 h-4" />
+                              </Button>
+                            </DropdownMenuTrigger>
+                            <DropdownMenuContent align="end" className="bg-popover border border-border">
+                              <DropdownMenuItem 
+                                className="gap-2"
+                                onClick={() => setSaleToViewReceipt(venda)}
+                              >
+                                <FileText className="w-4 h-4" />
+                                Ver Comprovante
+                              </DropdownMenuItem>
+                              {canEditOrDelete && (
+                                <>
+                                  <DropdownMenuItem 
+                                    className="gap-2"
+                                    onClick={() => setSaleToEdit(venda)}
+                                  >
+                                    <Pencil className="w-4 h-4" />
+                                    Editar
+                                  </DropdownMenuItem>
+                                  <DropdownMenuItem 
+                                    className="gap-2 text-destructive"
+                                    onClick={() => setSaleToDelete({ id: venda.id, vehicleName })}
+                                  >
+                                    <Trash2 className="w-4 h-4" />
+                                    Cancelar venda
+                                  </DropdownMenuItem>
+                                </>
+                              )}
+                            </DropdownMenuContent>
+                          </DropdownMenu>
+                        );
+                      })()}
                     </TableCell>
                   </TableRow>
                 );
@@ -635,6 +707,47 @@ const Vendas = () => {
         </TooltipProvider>
         </div>
       </div>
+      ) : (
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+        {isError ? (
+          <div className="col-span-full">
+            <QueryErrorState message={error?.message} onRetry={() => refetch()} variant="inline" />
+          </div>
+        ) : isLoading ? (
+          <div className="col-span-full text-center py-8">
+            <p className="text-muted-foreground">Carregando vendas...</p>
+          </div>
+        ) : filteredSales.length === 0 ? (
+          <div className="col-span-full flex flex-col items-center justify-center py-16">
+            <div className="w-16 h-16 rounded-full bg-muted/50 flex items-center justify-center mb-4">
+              <Car className="w-8 h-8 text-muted-foreground/50" />
+            </div>
+            <p className="text-lg font-medium text-foreground mb-2">Nenhuma venda encontrada</p>
+            <p className="text-sm text-muted-foreground max-w-md text-center">Ajuste os filtros ou registre uma nova venda.</p>
+          </div>
+        ) : (
+          filteredSales.map((venda) => {
+            const vehicleName = venda.vehicle
+              ? `${venda.vehicle.brand} ${venda.vehicle.model} ${venda.vehicle.year}`
+              : 'N/A';
+            const isSeller = userData?.collaboratorRole === 'seller';
+            const isOwnSale = venda.registeredBy?.id === userData?.user?.id;
+            const canEditOrDelete = !isSeller || isOwnSale;
+            return (
+              <SaleCard
+                key={venda.id}
+                sale={venda}
+                formatCurrency={formatCurrencyValue}
+                onViewReceipt={setSaleToViewReceipt}
+                onEdit={setSaleToEdit}
+                onCancel={() => setSaleToDelete({ id: venda.id, vehicleName })}
+                canEditOrDelete={canEditOrDelete}
+              />
+            );
+          })
+        )}
+      </div>
+      )}
 
       {/* Paginação */}
       {pagination && pagination.totalPages > 0 && (
@@ -652,9 +765,11 @@ const Vendas = () => {
                 <span className="text-sm text-muted-foreground hidden sm:inline">Itens por página:</span>
                 <span className="text-sm text-muted-foreground sm:hidden">Por página:</span>
                 <Select
-                  value={limit.toString()}
+                  value={currentLimit.toString()}
                   onValueChange={(value) => {
-                    setLimit(parseInt(value));
+                    const newLimit = parseInt(value);
+                    if (viewMode === 'list') setListLimit(newLimit);
+                    else setCardLimit(newLimit);
                     setPage(1);
                   }}
                 >
@@ -662,7 +777,7 @@ const Vendas = () => {
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
-                    {[10, 25, 50, 100].map((l) => (
+                    {(viewMode === 'list' ? listLimits : cardLimits).map((l) => (
                       <SelectItem key={l} value={l.toString()}>
                         {l}
                       </SelectItem>

@@ -43,6 +43,17 @@ export const useDashboardMetrics = (params?: { month?: number; year?: number }) 
 };
 
 export interface DashboardData {
+  chartType?: 'day' | 'month';
+  chart?: Array<{
+    date: string;
+    tooltipDate?: string;
+    monthKey?: string;
+    revenue: number;
+    sales: number;
+    profit: number;
+    showLabel?: boolean;
+    showTick?: boolean;
+  }>;
   cards: {
     revenue: {
       value: number;
@@ -63,16 +74,20 @@ export interface DashboardData {
   };
   dailyChart: Array<{
     date: string;
+    tooltipDate?: string;
     revenue: number;
     sales: number;
     profit: number;
   }>;
   monthlyChart: Array<{
     date: string;
+    tooltipDate?: string;
     monthKey: string;
     revenue: number;
     sales: number;
     profit: number;
+    showLabel?: boolean;
+    showTick?: boolean;
   }>;
   insights: {
     bestDay: {

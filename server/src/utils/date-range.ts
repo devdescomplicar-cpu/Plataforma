@@ -57,7 +57,8 @@ export function getDateRange(
       break;
     }
     case '3m': {
-      let startM = m - 3;
+      // Últimos 3 meses incluindo o mês atual (mês atual + 2 meses anteriores)
+      let startM = m - 2;
       let startY = y;
       if (startM < 1) {
         startM += 12;
@@ -68,13 +69,26 @@ export function getDateRange(
       break;
     }
     case '6m': {
-      let startM6 = m - 6;
+      // Últimos 6 meses incluindo o mês atual (mês atual + 5 meses anteriores)
+      let startM6 = m - 5;
       let startY6 = y;
       if (startM6 < 1) {
         startM6 += 12;
         startY6 -= 1;
       }
       start = startOfDayBrazil(startY6, startM6, 1);
+      end = endOfDayBrazil(y, m, d);
+      break;
+    }
+    case '12m': {
+      // Últimos 12 meses incluindo o mês atual (mês atual + 11 meses anteriores)
+      let startM12 = m - 11;
+      let startY12 = y;
+      if (startM12 < 1) {
+        startM12 += 12;
+        startY12 -= 1;
+      }
+      start = startOfDayBrazil(startY12, startM12, 1);
       end = endOfDayBrazil(y, m, d);
       break;
     }

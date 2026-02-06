@@ -377,9 +377,9 @@ const Configuracoes = () => {
               </div>
             </div>
 
-            {/* Nome fantasia */}
+            {/* Nome da empresa */}
             <div className="space-y-2">
-              <Label htmlFor="store-name">Nome fantasia *</Label>
+              <Label htmlFor="store-name">Nome da empresa *</Label>
               <Input
                 id="store-name"
                 value={storeName}

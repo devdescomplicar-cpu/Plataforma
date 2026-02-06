@@ -144,7 +144,7 @@ export default function Login() {
       <Card className="w-full max-w-md shadow-lg border-border">
         <CardHeader className="text-center space-y-4 pb-4">
           <div className="flex justify-center w-full">
-            <Logo size="large" showText={false} linkable={false} />
+            <Logo size="large" showText={false} linkable={false} variant="light" />
           </div>
           <CardDescription>Entre com seu email e senha para acessar o sistema</CardDescription>
         </CardHeader>

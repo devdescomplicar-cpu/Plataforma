@@ -67,7 +67,7 @@ export function ClientProfileModal({
     } else if (clientPurchases === 1) {
       return { label: 'Novo', variant: 'outline' as const, className: 'bg-info/10 text-info border-info/20' };
     } else if (clientPurchases >= 2 && clientTotalSpent >= 100000) {
-      return { label: 'VIP', variant: 'default' as const, className: 'bg-yellow-500 text-white' };
+      return { label: 'VIP', variant: 'default' as const, className: 'bg-yellow-500 text-white hover:bg-yellow-500' };
     } else if (clientPurchases >= 2) {
       return { label: 'Recorrente', variant: 'default' as const, className: 'bg-primary text-white' };
     } else {

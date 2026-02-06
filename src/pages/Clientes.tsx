@@ -111,7 +111,7 @@ const Clientes = () => {
     } else if (purchases === 1) {
       return { label: 'Novo', variant: 'outline', className: 'bg-info/10 text-info border-info/20' };
     } else if (purchases >= recurringThreshold && totalSpent >= 100000) {
-      return { label: 'VIP', variant: 'default', className: 'bg-yellow-500 text-white' };
+      return { label: 'VIP', variant: 'default', className: 'bg-yellow-500 text-white hover:bg-yellow-500' };
     } else if (purchases >= recurringThreshold) {
       return { label: 'Recorrente', variant: 'default', className: 'bg-primary text-white' };
     } else {

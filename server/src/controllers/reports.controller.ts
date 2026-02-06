@@ -2,9 +2,14 @@ import { Response, NextFunction } from 'express';
 import { AuthRequest } from '../middleware/auth.middleware.js';
 import { prisma } from '../services/prisma.service.js';
 import { getDateRange } from '../utils/date-range.js';
-import { getBrazilDateParts, getLastDayOfMonth, startOfDayBrazil, endOfDayBrazil, daysDifferenceBrazil } from '../utils/timezone.js';
+import { getBrazilDateParts, getLastDayOfMonth, startOfDayBrazil, endOfDayBrazil, daysDifferenceBrazil, getBrazilMonthRange } from '../utils/timezone.js';
 
 const MONTH_NAMES = ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'];
+
+function saleDateKeyBrazil(saleDate: Date): string {
+  const br = getBrazilDateParts(saleDate);
+  return `${br.year}-${String(br.month).padStart(2, '0')}-${String(br.day).padStart(2, '0')}`;
+}
 
 /** Relatório limitado do vendedor: vendas, comissão, evolução mensal; sem custos/lucro. */
 export const getReportsSeller = async (
@@ -378,26 +383,149 @@ export const getReports = async (
       ? Math.round(daysInStockArray.reduce((sum, d) => sum + d, 0) / daysInStockArray.length)
       : 0;
 
-    // Dados mensais (fuso Brasil): últimos 7 meses para os gráficos
-    const byMonth = new Map<string, { vendas: number; lucro: number; faturamento: number; daysInStock: number[] }>();
-    const brNow = getBrazilDateParts(new Date());
-    for (let i = 6; i >= 0; i--) {
-      let month = brNow.month - i;
-      let year = brNow.year;
-      if (month < 1) {
-        month += 12;
-        year -= 1;
-      }
-      const key = `${year}-${String(month).padStart(2, '0')}`;
-      byMonth.set(key, { vendas: 0, lucro: 0, faturamento: 0, daysInStock: [] });
+    // Determinar se deve mostrar dia a dia ou mês a mês baseado no período
+    const startBr = getBrazilDateParts(start);
+    const endBr = getBrazilDateParts(end);
+    let isSingleMonthPeriod = false;
+    const isCustomPeriod = (!period || period === 'custom') && startDate && endDate;
+    if (isCustomPeriod) {
+      isSingleMonthPeriod = startBr.year === endBr.year && startBr.month === endBr.month;
+    } else {
+      isSingleMonthPeriod = period === 'current-month' || period === 'last-month';
     }
-    const firstMonth = brNow.month - 6 >= 1 ? brNow.month - 6 : brNow.month - 6 + 12;
-    const firstYear = brNow.month - 6 >= 1 ? brNow.year : brNow.year - 1;
-    const chartStart = startOfDayBrazil(firstYear, firstMonth, 1);
-    const lastDay = getLastDayOfMonth(brNow.year, brNow.month);
-    const chartEnd = endOfDayBrazil(brNow.year, brNow.month, lastDay);
 
-    // Buscar TODAS as vendas dos últimos 7 meses para os gráficos (não apenas as do período filtrado)
+    // Dados dia a dia (quando for 1 mês)
+    const MONTH_SHORT = ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'];
+    const MONTH_FULL = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
+    const dailyData = new Map<string, { date: string; tooltipDate: string; vendas: number; lucro: number; faturamento: number; daysInStock: number[] }>();
+    
+    let chartStart: Date;
+    let chartEnd: Date;
+    
+    if (isSingleMonthPeriod) {
+      const { start: monthStart, end: monthEnd } = getBrazilMonthRange(endBr.year, endBr.month);
+      chartStart = monthStart;
+      chartEnd = monthEnd;
+    } else {
+      chartStart = start;
+      chartEnd = end;
+    }
+
+    if (isSingleMonthPeriod) {
+      let t = chartStart.getTime();
+      const dayMs = 24 * 60 * 60 * 1000;
+      while (t <= chartEnd.getTime()) {
+        const br = getBrazilDateParts(new Date(t));
+        const key = `${br.year}-${String(br.month).padStart(2, '0')}-${String(br.day).padStart(2, '0')}`;
+        dailyData.set(key, {
+          date: `${String(br.day).padStart(2, '0')}/${String(br.month).padStart(2, '0')}`,
+          tooltipDate: `${String(br.day).padStart(2, '0')} ${MONTH_SHORT[br.month - 1]}, ${br.year}`,
+          vendas: 0,
+          lucro: 0,
+          faturamento: 0,
+          daysInStock: [],
+        });
+        t += dayMs;
+      }
+    }
+
+    // Dados mensais (quando for múltiplos meses)
+    const monthlyData = new Map<string, { date: string; tooltipDate: string; monthKey: string; vendas: number; lucro: number; faturamento: number; daysInStock: number[]; showLabel: boolean; showTick: boolean }>();
+    
+    if (!isSingleMonthPeriod) {
+      let currentYear = startBr.year;
+      let currentMonth = startBr.month;
+      const endYear = endBr.year;
+      const endMonth = endBr.month;
+      
+      // Contar total de meses
+      let totalMonths = 0;
+      let tempYear = startBr.year;
+      let tempMonth = startBr.month;
+      while (tempYear < endYear || (tempYear === endYear && tempMonth <= endMonth)) {
+        totalMonths++;
+        tempMonth++;
+        if (tempMonth > 12) {
+          tempMonth = 1;
+          tempYear++;
+        }
+      }
+      
+      // Determinar intervalo de exibição baseado no total de meses
+      let labelInterval = 1;
+      let labelFormat: 'month' | 'year' = 'month';
+      
+      if (totalMonths <= 6) {
+        labelInterval = 1;
+      } else if (totalMonths <= 12) {
+        labelInterval = 2;
+      } else if (totalMonths <= 24) {
+        labelInterval = 3;
+      } else {
+        labelInterval = 1;
+        labelFormat = 'year';
+      }
+      
+      let monthIndex = 0;
+      while (currentYear < endYear || (currentYear === endYear && currentMonth <= endMonth)) {
+        const key = `${currentYear}-${String(currentMonth).padStart(2, '0')}`;
+        
+        let showLabel = false;
+        let showTick = false;
+        if (labelFormat === 'year') {
+          showLabel = currentMonth === 1;
+          showTick = showLabel;
+          if (showLabel) {
+            monthlyData.set(key, {
+              date: `${currentYear}`,
+              tooltipDate: `${MONTH_FULL[currentMonth - 1]}, ${currentYear}`,
+              monthKey: key,
+              vendas: 0,
+              lucro: 0,
+              faturamento: 0,
+              daysInStock: [],
+              showLabel: true,
+              showTick: true,
+            });
+          } else {
+            monthlyData.set(key, {
+              date: `${MONTH_SHORT[currentMonth - 1]}, ${currentYear}`,
+              tooltipDate: `${MONTH_FULL[currentMonth - 1]}, ${currentYear}`,
+              monthKey: key,
+              vendas: 0,
+              lucro: 0,
+              faturamento: 0,
+              daysInStock: [],
+              showLabel: false,
+              showTick: false,
+            });
+          }
+        } else {
+          showLabel = monthIndex % labelInterval === 0;
+          showTick = showLabel;
+          monthlyData.set(key, {
+            date: `${MONTH_SHORT[currentMonth - 1]}, ${currentYear}`,
+            tooltipDate: `${MONTH_FULL[currentMonth - 1]}, ${currentYear}`,
+            monthKey: key,
+            vendas: 0,
+            lucro: 0,
+            faturamento: 0,
+            daysInStock: [],
+            showLabel,
+            showTick,
+          });
+        }
+        
+        monthIndex++;
+        currentMonth++;
+        if (currentMonth > 12) {
+          currentMonth = 1;
+          currentYear++;
+        }
+      }
+    }
+
+    // Buscar vendas do período para os gráficos
     const allSalesForCharts = await prisma.sale.findMany({
       where: {
         accountId,
@@ -425,38 +553,84 @@ export const getReports = async (
       orderBy: { saleDate: 'asc' },
     });
     
-    // Preencher dados mensais com todas as vendas dos últimos 7 meses (agrupamento por mês no fuso Brasil)
+    // Preencher dados com as vendas
     for (const s of allSalesForCharts) {
-      const key = saleMonthKeyBrazil(s.saleDate);
-      const cur = byMonth.get(key);
-      if (cur) {
-        cur.vendas += 1;
-        cur.lucro += s.profit;
-        cur.faturamento += s.salePrice;
-        
-        // Calcular dias em estoque (apenas datas, ignorando horário)
-        if (s.vehicle?.createdAt) {
-          const daysInStock = daysDifferenceBrazil(s.vehicle.createdAt, s.saleDate);
-          cur.daysInStock.push(daysInStock);
+      if (isSingleMonthPeriod) {
+        const key = saleDateKeyBrazil(s.saleDate);
+        const entry = dailyData.get(key);
+        if (entry) {
+          entry.vendas += 1;
+          entry.lucro += s.profit;
+          entry.faturamento += s.salePrice;
+          if (s.vehicle?.createdAt) {
+            const daysInStock = daysDifferenceBrazil(s.vehicle.createdAt, s.saleDate);
+            entry.daysInStock.push(daysInStock);
+          }
+        }
+      } else {
+        const key = saleMonthKeyBrazil(s.saleDate);
+        const entry = monthlyData.get(key);
+        if (entry) {
+          entry.vendas += 1;
+          entry.lucro += s.profit;
+          entry.faturamento += s.salePrice;
+          if (s.vehicle?.createdAt) {
+            const daysInStock = daysDifferenceBrazil(s.vehicle.createdAt, s.saleDate);
+            entry.daysInStock.push(daysInStock);
+          }
         }
       }
     }
     
-    const vendasMensais = Array.from(byMonth.entries())
-      .sort(([a], [b]) => a.localeCompare(b))
-      .map(([key, v]) => {
-        const [y, m] = key.split('-');
-        const avgDaysInStock = v.daysInStock.length > 0
-          ? Math.round(v.daysInStock.reduce((sum, d) => sum + d, 0) / v.daysInStock.length)
-          : 0;
-        return {
-          month: MONTH_NAMES[parseInt(m, 10) - 1],
+    // Converter para array final
+    let vendasMensais: Array<{
+      month: string;
+      date?: string;
+      tooltipDate?: string;
+      showLabel?: boolean;
+      showTick?: boolean;
+      vendas: number;
+      lucro: number;
+      faturamento: number;
+      tempoMedioEstoque: number;
+    }>;
+    
+    if (isSingleMonthPeriod) {
+      vendasMensais = Array.from(dailyData.values())
+        .sort((a, b) => {
+          const [dayA, monthA] = a.date.split('/').map(Number);
+          const [dayB, monthB] = b.date.split('/').map(Number);
+          if (monthA !== monthB) return monthA - monthB;
+          return dayA - dayB;
+        })
+        .map((v) => ({
+          month: v.date,
+          date: v.date,
+          tooltipDate: v.tooltipDate,
           vendas: v.vendas,
           lucro: Math.round(v.lucro),
           faturamento: Math.round(v.faturamento),
-          tempoMedioEstoque: avgDaysInStock,
-        };
-      });
+          tempoMedioEstoque: v.daysInStock.length > 0
+            ? Math.round(v.daysInStock.reduce((sum, d) => sum + d, 0) / v.daysInStock.length)
+            : 0,
+        }));
+    } else {
+      vendasMensais = Array.from(monthlyData.values())
+        .sort((a, b) => a.monthKey.localeCompare(b.monthKey))
+        .map((v) => ({
+          month: v.date,
+          date: v.date,
+          tooltipDate: v.tooltipDate,
+          showLabel: v.showLabel,
+          showTick: v.showTick,
+          vendas: v.vendas,
+          lucro: Math.round(v.lucro),
+          faturamento: Math.round(v.faturamento),
+          tempoMedioEstoque: v.daysInStock.length > 0
+            ? Math.round(v.daysInStock.reduce((sum, d) => sum + d, 0) / v.daysInStock.length)
+            : 0,
+        }));
+    }
 
     // Veículos mais lucrativos (por lucro total)
     const byVehicleProfit = new Map<string, { name: string; profit: number; revenue: number; sales: number }>();

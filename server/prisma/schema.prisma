@@ -37,7 +37,7 @@ model User {
 
 model Account {
   id         String   @id @default(cuid())
-  name       String   // Nome fantasia (exibido em relatórios)
+  name       String   // Nome da empresa (exibido em relatórios)
   userId     String
   status     String   @default("active") // active, inactive, trial, cancelled, vencido
   trialEndsAt DateTime?

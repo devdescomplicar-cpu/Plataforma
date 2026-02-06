@@ -43,6 +43,7 @@ import {
   AdminNotificacoes,
   AdminTemplates,
   AdminClientes,
+  Planos,
 } from "@/routes/LazyRoutes";
 
 const DASHBOARD_ICONS = ['/car-moto-icon.webp', '/checklist-icon.webp', '/handshake-icon.webp', '/expense-icon.webp'] as const;
@@ -72,6 +73,7 @@ const AppContent = () => {
           <Routes>
             <Route path="/login" element={<Login />} />
             <Route path="/reset-password" element={<ResetPassword />} />
+            <Route path="/planos" element={<Planos />} />
             <Route element={<RequireAuth><AppLayout /></RequireAuth>}>
               <Route path="/" element={<Dashboard />} />
               <Route path="/veiculos" element={<Veiculos />} />
